@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "composer-rostrum"
-version = "0.1.0"
+version = "0.2.0"
 description = "Benchmark and harness for AI agency in music composition and production"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -14,6 +14,7 @@ dependencies = []
 
 [project.scripts]
 rostrum = "composer_rostrum.runner:main"
+rostrum-generate = "composer_rostrum.generator:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

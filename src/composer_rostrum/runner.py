@@ -5,7 +5,8 @@ import json
 from copy import deepcopy
 from pathlib import Path
 
-from .agent import ReferenceAgent
+from .agent import Agent, ReferenceAgent
+from .environment import MusicEnvironment, project_hash
 from .evaluator import aggregate_score, evaluate
 from .models import RostrumTask
 
@@ -15,9 +16,11 @@ def load_task(path: str | Path) -> RostrumTask:
         return RostrumTask.from_dict(json.load(handle))
 
 
-def run_task(task: RostrumTask) -> dict:
+def run_task(task: RostrumTask, agent: Agent | None = None) -> dict:
     before = deepcopy(task.initial_project)
-    after = ReferenceAgent().solve(task, deepcopy(before))
+    environment = MusicEnvironment(before, task.allowed_tools)
+    (agent or ReferenceAgent()).solve(task, environment)
+    after = environment.project
     results = evaluate(task, before, after)
     return {
         "task_id": task.id,
@@ -25,6 +28,10 @@ def run_task(task: RostrumTask) -> dict:
         "passed": bool(results) and all(result.passed for result in results),
         "results": [result.__dict__ for result in results],
         "project": after.to_dict(),
+        "project_before_hash": project_hash(before),
+        "project_after_hash": project_hash(after),
+        "trajectory": [event.to_dict() for event in environment.trajectory],
+        "tool_calls": len(environment.trajectory),
     }
 
 

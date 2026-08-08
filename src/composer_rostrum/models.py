@@ -54,6 +54,17 @@ class RostrumTask:
             tags=list(data.get("tags", [])),
         )
 
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "id": self.id,
+            "level": self.level,
+            "prompt": self.prompt,
+            "tags": self.tags,
+            "allowed_tools": self.allowed_tools,
+            "initial_project": self.initial_project.to_dict(),
+            "evaluators": self.evaluators,
+        }
+
 
 @dataclass
 class EvaluationResult:
