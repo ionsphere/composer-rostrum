@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "composer-rostrum"
+version = "0.1.0"
+description = "Benchmark and harness for AI agency in music composition and production"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [{name = "Composer Rostrum contributors"}]
+dependencies = []
+
+[project.scripts]
+rostrum = "composer_rostrum.runner:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

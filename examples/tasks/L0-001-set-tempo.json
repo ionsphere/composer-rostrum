@@ -1,0 +1,21 @@
+{
+  "id": "L0-001-set-tempo",
+  "level": "L0",
+  "prompt": "Set the project tempo to 128 BPM. Do not change the meter, key, tracks, or metadata.",
+  "tags": ["mechanics", "tempo", "preservation"],
+  "allowed_tools": ["inspect_project", "set_tempo"],
+  "initial_project": {
+    "tempo": 120,
+    "meter": "4/4",
+    "key": "C_minor",
+    "tracks": [
+      {"id": "drums", "name": "Drums", "kind": "midi"},
+      {"id": "bass", "name": "Bass", "kind": "midi"}
+    ],
+    "metadata": {"generator": "seed-example"}
+  },
+  "evaluators": [
+    {"type": "project_property", "path": "tempo", "equals": 128.0},
+    {"type": "preserve_paths", "paths": ["meter", "key", "tracks", "metadata"]}
+  ]
+}

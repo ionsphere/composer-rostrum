@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://composer-rostrum.dev/schemas/music-ir.schema.json",
+  "title": "Composer Rostrum Music IR",
+  "type": "object",
+  "required": ["tempo", "meter", "tracks"],
+  "properties": {
+    "tempo": {"type": "number", "exclusiveMinimum": 0},
+    "meter": {"type": "string", "pattern": "^[1-9][0-9]*/[1-9][0-9]*$"},
+    "key": {"type": ["string", "null"]},
+    "tracks": {"type": "array", "items": {"type": "object"}},
+    "metadata": {"type": "object"}
+  },
+  "additionalProperties": false
+}

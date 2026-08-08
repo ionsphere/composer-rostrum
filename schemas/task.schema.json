@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://composer-rostrum.dev/schemas/task.schema.json",
+  "title": "Composer Rostrum Task",
+  "type": "object",
+  "required": ["id", "level", "prompt", "initial_project", "allowed_tools", "evaluators"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "level": {"enum": ["L0", "L1", "L2", "L3", "L4"]},
+    "prompt": {"type": "string", "minLength": 1},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "allowed_tools": {"type": "array", "items": {"type": "string"}},
+    "initial_project": {"$ref": "music-ir.schema.json"},
+    "evaluators": {
+      "type": "array",
+      "items": {"type": "object", "required": ["type"], "properties": {"type": {"type": "string"}}, "additionalProperties": true}
+    }
+  },
+  "additionalProperties": false
+}
