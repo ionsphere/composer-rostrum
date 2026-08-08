@@ -9,6 +9,36 @@
     "meter": {"type": "string", "pattern": "^[1-9][0-9]*/[1-9][0-9]*$"},
     "key": {"type": ["string", "null"]},
     "tracks": {"type": "array", "items": {"type": "object"}},
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind"],
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"enum": ["audio", "midi", "render", "other"]},
+          "name": {"type": "string"},
+          "duration_seconds": {"type": "number", "minimum": 0},
+          "content_hash": {"type": "string"},
+          "provenance": {
+            "type": "object",
+            "properties": {
+              "source": {"type": "string"},
+              "provider": {"type": "string"},
+              "source_uri": {"type": "string"},
+              "license": {"type": "string"},
+              "attribution": {"type": "string"},
+              "rights_verified": {"type": "boolean"},
+              "acquired_at": {"type": "string"},
+              "derived_from": {"type": "array", "items": {"type": "string"}},
+              "operations": {"type": "array", "items": {"type": "object"}}
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
     "metadata": {"type": "object"}
   },
   "additionalProperties": false

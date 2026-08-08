@@ -10,6 +10,7 @@ class MusicProject:
     meter: str = "4/4"
     key: str | None = None
     tracks: list[dict[str, Any]] = field(default_factory=list)
+    assets: list[dict[str, Any]] = field(default_factory=list)
     metadata: dict[str, Any] = field(default_factory=dict)
 
     @classmethod
@@ -19,6 +20,7 @@ class MusicProject:
             meter=data.get("meter", "4/4"),
             key=data.get("key"),
             tracks=list(data.get("tracks", [])),
+            assets=list(data.get("assets", [])),
             metadata=dict(data.get("metadata", {})),
         )
 
@@ -28,6 +30,7 @@ class MusicProject:
             "meter": self.meter,
             "key": self.key,
             "tracks": self.tracks,
+            "assets": self.assets,
             "metadata": self.metadata,
         }
 

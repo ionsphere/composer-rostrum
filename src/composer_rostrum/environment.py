@@ -46,7 +46,7 @@ def _diff_paths(before: Any, after: Any, prefix: str = "") -> list[str]:
                 paths.extend(_diff_paths(before[key], after[key], path))
         return paths
     if isinstance(before, list):
-        paths = []
+        paths: list[str] = []
         for index in range(max(len(before), len(after))):
             path = f"{prefix}.{index}" if prefix else str(index)
             if index >= len(before) or index >= len(after):
@@ -58,13 +58,6 @@ def _diff_paths(before: Any, after: Any, prefix: str = "") -> list[str]:
 
 
 class MusicEnvironment:
-    """Owns mutable project state and exposes the benchmark's bounded tool surface.
-
-    Agents receive this object rather than the MusicProject itself. The public
-    project property returns a deep copy so an adapter cannot mutate benchmark
-    state without going through a logged tool call.
-    """
-
     def __init__(self, project: MusicProject, allowed_tools: list[str]):
         self._project = deepcopy(project)
         self.allowed_tools = frozenset(allowed_tools)
@@ -77,39 +70,20 @@ class MusicEnvironment:
     def call(self, tool: str, **arguments: Any) -> Any:
         if tool not in self.allowed_tools:
             raise ToolError(f"tool {tool!r} is not allowed for this task")
-
         handler = getattr(self, f"_tool_{tool}", None)
         if handler is None:
             raise ToolError(f"tool {tool!r} is not implemented")
-
         before = deepcopy(self._project)
         before_hash = project_hash(before)
         try:
             result = handler(**arguments)
         except Exception as exc:
-            after_hash = project_hash(self._project)
-            self.trajectory.append(TrajectoryEvent(
-                index=len(self.trajectory),
-                tool=tool,
-                arguments=deepcopy(arguments),
-                result=None,
-                before_hash=before_hash,
-                after_hash=after_hash,
-                changed_paths=_diff_paths(before.to_dict(), self._project.to_dict()),
-                error=f"{type(exc).__name__}: {exc}",
-            ))
+            self.trajectory.append(TrajectoryEvent(len(self.trajectory), tool, deepcopy(arguments), None,
+                before_hash, project_hash(self._project), _diff_paths(before.to_dict(), self._project.to_dict()),
+                f"{type(exc).__name__}: {exc}"))
             raise
-
-        after_hash = project_hash(self._project)
-        self.trajectory.append(TrajectoryEvent(
-            index=len(self.trajectory),
-            tool=tool,
-            arguments=deepcopy(arguments),
-            result=deepcopy(result),
-            before_hash=before_hash,
-            after_hash=after_hash,
-            changed_paths=_diff_paths(before.to_dict(), self._project.to_dict()),
-        ))
+        self.trajectory.append(TrajectoryEvent(len(self.trajectory), tool, deepcopy(arguments), deepcopy(result),
+            before_hash, project_hash(self._project), _diff_paths(before.to_dict(), self._project.to_dict())))
         return deepcopy(result)
 
     def _tool_inspect_project(self, path: str | None = None) -> Any:
@@ -117,18 +91,31 @@ class MusicEnvironment:
         if path is None:
             return value
         for part in path.split("."):
-            if isinstance(value, dict):
-                value = value[part]
-            elif isinstance(value, list):
-                value = value[int(part)]
-            else:
-                raise ToolError(f"cannot descend through {path!r}")
+            value = value[int(part)] if isinstance(value, list) else value[part]
         return value
+
+    def _find_track(self, track_id: str) -> dict[str, Any]:
+        for track in self._project.tracks:
+            if track.get("id") == track_id:
+                return track
+        raise ToolError(f"track {track_id!r} was not found")
+
+    def _find_asset(self, asset_id: str) -> dict[str, Any]:
+        for asset in self._project.assets:
+            if asset.get("id") == asset_id:
+                return asset
+        raise ToolError(f"asset {asset_id!r} was not found")
+
+    def _find_clip(self, track_id: str, clip_id: str) -> dict[str, Any]:
+        track = self._find_track(track_id)
+        for clip in track.get("clips", []):
+            if clip.get("id") == clip_id:
+                return clip
+        raise ToolError(f"clip {clip_id!r} was not found on track {track_id!r}")
 
     def _tool_set_tempo(self, bpm: float) -> dict[str, float]:
         bpm = float(bpm)
-        if bpm <= 0:
-            raise ToolError("tempo must be greater than zero")
+        if bpm <= 0: raise ToolError("tempo must be greater than zero")
         self._project.tempo = bpm
         return {"tempo": bpm}
 
@@ -137,31 +124,64 @@ class MusicEnvironment:
         return {"key": key}
 
     def _tool_set_meter(self, meter: str) -> dict[str, str]:
-        if "/" not in meter:
-            raise ToolError("meter must look like '4/4'")
-        numerator, denominator = meter.split("/", 1)
-        if not numerator.isdigit() or not denominator.isdigit() or int(numerator) <= 0 or int(denominator) <= 0:
-            raise ToolError("meter must contain positive integer numerator and denominator")
+        if "/" not in meter: raise ToolError("meter must look like '4/4'")
         self._project.meter = meter
         return {"meter": meter}
 
-    def _find_track(self, track_id: str) -> dict[str, Any]:
-        for track in self._project.tracks:
-            if track.get("id") == track_id:
-                return track
-        raise ToolError(f"track {track_id!r} was not found")
-
     def _tool_mute_track(self, track_id: str, muted: bool = True) -> dict[str, Any]:
-        track = self._find_track(track_id)
-        track["muted"] = bool(muted)
+        track = self._find_track(track_id); track["muted"] = bool(muted)
         return {"track_id": track_id, "muted": bool(muted)}
 
     def _tool_rename_track(self, track_id: str, name: str) -> dict[str, str]:
-        track = self._find_track(track_id)
-        track["name"] = str(name)
+        track = self._find_track(track_id); track["name"] = str(name)
         return {"track_id": track_id, "name": str(name)}
 
     def _tool_set_track_gain(self, track_id: str, gain_db: float) -> dict[str, Any]:
-        track = self._find_track(track_id)
-        track["gain_db"] = float(gain_db)
+        track = self._find_track(track_id); track["gain_db"] = float(gain_db)
         return {"track_id": track_id, "gain_db": float(gain_db)}
+
+    def _tool_trim_clip(self, track_id: str, clip_id: str, source_start: float, source_end: float) -> dict[str, Any]:
+        clip = self._find_clip(track_id, clip_id)
+        if source_start < 0 or source_end <= source_start: raise ToolError("invalid source range")
+        asset = self._find_asset(clip["asset_id"])
+        if source_end > float(asset["duration_seconds"]): raise ToolError("trim exceeds source asset")
+        clip["source_start"] = float(source_start); clip["source_end"] = float(source_end)
+        return {"track_id": track_id, "clip_id": clip_id, "source_start": float(source_start), "source_end": float(source_end)}
+
+    def _tool_set_clip_pitch(self, track_id: str, clip_id: str, semitones: float) -> dict[str, Any]:
+        clip = self._find_clip(track_id, clip_id); clip["pitch_semitones"] = float(semitones)
+        return {"track_id": track_id, "clip_id": clip_id, "pitch_semitones": float(semitones)}
+
+    def _tool_stretch_clip(self, track_id: str, clip_id: str, ratio: float) -> dict[str, Any]:
+        ratio = float(ratio)
+        if ratio <= 0: raise ToolError("stretch ratio must be greater than zero")
+        clip = self._find_clip(track_id, clip_id); clip["stretch_ratio"] = ratio
+        return {"track_id": track_id, "clip_id": clip_id, "stretch_ratio": ratio}
+
+    def _tool_reverse_clip(self, track_id: str, clip_id: str, reversed: bool = True) -> dict[str, Any]:
+        clip = self._find_clip(track_id, clip_id); clip["reversed"] = bool(reversed)
+        return {"track_id": track_id, "clip_id": clip_id, "reversed": bool(reversed)}
+
+    def _tool_create_sampler(self, track_id: str, sampler_id: str, name: str = "Sampler") -> dict[str, Any]:
+        track = self._find_track(track_id)
+        if any(x.get("id") == sampler_id for x in track.get("instruments", [])): raise ToolError("sampler id already exists")
+        sampler = {"id": sampler_id, "type": "sampler", "name": name, "mappings": []}
+        track.setdefault("instruments", []).append(sampler)
+        return deepcopy(sampler)
+
+    def _tool_map_sample_slice(self, track_id: str, sampler_id: str, asset_id: str, note: int, source_start: float, source_end: float) -> dict[str, Any]:
+        self._find_asset(asset_id)
+        track = self._find_track(track_id)
+        sampler = next((x for x in track.get("instruments", []) if x.get("id") == sampler_id and x.get("type") == "sampler"), None)
+        if sampler is None: raise ToolError("sampler was not found")
+        mapping = {"note": int(note), "asset_id": asset_id, "source_start": float(source_start), "source_end": float(source_end)}
+        sampler["mappings"].append(mapping)
+        return deepcopy(mapping)
+
+    def _tool_register_derived_asset(self, asset_id: str, name: str, duration_seconds: float, derived_from: list[str], operations: list[dict[str, Any]]) -> dict[str, Any]:
+        if any(x.get("id") == asset_id for x in self._project.assets): raise ToolError("asset id already exists")
+        for source in derived_from: self._find_asset(source)
+        asset = {"id": asset_id, "kind": "audio", "name": name, "duration_seconds": float(duration_seconds),
+                 "provenance": {"source": "derived", "derived_from": list(derived_from), "operations": deepcopy(operations)}}
+        self._project.assets.append(asset)
+        return deepcopy(asset)
