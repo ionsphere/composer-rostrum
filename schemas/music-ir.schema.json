@@ -4,11 +4,57 @@
   "title": "Composer Rostrum Music IR",
   "type": "object",
   "required": ["tempo", "meter", "tracks"],
+  "$defs": {
+    "midiNote": {
+      "type": "object",
+      "required": ["id", "pitch", "start", "duration", "velocity"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "pitch": {"type": "integer", "minimum": 0, "maximum": 127},
+        "start": {"type": "number", "minimum": 0},
+        "duration": {"type": "number", "exclusiveMinimum": 0},
+        "velocity": {"type": "integer", "minimum": 0, "maximum": 127}
+      },
+      "additionalProperties": true
+    },
+    "clip": {
+      "type": "object",
+      "required": ["id", "kind"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "kind": {"enum": ["midi", "audio"]},
+        "start": {"type": "number", "minimum": 0},
+        "length": {"type": "number", "exclusiveMinimum": 0},
+        "notes": {"type": "array", "items": {"$ref": "#/$defs/midiNote"}},
+        "asset_id": {"type": "string"},
+        "source_start": {"type": "number", "minimum": 0},
+        "source_end": {"type": "number", "minimum": 0},
+        "pitch_semitones": {"type": "number"},
+        "stretch_ratio": {"type": "number", "exclusiveMinimum": 0},
+        "reversed": {"type": "boolean"}
+      },
+      "additionalProperties": true
+    },
+    "track": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "name": {"type": "string"},
+        "kind": {"type": "string"},
+        "muted": {"type": "boolean"},
+        "gain_db": {"type": "number"},
+        "clips": {"type": "array", "items": {"$ref": "#/$defs/clip"}},
+        "instruments": {"type": "array", "items": {"type": "object"}}
+      },
+      "additionalProperties": true
+    }
+  },
   "properties": {
     "tempo": {"type": "number", "exclusiveMinimum": 0},
     "meter": {"type": "string", "pattern": "^[1-9][0-9]*/[1-9][0-9]*$"},
     "key": {"type": ["string", "null"]},
-    "tracks": {"type": "array", "items": {"type": "object"}},
+    "tracks": {"type": "array", "items": {"$ref": "#/$defs/track"}},
     "assets": {
       "type": "array",
       "items": {

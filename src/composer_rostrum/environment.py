@@ -113,6 +113,13 @@ class MusicEnvironment:
                 return clip
         raise ToolError(f"clip {clip_id!r} was not found on track {track_id!r}")
 
+    def _find_note(self, track_id: str, clip_id: str, note_id: str) -> dict[str, Any]:
+        clip = self._find_clip(track_id, clip_id)
+        for note in clip.get("notes", []):
+            if note.get("id") == note_id:
+                return note
+        raise ToolError(f"note {note_id!r} was not found in clip {clip_id!r}")
+
     def _tool_set_tempo(self, bpm: float) -> dict[str, float]:
         bpm = float(bpm)
         if bpm <= 0: raise ToolError("tempo must be greater than zero")
@@ -139,6 +146,31 @@ class MusicEnvironment:
     def _tool_set_track_gain(self, track_id: str, gain_db: float) -> dict[str, Any]:
         track = self._find_track(track_id); track["gain_db"] = float(gain_db)
         return {"track_id": track_id, "gain_db": float(gain_db)}
+
+    def _tool_transpose_notes(self, track_id: str, clip_id: str, semitones: int) -> dict[str, Any]:
+        clip = self._find_clip(track_id, clip_id)
+        notes = clip.get("notes", [])
+        delta = int(semitones)
+        for note in notes:
+            pitch = int(note["pitch"]) + delta
+            if not 0 <= pitch <= 127: raise ToolError("transpose would exceed MIDI pitch range")
+        for note in notes: note["pitch"] = int(note["pitch"]) + delta
+        return {"track_id": track_id, "clip_id": clip_id, "semitones": delta, "notes_changed": len(notes)}
+
+    def _tool_quantize_notes(self, track_id: str, clip_id: str, grid: float) -> dict[str, Any]:
+        grid = float(grid)
+        if grid <= 0: raise ToolError("quantize grid must be greater than zero")
+        clip = self._find_clip(track_id, clip_id)
+        for note in clip.get("notes", []):
+            note["start"] = round(float(note["start"]) / grid) * grid
+        return {"track_id": track_id, "clip_id": clip_id, "grid": grid}
+
+    def _tool_set_note_pitch(self, track_id: str, clip_id: str, note_id: str, pitch: int) -> dict[str, Any]:
+        pitch = int(pitch)
+        if not 0 <= pitch <= 127: raise ToolError("MIDI pitch must be between 0 and 127")
+        note = self._find_note(track_id, clip_id, note_id)
+        note["pitch"] = pitch
+        return {"track_id": track_id, "clip_id": clip_id, "note_id": note_id, "pitch": pitch}
 
     def _tool_trim_clip(self, track_id: str, clip_id: str, source_start: float, source_end: float) -> dict[str, Any]:
         clip = self._find_clip(track_id, clip_id)
