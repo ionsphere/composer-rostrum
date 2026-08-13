@@ -4,6 +4,7 @@ import pytest
 
 from composer_rostrum.backends import CapabilityError, InMemoryBackend, RenderRequest, RenderUnavailableError
 from composer_rostrum.backends.reaper import ReaperBackend
+from composer_rostrum.backends.reaper.transport import FileBridgeTransport
 from composer_rostrum.generator import generate_suite
 from composer_rostrum.runner import run_task
 
@@ -65,5 +66,62 @@ def test_reaper_bootstrap_does_not_claim_worker_connection(tmp_path):
     try:
         with pytest.raises(Exception, match="worker is not connected"):
             backend.create_environment(session, task.allowed_tools)
+    finally:
+        backend.close(session)
+
+
+def test_file_bridge_transport_uses_atomic_numbered_envelopes(tmp_path):
+    transport = FileBridgeTransport(tmp_path, poll_interval=0.001)
+    request_id, request_path = transport.prepare_request("ping", {"hello": "world"})
+    assert request_id == "000001"
+    request = json.loads(request_path.read_text(encoding="utf-8"))
+    assert request == {
+        "protocol": 1,
+        "id": "000001",
+        "command": "ping",
+        "arguments": {"hello": "world"},
+    }
+
+    response_path = tmp_path / "responses" / "000001.json"
+    response_path.write_text(json.dumps({
+        "protocol": 1,
+        "id": "000001",
+        "ok": True,
+        "result": {"pong": True},
+        "error": None,
+    }), encoding="utf-8")
+    response = transport.await_response("000001", timeout=0.1)
+    assert response.ok is True
+    assert response.result == {"pong": True}
+
+
+def test_reaper_backend_validates_bridge_handshake(tmp_path):
+    class FakeTransport:
+        def __init__(self):
+            self.commands = []
+
+        def request(self, command, arguments=None, timeout=10.0):
+            self.commands.append(command)
+            if command == "ping":
+                return {"protocol": 1, "bridge_version": "test", "pong": True}
+            if command == "capabilities":
+                return {
+                    "protocol": 1,
+                    "bridge_version": "test",
+                    "reaper_version": "test",
+                    "capabilities": {"midi_notes": False, "offline_render": False},
+                }
+            raise AssertionError(command)
+
+    task = generate_suite(count=1)[0]
+    backend = ReaperBackend()
+    session = backend.open(backend.materialize(task.initial_project, tmp_path))
+    transport = FakeTransport()
+    try:
+        handshake = backend.connect(session, transport=transport)
+        assert transport.commands == ["ping", "capabilities"]
+        assert session.state["connected"] is True
+        assert handshake["reaper_version"] == "test"
+        assert session.state["live_capabilities"]["offline_render"] is False
     finally:
         backend.close(session)
