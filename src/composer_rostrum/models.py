@@ -44,6 +44,8 @@ class RostrumTask:
     allowed_tools: list[str]
     evaluators: list[dict[str, Any]]
     tags: list[str] = field(default_factory=list)
+    required_capabilities: list[str] = field(default_factory=list)
+    execution_level: str | None = None
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "RostrumTask":
@@ -55,6 +57,8 @@ class RostrumTask:
             allowed_tools=list(data.get("allowed_tools", [])),
             evaluators=list(data.get("evaluators", [])),
             tags=list(data.get("tags", [])),
+            required_capabilities=list(data.get("required_capabilities", [])),
+            execution_level=data.get("execution_level"),
         )
 
     def to_dict(self) -> dict[str, Any]:
@@ -64,6 +68,8 @@ class RostrumTask:
             "prompt": self.prompt,
             "tags": self.tags,
             "allowed_tools": self.allowed_tools,
+            "required_capabilities": self.required_capabilities,
+            "execution_level": self.execution_level,
             "initial_project": self.initial_project.to_dict(),
             "evaluators": self.evaluators,
         }
