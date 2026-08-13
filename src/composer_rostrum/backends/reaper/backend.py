@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import Any
 
 from ...environment import MusicEnvironment
 from ...models import MusicProject
@@ -16,36 +17,23 @@ from ..base import (
     RenderRequest,
     RenderUnavailableError,
 )
+from .transport import FileBridgeTransport
 
 
 class ReaperBackend:
-    """Bootstrap REAPER backend.
+    """Bootstrap REAPER backend with a real protocol-v1 transport seam.
 
-    This class currently creates a deterministic REAPER worker bundle and
-    declares only capabilities that are actually wired. It intentionally does
-    not claim native readback or rendering until a real REAPER bridge/worker is
-    connected.
+    It creates a deterministic worker bundle and can validate a live bridge
+    handshake. Native project mutation/readback/rendering remain intentionally
+    disabled until their bridge commands are implemented.
     """
 
     name = "reaper"
-    version = "bootstrap-1"
+    version = "bootstrap-2"
 
-    # Implemented capabilities, not target capabilities.
-    capabilities = BackendCapabilities(
-        midi_notes=False,
-        audio_clips=False,
-        sampler=False,
-        native_synth=False,
-        native_eq=False,
-        compression=False,
-        sidechain=False,
-        automation=False,
-        offline_render=False,
-        readback=False,
-        headless_or_unattended=False,
-    )
+    # Implemented benchmark capabilities, not aspirational REAPER abilities.
+    capabilities = BackendCapabilities()
 
-    # Useful for planning/progress reporting without lying to task negotiation.
     target_capabilities = BackendCapabilities(
         midi_notes=True,
         audio_clips=True,
@@ -71,9 +59,8 @@ class ReaperBackend:
         source_path = workspace / "project.music-ir.json"
         source_path.write_text(json.dumps(project.to_dict(), indent=2) + "\n", encoding="utf-8")
 
-        # The real .rpp file will be created by the worker/bridge materializer.
-        # Keeping a distinct path prevents the staging Music IR from being
-        # mistaken for a native REAPER project.
+        # A real .rpp must be created by REAPER/the bridge, not fabricated by
+        # the pure-Python bootstrap with guessed native syntax.
         native_path = workspace / "project.rpp"
         manifest_path = workspace / "reaper-worker.json"
         manifest_path.write_text(json.dumps({
@@ -109,6 +96,26 @@ class ReaperBackend:
             "bridge_protocol": native.metadata.get("bridge_protocol", 1),
         })
 
+    def connect(self, session: DawSession, transport: Any | None = None, timeout: float = 10.0) -> dict[str, Any]:
+        if session.closed:
+            raise BackendError("DAW session is already closed")
+        bridge = transport or FileBridgeTransport(session.native_project.workspace)
+        pong = bridge.request("ping", timeout=timeout)
+        handshake = bridge.request("capabilities", timeout=timeout)
+        if not isinstance(pong, dict) or pong.get("protocol") != 1 or not pong.get("pong"):
+            raise BackendError("invalid REAPER bridge ping response")
+        if not isinstance(handshake, dict) or handshake.get("protocol") != 1:
+            raise BackendError("invalid REAPER bridge capabilities handshake")
+        if not isinstance(handshake.get("capabilities"), dict):
+            raise BackendError("REAPER bridge handshake omitted capabilities")
+        session.state.update({
+            "connected": True,
+            "transport": bridge,
+            "handshake": handshake,
+            "live_capabilities": dict(handshake["capabilities"]),
+        })
+        return handshake
+
     def create_environment(self, session: DawSession, allowed_tools: list[str]) -> MusicEnvironment:
         self._require_bridge(session)
         raise BackendError("REAPER semantic environment adapter is not implemented yet")
@@ -119,7 +126,7 @@ class ReaperBackend:
 
     def execute(self, session: DawSession, operation: DawOperation) -> OperationResult:
         self._require_bridge(session)
-        raise BackendError("REAPER command transport is not implemented yet")
+        raise BackendError("REAPER semantic command mapping is not implemented yet")
 
     def readback(self, session: DawSession) -> MusicProject:
         self._require_bridge(session)
