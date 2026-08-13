@@ -4,6 +4,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Protocol
 
+from ..environment import MusicEnvironment
 from ..models import MusicProject
 
 
@@ -115,6 +116,12 @@ class DawBackend(Protocol):
         ...
 
     def open(self, native: NativeProject) -> DawSession:
+        ...
+
+    def create_environment(self, session: DawSession, allowed_tools: list[str]) -> MusicEnvironment:
+        ...
+
+    def commit_environment(self, session: DawSession, environment: MusicEnvironment) -> None:
         ...
 
     def execute(self, session: DawSession, operation: DawOperation) -> OperationResult:
