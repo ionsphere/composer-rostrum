@@ -7,9 +7,21 @@
   "properties": {
     "id": {"type": "string", "minLength": 1},
     "level": {"enum": ["L0", "L1", "L2", "L3", "L4"]},
+    "execution_level": {"type": ["string", "null"], "enum": ["E0", "E1", "E2", "E3", "E4", null]},
     "prompt": {"type": "string", "minLength": 1},
     "tags": {"type": "array", "items": {"type": "string"}},
     "allowed_tools": {"type": "array", "items": {"type": "string"}},
+    "required_capabilities": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "midi_notes", "audio_clips", "sampler", "native_synth", "native_eq",
+          "compression", "sidechain", "automation", "offline_render", "readback",
+          "headless_or_unattended"
+        ]
+      },
+      "uniqueItems": true
+    },
     "initial_project": {"$ref": "music-ir.schema.json"},
     "evaluators": {
       "type": "array",
