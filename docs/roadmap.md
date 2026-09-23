@@ -19,10 +19,10 @@ Goal: answer **how capable are general-purpose reasoning agents at bounded music
 - [x] add deterministic L1 symbolic suite;
 - [x] add multi-step dependent-edit suite;
 - [x] add sample-manipulation/provenance fixtures;
-- [ ] expand to 10-15 stable task families with benchmark splits;
-- [ ] add mutation/oracle system;
-- [ ] add negative/reference solvers;
-- [ ] build benchmark reporting by level/family/failure class;
+- [x] expand to 10-15 stable task families with benchmark splits (Rostrum-120: twelve families);
+- [x] add mutation/oracle system;
+- [x] add negative/reference solvers;
+- [x] build benchmark reporting by level/family/failure class;
 - [ ] run at least three general-purpose agent/model configurations.
 
 Exit criterion: 100+ stable tasks, reproducible scoring, and a useful failure taxonomy.
@@ -48,26 +48,31 @@ Target REAPER first. See [daw-execution-plan.md](daw-execution-plan.md).
 - [x] scaffold `ReaperBackend` workspace/manifest lifecycle;
 - [x] define REAPER bridge protocol v1;
 - [x] add Lua bridge bootstrap with `ping`/`capabilities` dispatch;
-- [ ] implement Python ↔ Lua workspace transport and live handshake;
-- [ ] materialize a minimal `.rpp` from Music IR through the worker;
-- [ ] map stable Rostrum IDs to REAPER tracks/items/notes;
-- [ ] read project state back into canonical IR;
-- [ ] automate REAPER worker launch/reset/timeout handling;
-- [ ] render a deterministic MIDI phrase to a genuine WAV;
-- [ ] verify edit → re-render changes audio while preserving protected state;
-- [ ] add deterministic instrument/plugin fixture manifest;
-- [ ] build Rostrum-DAW-20.
+- [x] implement Python ↔ Lua workspace transport and live handshake;
+- [x] materialize a minimal `.rpp` from Music IR through the worker;
+- [x] map stable Rostrum IDs to REAPER tracks/items/notes;
+- [x] read supported project state back into canonical IR;
+- [x] automate REAPER worker launch/reset/timeout handling;
+- [x] render a deterministic MIDI phrase to a genuine WAV;
+- [x] verify edit → re-render changes audio while preserving protected state;
+- [x] add deterministic instrument/plugin fixture manifest;
+- [x] build Rostrum-DAW-20.
+
+The implemented subset and remaining trial-period coverage work are tracked in
+[reaper-studio.md](reaper-studio.md). Full sampler, automation, routing/effect and
+hybrid production coverage remains open. Actual model comparisons still require
+provider credentials and selected configurations; see [benchmark-runs.md](benchmark-runs.md).
 
 The first critical exit milestone is **DAW build loop complete**: Music IR → real REAPER project → deterministic instrument → offline render → valid non-silent WAV → edit → second render → measurable/hash difference.
 
 ## Phase 4 — audio evaluation
 
-- WAV metadata/file validation;
-- silence/peak/RMS measurements;
+- [x] WAV metadata/file validation, full-file and PCM hashes;
+- [x] silence/peak/RMS measurements;
 - LUFS/true-peak/crest/dynamics measurements;
 - spectral masking and band-energy metrics;
 - transient and stereo metrics;
-- rendered before/after comparisons;
+- [x] rendered before/after RMS comparisons and causal feedback checks;
 - tasks with multiple acceptable production solutions.
 
 ## Phase 5 — listen/critique/revise agency

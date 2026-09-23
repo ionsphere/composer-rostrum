@@ -95,7 +95,8 @@ Agent ── observe / edit / render / listen ──► Environment
 
 ## Quick start
 
-The scaffold currently uses only Python's standard library for the executable core.
+The executable core uses Python 3.11+ and its standard library. The optional test
+and model extras add Lua validation, pytest, and the model-provider SDK.
 
 ```bash
 python -m pip install -e .
@@ -106,6 +107,22 @@ The initial runner includes a deliberately trivial reference agent so we can val
 
 ## Near-term milestone
 
-Build **Rostrum-100**: roughly 100 deterministic tasks across 10-15 task families, then run several general-purpose agents against exactly the same task set and publish pass rates and a failure taxonomy.
+**Rostrum-120 v1** now provides 120 deterministic tasks across twelve families,
+with train/dev/test splits, content hashes, private reference oracles and negative
+controls. **Rostrum-DAW-20** exercises a real REAPER 7.80 worker with MIDI edits,
+sample transformations, mixing and render–analyze–revise tasks.
+
+```bash
+python -m pip install -e '.[test]'
+rostrum-benchmark artifacts/benchmark --controls
+python scripts/reaper_smoke.py --reaper /path/to/reaper --output artifacts/smoke
+python scripts/run_daw_suite.py --reaper /path/to/reaper --output artifacts/daw-20
+```
+
+The REAPER studio has a deliberately explicit supported subset; it is not full
+DAW coverage. See [REAPER setup and coverage](docs/reaper-studio.md) and
+[benchmark/model runs](docs/benchmark-runs.md). The next research gate is an
+authenticated comparison of at least three general-purpose model configurations;
+reference and negative controls do not substitute for those runs.
 
 See [docs/architecture.md](docs/architecture.md), [docs/benchmark.md](docs/benchmark.md), and [docs/roadmap.md](docs/roadmap.md).

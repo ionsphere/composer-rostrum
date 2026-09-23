@@ -44,6 +44,13 @@
         "kind": {"type": "string"},
         "muted": {"type": "boolean"},
         "gain_db": {"type": "number"},
+        "pan": {"type": "number", "minimum": -1, "maximum": 1},
+        "effects": {"type": "array", "items": {"type": "object", "required": ["id", "type"], "properties": {
+          "id": {"type": "string"}, "type": {"type": "string"}, "gain_db": {"type": "number"}
+        }}},
+        "sends": {"type": "array", "items": {"type": "object", "required": ["destination_id", "gain_db"], "properties": {
+          "destination_id": {"type": "string"}, "gain_db": {"type": "number"}
+        }}},
         "clips": {"type": "array", "items": {"$ref": "#/$defs/clip"}},
         "instruments": {"type": "array", "items": {"type": "object"}}
       },

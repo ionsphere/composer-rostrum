@@ -29,11 +29,21 @@ class TrajectoryEvent:
 
 
 def project_hash(project: MusicProject) -> str:
-    payload = json.dumps(project.to_dict(), sort_keys=True, separators=(",", ":"))
+    def canonical(value):
+        if isinstance(value, float) and value.is_integer():
+            return int(value)
+        if isinstance(value, dict):
+            return {k: canonical(v) for k, v in value.items()}
+        if isinstance(value, list):
+            return [canonical(v) for v in value]
+        return value
+    payload = json.dumps(canonical(project.to_dict()), sort_keys=True, separators=(",", ":"), allow_nan=False)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
 def _diff_paths(before: Any, after: Any, prefix: str = "") -> list[str]:
+    if type(before) in (int, float) and type(after) in (int, float):
+        return [] if before == after else [prefix or "$root"]
     if type(before) is not type(after): return [prefix or "$root"]
     if isinstance(before, dict):
         paths: list[str] = []
@@ -62,11 +72,12 @@ class MusicEnvironment:
     def project(self) -> MusicProject: return deepcopy(self._project)
 
     def call(self, tool: str, **arguments: Any) -> Any:
-        if tool not in self.allowed_tools: raise ToolError(f"tool {tool!r} is not allowed for this task")
-        handler = getattr(self, f"_tool_{tool}", None)
-        if handler is None: raise ToolError(f"tool {tool!r} is not implemented")
         before = deepcopy(self._project); before_hash = project_hash(before)
-        try: result = handler(**arguments)
+        try:
+            if tool not in self.allowed_tools: raise ToolError(f"tool {tool!r} is not allowed for this task")
+            handler = getattr(self, f"_tool_{tool}", None)
+            if handler is None: raise ToolError(f"tool {tool!r} is not implemented")
+            result = handler(**arguments)
         except Exception as exc:
             self.trajectory.append(TrajectoryEvent(len(self.trajectory), tool, deepcopy(arguments), None, before_hash,
                 project_hash(self._project), _diff_paths(before.to_dict(), self._project.to_dict()), f"{type(exc).__name__}: {exc}"))
@@ -118,6 +129,29 @@ class MusicEnvironment:
         self._find_track(track_id)["name"] = str(name); return {"track_id": track_id, "name": str(name)}
     def _tool_set_track_gain(self, track_id: str, gain_db: float) -> dict[str, Any]:
         self._find_track(track_id)["gain_db"] = float(gain_db); return {"track_id": track_id, "gain_db": float(gain_db)}
+
+    def _tool_set_track_pan(self, track_id: str, pan: float) -> dict[str, Any]:
+        if not -1 <= float(pan) <= 1:
+            raise ToolError("pan must be between -1 and 1")
+        self._find_track(track_id)["pan"] = float(pan)
+        return {"track_id": track_id, "pan": float(pan)}
+
+    def _tool_add_send(self, track_id: str, destination_id: str, gain_db: float = 0) -> dict[str, Any]:
+        track = self._find_track(track_id)
+        self._find_track(destination_id)
+        if track_id == destination_id or any(s["destination_id"] == destination_id for s in track.get("sends", [])):
+            raise ToolError("self/duplicate sends are not allowed")
+        send = {"destination_id": destination_id, "gain_db": float(gain_db)}
+        track.setdefault("sends", []).append(send)
+        return send
+
+    def _tool_add_gain_effect(self, track_id: str, effect_id: str, gain_db: float) -> dict[str, Any]:
+        track = self._find_track(track_id)
+        if any(e["id"] == effect_id for e in track.get("effects", [])):
+            raise ToolError("duplicate effect ID")
+        effect = {"id": effect_id, "type": "gain", "gain_db": float(gain_db)}
+        track.setdefault("effects", []).append(effect)
+        return effect
 
     def _tool_transpose_notes(self, track_id: str, clip_id: str, semitones: int) -> dict[str, Any]:
         clip = self._find_clip(track_id, clip_id); notes = clip.get("notes", []); delta = int(semitones)

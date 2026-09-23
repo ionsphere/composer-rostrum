@@ -1,0 +1,10 @@
+desc:Rostrum deterministic gain v1
+slider1:0<-120,24,0.01>Gain (dB)
+in_pin:left
+in_pin:right
+out_pin:left
+out_pin:right
+@slider
+gain=10^(slider1/20);
+@sample
+spl0*=gain; spl1*=gain;

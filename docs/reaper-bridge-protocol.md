@@ -70,7 +70,29 @@ Failure:
 }
 ```
 
-## Command rollout
+## Implemented commands (bridge 1.0)
+
+| Command | Arguments / result |
+|---|---|
+| `ping` | Protocol version, bridge version and `pong` |
+| `capabilities` | Exact REAPER version and implemented capability booleans |
+| `materialize` | Validated Music IR snapshot; creates/updates native objects while preserving existing track/item IDs |
+| `readback` | Supported native state plus non-native metadata in canonical IR |
+| `native_ids` | Rostrum track/item IDs mapped to persistent REAPER GUIDs |
+| `save` | Saves the worker project and binds its filename |
+| `reopen` | Opens the worker's already-saved project without a modal save prompt |
+| `render` | RenderRequest fields plus `render_id`; returns the native WAV path |
+
+Python exposes semantic editing tools to agents, validates the resulting snapshot,
+and sends it to `materialize`; agents do not get arbitrary bridge commands.
+Supported native musical fields are read from REAPER, not echoed from the input.
+The workspace has one owning worker and one sequential transport client.
+Responses are atomically renamed. A timeout or malformed response invalidates
+the client: create a new worker rather than retrying an uncertain mutation.
+
+## Future command expansion
+
+The following are planned direct command surfaces, not implemented protocol names:
 
 ### Bootstrap commands
 
@@ -140,7 +162,9 @@ The Python backend validates this before allowing a task to start. Task capabili
 
 ## Failure classes
 
-The worker should distinguish:
+The current Lua worker reports `reaper_error` with a bounded command diagnostic.
+Python distinguishes capability, transport/protocol, render validation and worker
+failures from evaluator failures. More granular future native error codes are:
 
 - `protocol_error`
 - `unsupported_command`
@@ -167,4 +191,6 @@ The first real bridge test is deliberately small:
 7. reopen/read back;
 8. verify the Music IR semantic delta.
 
-Only after that passes do we add the first genuine WAV render.
+This target and the first real WAV render now pass. The smoke probe additionally
+checks stable native IDs, a second render after an edit, and identical PCM audio
+after a complete worker-process restart. See [reaper-studio.md](reaper-studio.md).

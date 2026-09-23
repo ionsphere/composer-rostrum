@@ -1,0 +1,5 @@
+[
+  {"name": "reasoning-low", "model": "REPLACE_WITH_MODEL_ID", "reasoning_effort": "low", "max_turns": 20, "max_tool_calls": 50, "max_output_tokens": 4096},
+  {"name": "reasoning-medium", "model": "REPLACE_WITH_MODEL_ID", "reasoning_effort": "medium", "max_turns": 20, "max_tool_calls": 50, "max_output_tokens": 4096},
+  {"name": "reasoning-high", "model": "REPLACE_WITH_MODEL_ID", "reasoning_effort": "high", "max_turns": 20, "max_tool_calls": 50, "max_output_tokens": 4096}
+]

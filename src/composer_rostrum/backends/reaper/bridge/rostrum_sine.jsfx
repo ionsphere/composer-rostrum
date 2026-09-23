@@ -1,0 +1,35 @@
+desc:Rostrum deterministic sine v1
+// Benchmark-owned, phase-reset polyphonic MIDI instrument. No random state.
+in_pin:none
+out_pin:left
+out_pin:right
+@init
+memset(0,0,512);
+queue=512;
+@block
+events=0; cursor=0; sample_index=0;
+while(midirecv(offset,msg1,msg2,msg3)) (
+  queue[events*4]=offset; queue[events*4+1]=msg1;
+  queue[events*4+2]=msg2; queue[events*4+3]=msg3;
+  events+=1;
+);
+@sample
+while(cursor<events && queue[cursor*4]<=sample_index) (
+  status=queue[cursor*4+1]&240; note=queue[cursor*4+2]; velocity=queue[cursor*4+3];
+  status==144 && velocity>0 ? (note[0]=velocity/127; (128+note)[0]=0;);
+  status==128 || (status==144 && velocity==0) ? note[0]=0;
+  status==176 && (note==120 || note==123) ? memset(0,0,128);
+  cursor+=1;
+);
+sample_index+=1;
+out=0; n=0;
+loop(128,
+  n[0]>0 ? (
+    phase=(128+n)[0];
+    out+=sin(phase)*n[0]*0.08;
+    phase+=2*$pi*440*2^((n-69)/12)/srate;
+    (128+n)[0]=phase-floor(phase/(2*$pi))*2*$pi;
+  );
+  n+=1;
+);
+spl0=out; spl1=out;

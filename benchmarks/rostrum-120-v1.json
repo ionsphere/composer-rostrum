@@ -1,0 +1,966 @@
+{
+  "version": "rostrum-120-v1",
+  "seed": 20260922,
+  "tasks": [
+    {
+      "id": "L0-001-tempo-00",
+      "split": "train",
+      "family": "tempo",
+      "path": "train/L0-001-tempo-00.json",
+      "sha256": "32031c59a2e77053c0d150941a3f444a6004d41d042beae5dc0d7b03e5fe3d07",
+      "fingerprint": "dcef68b702d9142423a92d108de6238b7cd10eb0dbea52758269b0d5a1b96c9a"
+    },
+    {
+      "id": "L0-001-tempo-01",
+      "split": "train",
+      "family": "tempo",
+      "path": "train/L0-001-tempo-01.json",
+      "sha256": "2dddf6b0de14a220fc041d203f4af1a04e8fc90cfec5ce8d620e9b39b97e3392",
+      "fingerprint": "676260616c3459dbc4edc335205e0c55f9b1fb385bc25ec1bb9301336101ba74"
+    },
+    {
+      "id": "L0-001-tempo-02",
+      "split": "train",
+      "family": "tempo",
+      "path": "train/L0-001-tempo-02.json",
+      "sha256": "4019c5dd36fb98f677cbe37a64632c9fd17887b3b1cd6d967cfbed7899a57831",
+      "fingerprint": "4b839416a46a842b8d21c6c60a9662d06641e049e7c8ca79eb47a7a2c96638ee"
+    },
+    {
+      "id": "L0-001-tempo-03",
+      "split": "train",
+      "family": "tempo",
+      "path": "train/L0-001-tempo-03.json",
+      "sha256": "f676618e58eb5b240eb2cff98748e8da4e88c3be3f282f4722b6190b3cff7ea9",
+      "fingerprint": "e86f145f01e3d7e8ff3a8eac28afaf1203316eff833e11cc171000a6cef95c5a"
+    },
+    {
+      "id": "L0-001-tempo-04",
+      "split": "train",
+      "family": "tempo",
+      "path": "train/L0-001-tempo-04.json",
+      "sha256": "2b265ef473bc119635c20352f8dd16f4eb27eb92574dfc69afe9c8c3c7069683",
+      "fingerprint": "ab88574af88cb75411fb7433b4fe951a007bca3d4ef94bb05e3e0d89fbb2d3fd"
+    },
+    {
+      "id": "L0-001-tempo-05",
+      "split": "train",
+      "family": "tempo",
+      "path": "train/L0-001-tempo-05.json",
+      "sha256": "c49894849f427da3ec776b95d13f7173fb7fa510345780e8afefb655cd146215",
+      "fingerprint": "7a0c57aa451225ebaa110a750e33c467b6eb96d0c4831ac27e8b1549b48dce39"
+    },
+    {
+      "id": "L0-002-key-00",
+      "split": "train",
+      "family": "key",
+      "path": "train/L0-002-key-00.json",
+      "sha256": "fc835bd083153a4691f2c7f6fb150720852b3936e18b1393d38bb625b0b56413",
+      "fingerprint": "ab3d24fad08c6ef076cdfbe80372ae180385edab2bbe11639fff4e4980dbac07"
+    },
+    {
+      "id": "L0-002-key-01",
+      "split": "train",
+      "family": "key",
+      "path": "train/L0-002-key-01.json",
+      "sha256": "b822016b4c62e4e16120a734a22c56aa18b426a1ecd0ad07be524b7d9101fcf9",
+      "fingerprint": "83bcd919c29dbe2f2fe2dacd1ffab7d62d4553ae91ed712efbdc5ade7c265021"
+    },
+    {
+      "id": "L0-002-key-02",
+      "split": "train",
+      "family": "key",
+      "path": "train/L0-002-key-02.json",
+      "sha256": "f9a12b35cab61a3139cbfd668f79fc98c890e3b054e8e54b5b1d11e1461a965b",
+      "fingerprint": "cecf601455d5de33a48875cb482b1e0965a025f0a1b07d188515017127de321f"
+    },
+    {
+      "id": "L0-002-key-03",
+      "split": "train",
+      "family": "key",
+      "path": "train/L0-002-key-03.json",
+      "sha256": "eb57a7170007be53a1ce5a389e294f52372bab8ec2adfe4d34fb212bd57b2ce9",
+      "fingerprint": "0c1acf44de16f8ab76851454ab9f7b4d062887684b59de5e2b355d6dcbce3f99"
+    },
+    {
+      "id": "L0-002-key-04",
+      "split": "train",
+      "family": "key",
+      "path": "train/L0-002-key-04.json",
+      "sha256": "be20bbb261029dce3c74acec8c2bdd24c45afb671667b81cf6f7fd475447a361",
+      "fingerprint": "434106f78392ecb085480ae08d3233212983a86ae9bf6d17a75edf623f469550"
+    },
+    {
+      "id": "L0-002-key-05",
+      "split": "train",
+      "family": "key",
+      "path": "train/L0-002-key-05.json",
+      "sha256": "6d8fae1bd3dd4a71c8e45f06136def363301dd2d8728e4e2d75d5d91fdb2442a",
+      "fingerprint": "0f8642f5dc5379db16af34f8b5406f3e00cb0fc62d9e9e48c775c2aa54e7f691"
+    },
+    {
+      "id": "L0-003-meter-00",
+      "split": "train",
+      "family": "meter",
+      "path": "train/L0-003-meter-00.json",
+      "sha256": "daafdf96386b9d7edf94a4cddb9a660b894bd0bc04683b80c23cc1ccabefc388",
+      "fingerprint": "4f4db42db7c807914c75e5e44978f5f65fa9243917780725e7fdcf7a937c052b"
+    },
+    {
+      "id": "L0-003-meter-01",
+      "split": "train",
+      "family": "meter",
+      "path": "train/L0-003-meter-01.json",
+      "sha256": "bf623a2b44de6564908c8b26d0ae707ffacf76237cf0057f3b2855315fb6725a",
+      "fingerprint": "57831679b31318ab22046b11fde58a23ba62658ca532bd6846c7aa9e9ab47d75"
+    },
+    {
+      "id": "L0-003-meter-02",
+      "split": "train",
+      "family": "meter",
+      "path": "train/L0-003-meter-02.json",
+      "sha256": "43f2e603bf271da79ac5bcff66c78832e70afa4191ed886d830f3bfaf20fec50",
+      "fingerprint": "07e1ddbccff452be72c9f845216eaddbb7f6fdb75f7fbf0ba33f0a337e7a9cff"
+    },
+    {
+      "id": "L0-003-meter-03",
+      "split": "train",
+      "family": "meter",
+      "path": "train/L0-003-meter-03.json",
+      "sha256": "f06c71ec48b680e0b873ac3cf3336702ceb6cdf8ffad9eb7000e5d52a8a76ef1",
+      "fingerprint": "333cef648a7c0d026015f4d54507fcf80c587f8c0ef33c712d6f2157e334b146"
+    },
+    {
+      "id": "L0-003-meter-04",
+      "split": "train",
+      "family": "meter",
+      "path": "train/L0-003-meter-04.json",
+      "sha256": "916ef8e0692ac7ff1a5d0d41f9fabc1ad7073fa763f29ab4d8d9587412612eb9",
+      "fingerprint": "88bfe8a0fc18d2716d9aae4860e0c5b8028cc14852dc1038ba004545d5f6c4c2"
+    },
+    {
+      "id": "L0-003-meter-05",
+      "split": "train",
+      "family": "meter",
+      "path": "train/L0-003-meter-05.json",
+      "sha256": "1886a612eb80b6ae372effc387717d0bd453e71caa2509b7e41bbc7b902ba43f",
+      "fingerprint": "ed7311b93a95fa953e7fb759c7f4269cde7b501cfb729d5cb6e8271f7b6cfe00"
+    },
+    {
+      "id": "L0-004-mute-00",
+      "split": "train",
+      "family": "mute",
+      "path": "train/L0-004-mute-00.json",
+      "sha256": "8ce2cc577fd6f329aa22d20c94e90f22fb9606d927159c2b912f8e2a8bd4ae86",
+      "fingerprint": "209f8c794ebbb37bae92657d8d9585376e1b4811acadd85cbb844e2f4b470181"
+    },
+    {
+      "id": "L0-004-mute-01",
+      "split": "train",
+      "family": "mute",
+      "path": "train/L0-004-mute-01.json",
+      "sha256": "027bf5c9bc3a11b134501c81cbbb9a97d96c04983ef8e1817f720fca14a9ac28",
+      "fingerprint": "18500d54f05673f579eb8b919972eb07c4a9b9e4a1becd558498fa6eb86884ac"
+    },
+    {
+      "id": "L0-004-mute-02",
+      "split": "train",
+      "family": "mute",
+      "path": "train/L0-004-mute-02.json",
+      "sha256": "35916da8a35260adcd831400aea028f8ca21faf2dab2e19dead1a9d0f30e992a",
+      "fingerprint": "652ef4f2af01eff64a8e9bcd6addb4c55a9d17195afda490ee7cd3e823296788"
+    },
+    {
+      "id": "L0-004-mute-03",
+      "split": "train",
+      "family": "mute",
+      "path": "train/L0-004-mute-03.json",
+      "sha256": "8899a88b1025f23dc0f173fe4f35da653dcd2a0b0e9f639a5bb54f048d758e78",
+      "fingerprint": "2e82483bf581acaa1216cf89740864e55414d494493106b15f61837e1d6bba1a"
+    },
+    {
+      "id": "L0-004-mute-04",
+      "split": "train",
+      "family": "mute",
+      "path": "train/L0-004-mute-04.json",
+      "sha256": "78c3c18c7c707ab0eec2622b9d9056a69c7ec92dde22bfc1f5d424cbcf3dbc05",
+      "fingerprint": "f12fd39fa14df0cf42c5229cfe81d210e4c5390bc9ede266bf21c746a83232bd"
+    },
+    {
+      "id": "L0-004-mute-05",
+      "split": "train",
+      "family": "mute",
+      "path": "train/L0-004-mute-05.json",
+      "sha256": "9d3fd11acdd5e60f858df3e49a7bad0e11cdddf55c6735aba2a92bb466572b42",
+      "fingerprint": "acfa73e2513a688afa1775ed55453680a5b3522d36984e1c42304cbd2213c6a9"
+    },
+    {
+      "id": "L0-005-gain-00",
+      "split": "train",
+      "family": "gain",
+      "path": "train/L0-005-gain-00.json",
+      "sha256": "a693add84f06dcbc53c5eb1b0e89090e62a84053a50c455bc6629ecb6c974851",
+      "fingerprint": "21cb5cf1b7f8854a795bd7eebc03e09552c1badf8eea434baa9c986258160857"
+    },
+    {
+      "id": "L0-005-gain-01",
+      "split": "train",
+      "family": "gain",
+      "path": "train/L0-005-gain-01.json",
+      "sha256": "2cfed0dd45b78c45796b99ffd7122fd713eaaa60db53a054789437ebd774145f",
+      "fingerprint": "80f447452985719787c7f5e77843216b8e9c9d31c551d88bf419226e494729bc"
+    },
+    {
+      "id": "L0-005-gain-02",
+      "split": "train",
+      "family": "gain",
+      "path": "train/L0-005-gain-02.json",
+      "sha256": "c8fb494b75ad7bcad2029425e3e8e5b52c78883d20ebbf1bab65170daf0c6752",
+      "fingerprint": "ae772505e9a39398edcabba87d364439d74c3c44f6a04a9f30e222dd3b653f3f"
+    },
+    {
+      "id": "L0-005-gain-03",
+      "split": "train",
+      "family": "gain",
+      "path": "train/L0-005-gain-03.json",
+      "sha256": "052ad0eedd0c96a51cfcd55b5c6783ae20bdcc8afbe70bfc3c643e70e8585995",
+      "fingerprint": "fbed058822a83c22585c096d815022773c54bb04e561ab3fd17e4a1d7ea1d2f7"
+    },
+    {
+      "id": "L0-005-gain-04",
+      "split": "train",
+      "family": "gain",
+      "path": "train/L0-005-gain-04.json",
+      "sha256": "4ff77225511102147a1030c088a5557691af5657eaf1e3214776aef28262cd99",
+      "fingerprint": "f569eb2a381f4c85d9330ffdaf20065d9a596d49df623d622f46dd01f4d00e67"
+    },
+    {
+      "id": "L0-005-gain-05",
+      "split": "train",
+      "family": "gain",
+      "path": "train/L0-005-gain-05.json",
+      "sha256": "ec5e67c7ab45c53affe65f6f53777b99c6e6ceb28c102424f08f7bf16f2f2279",
+      "fingerprint": "a5097beef410592524b82e2e52c911a74a739f1d30c8a0584ac582cd07fb8ed1"
+    },
+    {
+      "id": "L1-001-transpose-00",
+      "split": "train",
+      "family": "transpose",
+      "path": "train/L1-001-transpose-00.json",
+      "sha256": "dffb132a1779c577618823cda3c5f5e0dedf135555002d838c51bcd77782b71a",
+      "fingerprint": "9d434d499be31af0cf798f925dac92be013dec9f9eebb0f03b281a2a0c7d520e"
+    },
+    {
+      "id": "L1-001-transpose-01",
+      "split": "train",
+      "family": "transpose",
+      "path": "train/L1-001-transpose-01.json",
+      "sha256": "8264538d81dbba9fe111e6ff0e9be511acf4af03a148882f3a1e14163661ae08",
+      "fingerprint": "a1d06cd72c57287fd638fcc34be8e598c850effeac59a872c77c9ae500afecaa"
+    },
+    {
+      "id": "L1-001-transpose-02",
+      "split": "train",
+      "family": "transpose",
+      "path": "train/L1-001-transpose-02.json",
+      "sha256": "dde3bee3aa5a323410f210d8dc1a2ba6b6f6248ce0f1394aef73a6f5952b9141",
+      "fingerprint": "c8ded9f5ca4828e8a8bc65a0bcd5cec4cfcd3b3ad3b4f1f47b1c18250a33c639"
+    },
+    {
+      "id": "L1-001-transpose-03",
+      "split": "train",
+      "family": "transpose",
+      "path": "train/L1-001-transpose-03.json",
+      "sha256": "ce0f2705d853c71cf36bc21c00f4c47959431a3b4dbefddacc1f05d234d208cc",
+      "fingerprint": "ba938dbfc381619568220e6e9f8bc269f7f32784701b4a393937130ede3c4853"
+    },
+    {
+      "id": "L1-001-transpose-04",
+      "split": "train",
+      "family": "transpose",
+      "path": "train/L1-001-transpose-04.json",
+      "sha256": "1fbb5e6f31fc4aec1a17dae27294a736bd782e7c81c3d9f91953ce23549eb249",
+      "fingerprint": "70d9d52de4ee64d6619b3650c79db7939e1af71bc1dca36f22ce960456f7d613"
+    },
+    {
+      "id": "L1-001-transpose-05",
+      "split": "train",
+      "family": "transpose",
+      "path": "train/L1-001-transpose-05.json",
+      "sha256": "fa93f53d958554709976b7ac8f316b7e7cc162e881a08fc71eb82c342adcc95f",
+      "fingerprint": "71c2f99e6ebaafd708cbeb881d12d5b73685ce22bc3f9c01bd64eee19d925551"
+    },
+    {
+      "id": "L1-002-quantize-00",
+      "split": "train",
+      "family": "quantize",
+      "path": "train/L1-002-quantize-00.json",
+      "sha256": "b5683a2a4cd705a56f2827938a5c17003c7c692ef3a706336b3e1a16ba9f483c",
+      "fingerprint": "325564de95ca3741c76dc2ea9d4a295ffea53c9b4c221adb7ad15c4fe4193012"
+    },
+    {
+      "id": "L1-002-quantize-01",
+      "split": "train",
+      "family": "quantize",
+      "path": "train/L1-002-quantize-01.json",
+      "sha256": "c9fe74334a5964d24b9251206e127675d232b55b378b26be2be9cb82c38a14e2",
+      "fingerprint": "4d7d710fb89577ffd9612b5c66d16cd8f8076f232e3e41a2ac185e4c448bedce"
+    },
+    {
+      "id": "L1-002-quantize-02",
+      "split": "train",
+      "family": "quantize",
+      "path": "train/L1-002-quantize-02.json",
+      "sha256": "8ab8b2fcfbadcae3b40d3b91b17b349ee3f61cd71aa3f042b8a0bc8cc24a8854",
+      "fingerprint": "fc7079be3c523f3fa0fcacaad96abbd0881cd63472bc5a19ca61f54bc5dbebed"
+    },
+    {
+      "id": "L1-002-quantize-03",
+      "split": "train",
+      "family": "quantize",
+      "path": "train/L1-002-quantize-03.json",
+      "sha256": "3181018ecb30cb7ff3bb9fc09f415de5c64909054cbef223bfb3ff8979968136",
+      "fingerprint": "7bbb0e8e5320c5fa134b0e7083bb5172e2e977e76911e6ee820b7c3f6e5f1e07"
+    },
+    {
+      "id": "L1-002-quantize-04",
+      "split": "train",
+      "family": "quantize",
+      "path": "train/L1-002-quantize-04.json",
+      "sha256": "8e67a3cab89d854ba6395e75cb4e9cc29db5318d6b9e13922b9f69ad759b6445",
+      "fingerprint": "2f422c6af96a3cf8492f0723d1261a65ce9dc39a7ca82b51597eed2127cb9234"
+    },
+    {
+      "id": "L1-002-quantize-05",
+      "split": "train",
+      "family": "quantize",
+      "path": "train/L1-002-quantize-05.json",
+      "sha256": "c2132748370851f338eaf41001995313e7bec7b5b27056eabf51eae79d327a37",
+      "fingerprint": "29d4c480654672470cc47ba33c12efdf5d1483561e16ba2b24f8506bf1506448"
+    },
+    {
+      "id": "L1-003-chord-repair-00",
+      "split": "train",
+      "family": "chord-repair",
+      "path": "train/L1-003-chord-repair-00.json",
+      "sha256": "8ba4e25a2162ee3deaa60c2bb3d135fffa92502dcd2785a3a4be98f70cbfca95",
+      "fingerprint": "9e920071fbbb936abcf4176180fca2666071701011d9c85ab08984cf19aa266b"
+    },
+    {
+      "id": "L1-003-chord-repair-01",
+      "split": "train",
+      "family": "chord-repair",
+      "path": "train/L1-003-chord-repair-01.json",
+      "sha256": "30fefe456e60464228e09e5c5b3068f65024191f1c29a025f930cb6cc3877116",
+      "fingerprint": "8189e5d03394a803f29d76ec2ea9a8075716414586641dfc0994ab602c794f07"
+    },
+    {
+      "id": "L1-003-chord-repair-02",
+      "split": "train",
+      "family": "chord-repair",
+      "path": "train/L1-003-chord-repair-02.json",
+      "sha256": "72e6b50ffb7dad0ce12241cb2702a5a1086a00eb86d08fd8a5bb24b5cec053f9",
+      "fingerprint": "119c1b12de7ca27f578f011fd5defd67ec408c8379bd8f79cbb2e87b95cf77bc"
+    },
+    {
+      "id": "L1-003-chord-repair-03",
+      "split": "train",
+      "family": "chord-repair",
+      "path": "train/L1-003-chord-repair-03.json",
+      "sha256": "c531097da2bf8bf88d779919e3890b6e764b54786b3d3691ce26a61820f30783",
+      "fingerprint": "47dee2a5164e31e807cc034649f6dd344dc7f39a8865a6622ab2ffa922454a74"
+    },
+    {
+      "id": "L1-003-chord-repair-04",
+      "split": "train",
+      "family": "chord-repair",
+      "path": "train/L1-003-chord-repair-04.json",
+      "sha256": "c4b5ba544e4eee2a2f6eeddac0a8e08cf76a8266acde85d308d61487d98f7296",
+      "fingerprint": "bc1cf2fd7b3599aa7f3535968e1260b7be3ed9f15d006d23a20ed498d9cf4dde"
+    },
+    {
+      "id": "L1-003-chord-repair-05",
+      "split": "train",
+      "family": "chord-repair",
+      "path": "train/L1-003-chord-repair-05.json",
+      "sha256": "23f3f942e7a93374fa3c7f75d03c02fb8792ba05086a115642ca314304f99fd9",
+      "fingerprint": "c2052f5cca85f3a0657fc2e110bb59a7c9eb4555c19d323c38f7e74a9296c9a0"
+    },
+    {
+      "id": "L1-004-scale-repair-00",
+      "split": "train",
+      "family": "scale-repair",
+      "path": "train/L1-004-scale-repair-00.json",
+      "sha256": "cf9bf161b0aebfac0ad067f948fc369a9e12c5445c7d754ec5d06be0b851f4df",
+      "fingerprint": "dd2dc3e2e2a6161bdebf1d8fbab56e0dbbff180edff9f69c61ff9d3e7c970e81"
+    },
+    {
+      "id": "L1-004-scale-repair-01",
+      "split": "train",
+      "family": "scale-repair",
+      "path": "train/L1-004-scale-repair-01.json",
+      "sha256": "028942c4e6a44a98751d00c0f4bdc17ff5be9397fbb20925901650c98aacfe3f",
+      "fingerprint": "471afc06f3cd33be99a418e45d7291cf58437002984f9e30276daee71794d639"
+    },
+    {
+      "id": "L1-004-scale-repair-02",
+      "split": "train",
+      "family": "scale-repair",
+      "path": "train/L1-004-scale-repair-02.json",
+      "sha256": "0f26240c1a0b0ed7c43c7324daa5488c716054a823bf0316270857a96c3c885e",
+      "fingerprint": "b0ea2dc5d2421a06d938f620e7aaebde3b4274f322381be61c3cf4916a2e34f9"
+    },
+    {
+      "id": "L1-004-scale-repair-03",
+      "split": "train",
+      "family": "scale-repair",
+      "path": "train/L1-004-scale-repair-03.json",
+      "sha256": "a9770a9e6a334f63963f54116a7345ed07cb1143ec8612d5aa766853b020d5fa",
+      "fingerprint": "88898f9b2c1413b4afebaef6742576c8abf5da761174c71cb49c8923fec33461"
+    },
+    {
+      "id": "L1-004-scale-repair-04",
+      "split": "train",
+      "family": "scale-repair",
+      "path": "train/L1-004-scale-repair-04.json",
+      "sha256": "ec4848de784e1e23f360e2392bec765ab720ea41dbea9e64dc10e8de52dcac27",
+      "fingerprint": "82957f261b792e3e703469c5b9a71236b31bfa4dfb223d5bc3bd5560fec5e791"
+    },
+    {
+      "id": "L1-004-scale-repair-05",
+      "split": "train",
+      "family": "scale-repair",
+      "path": "train/L1-004-scale-repair-05.json",
+      "sha256": "f02be05eebcdda32a4f32221cff3fc7b92c1bd3131c3a7f2522cbcb77c650aa8",
+      "fingerprint": "d52f934c7d8911980779d3e4ac89b0a7f0af963b0fb570eed1e6537022b9c37e"
+    },
+    {
+      "id": "L1M-001-repair-quantize-00",
+      "split": "train",
+      "family": "repair-quantize",
+      "path": "train/L1M-001-repair-quantize-00.json",
+      "sha256": "ba37f8d6c1a053e8b5eccec2f7887873dbcd05f281c5c40636c23fbe6c622ccc",
+      "fingerprint": "e3679252099059ea2282165ef8e7c43fd90b07005b24f617bcd4f85ce82f43f8"
+    },
+    {
+      "id": "L1M-001-repair-quantize-01",
+      "split": "train",
+      "family": "repair-quantize",
+      "path": "train/L1M-001-repair-quantize-01.json",
+      "sha256": "b929b52a47cfaf9f3dbe41173a2cfb22b9f307b4ab83c07efe0a2bef17b63f55",
+      "fingerprint": "7960b497fccc5f005411a60de8ebd1eae92df53897779fb820d935c14993cc10"
+    },
+    {
+      "id": "L1M-001-repair-quantize-02",
+      "split": "train",
+      "family": "repair-quantize",
+      "path": "train/L1M-001-repair-quantize-02.json",
+      "sha256": "9c2ef1fc729471ca4ea3ed225c491e01c24814e7341518281dd7c71ffe88ebb8",
+      "fingerprint": "b375fdc5a66c8821a0b5decab1243304b2c9cab7fc745b2290a5c785bedfd3a1"
+    },
+    {
+      "id": "L1M-001-repair-quantize-03",
+      "split": "train",
+      "family": "repair-quantize",
+      "path": "train/L1M-001-repair-quantize-03.json",
+      "sha256": "8bd97f1b891b3dec995b36c7bfb10ae7313518c9f9e1f8df5e543d95325a3c8e",
+      "fingerprint": "cfe6523d7fb5347d962d24c6e32313448ac7981575e4d7977a528042b4c923a2"
+    },
+    {
+      "id": "L1M-001-repair-quantize-04",
+      "split": "train",
+      "family": "repair-quantize",
+      "path": "train/L1M-001-repair-quantize-04.json",
+      "sha256": "37a3115f3cfcf187274fdc862a8fcf43bea6c606a5d0b539dfae5c06f750592b",
+      "fingerprint": "f5374fb7e89a461845446d6e254f2248cb40b824b87bbe50acc348b31862bca2"
+    },
+    {
+      "id": "L1M-001-repair-quantize-05",
+      "split": "train",
+      "family": "repair-quantize",
+      "path": "train/L1M-001-repair-quantize-05.json",
+      "sha256": "64324430e85069ee5a349e1aae96d4f2c594ca9a385b03a5b4f9c04b38b5e0f9",
+      "fingerprint": "36d247a01b87e9e4e2547f838fc7bea4c682dced14d8d7edd3303b67b178744c"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-00",
+      "split": "train",
+      "family": "duplicate-transform",
+      "path": "train/L1M-002-duplicate-transform-00.json",
+      "sha256": "59f12645821354f10722b37897116c0da52760678331e77f5b73e91f18b3fb7d",
+      "fingerprint": "c556ca552424b34dfbeba8a9306c650f29c9de15fcc7196e20ec9754323af7de"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-01",
+      "split": "train",
+      "family": "duplicate-transform",
+      "path": "train/L1M-002-duplicate-transform-01.json",
+      "sha256": "5aafb355041fdbefdf5b454ce78c43e3987164c28b851c5511a4f4aeaf583b3c",
+      "fingerprint": "fb1ff775b24bf2813e2f01be8c943ef5a7a4ffa27a4adf7a33ecfd92ad10cdc9"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-02",
+      "split": "train",
+      "family": "duplicate-transform",
+      "path": "train/L1M-002-duplicate-transform-02.json",
+      "sha256": "f019313a79dc531f4a903cb4124a937065086342326a884f22bdf7bb98969c9e",
+      "fingerprint": "00835dffe2e2ed3baf8d95d051c3837d0b348554114f5d9886eb6b44f4686876"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-03",
+      "split": "train",
+      "family": "duplicate-transform",
+      "path": "train/L1M-002-duplicate-transform-03.json",
+      "sha256": "99c0f0e51f15afc2552bb84a06e7a10f94666e86ccf25e24412565c2db6dbc6d",
+      "fingerprint": "f9d0a420dbf6c0601d84749f704211b9c9840c1775a16ef1e24a49896c712bab"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-04",
+      "split": "train",
+      "family": "duplicate-transform",
+      "path": "train/L1M-002-duplicate-transform-04.json",
+      "sha256": "dd9a8dbf44043750a542697b381097d19e7d272c28f7c9e3ac701d2ada7ad68a",
+      "fingerprint": "7d9c13413bbb7676d3596d4abe17afba1324f04754cb7b0823a972266bf2e9f9"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-05",
+      "split": "train",
+      "family": "duplicate-transform",
+      "path": "train/L1M-002-duplicate-transform-05.json",
+      "sha256": "5171dbf734bbe8049836372400c685fd90fcfe416ad01f4ab9944d0fded13f7e",
+      "fingerprint": "d7bcf3583f299a5b55274a34e622737d84a38569cb8fb3b3eaef43b95354e6d0"
+    },
+    {
+      "id": "L1M-003-repair-transpose-00",
+      "split": "train",
+      "family": "repair-transpose",
+      "path": "train/L1M-003-repair-transpose-00.json",
+      "sha256": "ef68b15ff96e0b44b1ff02ceea9422c5bc4c4e59bb9b6ae29022130172a4cc9c",
+      "fingerprint": "b7d9c44218716b1d3c74372ee3d08f391594f79adbc8748c7c9d9f5febbc0cec"
+    },
+    {
+      "id": "L1M-003-repair-transpose-01",
+      "split": "train",
+      "family": "repair-transpose",
+      "path": "train/L1M-003-repair-transpose-01.json",
+      "sha256": "9a49d8f3cc1a766c5e104cd580d063753ab5fddc57d643c99a6f3ac23ca9bd50",
+      "fingerprint": "6a3bb48bd02b0782bcb58c07293fbdd544076394fa32e107a6ee246c2e1749bd"
+    },
+    {
+      "id": "L1M-003-repair-transpose-02",
+      "split": "train",
+      "family": "repair-transpose",
+      "path": "train/L1M-003-repair-transpose-02.json",
+      "sha256": "bfa6cf90942bd6bc6f3499e263be54195a8d98ba9e6862fa650c71942b6fd2c2",
+      "fingerprint": "fbbe1ce17c516e28465aae00d49dadb62b6b97d85cdf7bd8b96ec8ccb486c74b"
+    },
+    {
+      "id": "L1M-003-repair-transpose-03",
+      "split": "train",
+      "family": "repair-transpose",
+      "path": "train/L1M-003-repair-transpose-03.json",
+      "sha256": "7ab4395efb655981ece9148036f47a5d0b5956de46c760841662ec2585c9743f",
+      "fingerprint": "2c84736e99b9bc242bcca32e1fc84f4ce02840bd7b32c1eafcb182ae1391f78e"
+    },
+    {
+      "id": "L1M-003-repair-transpose-04",
+      "split": "train",
+      "family": "repair-transpose",
+      "path": "train/L1M-003-repair-transpose-04.json",
+      "sha256": "f9ac374c9fd950d4f0315037244ffc720479fc8d0f30f8acd0906d8a8f47575e",
+      "fingerprint": "fbad4283680ea4665414c50ecbfd857cb84621a52b3ecead28865863ee6af80a"
+    },
+    {
+      "id": "L1M-003-repair-transpose-05",
+      "split": "train",
+      "family": "repair-transpose",
+      "path": "train/L1M-003-repair-transpose-05.json",
+      "sha256": "64136017cf0b0d80dfe0ffe675892609f374c57f4721f675c4a564d591c1a7ae",
+      "fingerprint": "f9b5ead9dc4075e8522f4e77c2aa88b2f8d9779069c7e6b24f0eec5e5c9fbf65"
+    },
+    {
+      "id": "L0-001-tempo-06",
+      "split": "dev",
+      "family": "tempo",
+      "path": "dev/L0-001-tempo-06.json",
+      "sha256": "9cd81ce545f93d9217a036edcff908b25e58918c4f00deb1803ac4ce64590e99",
+      "fingerprint": "42aecfd5e47ed6af3da1326705a4d2d3374ea3c94eae62926aaf0e00809f5d79"
+    },
+    {
+      "id": "L0-001-tempo-07",
+      "split": "dev",
+      "family": "tempo",
+      "path": "dev/L0-001-tempo-07.json",
+      "sha256": "0a756f883fff9fb5de029497c1550be6bf584b682b3cc7c49b426b6995ecdcf9",
+      "fingerprint": "3c2b6945e26c56d74aa1c4158eae768e9dbf206cd92c6f503169bfe9ceea6e43"
+    },
+    {
+      "id": "L0-002-key-06",
+      "split": "dev",
+      "family": "key",
+      "path": "dev/L0-002-key-06.json",
+      "sha256": "dd255b7bfed1e78fed6fff102d396df44991b1f3f6f1c3bee59e29c659ecbf43",
+      "fingerprint": "b8b31829adbbf4035d315d8fb1d7e39116ec82809f06a347d4f8052f42cbe14e"
+    },
+    {
+      "id": "L0-002-key-07",
+      "split": "dev",
+      "family": "key",
+      "path": "dev/L0-002-key-07.json",
+      "sha256": "b1692eb861a4c94855af4ead8616416d7ae2c7fbe646a944aa82e127cb2c1aa3",
+      "fingerprint": "0bf949349dac4322feb44440684ccddb2a6d49c4dee6ccbf4be3c4e132073822"
+    },
+    {
+      "id": "L0-003-meter-06",
+      "split": "dev",
+      "family": "meter",
+      "path": "dev/L0-003-meter-06.json",
+      "sha256": "654b475c353d704bd719fce2df86fc75ab96254117b44d7fc394305405e62f6a",
+      "fingerprint": "f7347774d4768a43f762bfbb9367aa1116632b7cc71336921569b736248b5f78"
+    },
+    {
+      "id": "L0-003-meter-07",
+      "split": "dev",
+      "family": "meter",
+      "path": "dev/L0-003-meter-07.json",
+      "sha256": "68aafdc8fc822610fdf19ca6d9a990e7abe41b957191f852390e762be6981190",
+      "fingerprint": "0b82992f832c37ef08bb08426aa579a43436030515cc0e34e9ac3ca7adf48961"
+    },
+    {
+      "id": "L0-004-mute-06",
+      "split": "dev",
+      "family": "mute",
+      "path": "dev/L0-004-mute-06.json",
+      "sha256": "dbabc32975c788f496fce105c60e7600572d2034ce69fe906f58a4b7aab4ee4a",
+      "fingerprint": "0421bb3b2f0ba6159af1033a979fcbab454771ca98ac5ba36a5cebcb42040135"
+    },
+    {
+      "id": "L0-004-mute-07",
+      "split": "dev",
+      "family": "mute",
+      "path": "dev/L0-004-mute-07.json",
+      "sha256": "cd4bce5543dced0b1edc432e761f9fdbc352e85f5cf8691ca7563896fba1044f",
+      "fingerprint": "5a4e1f17f93f42b2aa29b53135e3c1050c2768169034e70f9202587317b411bf"
+    },
+    {
+      "id": "L0-005-gain-06",
+      "split": "dev",
+      "family": "gain",
+      "path": "dev/L0-005-gain-06.json",
+      "sha256": "61f3bba56ef70c391cdf6562fcf1979e77e7c631dd50421b9c571882127152c9",
+      "fingerprint": "a8baf513c0050e68f868ba48e6a9d4ead270c2fefc6ad4082a0f996e1da600ee"
+    },
+    {
+      "id": "L0-005-gain-07",
+      "split": "dev",
+      "family": "gain",
+      "path": "dev/L0-005-gain-07.json",
+      "sha256": "4ba52210da6708d39b13af2e8368e5004378331edf099d063c82c3912d349713",
+      "fingerprint": "822d2e6d7920f5d987a64567efed71aa235a5357834e8a9fd06f9ebdddd325b9"
+    },
+    {
+      "id": "L1-001-transpose-06",
+      "split": "dev",
+      "family": "transpose",
+      "path": "dev/L1-001-transpose-06.json",
+      "sha256": "77e7655da77aae2f056aef183f452437004ce61b187f5763f740ee7a02e6ebc1",
+      "fingerprint": "9b4b45b87d23faf48d889096de6a2776a5319e4317df9fdfba248b0853a5fcc7"
+    },
+    {
+      "id": "L1-001-transpose-07",
+      "split": "dev",
+      "family": "transpose",
+      "path": "dev/L1-001-transpose-07.json",
+      "sha256": "8865570544d70a95a29ca88701293ba1841d6303a1b123282ec0b37a697435c0",
+      "fingerprint": "f1a1875c7b176626bdc669e19c54e83b83d28bf793ca7cbea8592809f426a005"
+    },
+    {
+      "id": "L1-002-quantize-06",
+      "split": "dev",
+      "family": "quantize",
+      "path": "dev/L1-002-quantize-06.json",
+      "sha256": "43ce1f013e2316ddf11ed860d65ff089edfc25ecc1cdd70c92b9e3b178daa1cc",
+      "fingerprint": "ca1061a6f549c93a29cf27178b85b3a2168dd5915d15015670ebddb2d93ee79d"
+    },
+    {
+      "id": "L1-002-quantize-07",
+      "split": "dev",
+      "family": "quantize",
+      "path": "dev/L1-002-quantize-07.json",
+      "sha256": "05e7e3d5cfeed0f034e90de95b58ce7587d3dbd8ef457cc2f4734d7de2cfb6d2",
+      "fingerprint": "d68f6359fc2d19a1dbc3f8ddf0674b2edb3c0a75e4c2cf251c53b7796d745d42"
+    },
+    {
+      "id": "L1-003-chord-repair-06",
+      "split": "dev",
+      "family": "chord-repair",
+      "path": "dev/L1-003-chord-repair-06.json",
+      "sha256": "00ce49aa3c71e9f3daa33ad7ce63af8aea52aca340fcc25cce74644f3f194693",
+      "fingerprint": "6aaf20d5687d822239664afbec76b2ed8b0f3cbe5036699abc4e05423b87f2d1"
+    },
+    {
+      "id": "L1-003-chord-repair-07",
+      "split": "dev",
+      "family": "chord-repair",
+      "path": "dev/L1-003-chord-repair-07.json",
+      "sha256": "65a9da8b41988496dcff2aabc592d75fc6d3e6f1646d81528aa13122d47ad7c6",
+      "fingerprint": "9ee16807dc89931c63f9606f0c262e85a6c339d39f483b852ec0a954c7902d57"
+    },
+    {
+      "id": "L1-004-scale-repair-06",
+      "split": "dev",
+      "family": "scale-repair",
+      "path": "dev/L1-004-scale-repair-06.json",
+      "sha256": "10f057a9457c0d95db472da7c85c6f71000e12626c8b3b3007ba4af6f62bbf9d",
+      "fingerprint": "bed50683bbc3625ec38232eaf8af4ca0309820f1162af9e13afe1e5bb20bc190"
+    },
+    {
+      "id": "L1-004-scale-repair-07",
+      "split": "dev",
+      "family": "scale-repair",
+      "path": "dev/L1-004-scale-repair-07.json",
+      "sha256": "a8ea6ac83866a28b176b2d44b87591444f81632471306a487254b946e4c703c0",
+      "fingerprint": "0991562b76c555b4940aad2e4468da42e9e1795acbdabceb6bfc0d2d1c211820"
+    },
+    {
+      "id": "L1M-001-repair-quantize-06",
+      "split": "dev",
+      "family": "repair-quantize",
+      "path": "dev/L1M-001-repair-quantize-06.json",
+      "sha256": "e1dac2861f1d839a1d0128c7151adbc0aa1d63ddfd45f409a74c6199cb94f3de",
+      "fingerprint": "bd9db4b11f884ac14ca6be0ca190571c6c232bc141bf2db4b6539abb6a5657a0"
+    },
+    {
+      "id": "L1M-001-repair-quantize-07",
+      "split": "dev",
+      "family": "repair-quantize",
+      "path": "dev/L1M-001-repair-quantize-07.json",
+      "sha256": "3da2cd2e677a5ddf7bdd27fd7d42094e25b9974031c50450cc2727680e4ffd59",
+      "fingerprint": "c9cbbd1f9dfcf41e46d6a0016e94420430d3908b5ab0aa3a3157280a9f9786eb"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-06",
+      "split": "dev",
+      "family": "duplicate-transform",
+      "path": "dev/L1M-002-duplicate-transform-06.json",
+      "sha256": "bcda0bff3b7eac4ad274194197ef18b30be014156a3057592b05439a47c01a83",
+      "fingerprint": "84ed2d202b1a4fc3ce57a7d061d5797865853004665ba26c709456d521557425"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-07",
+      "split": "dev",
+      "family": "duplicate-transform",
+      "path": "dev/L1M-002-duplicate-transform-07.json",
+      "sha256": "aacb3920c3e4292e1e36a25930d60981c94311d9d7ed9ed5a4b9ed54e1aaebbb",
+      "fingerprint": "6f95323c2ba0bee7f182142fab54ae70923b5c14744ec9ea431a2b2df3eaa0dc"
+    },
+    {
+      "id": "L1M-003-repair-transpose-06",
+      "split": "dev",
+      "family": "repair-transpose",
+      "path": "dev/L1M-003-repair-transpose-06.json",
+      "sha256": "422b2a34a07870b331eafedb7c3c1a731f662ade99041b6b85fbc5919efbb3e6",
+      "fingerprint": "04d329f015c9ddc2e3f15ccdb09a15cd61db1caad4252a336cc9c859ac2c7575"
+    },
+    {
+      "id": "L1M-003-repair-transpose-07",
+      "split": "dev",
+      "family": "repair-transpose",
+      "path": "dev/L1M-003-repair-transpose-07.json",
+      "sha256": "d9fef6a3d3524a82ef00183a14a2304f287a7e1d89bb5841ee80508d309dd941",
+      "fingerprint": "2261c16b18f0a9cfc0f69aeba7c8ab3766821e770b38a74e341f3db7c6a5eda6"
+    },
+    {
+      "id": "L0-001-tempo-08",
+      "split": "test",
+      "family": "tempo",
+      "path": "test/L0-001-tempo-08.json",
+      "sha256": "7719349da57406c1e42160996534ebc5229b4f2fbb3414151a7396e16ee8a6df",
+      "fingerprint": "4098380461968018c7db0ab76addaab325055660c5ba60cf135fde84fb613754"
+    },
+    {
+      "id": "L0-001-tempo-09",
+      "split": "test",
+      "family": "tempo",
+      "path": "test/L0-001-tempo-09.json",
+      "sha256": "712c85011e2b77673052ced8b044a1fc2effe1affe32ace4ce210615aea35cf1",
+      "fingerprint": "477f3fcc134af5674b50d1bd550bf788421e48d8b332e481581cd6e4a2824d9b"
+    },
+    {
+      "id": "L0-002-key-08",
+      "split": "test",
+      "family": "key",
+      "path": "test/L0-002-key-08.json",
+      "sha256": "f35b7ef2fb557cd5a0200daca0a99bba1de9137cecec0a8ab68cc1bf0e451d10",
+      "fingerprint": "289abfdf2a08194d5c382f645e847fcc363e1481124238d80c100774bcf9dbee"
+    },
+    {
+      "id": "L0-002-key-09",
+      "split": "test",
+      "family": "key",
+      "path": "test/L0-002-key-09.json",
+      "sha256": "ebee5c35e61e70a44a1bda19709b89f5e5e8b7340244be4a4571e3cdba83b3eb",
+      "fingerprint": "8892aa225ba9223a5ea9ca6477904f49577a7dce2690b2732af40a0c4b6039f1"
+    },
+    {
+      "id": "L0-003-meter-08",
+      "split": "test",
+      "family": "meter",
+      "path": "test/L0-003-meter-08.json",
+      "sha256": "e54bd1d102392183c9f32383ecdbe550f41275ce9f294c2e7d768ed19e2d21d2",
+      "fingerprint": "09895a1ca77f009140edf491a172dafc69a2e28e5dd7a33534e2a027e07c11f6"
+    },
+    {
+      "id": "L0-003-meter-09",
+      "split": "test",
+      "family": "meter",
+      "path": "test/L0-003-meter-09.json",
+      "sha256": "5994b0a6d857121d182725d2f1fca52656b98e4b2a271be713b80df86feb2866",
+      "fingerprint": "021ec3a82ef7c3175f2f02d5ce62f00ebb95dffaceb2b602adc1f63ab816ce87"
+    },
+    {
+      "id": "L0-004-mute-08",
+      "split": "test",
+      "family": "mute",
+      "path": "test/L0-004-mute-08.json",
+      "sha256": "981f639fd47d574876b76296ea9e95c59d05b438eb0484f5307cfaf0adb3d06c",
+      "fingerprint": "53a9380b331e97d9084b3471ce8aa81bf19db3212f591c4666b62bdb3010f8cf"
+    },
+    {
+      "id": "L0-004-mute-09",
+      "split": "test",
+      "family": "mute",
+      "path": "test/L0-004-mute-09.json",
+      "sha256": "d2e1c4b84f244e2fc42eefcfb12b91c82e868edc532b6cb9479857846d3648c0",
+      "fingerprint": "dbda7906f299527da0dccd6294051a7da6aa5cb581302a9a53d6c510cd56d835"
+    },
+    {
+      "id": "L0-005-gain-08",
+      "split": "test",
+      "family": "gain",
+      "path": "test/L0-005-gain-08.json",
+      "sha256": "19ecf800f5c59bb0aa3281ebd2f0d2b1d1c00cd4213ed198768e0396ce01fd29",
+      "fingerprint": "3d9c14a976d785844c7407b56967367683b80a8aa1cb9c4f7d7649610bf1d3b9"
+    },
+    {
+      "id": "L0-005-gain-09",
+      "split": "test",
+      "family": "gain",
+      "path": "test/L0-005-gain-09.json",
+      "sha256": "288c8ec6aa4c800f60d2a94fbc405c79f62f06bc9bd9296ada61ee155554a36a",
+      "fingerprint": "3e2eb10adbab293719b8c057b6cc301ba0ef6c0b612339e85ced157f3f734bf7"
+    },
+    {
+      "id": "L1-001-transpose-08",
+      "split": "test",
+      "family": "transpose",
+      "path": "test/L1-001-transpose-08.json",
+      "sha256": "0c081c29bdf987770a0651afb313360426df7a0413b0c4b2fc2d7611a37aed9b",
+      "fingerprint": "6747ea5b18270c07e1c458fea995b91e7c0ecdf5b11f90df067f222264e6222f"
+    },
+    {
+      "id": "L1-001-transpose-09",
+      "split": "test",
+      "family": "transpose",
+      "path": "test/L1-001-transpose-09.json",
+      "sha256": "2a8f6b1f4a9040ccbf9bca2efd935a0c99f94eb2b97a0cc4842c22d041a8065f",
+      "fingerprint": "e23677adc4015013bf492f2e8ac1ac5bf53664d08d8bf63c492e7ef1c0edbf1d"
+    },
+    {
+      "id": "L1-002-quantize-08",
+      "split": "test",
+      "family": "quantize",
+      "path": "test/L1-002-quantize-08.json",
+      "sha256": "c9746a5ae21ea5e6eacce0ea3fff90eba8c009c30aa07bf6fe5eb7b2acb2597e",
+      "fingerprint": "3a638f2b96a5c86a37e635fa9d721e5693845c173f0a45775946c41b1912b23e"
+    },
+    {
+      "id": "L1-002-quantize-09",
+      "split": "test",
+      "family": "quantize",
+      "path": "test/L1-002-quantize-09.json",
+      "sha256": "a18c09516dcf6a6fefe5e6005cce878932aa538a89d4d96127db6f48fffb0966",
+      "fingerprint": "3276779106b1c4ff437f96f6e1b7b60b503fd3ddb346170adce2d97c425df90b"
+    },
+    {
+      "id": "L1-003-chord-repair-08",
+      "split": "test",
+      "family": "chord-repair",
+      "path": "test/L1-003-chord-repair-08.json",
+      "sha256": "c4588183430df610c7ef72403c8f2ee2dc022e17903edb093db70ecbc1589573",
+      "fingerprint": "9453ac0197df745a7d712f9fbc3ef5a0a4b2aac7e936e02c5bba3a51817290a3"
+    },
+    {
+      "id": "L1-003-chord-repair-09",
+      "split": "test",
+      "family": "chord-repair",
+      "path": "test/L1-003-chord-repair-09.json",
+      "sha256": "8d5ef6d706d8893eb2a4e0f3b5e42305713bbb83d03a77fb07274a8ab8cb2890",
+      "fingerprint": "8494180a9271d58d40d360b71e08fa212519040b3dc3af5fe5df208b70237594"
+    },
+    {
+      "id": "L1-004-scale-repair-08",
+      "split": "test",
+      "family": "scale-repair",
+      "path": "test/L1-004-scale-repair-08.json",
+      "sha256": "249e06da4f98d0a49fc878d9360444b72f2082edd881e20d05fa44f185015dc9",
+      "fingerprint": "00942a2666c190672fd1706c342e47f52bb6474cdabf9aabd86cef4f2e4ab06e"
+    },
+    {
+      "id": "L1-004-scale-repair-09",
+      "split": "test",
+      "family": "scale-repair",
+      "path": "test/L1-004-scale-repair-09.json",
+      "sha256": "9956b77e2c84895097f065bf9dfd6eead485734722d721e3f3f553712135ede5",
+      "fingerprint": "7b25d093c1e293b5c61f3cfd0f7ba7525427f396f0044d88509acc0ae1ab041a"
+    },
+    {
+      "id": "L1M-001-repair-quantize-08",
+      "split": "test",
+      "family": "repair-quantize",
+      "path": "test/L1M-001-repair-quantize-08.json",
+      "sha256": "d947d65cd217ef5d29a1e5e3c8a6521538c20c22192717790d35e9cf3afe0f99",
+      "fingerprint": "4253014dd43d8fc84bb25310c7aaf931662df470bef50de4546d099e2564a19d"
+    },
+    {
+      "id": "L1M-001-repair-quantize-09",
+      "split": "test",
+      "family": "repair-quantize",
+      "path": "test/L1M-001-repair-quantize-09.json",
+      "sha256": "bf6d2a3c3cb0e3600cc52d63ca17886959f2a885bebed34f0857708a937194a0",
+      "fingerprint": "66a0349e29c069b5c239ec899854043c579861ef4c06d60b0b8922d7a049fba5"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-08",
+      "split": "test",
+      "family": "duplicate-transform",
+      "path": "test/L1M-002-duplicate-transform-08.json",
+      "sha256": "e2dd3a2133e324b3b6d663c7f9664b213ff32f6ce1a1aeda8b1f7ce1de84e6ca",
+      "fingerprint": "530c3a846c4f69957cdb73b77adc73c3d5b2bd1e20f2b412a050212e5a6b1813"
+    },
+    {
+      "id": "L1M-002-duplicate-transform-09",
+      "split": "test",
+      "family": "duplicate-transform",
+      "path": "test/L1M-002-duplicate-transform-09.json",
+      "sha256": "1882eb021bc76b70c7f6f3521a2424bbeec1318af3ea85e5628311e6c6885267",
+      "fingerprint": "88c36c40899b6f5456c0ca601100b0f8fdf99a3898e877dc5ee880be95d25b01"
+    },
+    {
+      "id": "L1M-003-repair-transpose-08",
+      "split": "test",
+      "family": "repair-transpose",
+      "path": "test/L1M-003-repair-transpose-08.json",
+      "sha256": "39d7106a4f1fa597d254856a703866c806db4af227b99396468980ec2c063e92",
+      "fingerprint": "a362bcef8bf78dea1863c413d42a831e79b8f306327c579dcf459c83f2a2f2fc"
+    },
+    {
+      "id": "L1M-003-repair-transpose-09",
+      "split": "test",
+      "family": "repair-transpose",
+      "path": "test/L1M-003-repair-transpose-09.json",
+      "sha256": "ee2e5a347c2cb19325502ee8425dfe6a7e311e9ffdc8eb38a5cf0b79d92b5056",
+      "fingerprint": "1d6ee7b9cbc4286347c519e76facda2e6062059c68f86d58581fe7b8e910c8dd"
+    }
+  ]
+}

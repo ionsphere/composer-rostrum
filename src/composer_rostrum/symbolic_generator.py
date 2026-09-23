@@ -49,8 +49,8 @@ def generate_symbolic_task(index: int, seed: int) -> RostrumTask:
 
     if family == "quantize":
         grid = rng.choice([0.25, 0.5])
-        starts = [0.08, 0.46, 1.03, 1.57, 2.04]
-        notes = [{"id": f"n{i}", "pitch": 60 + i, "start": start, "duration": 0.4, "velocity": 90}
+        starts = [round(i * 0.5 + rng.choice([-0.09, -0.04, 0.04, 0.09]), 2) for i in range(1, 6)]
+        notes = [{"id": f"n{i}", "pitch": rng.randrange(55, 78), "start": start, "duration": 0.4, "velocity": rng.randrange(70, 105)}
                  for i, start in enumerate(starts)]
         project = _project(notes, seed, family)
         expected = deepcopy(notes)

@@ -1,0 +1,674 @@
+{
+  "recorded_utc": "2026-09-23T19:54:59.467804+00:00",
+  "reaper": {
+    "bridge_version": "1.0",
+    "capabilities": {
+      "audio_clips": true,
+      "automation": false,
+      "compression": false,
+      "headless_or_unattended": true,
+      "midi_notes": true,
+      "native_eq": false,
+      "native_synth": true,
+      "offline_render": true,
+      "readback": true,
+      "sampler": false,
+      "sidechain": false
+    },
+    "protocol": 1,
+    "reaper_version": "7.80/x64"
+  },
+  "unit_tests": {
+    "tests": 91,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 21
+  },
+  "symbolic_controls": {
+    "reference": {
+      "tasks": 120,
+      "passed": 120,
+      "infrastructure_failures": 0,
+      "pass_rate": 1.0,
+      "failure_classes": {
+        "passed": 120
+      },
+      "tool_calls": 270,
+      "renders": 0,
+      "elapsed_seconds": 0.3899999996647239,
+      "model_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "by_level": {
+        "L0": {
+          "tasks": 50,
+          "passed": 50,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 50
+          }
+        },
+        "L1": {
+          "tasks": 70,
+          "passed": 70,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 70
+          }
+        }
+      },
+      "by_family": {
+        "chord-repair": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "duplicate-transform": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "gain": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "key": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "meter": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "mute": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "quantize": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "repair-quantize": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "repair-transpose": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "scale-repair": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "tempo": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        },
+        "transpose": {
+          "tasks": 10,
+          "passed": 10,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 10
+          }
+        }
+      },
+      "by_execution_level": {
+        "None": {
+          "tasks": 120,
+          "passed": 120,
+          "infrastructure_failures": 0,
+          "pass_rate": 1.0,
+          "failure_classes": {
+            "passed": 120
+          }
+        }
+      }
+    },
+    "no-op": {
+      "tasks": 120,
+      "passed": 0,
+      "infrastructure_failures": 0,
+      "pass_rate": 0.0,
+      "failure_classes": {
+        "semantic": 120
+      },
+      "tool_calls": 120,
+      "renders": 0,
+      "elapsed_seconds": 0.18899999931454659,
+      "model_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "by_level": {
+        "L0": {
+          "tasks": 50,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 50
+          }
+        },
+        "L1": {
+          "tasks": 70,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 70
+          }
+        }
+      },
+      "by_family": {
+        "chord-repair": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "duplicate-transform": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "gain": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "key": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "meter": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "mute": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "quantize": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "repair-quantize": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "repair-transpose": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "scale-repair": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "tempo": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        },
+        "transpose": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 10
+          }
+        }
+      },
+      "by_execution_level": {
+        "None": {
+          "tasks": 120,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "semantic": 120
+          }
+        }
+      }
+    },
+    "damaging": {
+      "tasks": 120,
+      "passed": 0,
+      "infrastructure_failures": 0,
+      "pass_rate": 0.0,
+      "failure_classes": {
+        "preservation": 120
+      },
+      "tool_calls": 270,
+      "renders": 0,
+      "elapsed_seconds": 0.3110000006854534,
+      "model_usage": {
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      },
+      "by_level": {
+        "L0": {
+          "tasks": 50,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 50
+          }
+        },
+        "L1": {
+          "tasks": 70,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 70
+          }
+        }
+      },
+      "by_family": {
+        "chord-repair": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "duplicate-transform": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "gain": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "key": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "meter": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "mute": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "quantize": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "repair-quantize": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "repair-transpose": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "scale-repair": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "tempo": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        },
+        "transpose": {
+          "tasks": 10,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 10
+          }
+        }
+      },
+      "by_execution_level": {
+        "None": {
+          "tasks": 120,
+          "passed": 0,
+          "infrastructure_failures": 0,
+          "pass_rate": 0.0,
+          "failure_classes": {
+            "preservation": 120
+          }
+        }
+      }
+    }
+  },
+  "daw_reference": {
+    "tasks": 20,
+    "passed": 20,
+    "infrastructure_failures": 0,
+    "pass_rate": 1.0,
+    "failure_classes": {
+      "passed": 20
+    },
+    "tool_calls": 87,
+    "renders": 25,
+    "elapsed_seconds": 474.39199999999255,
+    "model_usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0
+    },
+    "by_level": {
+      "L1": {
+        "tasks": 5,
+        "passed": 5,
+        "infrastructure_failures": 0,
+        "pass_rate": 1.0,
+        "failure_classes": {
+          "passed": 5
+        }
+      },
+      "L2": {
+        "tasks": 15,
+        "passed": 15,
+        "infrastructure_failures": 0,
+        "pass_rate": 1.0,
+        "failure_classes": {
+          "passed": 15
+        }
+      }
+    },
+    "by_family": {
+      "daw-feedback": {
+        "tasks": 5,
+        "passed": 5,
+        "infrastructure_failures": 0,
+        "pass_rate": 1.0,
+        "failure_classes": {
+          "passed": 5
+        }
+      },
+      "daw-midi": {
+        "tasks": 5,
+        "passed": 5,
+        "infrastructure_failures": 0,
+        "pass_rate": 1.0,
+        "failure_classes": {
+          "passed": 5
+        }
+      },
+      "daw-mix": {
+        "tasks": 5,
+        "passed": 5,
+        "infrastructure_failures": 0,
+        "pass_rate": 1.0,
+        "failure_classes": {
+          "passed": 5
+        }
+      },
+      "daw-sample": {
+        "tasks": 5,
+        "passed": 5,
+        "infrastructure_failures": 0,
+        "pass_rate": 1.0,
+        "failure_classes": {
+          "passed": 5
+        }
+      }
+    },
+    "by_execution_level": {
+      "E2": {
+        "tasks": 15,
+        "passed": 15,
+        "infrastructure_failures": 0,
+        "pass_rate": 1.0,
+        "failure_classes": {
+          "passed": 15
+        }
+      },
+      "E3": {
+        "tasks": 5,
+        "passed": 5,
+        "infrastructure_failures": 0,
+        "pass_rate": 1.0,
+        "failure_classes": {
+          "passed": 5
+        }
+      }
+    }
+  },
+  "restart_acceptance": {
+    "passed": true,
+    "process_restart_verified": true,
+    "renders": [
+      {
+        "render_id": "r0001",
+        "project_hash": "544541ef16ed50e7f9af8965d0d76d03d91d55595c7c14617a81158de5837f4a",
+        "content_hash": "0e47c58b36ae3f73ef2487f935b848e853d3b2d2dcc2df0975ec11758ca95b28",
+        "metrics": {
+          "duration_seconds": 2.1,
+          "sample_rate": 48000,
+          "channels": 2,
+          "frames": 100800,
+          "sample_width": 3,
+          "peak": 0.05669295787811279,
+          "rms": 0.03387343076483944,
+          "rms_dbfs": -29.4028162992994,
+          "silent": false,
+          "silence_fraction": 0.28583333333333333,
+          "clipped_samples": 0,
+          "content_hash": "0e47c58b36ae3f73ef2487f935b848e853d3b2d2dcc2df0975ec11758ca95b28",
+          "pcm_hash": "69f161393996389677a09e11e978cc735b3d02641ca303610d820057fd8901f0"
+        }
+      },
+      {
+        "render_id": "r0002",
+        "project_hash": "6540abed1e9992c34f4e4873463072ea03453c01476a63712be57be1c2998f8f",
+        "content_hash": "c30d78c96adda8e05f63d6c9f951422131eb7573d82c0befe5da192163dbc0dc",
+        "metrics": {
+          "duration_seconds": 2.1,
+          "sample_rate": 48000,
+          "channels": 2,
+          "frames": 100800,
+          "sample_width": 3,
+          "peak": 0.05669295787811279,
+          "rms": 0.03387372002364549,
+          "rms_dbfs": -29.40274212732207,
+          "silent": false,
+          "silence_fraction": 0.28583333333333333,
+          "clipped_samples": 0,
+          "content_hash": "c30d78c96adda8e05f63d6c9f951422131eb7573d82c0befe5da192163dbc0dc",
+          "pcm_hash": "5e705626e5c6310c04a9fa9bfa1647ebf7f6bbdb523e5ee44953adbcb0e6536f"
+        }
+      },
+      {
+        "render_id": "r0003",
+        "project_hash": "6540abed1e9992c34f4e4873463072ea03453c01476a63712be57be1c2998f8f",
+        "content_hash": "affd2cc132cd6129ec69033d9cea9cba7280cc2bfa3f50ee57bb8acea4773f05",
+        "metrics": {
+          "duration_seconds": 2.1,
+          "sample_rate": 48000,
+          "channels": 2,
+          "frames": 100800,
+          "sample_width": 3,
+          "peak": 0.05669295787811279,
+          "rms": 0.03387372002364549,
+          "rms_dbfs": -29.40274212732207,
+          "silent": false,
+          "silence_fraction": 0.28583333333333333,
+          "clipped_samples": 0,
+          "content_hash": "affd2cc132cd6129ec69033d9cea9cba7280cc2bfa3f50ee57bb8acea4773f05",
+          "pcm_hash": "5e705626e5c6310c04a9fa9bfa1647ebf7f6bbdb523e5ee44953adbcb0e6536f"
+        }
+      }
+    ]
+  },
+  "model_comparison": {
+    "status": "not_run",
+    "reason": "Requires authenticated provider and selected model configurations"
+  },
+  "local_evidence": {
+    "benchmark": "artifacts/benchmark-final",
+    "daw": "artifacts/daw-20-02",
+    "smoke": "artifacts/reaper-final",
+    "junit": "artifacts/unit-validation.xml"
+  }
+}
