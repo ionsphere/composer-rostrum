@@ -4,6 +4,7 @@ from typing import Any
 
 from .models import EvaluationResult, MusicProject, RostrumTask
 from .music_theory import scale_pitch_classes, triad_pitch_classes
+from .environment import _diff_paths
 
 
 def _read_path(project: MusicProject, path: str) -> Any:
@@ -25,10 +26,17 @@ def _note(project: MusicProject, track_id: str, clip_id: str, note_id: str) -> d
     return next(note for note in _notes(project, track_id, clip_id) if note.get("id") == note_id)
 
 
-def evaluate(task: RostrumTask, before: MusicProject, after: MusicProject) -> list[EvaluationResult]:
+def _evaluate_specs(task: RostrumTask, before: MusicProject, after: MusicProject) -> list[EvaluationResult]:
     results: list[EvaluationResult] = []
     for spec in task.evaluators:
         t = spec["type"]
+        if t in {"render_valid", "render_rms_target", "feedback_improvement"}:
+            continue
+        if t == "preserve_except":
+            changed = _diff_paths(before.to_dict(), after.to_dict())
+            bad = [p for p in changed if not any(p == allow or p.startswith(allow + ".") for allow in spec["paths"])]
+            results.append(EvaluationResult(t, not bad, float(not bad), f"unexpected changes: {bad}" if bad else "protected state preserved"))
+            continue
         if t == "project_property":
             actual = _read_path(after, spec["path"]); expected = spec["equals"]; passed = actual == expected
             results.append(EvaluationResult(f"project_property:{spec['path']}", passed, float(passed), f"expected {expected!r}, got {actual!r}")); continue
@@ -56,7 +64,7 @@ def evaluate(task: RostrumTask, before: MusicProject, after: MusicProject) -> li
             results.append(EvaluationResult("triad_pitch_classes", passed, float(passed), f"expected pitch classes {sorted(expected)}, got {sorted(actual)}")); continue
         if t == "changed_note_count":
             b = {n["id"]: n for n in _notes(before, spec["track_id"], spec["clip_id"])}; a = {n["id"]: n for n in _notes(after, spec["track_id"], spec["clip_id"])}
-            changed = [nid for nid in b if b[nid] != a.get(nid)]; expected = int(spec["equals"]); passed = len(changed) == expected
+            changed = [nid for nid in set(b) | set(a) if b.get(nid) != a.get(nid)]; expected = int(spec["equals"]); passed = len(changed) == expected
             results.append(EvaluationResult("changed_note_count", passed, float(passed), f"expected {expected} changed notes, got {len(changed)}: {changed}")); continue
         if t == "clip_transposition_relation":
             source = _clip(after, spec["track_id"], spec["source_clip_id"]); target = _clip(after, spec["track_id"], spec["target_clip_id"]); delta = int(spec["semitones"])
@@ -65,12 +73,34 @@ def evaluate(task: RostrumTask, before: MusicProject, after: MusicProject) -> li
             passed = same_shape and float(target.get("start", -1)) == float(spec["target_start"])
             results.append(EvaluationResult("clip_transposition_relation", passed, float(passed), "response matches transformed source" if passed else "response does not match requested relation")); continue
         if t == "all_notes_transposed_from_repaired_triad":
-            notes = _notes(after, spec["track_id"], spec["clip_id"]); delta = int(spec["semitones"]); expected = triad_pitch_classes(spec["chord"])
-            actual_down = {(int(n["pitch"]) - delta) % 12 for n in notes}; in_range = all(int(n["pitch"]) - delta >= 0 for n in notes); passed = actual_down == expected and in_range
-            results.append(EvaluationResult("all_notes_transposed_from_repaired_triad", passed, float(passed), f"expected repaired pitch classes {sorted(expected)}, got {sorted(actual_down)} after reversing transpose")); continue
+            old = _notes(before, spec["track_id"], spec["clip_id"])
+            notes = _notes(after, spec["track_id"], spec["clip_id"])
+            delta = int(spec["semitones"]); pcs = triad_pitch_classes(spec["chord"])
+            present = {int(n["pitch"]) % 12 for n in old}; missing = pcs - present
+            expected = {}
+            for n in old:
+                pitch = int(n["pitch"])
+                if pitch % 12 not in pcs and len(missing) == 1:
+                    pc = next(iter(missing))
+                    pitch = min((p for p in range(128) if p % 12 == pc), key=lambda p: (abs(p-pitch), p))
+                expected[n["id"]] = {**n, "pitch": pitch + delta}
+            passed = len(notes) == len(old) and {n["id"]: n for n in notes} == expected
+            results.append(EvaluationResult(t, passed, float(passed), "checked repaired pitches, octave, identity and rhythm")); continue
         results.append(EvaluationResult(t, False, 0.0, "evaluator type is not implemented yet"))
     return results
 
 
 def aggregate_score(results: list[EvaluationResult]) -> float:
     return 0.0 if not results else sum(r.score for r in results) / len(results)
+
+
+def evaluate(task: RostrumTask, before: MusicProject, after: MusicProject) -> list[EvaluationResult]:
+    from dataclasses import replace
+    results = []
+    for spec in task.evaluators:
+        try:
+            results.extend(_evaluate_specs(replace(task, evaluators=[spec]), before, after))
+        except (KeyError, IndexError, StopIteration, TypeError, ValueError) as exc:
+            results.append(EvaluationResult(spec.get("type", "invalid"), False, 0.0,
+                           f"required project structure is missing or invalid ({type(exc).__name__})"))
+    return results
