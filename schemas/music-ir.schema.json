@@ -31,7 +31,9 @@
         "source_end": {"type": "number", "minimum": 0},
         "pitch_semitones": {"type": "number"},
         "stretch_ratio": {"type": "number", "exclusiveMinimum": 0},
-        "reversed": {"type": "boolean"}
+        "reversed": {"type": "boolean"},
+        "fade_in_seconds": {"type": "number", "minimum": 0},
+        "fade_out_seconds": {"type": "number", "minimum": 0}
       },
       "additionalProperties": true
     },

@@ -57,6 +57,9 @@ Target REAPER first. See [daw-execution-plan.md](daw-execution-plan.md).
 - [x] verify edit → re-render changes audio while preserving protected state;
 - [x] add deterministic instrument/plugin fixture manifest;
 - [x] build Rostrum-DAW-20.
+- [x] add native track/clip creation and linear audio fades;
+- [x] add linked creation/revision corpus capture with portable native snapshots;
+- [x] add native-input evaluation, whole-chain splits and reference/negative controls.
 
 The implemented subset and remaining trial-period coverage work are tracked in
 [reaper-studio.md](reaper-studio.md). Full sampler, automation, routing/effect and
@@ -97,6 +100,10 @@ Only after lower levels are reliable:
 ## Phase 7 — training data
 
 Use successful benchmark and opt-in human trajectories to investigate specialization:
+
+The [REAPER corpus](reaper-corpus.md) provides procedural reference trajectories
+and prompt → project / prompt + project → revised-project pairs. Human and real
+model trajectories remain separate future sources.
 
 - supervised tool-use traces;
 - rejection sampling from benchmark evaluators;

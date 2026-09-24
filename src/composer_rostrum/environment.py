@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from copy import deepcopy
 from dataclasses import asdict, dataclass
 from typing import Any
@@ -118,6 +119,58 @@ class MusicEnvironment:
         bpm = float(bpm)
         if bpm <= 0: raise ToolError("tempo must be greater than zero")
         self._project.tempo = bpm; return {"tempo": bpm}
+
+    def _tool_add_track(self, track_id: str, name: str, kind: str, gain_db: float = 0) -> dict:
+        if kind not in ("midi", "audio") or not math.isfinite(gain_db) or not -120 <= gain_db <= 24:
+            raise ToolError("invalid track kind or gain")
+        if any(t["id"] == track_id for t in self._project.tracks):
+            raise ToolError("duplicate track ID")
+        track = {"id": track_id, "name": name, "kind": kind, "gain_db": float(gain_db), "clips": []}
+        self._project.tracks.append(track)
+        return deepcopy(track)
+
+    def _append_clip(self, track_id: str, clip: dict) -> dict:
+        track = self._find_track(track_id)
+        if track["kind"] != clip["kind"]:
+            raise ToolError("clip kind must match track kind")
+        if any(c["id"] == clip["id"] for c in track.get("clips", [])):
+            raise ToolError("duplicate clip ID")
+        track.setdefault("clips", []).append(deepcopy(clip))
+        return deepcopy(clip)
+
+    def _tool_add_midi_clip(self, track_id: str, clip_id: str, start: float,
+                            length: float, notes: list[dict[str, Any]]) -> dict:
+        if not math.isfinite(start) or not math.isfinite(length) or start < 0 or length <= 0:
+            raise ToolError("invalid MIDI clip extent")
+        seen = set()
+        for note in notes:
+            if note["id"] in seen or not 0 <= note["pitch"] <= 127 or not 1 <= note["velocity"] <= 127:
+                raise ToolError("invalid note identity, pitch or velocity")
+            seen.add(note["id"])
+            if not all(math.isfinite(note[k]) for k in ("start", "duration")) or note["start"] < 0 or note["duration"] <= 0 or note["start"] + note["duration"] > length:
+                raise ToolError("note must fit inside clip")
+        return self._append_clip(track_id, {"id": clip_id, "kind": "midi", "start": start,
+                                          "length": length, "notes": notes})
+
+    def _tool_add_audio_clip(self, track_id: str, clip_id: str, asset_id: str,
+                             timeline_start_beats: float, source_start: float, source_end: float) -> dict:
+        asset = self._find_asset(asset_id)
+        if not math.isfinite(timeline_start_beats) or timeline_start_beats < 0 or not 0 <= source_start < source_end <= asset["duration_seconds"]:
+            raise ToolError("invalid audio extent")
+        return self._append_clip(track_id, {"id": clip_id, "kind": "audio", "asset_id": asset_id,
+            "timeline_start_beats": timeline_start_beats, "source_start": source_start,
+            "source_end": source_end, "pitch_semitones": 0.0, "stretch_ratio": 1.0, "reversed": False})
+
+    def _tool_set_clip_fades(self, track_id: str, clip_id: str,
+                             fade_in_seconds: float, fade_out_seconds: float) -> dict:
+        clip = self._find_clip(track_id, clip_id)
+        if "asset_id" not in clip:
+            raise ToolError("fades currently require an audio clip")
+        duration = (clip["source_end"] - clip["source_start"]) * clip.get("stretch_ratio", 1)
+        if any(not math.isfinite(v) or not 0 <= v <= duration for v in (fade_in_seconds, fade_out_seconds)):
+            raise ToolError("fade lengths must fit inside the audio item")
+        clip.update(fade_in_seconds=float(fade_in_seconds), fade_out_seconds=float(fade_out_seconds))
+        return deepcopy(clip)
 
     def _tool_set_key(self, key: str | None) -> dict[str, str | None]: self._project.key = key; return {"key": key}
     def _tool_set_meter(self, meter: str) -> dict[str, str]:

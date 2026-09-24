@@ -23,6 +23,8 @@ rostrum-generate-symbolic = "composer_rostrum.symbolic_generator:main"
 rostrum-generate-multistep = "composer_rostrum.multistep_generator:main"
 rostrum-benchmark = "composer_rostrum.benchmark:main"
 rostrum-compare = "composer_rostrum.compare:main"
+rostrum-corpus-capture = "composer_rostrum.corpus_capture:main"
+rostrum-corpus-eval = "composer_rostrum.corpus_eval:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

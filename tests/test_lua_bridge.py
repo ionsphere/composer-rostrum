@@ -22,13 +22,14 @@ def test_lua_codec_rejects_invalid_protocol_json(value):
         codec.decode(value)
 
 
-def test_bridge_compiles_and_answers_atomic_handshake(tmp_path):
+@pytest.mark.parametrize("prefix", ["", "//?/"])
+def test_bridge_compiles_and_answers_atomic_handshake(tmp_path, prefix):
     (tmp_path / "requests").mkdir()
     (tmp_path / "responses").mkdir()
     request = {"protocol": 1, "id": "000001", "command": "ping", "arguments": {}}
     (tmp_path / "requests/000001.json").write_text(json.dumps(request), encoding="utf-8")
     lua = lupa.LuaRuntime()
-    lua.globals().ROSTRUM_WORKSPACE = tmp_path.as_posix()
+    lua.globals().ROSTRUM_WORKSPACE = prefix + tmp_path.as_posix()
     lua.execute("reaper={GetAppVersion=function() return 'test' end, EnumerateFiles=function(path,i) if i==0 then return '000001.json' end end, defer=function(f) end}")
     lua.eval("dofile")(str(BRIDGE / "rostrum_bridge.lua"))
     response = json.loads((tmp_path / "responses/000001.json").read_text())
