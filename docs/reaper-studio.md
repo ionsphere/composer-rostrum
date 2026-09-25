@@ -46,7 +46,7 @@ file. Authenticated model comparisons are explicitly marked as not run.
 | Global state | Constant tempo (20–300 BPM), meter; key retained as project metadata |
 | Tracks | Stable IDs/GUIDs, name, mute, gain, pan |
 | MIDI | Stable note IDs, pitch, velocity, position, duration; transpose, quantize, repair, duplicate |
-| Audio | Benchmark-owned procedural fixtures; source trim, pitch shift, pitch-preserving stretch |
+| Audio | Benchmark-owned procedural fixtures; source trim, lossless split, beat-position move, pitch shift, pitch-preserving stretch, linear item fades |
 | Instruments | Bundled phase-reset polyphonic sine JSFX, MIDI channel 0 |
 | Mix | Audio sends without feedback, deterministic gain JSFX |
 | Lifecycle | Independent process/profile, bridge timeout, save/reopen, explicit resume, cleanup |
@@ -64,6 +64,10 @@ claim full REAPER feature coverage: arbitrary sample import, native sampler
 mapping, reversal, EQ/compression/sidechains, automation, recording, stems, and
 perceptual listening remain outside this reference subset. The in-memory
 backend still supports its wider symbolic sample-tool surface.
+The [feature coverage ledger](../benchmarks/reaper-feature-coverage-v1.json)
+distinguishes native-verified musician intents from partial, open, and
+hardware/third-party-dependent workflows. The linked
+[item-edit corpus](reaper-corpus.md) adds split and move evaluation samples.
 
 ## Isolation and artifacts
 
@@ -100,6 +104,8 @@ moving to the next DAW. Do not equate the first passing suite with full coverage
    crashes, dialogs, packaging, and the twenty native control tasks.
 2. Days 11–25: sampler maps, imported audio, reversal/chopping/fades, effect
    parameter readback, routing/sidechain fixtures, and preservation tests.
+   Linear audio fades and linked hybrid creation/revision capture are implemented;
+   see the [240-sample native corpus](reaper-corpus.md) and its validation evidence.
 3. Days 26–40: automation, tempo maps, region/stem renders, resampling and hybrid
    projects; add task families and failure-injection cases for each capability.
 4. Days 41–50: authenticated model comparisons and feedback ablations; distinguish

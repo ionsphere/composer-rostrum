@@ -25,6 +25,26 @@ def test_timeout_requires_new_worker(tmp_path):
         transport.request("materialize")
 
 
+def test_transient_response_read_lock_is_retried_without_resending(tmp_path, monkeypatch):
+    from pathlib import Path
+    transport = FileBridgeTransport(tmp_path, poll_interval=0.001)
+    identity, request = transport.prepare_request("ping")
+    response = tmp_path / "responses" / f"{identity}.json"
+    response.write_text(json.dumps({"protocol": 1, "id": identity, "ok": True,
+                                    "result": {"pong": True}, "error": None}))
+    original = Path.read_text
+    attempts = 0
+    def briefly_locked(path, *args, **kwargs):
+        nonlocal attempts
+        if path == response and attempts == 0:
+            attempts += 1
+            raise PermissionError("sharing violation")
+        return original(path, *args, **kwargs)
+    monkeypatch.setattr(Path, "read_text", briefly_locked)
+    assert transport.await_response(identity, timeout=0.2).result == {"pong": True}
+    assert attempts == 1 and not transport.failed and request.exists()
+
+
 def test_feedback_routing_and_unsupported_effects_are_rejected():
     p = phrase_project()
     p.tracks[0]["sends"] = [{"destination_id": "keys", "gain_db": 0}]

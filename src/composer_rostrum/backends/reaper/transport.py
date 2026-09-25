@@ -65,7 +65,14 @@ class FileBridgeTransport:
                     raise
             if path.exists():
                 try:
-                    payload = json.loads(path.read_text(encoding="utf-8"))
+                    raw = path.read_text(encoding="utf-8")
+                except PermissionError:
+                    # Windows scanners can briefly hold a newly renamed
+                    # response. Retrying the read does not resend a mutation.
+                    time.sleep(self.poll_interval)
+                    continue
+                try:
+                    payload = json.loads(raw)
                     if not isinstance(payload, dict) or type(payload.get("ok")) is not bool:
                         raise ValueError("response must be an object with a boolean ok field")
                     if not payload["ok"] and not isinstance(payload.get("error"), dict):

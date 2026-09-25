@@ -1,0 +1,2213 @@
+{
+  "corpus": "reaper-chains-v1",
+  "seed": 20260923,
+  "chains": 40,
+  "samples": 240,
+  "creation_samples": 40,
+  "revision_samples": 200,
+  "splits": {
+    "train": 144,
+    "dev": 48,
+    "test": 48
+  },
+  "passed": 240,
+  "relocated_restart_checks": 40,
+  "reference_kind": "procedural-control",
+  "model_runs": "not_run",
+  "evidence": [
+    {
+      "id": "chain-0000-00-create",
+      "passed": true,
+      "project_hash": "d7b66aabd2c715fb3fcf237a6658b0651bf0530d02250501222a99bb6f69f003",
+      "pcm_hash": "874a0cd5f00e3df63dc85f4d8e16aa190ca47b226e765ff0d56c78867a3427ff",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0000-01-transpose",
+      "passed": true,
+      "project_hash": "3dc8b09327550d28761361661b8e8f0ed5f3c4a7f126de058b849eceb20c24e4",
+      "pcm_hash": "d40214802a729ac8ac330260874cb105aec5fe070b4ebdcf7245ab4f0e2e5ad1",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0000-02-trim-fades",
+      "passed": true,
+      "project_hash": "e7861456b5a9c9eef44231d9dd0df5b61d40ac3e837201cb12e3b11cbe27ceca",
+      "pcm_hash": "21c66a7d7f2ad7bb4e4becf320b6e58c3d2af20198c34fcc5c5c6308b4a8cd94",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0000-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "39b9c5402ed09988cfbdeaf21738f3f483a805f32706360e98ea38f663e2d355",
+      "pcm_hash": "2009aee55565fb088bfd04fe2db702c1360df63b77a4dcf50363bb8b423edd42",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0000-04-mix",
+      "passed": true,
+      "project_hash": "e2307ce87fedd05be290c99403cc618ec6614c7b1f9483027795e49fdb2e8747",
+      "pcm_hash": "d73c34dd52f35eeabef30a1262c5c00ecaa5b8667f3985480483ed87a213b6ef",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0000-05-feedback",
+      "passed": true,
+      "project_hash": "fb1478225655f6a3c812c8a11c12f6e3194d0041e386536043b3bf1f9f9d1930",
+      "pcm_hash": "3ba6d3c391125c564bc735a364ce54bc50501603f20ab737f8ea84d139463e27",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0001-00-create",
+      "passed": true,
+      "project_hash": "38dd669cd43c3ab54e00aa980c22a540e5ef497e6904615fd2cea61e61ad6799",
+      "pcm_hash": "83badb8004418daf2b5d553e0f84b3298967a8099d1e9efa5e3b7183f0f9ff6c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0001-01-transpose",
+      "passed": true,
+      "project_hash": "71418b0095af139bdc36069eb20b4fcb4ec8ad2fd15336137dc138f9de00926d",
+      "pcm_hash": "6ba4cb72abcbd28966cb61ba77c41f8624260e14df2e86c208749a497e643a03",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0001-02-trim-fades",
+      "passed": true,
+      "project_hash": "639f986833aca8d1321dd5ba7389aefafad0c6a3beab1bdf90dc119ebaa997db",
+      "pcm_hash": "c82c99d6048a386cb064dfb5d064036ddaf1fdda5b73b2b64e007d512d9e457f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0001-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "555a1d52af4e7a17885014bd0c55fbe254f09160e5e2cea64bf2f696881f51d4",
+      "pcm_hash": "47e601f94a71bdecb3fd6c408d2a5e696dcfd6c0b5c12109bfa6563965046800",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0001-04-mix",
+      "passed": true,
+      "project_hash": "a8c36d66925bdb96da4afc07b00f5449e801765b5a8a3f1d9f7e09ae3e09ee6b",
+      "pcm_hash": "8348db424c6a89ac6924e240de66f2104a25530a706b7eeb064e23299119c3bb",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0001-05-feedback",
+      "passed": true,
+      "project_hash": "2d2ad10bb5febd7ac68c13fdb1d6b6ba43abbbf77407d9f51982f5f3fbed2450",
+      "pcm_hash": "e58063c5d090d5982e76526e7a38b3dbaf34abdfd9df987cb0011e1d9234b3b4",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0002-00-create",
+      "passed": true,
+      "project_hash": "03a7d729d3ac2c7e26456627d29b860948b586d53cc8b92e580fd1cbbf455b7b",
+      "pcm_hash": "bb9dba2242cef04cd02ee44c2084ec64bf7f7f4978773c1d8cfabed69a1e931c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0002-01-transpose",
+      "passed": true,
+      "project_hash": "c4e422a8ba92ccce766b1e434c66cd3c815c34e117b2764f57ea4da33d9cc2d8",
+      "pcm_hash": "86d982ade12b9b274837be6f4fe095e26d6f2448ed8f693b9a734ac285eb5a92",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0002-02-trim-fades",
+      "passed": true,
+      "project_hash": "12521e1a06095167075278412fa65c56d64fcd4f1ebc67fcd0852dda7bac57bf",
+      "pcm_hash": "b5da0e2977135cf262971a058f045765ec2852b4ac115983f1e6ebe3fd66e2cd",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0002-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "0da84314346846928871e5d54bdca8d5df87bdae072225804bc65beacb55ae4a",
+      "pcm_hash": "38d94713a93bf959336b11d244eab1d66c26343688acb7a8b9c7cba3e5e52358",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0002-04-mix",
+      "passed": true,
+      "project_hash": "e1025f538830ede4bad518d475dbc034cbda673da281d927488068f26fb320fb",
+      "pcm_hash": "520444f887734c06b86bed84db4beee157c4517ad42a293b81cd1f444c7e293d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0002-05-feedback",
+      "passed": true,
+      "project_hash": "08995adb0aec7ab5f89d64af2912d168b1a4ef9206e86c275086775ef67bec69",
+      "pcm_hash": "b8f2082aedba650e8b30bd7d65632b3f3d26f286d732d6111e8891df082d9d6c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0003-00-create",
+      "passed": true,
+      "project_hash": "27b3b4eba984ce3d3967319a3078fdec93a35fdd7e33a983daf767282a4560df",
+      "pcm_hash": "4fb8a0c0fd89642212cca0ffde37b59c992d5279ffb7d72a9c76badd01cd7487",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0003-01-transpose",
+      "passed": true,
+      "project_hash": "c61a073828c0bfd65fcc289de450426c59b9e191eec764449f79699aecc94d8f",
+      "pcm_hash": "aa8f5a78afb256589014a8e29387a5e91d6f2d670c89c593cf38f82dbe7eba4a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0003-02-trim-fades",
+      "passed": true,
+      "project_hash": "fd14235d6f5a7f9955a1693180bac7f333f11d210da42275652d54f01368417e",
+      "pcm_hash": "862915d6a84a1801bc4fcebbdbb78a7b45c5ff4c2ad5e6dcaafdd799027216ff",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0003-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "29a0472abb59702eac0bb33ef3d6200fa9d37c37ddda7e223afd72c980b96db8",
+      "pcm_hash": "05fd6e8e4e5e87ebc801c84bdcc5a0243ffd14fc7c2282204d9a1c5e8f7df99d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0003-04-mix",
+      "passed": true,
+      "project_hash": "17772c77b55fd699e5816335ca2d1534f6ebcfa6ece3671bfdf5cf972ee03400",
+      "pcm_hash": "27f6156bb627a552be6c22b30da5d35f19c7bc566e5372cd19df0a930ea5e56e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0003-05-feedback",
+      "passed": true,
+      "project_hash": "c1484d3c87848e51a5eb4ecbd07a86223fcd55b357b59547757fe64f2b7eeb25",
+      "pcm_hash": "65ce45e5d2b7df4d91a704ed92557d74304450d9774efd59eceea30ea105081f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0004-00-create",
+      "passed": true,
+      "project_hash": "70cbe31a23f1c7dcfbc4dfcbb20b85fc9996d2e80b7df58404916765ad82d95b",
+      "pcm_hash": "b1687d55c4551edd40e18f5531691cecb628db8d0c9ebe8d528a4aac58c6c065",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0004-01-transpose",
+      "passed": true,
+      "project_hash": "6978d419b4d465b262388145e62b8c4498c727736cc98055d2938c68e6d30dc3",
+      "pcm_hash": "8835691a9b2138e7764dbbcb5cb344db359a7b4dda8f981b07383ba912e4eb16",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0004-02-trim-fades",
+      "passed": true,
+      "project_hash": "c24e459a49d9a2ce00f3ebcb840a498c3b740621c81525258f7bafedc787d538",
+      "pcm_hash": "ccc94a99a0c182ceb83367b30230a94b333411a6b87701071e0c0a7b999bffcb",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0004-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "4e504a190eb45a56ebf0321e784b818b5f225fc37708fbdeffaf36e6c7ddeb08",
+      "pcm_hash": "a17c46735eda6fb18f71aa043253148a22e07b173edb51c33a957118882df994",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0004-04-mix",
+      "passed": true,
+      "project_hash": "818bbb069485438e2270d9fefc6aa62dcec0e9bb4ea7b888d3c3928f47581cc0",
+      "pcm_hash": "96b4b64bac42b0e3cb388a072bffcc0adde002e59666957229745bdfe22aeb36",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0004-05-feedback",
+      "passed": true,
+      "project_hash": "a216f636b5acb15c6fc51d7cece75646d737f73644ba4cdc6f29fa43401b5921",
+      "pcm_hash": "d84c0c150f8485f4fce16c48fc361e98b83f35b927be206dd40b06fd7c21d44b",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0005-00-create",
+      "passed": true,
+      "project_hash": "572bd2bfc6b6e8f3875f563f492e4391ef199c516630d1cc812484f5c9553ca1",
+      "pcm_hash": "291a30afd59dc564c0994b59e9b159f4090ed3dbb239efe3ffd2f45e1a9d44a7",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0005-01-transpose",
+      "passed": true,
+      "project_hash": "60b3852284d88109532340fea1d0a49ac221171e43ef4cc851a81667245e4346",
+      "pcm_hash": "843735953dcc9e5e265ed41795c361fb2fdd56c204fb65d50c004dae2dc1978f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0005-02-trim-fades",
+      "passed": true,
+      "project_hash": "0f654b0ee630a530fc5ad566b1a0b20cf70873bb3bf796fb4fcd556a3b56bda6",
+      "pcm_hash": "44f95c6bad67226cad9f8015887d44036bef291abeaf2f3ef9c1023801637d36",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0005-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "a62ea18fd47ad6be15b07d3c4a02caf10bb6e37e898b05c9eeed775f93c1782f",
+      "pcm_hash": "3ffa56b8f3cbbe05d52f082e749a3fd22db61c408234b242e593a9f2f8f6c86e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0005-04-mix",
+      "passed": true,
+      "project_hash": "fd22da6167f2af886052e737ff8d0f19fba1560348a18a15413eaad91d0e7c9f",
+      "pcm_hash": "1dfad0ceff3fd8f5e325b2e8293d779a24187b8ed14d9b108f62e356443a6c53",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0005-05-feedback",
+      "passed": true,
+      "project_hash": "6e63493981106e205ef08c70145d0b7f062cadff7f14f96063c81f819c54e830",
+      "pcm_hash": "2075e04adcbb077647ea5160219304515092f4e678c02bb71cdf38cb30def476",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0006-00-create",
+      "passed": true,
+      "project_hash": "9752af9dc4168e38f16721264121205d0e24f73cd77c5612fe8fa10f861bb86e",
+      "pcm_hash": "7bb068116d5757630c245f6ee10625fe9b5c2e13c94379886c8b7cdf44d9b6cf",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0006-01-transpose",
+      "passed": true,
+      "project_hash": "a805ad55b93ccee5d5df549f3a8d9586b5d473422c192ad4f1a4b063fb80723f",
+      "pcm_hash": "dc5b8ab9180ede4b773e6f777de84baad5cf95553ca96f588b77f4e123c0adf7",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0006-02-trim-fades",
+      "passed": true,
+      "project_hash": "47d18860ce57463cfc3a41735709b489000a139863b118a83f6fce990b6c64e7",
+      "pcm_hash": "e571fa7af772f03aec1019d5dc2fa273d4a7ddc23944aa417309ddf9bf616ee8",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0006-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "d2cbf6be6c8428707f5d40f0076105475c64e495cf91224b6e1d474a112b89a7",
+      "pcm_hash": "02b826db0bd57aa8eb04c094ee487431115a64d1016b0de232979871ffcac731",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0006-04-mix",
+      "passed": true,
+      "project_hash": "202359770e6d4074307ab64599b81f268110541f32a09902a25fbc5247c80357",
+      "pcm_hash": "cb6dcfe42dc6dea27e6e748f6c821be9529467817cd646c0712a5f7d2e5cf69f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0006-05-feedback",
+      "passed": true,
+      "project_hash": "432243b9bd0d102df6a37e0c87b2326deec965d3e84942ef29821740d05caeb6",
+      "pcm_hash": "97c6f9d6f5c099ac20b076bce8e18f7271bc01d89633c329f3c47a87c859bb5c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0007-00-create",
+      "passed": true,
+      "project_hash": "16bd8db1b065937b7650fb3c956c0b57e6b14037cd432a8bf5154ece49adb7cd",
+      "pcm_hash": "eab1680eaa197901a798fdcdae8bba624354101ec2b33e0b684cb78f1e90f032",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0007-01-transpose",
+      "passed": true,
+      "project_hash": "079f9c5e1aa4865bc7695ed958cac254ace8fdaa41951e7a6af2623a21efbf78",
+      "pcm_hash": "f04d094da192367658b26a64e62489ae7241e61f0ecc982830f0d8164ed13721",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0007-02-trim-fades",
+      "passed": true,
+      "project_hash": "13592ac4f7777061795eb27e3bee017cf3c8c9c77d70bdc3dc9ec5d46d7639ba",
+      "pcm_hash": "7db47c4bc19da9d4644aff3e8d65c5d58f4794e97b248e0c53a440d926be553c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0007-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "5fb803a62e1de09ed803c24a3a33244d28b86b916b95599316e0b7ce798da830",
+      "pcm_hash": "9d9f1f3d1e90de743ef617883d864364d841acb1d80f1a754bf4c23949c5af5e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0007-04-mix",
+      "passed": true,
+      "project_hash": "a94c2794009354a75ff866444a32f393716792e2c743cb7cbbdad5d38afe583b",
+      "pcm_hash": "2d14cdb8fc320d88850b78b81eb82c8f31cb32b8364b46054b2907db9cc57217",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0007-05-feedback",
+      "passed": true,
+      "project_hash": "978428c2738b1aa26e0c1aa855460f42bc646ae7aaf7e2fbc61d2109b13e0d4f",
+      "pcm_hash": "dd75ac81066968c989893c0b3bccf7ff1a898e9e334e92fd22ec7962b3622fb2",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0008-00-create",
+      "passed": true,
+      "project_hash": "9c4262013960a42aaf6e4113f041f342ab57b73a2dbb56ff34e36b222108b6a9",
+      "pcm_hash": "163e4a0d5fe432b8663f61d6a7abc47d639ca6475db3626b3b2fba50cf258915",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0008-01-transpose",
+      "passed": true,
+      "project_hash": "30e364c1b4e6d6dd78f8b9c1dcbfb145339c1810e432c863bdc393c8e7db4c1b",
+      "pcm_hash": "119803d036f81922c19a9cb9a8847830641e5ef0df7dd10dfae7da803b655ce6",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0008-02-trim-fades",
+      "passed": true,
+      "project_hash": "5413b3b0c5379f113deb01b395272e73219b3add785dfef475cf1c53eac9eafe",
+      "pcm_hash": "14564185255a5af9a893b2423c3bc3c70ec70ba637c346d974a24a34e15974d2",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0008-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "8e75c3648d4823162ec3f78c12b9eef3bc210ea8160a18c787fa1e47ef5c8739",
+      "pcm_hash": "991fe6dbeb6419bda8f5fa0984402876a763a4e7cb984d966750759a654dbbab",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0008-04-mix",
+      "passed": true,
+      "project_hash": "2f247d15318e7ea0e435e5395793ddb4bc92145258d94cf23fff59f5bc8f86df",
+      "pcm_hash": "76c4971a891510932963a8493a272226cb5f9798c41eec1c4409c916366361e9",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0008-05-feedback",
+      "passed": true,
+      "project_hash": "13d288e0b301f07615c9226a0a82486767317c63e97e20672d09bf339ce45291",
+      "pcm_hash": "e6c4b7f91a877f70145813f69e70b41381498f090c62aad9a6d677a48251531d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0009-00-create",
+      "passed": true,
+      "project_hash": "f2f4ce39c69bb13ae069a7aca142e6457687b473720d3d32f43d28a9d21b96db",
+      "pcm_hash": "5e4fc0f2679b217380d1fc06a49251229007c46102bea9e69728264f804b5a67",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0009-01-transpose",
+      "passed": true,
+      "project_hash": "e61394fbaf1dc8dbd8db9b3d342382c95e6cb709e2221f8dd6899d7ccbf51f11",
+      "pcm_hash": "cc4ab42f9a321713a4f95af82df04d99157571e0c6ace91089393e35d16f11ed",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0009-02-trim-fades",
+      "passed": true,
+      "project_hash": "83617cc9799198e4128d685ea70ce2b15a9c67673f5e7e1e329cba3e257dc2fe",
+      "pcm_hash": "069a1faf8a9ec17b99ad8ed2ee692888915fd9f0dd6d7cc4a342f2daa646f808",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0009-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "6816d247a564aacd3eb602fdf7c8034f9831983ae4f3d379f6d9141b00095609",
+      "pcm_hash": "6a423f41faebb05936fc224465cc66477a82c895c72b46fc7993cc5ee2ee4ddd",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0009-04-mix",
+      "passed": true,
+      "project_hash": "2353ad67bf637564b97b45290e37868e69f4717d9e602b52b49e56bb400b641a",
+      "pcm_hash": "9ea8b89a0d565b3fd769378406d3ce8ed8e4efa0372a5f2f0eead8c9b3f64478",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0009-05-feedback",
+      "passed": true,
+      "project_hash": "d52e557c085f81468cc732b0eb131278ed9e4950237dc2be73abb809b8d40394",
+      "pcm_hash": "ad8f9e1a810ef8087bd5a6a4892dc630af8c6692a667e70e35e5510649993b0e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0010-00-create",
+      "passed": true,
+      "project_hash": "cafb92db4fadabfd75db7e48edb2e0c7c0cd643981bdc49e76a5a29d12c24c28",
+      "pcm_hash": "72dc23c2ecf666a14cdbab2c117f89b73a63b31cc0b34d3332c5d762d85be524",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0010-01-transpose",
+      "passed": true,
+      "project_hash": "988238b15993a5b05fb51fe44e6772b8b56efd5341068ae57d943f6c04837bb0",
+      "pcm_hash": "5af3496fb4008a00e857ef5f48f790107c29ae31bee4ff1d39e16ac77108296f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0010-02-trim-fades",
+      "passed": true,
+      "project_hash": "c86a402fd3be03af822ef79640c7656fbb5d7aae802cadd27d5f0427739b242a",
+      "pcm_hash": "736357374f23d0751c311c4ca7ebe212d8725afaa5e8378db0e9126a0b055327",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0010-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "c0399e0aafe61abdb571e37983ed0071ccfe528ccda4a435da1ac90afedc5e17",
+      "pcm_hash": "8432b41023d12ecc265ad15ce087be4eeff22f5e1722ef4034f32b0fd8673650",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0010-04-mix",
+      "passed": true,
+      "project_hash": "7c12bedc6c1634dd147d264ff18a619933848198ffa166aa098212495dc44558",
+      "pcm_hash": "e0df521641d70a2b6cfc60e0a2a98918e0cfa96ed4c0c2737e38ffef84424d62",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0010-05-feedback",
+      "passed": true,
+      "project_hash": "ad9fca127ccead58e9daaf2de0093ae4e8d5939949d84c917ba6946efa1f2b35",
+      "pcm_hash": "49cb9d0ef85ddd97c5d6778e948cc7302eba189c18758e1d32a0e123005eace5",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0011-00-create",
+      "passed": true,
+      "project_hash": "8846f703aeb4432dbe72ebe4c6fbd6f19bc7ad1a463ce55c5d68efd2346779f9",
+      "pcm_hash": "4d5aee61ca524ee59b0da32e36750ba06f24a5777bc866d9290f65f740313caf",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0011-01-transpose",
+      "passed": true,
+      "project_hash": "be148d692a0f77570b4251a4512d1b52235b5d56a5db728024f3ddcb279cd134",
+      "pcm_hash": "c6dbc217eac38ac0d0f443a26461eb05b48e5355221e05a5d7c84bd654773a92",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0011-02-trim-fades",
+      "passed": true,
+      "project_hash": "ea27e95ecb7c9f1b4b3a7d0ef8202cb516b09bd68414c92a7152e5013710ac3a",
+      "pcm_hash": "219922b5c474ce85f1c91fba232fb4c608c090e2396e65bf7074bf39beaee99f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0011-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "46644204d56e7241c1cd920046febed8c4339b49f77272c50a05a65346f40011",
+      "pcm_hash": "b021d26406a33ec496b609bdba55adb881a3ea1fcc51294c7583577079f56b92",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0011-04-mix",
+      "passed": true,
+      "project_hash": "c0f65c43e317d5bd49e8cc97f261385b32e5e47d3b9fc4f258b7b2b6780e4d98",
+      "pcm_hash": "0a31deb903d717b8e53ee12f2b664f2e5b5df1911116eb16b9abed8940b9f696",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0011-05-feedback",
+      "passed": true,
+      "project_hash": "7905f84ff43c74a9301018caee43842b003baf5663d46bc7c3f179d945d3ff1e",
+      "pcm_hash": "8a9b130ad391c84b1d30fe91511b5ac1699d32255261ff21e7158aa72a3f6f78",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0012-00-create",
+      "passed": true,
+      "project_hash": "d7d1c469243a13ea912cd42c74faa1d8efbc769f4db0f1ec9f65de59694db2d9",
+      "pcm_hash": "9a011f145cc9e7e34acf4be3a9bfe3dff6421c59823be6adb72557ebdd9a44b8",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0012-01-transpose",
+      "passed": true,
+      "project_hash": "10571592819ded2dfe5e8fc5049d914845d5215f677a3c0b544c60677d00abe4",
+      "pcm_hash": "28b972bc1183ed05b932e228040ee073ef446def196ea0301371724d3ee5490f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0012-02-trim-fades",
+      "passed": true,
+      "project_hash": "2cf2561da6667ea3e6c4f30efea94fd2fdea811eddbe31bdc7bfcb1bfe548baf",
+      "pcm_hash": "d8ba497cca84015278e032a27596de6e36e2ae40121e40371743c42c832d494a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0012-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "26776b280cc0e7a2095fa5291cf97835d370c7653621b07f83df4d540b91ea96",
+      "pcm_hash": "5f1a1a5cb7cdc0d1ade9d9109fc319718d0d427fd4acc78f4017a162f422b558",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0012-04-mix",
+      "passed": true,
+      "project_hash": "667f174c95b6da11f89d45a1da79fb28f62a2c19c3d033928bea41a2104ee1e8",
+      "pcm_hash": "b96d7476ff4dee0cb76bc1eeaf5918aaf79cbea633673d9a59a8747f9f73a7c2",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0012-05-feedback",
+      "passed": true,
+      "project_hash": "f849ba00193ae635748a999c9206ac796a329f5123281bc45f38f4749ad75442",
+      "pcm_hash": "dcce5645188f4b2b1164de6bf8b93cee93e8c59a723c584be83961a4cabe4002",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0013-00-create",
+      "passed": true,
+      "project_hash": "7df5f272bf84c598ecc0a3b26d91a3d6e1483205ee5d26eacbd01a4d347a2573",
+      "pcm_hash": "db5ccc386a0ee04d5c29f208bc4a20c887f06da406c6c26046af1eec37b2c290",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0013-01-transpose",
+      "passed": true,
+      "project_hash": "ffde966a3670f9894587023784a8ae8a91617a4dfe3c7b026ad303e1d596660a",
+      "pcm_hash": "aad7fd0cc991990f662eed7c2ea46c88616a0b60da2b9ab9133a70bfc9f2f0b9",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0013-02-trim-fades",
+      "passed": true,
+      "project_hash": "f52cfbf8bc6427429f2f0d30f94d1644671d97b52903d077d74a39c1c059400c",
+      "pcm_hash": "a66706c289f9182bdaa411f598a854177a1f5c0abdd55501bcf85c494c58b5e9",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0013-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "f382a2ae5ef549415c3bf986e9a93874b42cfaf031972b110055b486d904037f",
+      "pcm_hash": "69e7c716dd0885468192a14be2e7870fe932d23958d3d42241403f00a637d2b5",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0013-04-mix",
+      "passed": true,
+      "project_hash": "b4ca26d468fc5e11f1484fb1059f6751054353e0f5185dc8c05c2381ee9ae831",
+      "pcm_hash": "f4470129e5d9f1fb7578d3cbd8c5a525dea0012f52906f387c746528c7699d9d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0013-05-feedback",
+      "passed": true,
+      "project_hash": "de4a10a18381d684f543fe507a9a7a4e7b2365cfdf5dac12a1476b4a4631065c",
+      "pcm_hash": "33e9c880ad87d621304fed8483559af726e56ee055253ab1d99484d64a41d8ac",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0014-00-create",
+      "passed": true,
+      "project_hash": "961f68f4e9379321df9e20f772279be687f4686b20ca8fa82ab2b383d4758241",
+      "pcm_hash": "97bfde6951f537dc635c4fe33dd65fcceff3cb5b86d2a08695921e23079eb9c8",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0014-01-transpose",
+      "passed": true,
+      "project_hash": "102b528372bda91d1770423540405735a4f089bbb91120b3c21690744ba631aa",
+      "pcm_hash": "cb86cc80423e699ac9a0c834960409c68aa3c668a64fc3fc3408d531ff46588b",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0014-02-trim-fades",
+      "passed": true,
+      "project_hash": "34ce53ded8da28c4496664cb900fd6e51309e1c2cce90eeb4f529ec13bb821fe",
+      "pcm_hash": "9e2c6ea53744d4abb0b4a78c19c53a1bae7b1552aba3af0a65993628d30d394e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0014-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "3439314d27d038d31a318c60a598e0c3df0e7a0143a97bad6a874319a988c7cb",
+      "pcm_hash": "74b0efb001bc66f2dbaeb7f0461c55f559c38576bfa514ec980693787b9c2e12",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0014-04-mix",
+      "passed": true,
+      "project_hash": "8617b5f77f0f6433ec22dd6884002681f571ea6beb0d1eb1d6e5ce1fffcfd10e",
+      "pcm_hash": "65b6457908153b27812078d30cf40650ce929f1ad88077f4ffc0f98ade3bfabc",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0014-05-feedback",
+      "passed": true,
+      "project_hash": "0292edc41d85d2fbc1134764e6f43be6661b486dc9064153ba5f1d4671744eb8",
+      "pcm_hash": "b68c63eaddece58eebcdeae7df0d3366cddef805ad7485c06a3e34aba35c1c7a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0015-00-create",
+      "passed": true,
+      "project_hash": "dd3d05f7a25281022ace37c88f296d8926d5337a6c17e8ca31f72ee3cbb91cd5",
+      "pcm_hash": "e9bbd3b21100ea57d8f297369e99d928cc007c507f17cb859dcc08425b44aae8",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0015-01-transpose",
+      "passed": true,
+      "project_hash": "d633deb9a5a16c000510172d8a49bb887162d37b4da3753bac62e891ad5e7090",
+      "pcm_hash": "484f651d14296c8dfbd1987be6b0c3485807b66ee3aa267547e86d06639a0ec7",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0015-02-trim-fades",
+      "passed": true,
+      "project_hash": "1820cb3887ac70681dbee03321de466c97cf1a580898fb6d2507dc2e78a72ff9",
+      "pcm_hash": "1f485805fb2b778231f8dfbf6cfd72a3bae61344efc5ff7707ecdbf060ead182",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0015-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "d4bf16d995c142cd087a722ae189d6fef50eb77764df55a2b3ee349dc2c7627d",
+      "pcm_hash": "c89092c8efe5700bba6520b38e235ca4796d2a9301ec1ae75a9f5ccb30a0de71",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0015-04-mix",
+      "passed": true,
+      "project_hash": "358239c7c04804a2f02ec26b92d0022f16a33e64edd08d6e2a0ec0a6b163fccf",
+      "pcm_hash": "fde2399b620c263bca00f4e09693d4e7b8a53d3c923b9ce38d69f5228f717737",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0015-05-feedback",
+      "passed": true,
+      "project_hash": "9687d0fb73bd8846f10af52e9a367898af0205224a66adf135167a188731dcb6",
+      "pcm_hash": "6f07bea99026f4cf3492d56e6c391224ff85fb032d64d432ef047f80a143a601",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0016-00-create",
+      "passed": true,
+      "project_hash": "8558e06f4cb646dea5c44b33fb85fc7514834c53a8964b40f88242e388faa074",
+      "pcm_hash": "9673de4922697d6f65558595315523e55dfaa7d74d82075c352f117b12e81061",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0016-01-transpose",
+      "passed": true,
+      "project_hash": "4a2f0290fbb5043929eb5386c8ce96eafc31e3a86f5e400ef5ad2b791f993c5d",
+      "pcm_hash": "1b8738c55dfbfdf81f7ca12a38026f1ebb48bbbb3802027bbc5db27a40b0192a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0016-02-trim-fades",
+      "passed": true,
+      "project_hash": "bb0e431999b50fe329f056b2a04c07cd1b14b929157d9163ed8e4b13d0ecb7c9",
+      "pcm_hash": "8f9413064494e1f2b7ceff8c40d643a144a74fc8012dfd412be97319ba9af902",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0016-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "7a93b0f5cc28e2e332693bab8ced5a4ee3a5c1176f85d29108b86280344a13ca",
+      "pcm_hash": "630f6dc515b152c7df75178a4729bd3117a104ea9c7961570c8dda7c10484912",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0016-04-mix",
+      "passed": true,
+      "project_hash": "3b2a32d8e59b34f72b2ad161dcbcdd95f97176e0f0db4196a57d08f2892ec36e",
+      "pcm_hash": "9bd4f5a4ddf7b002e027ec235e741714b614ac1874a5199323d947a0ab5228ad",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0016-05-feedback",
+      "passed": true,
+      "project_hash": "58a5b27ddd1bdd66ae60ee6b0dcf864ae0a141ecdd3d200c9a06b1cab767460e",
+      "pcm_hash": "ce1371568b4d5800307a7f6b1d30a4c17720b52b2798a82e0327855e889e35c1",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0017-00-create",
+      "passed": true,
+      "project_hash": "a3ddfd566c3436d2e4f817e69e4ff77694fa0e17a0423f42eb45bfdb5a6898df",
+      "pcm_hash": "51539d3e70edc3c0e8223cf5c3f86ebfa014c5ce50f4277c67967c0b74f8e32b",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0017-01-transpose",
+      "passed": true,
+      "project_hash": "7ec8f1598ead832a84ea74ed352a31a9f8b7154ffc3bf69df28ab8044e20af7b",
+      "pcm_hash": "7c61eeac8b2180bb59d2512bc08192af9967843e1bd4784e88c1064e7e2252e5",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0017-02-trim-fades",
+      "passed": true,
+      "project_hash": "06ab628cbe13b8cb1acfb947f6f05f76bd63cc6e5ab58d62c8817dda7606a0fd",
+      "pcm_hash": "7fa54d6b470a8d21c0fd34d338cf3efc1a606cd70623bd659742bc3864413e3b",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0017-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "d407382860d370ee99571fa84dd59114ebd26dcbebc0c511d89acef7b2af1a4d",
+      "pcm_hash": "0295c182b4067727ab04ce3333edf6ff5d63fb0f5a55920f30a37821c8ee955a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0017-04-mix",
+      "passed": true,
+      "project_hash": "3a7ffb5c5434d6a2de5a8cd3bf142b558359467634998b51d9a1a54fbacb9d4e",
+      "pcm_hash": "4c6f41db85cb38871005d41dd8e8a90ab6114054a700d7d1a7a8152e81cce69d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0017-05-feedback",
+      "passed": true,
+      "project_hash": "d95a7f972169d73c3caa37dc2e35434e936606e0a1ed370855c9417d963aa238",
+      "pcm_hash": "f83bd3949189d4eaa6cabddc9bb5c1a73f488bb75c1ff0cdd8968d6879941da8",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0018-00-create",
+      "passed": true,
+      "project_hash": "191a2b63662c111f3461b1359063e77318a593c97eaecb15749f23b979760922",
+      "pcm_hash": "9f78f84a278d0e17eb47d501b524b2033c45bcfddd86e640adbc809e1d072a39",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0018-01-transpose",
+      "passed": true,
+      "project_hash": "16ca1bd15417210d4117bbbe180a0d916987d3ab61ea8ebb90ae3690bfbea659",
+      "pcm_hash": "9e294e1710db452ab549f7ff37e0b050ef0bc8b2e1c5798d8a1f96f4fcf0617e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0018-02-trim-fades",
+      "passed": true,
+      "project_hash": "ff0561ed54da2d0ea4d827925f99eb33988f1002d5c939f190c032de211ce3a1",
+      "pcm_hash": "4ce8d0b2b9cacf5f4cc17269c5a8d8a597901e61763f22d02ec25882dcf0c75a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0018-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "619711338480747f055668c503bc103527ed71feba9ede1659cf6d28492d946d",
+      "pcm_hash": "d99da529fbf3faba58952cea41a1dec5a0fda722ec98baf3a46c730cf9551bca",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0018-04-mix",
+      "passed": true,
+      "project_hash": "89c6f60a7065a0effcef27a95e44ba3a6605e320b283ee6709600cfcf8c38748",
+      "pcm_hash": "7b943d73c421f77e7c56f2847ce515ba3d045be281e2a46ad861fe91463d5c57",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0018-05-feedback",
+      "passed": true,
+      "project_hash": "813f07e403352eac6ea041c0e17048837b62abd71f26829000891186cdc860b5",
+      "pcm_hash": "8b5a03e103257b98396db05639201af8b6c48285bc1ddebc7f41132660d7f69a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0019-00-create",
+      "passed": true,
+      "project_hash": "50a1cc5204b22f9a697a876f668a5105298a9174ef7a6f99f5ff65eb5cbb4c56",
+      "pcm_hash": "42349f31d75d1e804ab1addcc9c0bd854b8a194839e6e232f70824b5ee0b3d8e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0019-01-transpose",
+      "passed": true,
+      "project_hash": "90b8c974e9fa83f2ea992e8b5b68ff544eda7f75b9cb82b40fab21a45fd2df15",
+      "pcm_hash": "18e8144bc8135ecc9f46a37233d498719257dab057897fbfd00974896f5615e9",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0019-02-trim-fades",
+      "passed": true,
+      "project_hash": "ac7983f7782bc76b57f557331f81be6e1e72b00040edd0a844eb6c36c4014be0",
+      "pcm_hash": "cced8782c2a458f59fe93582057d9c0631255c3a46f5c5f452f26b508fb032c3",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0019-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "46c69d42c81d7e7b8208bb8de5c9c52b5e24eddef3e21f2919d21f34c2a1195c",
+      "pcm_hash": "f09b6dacd04d3ace4bc5909268364ca9cae1641c6911c232eeae764e1ec6aac2",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0019-04-mix",
+      "passed": true,
+      "project_hash": "b82ab6624edaa82e96460bcb8430376bb7e1d64e697bd1977784a522492d8c56",
+      "pcm_hash": "ed85ebe0892f692414d5943f19e11e188f5c4523ebb9f2b78ece698eacf086d7",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0019-05-feedback",
+      "passed": true,
+      "project_hash": "4fe0e41eb6e7597242e173a17532f2cdde10bd7e5f65352b27780f133677a274",
+      "pcm_hash": "21dff87df35849212ba539eef806f8e9ab72a1b2a5c42f3c7e875b8a8e929c1d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0020-00-create",
+      "passed": true,
+      "project_hash": "6aa209549951c54577ceed4e6a5f74ec4d2a5d0b2c77c8496cb9da95ac76af2b",
+      "pcm_hash": "7616553166e9ed83a64827fed75108831a354c51e0cdf8b086b7aa9bb84004d6",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0020-01-transpose",
+      "passed": true,
+      "project_hash": "bf044e9fc4deeb7c3b8f41df401a018a67923609f85c404f9dfb2c9d5c2d456c",
+      "pcm_hash": "0670bd450bd94b1abc23c715aa8beeff1deb919f5d7199b2525ad796ca687569",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0020-02-trim-fades",
+      "passed": true,
+      "project_hash": "6e7ed3f279494e5829d3b314dbc1eeabcfa73e264715a5e41b173736132e809f",
+      "pcm_hash": "ceb0cc959876cf93ae06dde1f833110118f1b971ed770525472476d39e834868",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0020-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "b353c7d499a447342bc999eeedfcf3fbc96aa2da7f5544aadc4fe6e51549764a",
+      "pcm_hash": "0874e0fc1ded5839757e751fa062df2b55a983e4175ab867c8a578fbbbc8112d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0020-04-mix",
+      "passed": true,
+      "project_hash": "82d8751c70ec64c036523dfe367c461e693bb5b69fa5b358f0c7fc24482f3366",
+      "pcm_hash": "f4d320993f074340255254dee3311a57d229b2cc800b427bfe9dcf18e83dfab1",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0020-05-feedback",
+      "passed": true,
+      "project_hash": "043d124ef884c72c0d675e50091a829e9536db486e51c7a8b9f0b7e62794d351",
+      "pcm_hash": "5253fc53e50172337f5be05c9d11e950d1a63bfd5b20091a1d8aefa7830bb9c9",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0021-00-create",
+      "passed": true,
+      "project_hash": "1c8d4ead9e6c1cc59a6480b0cc820bffa0c588ea5ef46136c7de4e38bd27a30a",
+      "pcm_hash": "61bd7d88aa776e8931ceef733903f3114ed2465adf608cbb71cf9b5238cd44e2",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0021-01-transpose",
+      "passed": true,
+      "project_hash": "e65cc97e32e1d739eb77350965f59a5c2b60e6fed85486e659fed3db16efd6c5",
+      "pcm_hash": "cb4963ded615a62809317c83580e2b290f75216ae7ef2a56a5d75d017104695e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0021-02-trim-fades",
+      "passed": true,
+      "project_hash": "4116faf3e6758533462d57a4a9a4ee9d0bdaefc98dc36d7a11a498ed21055d42",
+      "pcm_hash": "752672721bddb1311267e61c6976da1b10acfdc477bbed96708c18d8ccf39f98",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0021-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "f391dca0eab78a319da2a095eb48f741765ece9c707701db487d67a3d0324162",
+      "pcm_hash": "9bb6ef32f3684115c778eb3e17e55dc80e753523d7bfa23548b7275b98c87e62",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0021-04-mix",
+      "passed": true,
+      "project_hash": "044aaf06847f844b3a57ccc13030d97ad56e610bfc39c3ab014803c2e04d139b",
+      "pcm_hash": "2ddd74610b63c619e17e38a99e17b297a1d84727fa5a53b689a497d4bfaaa439",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0021-05-feedback",
+      "passed": true,
+      "project_hash": "5f53227994162ff0b30d15525a2fb3f7869d3e2b6c76f7bfa1dd7453e51ac687",
+      "pcm_hash": "a6465af7c903b09454cf3a4838f904587cefc96d6d48dbdb72b28ad1a1ff751e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0022-00-create",
+      "passed": true,
+      "project_hash": "a513e068a3f2b3a865e5d434a73371fd10123b8f8be7914fbad5fb6cd1ccf80d",
+      "pcm_hash": "47db3ad208cb7d59464e5c1b4837cf2e1c089259fc1ddeeff6c5e5202bc6f770",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0022-01-transpose",
+      "passed": true,
+      "project_hash": "e1e0d78a6b0e6930d7852b7a053fc1f3a23e0e4a9e51a057f975baf3421af1df",
+      "pcm_hash": "d0964cc6448a2fba4f2e567216c496d18f13fdb60473e744b356e0daefb1917b",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0022-02-trim-fades",
+      "passed": true,
+      "project_hash": "49fc834801f1cac45c03a3e90c801c8f472e370e671b35a5b72b0dadf7ad4093",
+      "pcm_hash": "f854d2f223f2ec816ab7c57f048b808308da9a9213da140f00d035a2a4da7f5f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0022-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "a7af071ffd130e120b51b374f9d4f40266f6193eed49baccb75bf746feb344ec",
+      "pcm_hash": "fe9e84023cdb8a8a7d8ab5f5a59bf6245ba7425efd0a2b2a9bb9572240b066e6",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0022-04-mix",
+      "passed": true,
+      "project_hash": "ba2e088cc4599bd7a5b9f5197776a0cfc37ff1f696990f838aef1b8c89ba2164",
+      "pcm_hash": "37b73d5e66625a0157734435506e9bd7b3f7b65f599af5aca824bbd207909584",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0022-05-feedback",
+      "passed": true,
+      "project_hash": "8a593c7a20654b899546e8d899a8b73b207bd48aa3f94fe59b8cacf40781419b",
+      "pcm_hash": "da5a6fb80c9679c720c6b89424abf944388db9b9a44c88dbb70cf3445bb0bc5b",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0023-00-create",
+      "passed": true,
+      "project_hash": "4fa809340d051751ee2d3e6224b8e8969dd7afb6913092204cebfa93f2e2b114",
+      "pcm_hash": "79255d3c4556db0b3ac6d19d7e088dd29d6c471dda84d43e1de29429e9ce2f0c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0023-01-transpose",
+      "passed": true,
+      "project_hash": "3f285cb239c4d208c569272ca0d017397e84041b3704ee821bb4b5f0a1144880",
+      "pcm_hash": "37917ba6260c8912998bfc3109cf2bcf07ac12972f2b6bd111d195277c2f74ca",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0023-02-trim-fades",
+      "passed": true,
+      "project_hash": "dc42ea87ae5d4ffab2113e3d7753e2af7682d0d9ea5024066cdc9d9b6e233c33",
+      "pcm_hash": "1e94584f7b0a0d142dfcd35fb87c69f94480649e5a9cb5da51e4b75931e14fff",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0023-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "f6d7f6ec06032b05bfee5304e1ba28003ee0eb52884a4ceb50025d3484449d04",
+      "pcm_hash": "b8f520156665b0c250fcb5a7fe43f92eb4e192faf87b3a12567939be2f7bf506",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0023-04-mix",
+      "passed": true,
+      "project_hash": "6eb1fbe8aae8cda2b33cf4a713103eb0daba6c7ab073cd90e84e94d3f3f44c1c",
+      "pcm_hash": "ad336098f929b99685f80b42544370e105d46751b11b40318c65e9c13735f098",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0023-05-feedback",
+      "passed": true,
+      "project_hash": "01aa850c378604153d5e4545319e29c8b0eadf5fe7bb9aa5e03cdb28071d61df",
+      "pcm_hash": "113a793e6d3bfa260c9427a947e88bd63b6128163081b60dcf4869bddb0e7697",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0024-00-create",
+      "passed": true,
+      "project_hash": "ce6eee61642d29d0062e0eaf532057a3440da75f4cf1b888fc3864160d7529e3",
+      "pcm_hash": "ebc33c098f823a76fc014330b7f31512f1207f01ab705631b7b136c9d717ffd6",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0024-01-transpose",
+      "passed": true,
+      "project_hash": "9cb845aa7f2156463c124f25b0ba9844a7e1df202a67b48de1e2e725273dd53b",
+      "pcm_hash": "c2c39c12e97f03f51646d31935a875b2a607b5b578f4107a369a4ab2d9108345",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0024-02-trim-fades",
+      "passed": true,
+      "project_hash": "613b729f5d12824ac4b44656ad4451f436c70ee97006a8d26c2c7fb3b90e0ad3",
+      "pcm_hash": "af2af016765bd5abae390a00ce0c455ab31dde7cde61374c6dd40515dddcda4e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0024-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "11ac6410504e2f2c225b2b23f2917b0a07848280dee0f08290d29546e05fd8b8",
+      "pcm_hash": "409eb1cb6ee985164d2116d5d8f94e243630d973217fdd9308fcccf5a9a621a6",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0024-04-mix",
+      "passed": true,
+      "project_hash": "4245f1e19e2821285862f556975b7fc974c29a05f738f57c593023c68e2dd5d7",
+      "pcm_hash": "7ab7a566bd7b8318d08549230cc552750e5e95bfa34f727c6cbc50cde17a5a16",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0024-05-feedback",
+      "passed": true,
+      "project_hash": "c7ac3a0521074fae9a90ad325cf96877495634d03e8b37703143e92bdb27a6a2",
+      "pcm_hash": "651e51c60d7d33003f5e16d3a4ec7d631958f04d100baeab10ed62c9d69db95c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0025-00-create",
+      "passed": true,
+      "project_hash": "7cbb05784a566d4e223a2a1586afc409e6217a70ed3f9b0ccd8eba5750b6be35",
+      "pcm_hash": "e3390b4f5f65d34167c43967274c88a114f9f1359b18c218ac51e12ca65071d4",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0025-01-transpose",
+      "passed": true,
+      "project_hash": "39944c93f7c3e8cb61d6d24bb49cc34000f12bd0c93a5fc25e47936a5b2fc533",
+      "pcm_hash": "450487b1c0260c2a436c1846c6d656ffb098d0115afa4b06fcf4245c260507f0",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0025-02-trim-fades",
+      "passed": true,
+      "project_hash": "aa76cfd051a31570c6e037e66c76f344a173aa5f38cec944c70d53dcbd6f5adf",
+      "pcm_hash": "88ae50fbd8de20327834881bee900fe06009e8881303fa66232f67fcf5855bfb",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0025-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "9d2476e2f33b0c88749541331bdf8f0c29ce8487ecdd738ea492d89712a44cba",
+      "pcm_hash": "49a9d0e2e2dd84428bafa61846f4b7c1ff9ab043041fe10498db4daa65a2d9ca",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0025-04-mix",
+      "passed": true,
+      "project_hash": "ace885f71003c9b1c53eea82fd6d966821860804200537f58cdda8f250393ba1",
+      "pcm_hash": "eb75da9f3846eea3e4cf511666c870011736688b382c3585dff961ce5c5cbc70",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0025-05-feedback",
+      "passed": true,
+      "project_hash": "4023b7bce08cfa86187c750720fe5da376b76c2bcf043d6e65585e89c7fec58a",
+      "pcm_hash": "8a86f55fe2310ecafd6bbff04f08689595954ac105a0a64a805b8963a3e8e847",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0026-00-create",
+      "passed": true,
+      "project_hash": "8b63b6b1c4db2950b4fc22c60a9c5ce0760e8df4851b3396e9dd58ca381a6a58",
+      "pcm_hash": "5c3f5353f8841674642be6c613322ed4a8b16bfcae6882bc81fc7478d1b48592",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0026-01-transpose",
+      "passed": true,
+      "project_hash": "e78c27c5e471618b8498a47f38128ca7188f3d6c3294ac284b90b116862c4285",
+      "pcm_hash": "43a244f90dc77da04b6c9a6db9ef2561ff172be79c6ee17c7834f5444e66255a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0026-02-trim-fades",
+      "passed": true,
+      "project_hash": "8e70d6dd5bd28403bb823e871275f229df46a310c3cb461679bb2ea105273c7a",
+      "pcm_hash": "2a435451319f6496bdbb28d949dab81d621c247816993e3e8a688257b3249101",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0026-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "773f057ad105396a63e56e2957605b7e4c1229cc0f7854dacf3ff5c4f9672add",
+      "pcm_hash": "85cc8855f24e402aa5527ead047b87c6c6e100e92d656c8d2233b6ad91b961a5",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0026-04-mix",
+      "passed": true,
+      "project_hash": "915861442675f07264134b3fee79f72e1a6d54dcf22cdbcadb48f19f191e3de9",
+      "pcm_hash": "275579fadd3af9c5967fae0193c1b3963665ec194cd2461d056ab6843c877a04",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0026-05-feedback",
+      "passed": true,
+      "project_hash": "3f420281b0c70ab2256ae35e8bfc8c147f291e2cf91036600f5bcff2c56bd90d",
+      "pcm_hash": "d72e97d9fb569b37f5a5404a7eb8b5689be0554534d426426fc8bf8d0b25aabb",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0027-00-create",
+      "passed": true,
+      "project_hash": "016e216df9d32110fabd374ec29b29e549d6ae7a80ee6fb4a08817ace53cd0ce",
+      "pcm_hash": "6ee44951f2a01fcbb84b6a46d7b119a269c6baeccc1a1fac8bf065fbc81c03ee",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0027-01-transpose",
+      "passed": true,
+      "project_hash": "a6ceac3937f2fcc66568c64d5061bc8f0635e241d15b1d96bb20d439be91f4f9",
+      "pcm_hash": "0368115347efeb3e532d7e7276ad3b4a386aad7381845b8217dcfc600b3e9c40",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0027-02-trim-fades",
+      "passed": true,
+      "project_hash": "c9c0ab0a1c651556f13126ac0b195d21b0c01f2e9b1ed91a7b5841622e1e0f4d",
+      "pcm_hash": "17676074ce9f47ef277e424941d3684632f63e63d5cadb8dc7fe7589849e02d5",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0027-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "e2592a7cdcb32661154533dc825d2bcafd726bb181a8e6b8a91eb12575dea444",
+      "pcm_hash": "335acf0c6bdbfc675bc69b36b3f15e156786cd002da0651f0a913068e2f49603",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0027-04-mix",
+      "passed": true,
+      "project_hash": "bf8bb283ddc0781ba749fd888d86ffcb5896ed96597b86832de083edfb691c2c",
+      "pcm_hash": "254c27b088668951f565e5ef3005832b06a3be2174938da17cf860285ef7bd71",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0027-05-feedback",
+      "passed": true,
+      "project_hash": "218dc8efc17ca4c012e6830847e39382eaf8642b2c17697902bad6bdbbf91450",
+      "pcm_hash": "709f41bb3a606f481a277bbfe17b2b0bdfcd95fd38715c241fc9ef074c484d42",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0028-00-create",
+      "passed": true,
+      "project_hash": "3aab1208fac6aba1380e7108b20868824b727368185c32f35128008d3bddc0ec",
+      "pcm_hash": "76ced6c3dd13ce1221f66ef4f2c6853dba850054c02c51aec295a0a53833aaca",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0028-01-transpose",
+      "passed": true,
+      "project_hash": "adcfeef734533a0288dda0b8bccc4099078b2cb1067a7868b3fd5ee826d3373e",
+      "pcm_hash": "adc0c2046091431df12968d9633cc7d7764155a379f6bc27b54615e5ce03becf",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0028-02-trim-fades",
+      "passed": true,
+      "project_hash": "0a3b1100052f205a4288314d919168ce0450ae415aaf35b1b876eeec073335c0",
+      "pcm_hash": "99863c15605c3cc6c9d0a86eebd460d0b7d7acf534fc4d61306a7c03ad839744",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0028-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "6be9b739b221d76d83d1218ecaebd0771e8e55affe0d7a88d94d9c4b6506084c",
+      "pcm_hash": "b106c071270a0e55d1c3e370e15a2d55483b2194f2d094cc60de2bfcf7a31a6b",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0028-04-mix",
+      "passed": true,
+      "project_hash": "7acbf69b94782b0b447b90dde94883e5e8fe1b7f8437049b5f26692162f104e3",
+      "pcm_hash": "e0724896a692c56092a2fbc18657bf17178ab7783f6b4a8378c78ceda09c8323",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0028-05-feedback",
+      "passed": true,
+      "project_hash": "a4652824f3850dc92652b4cfac8c073f34a7fb0d13254084d158274bebe9f360",
+      "pcm_hash": "972c94c461dad5fbf8cd39280d84f1c24383e8f6b4c9e33cef49be39f480ed5a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0029-00-create",
+      "passed": true,
+      "project_hash": "62f4a3381fef0e0389b0cb8229e05819ce5500d8fe45b43a0e74a173e1ff774c",
+      "pcm_hash": "05ea775795d0c90b1bfd0f4d11c44951ac71fce61c3ba273658521052ba41743",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0029-01-transpose",
+      "passed": true,
+      "project_hash": "0e870794081f8d1f7df61eae9d8f04991df6902934e28be21aebfccc8348b2b3",
+      "pcm_hash": "a74cd519b88bebec899c182c065b09bb7bce2c4088261622a8fc04397165f076",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0029-02-trim-fades",
+      "passed": true,
+      "project_hash": "60fb9c35f327bd20f65f6f921f83a953817635bce11778a05095df622f6e65ba",
+      "pcm_hash": "1bd43d693d6ea2287eb969de91d3d794379d1bc801e2106208b1d42f37d6fdbb",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0029-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "9f0f68eea5eff1495ee0402fbbae20d03b7bf27d39b769ab8d338cc6ea995d56",
+      "pcm_hash": "99a48dedb660dc8d06abe331a363625ff3974ab25f08e9de1f725e38bdc08425",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0029-04-mix",
+      "passed": true,
+      "project_hash": "1666d7d8b5516e03bf2febfc5221f6d9a937d6798cff29eb6ce36203473dbffc",
+      "pcm_hash": "619d970284a35a687af40c16ec94b01895c9e8f0953ffdac3a920f4bff56c191",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0029-05-feedback",
+      "passed": true,
+      "project_hash": "daf57e81cc46cd5241c1b1c03821816c2532db77f2807576192df46741a5a4ea",
+      "pcm_hash": "47f7b6b2930235141f72baaa3581e361b7e7c4d611a2e8782f04fcc865ffefae",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0030-00-create",
+      "passed": true,
+      "project_hash": "4e7e5cc49db4878f864e7d3e1865e3151492eac34502c874a7cbc241a3fcc1e8",
+      "pcm_hash": "9d3f915c6d272adb1b651e986f3d35799eb1179703d2d6564efa0bef5fd68982",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0030-01-transpose",
+      "passed": true,
+      "project_hash": "927171b2f8f27b2a6ba644849c440fac355087b9f3452fb87ea55a6fe90556d1",
+      "pcm_hash": "07002368f44057b79b8896fc236a763af3143f96292fe7f0a9a90eec038904d2",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0030-02-trim-fades",
+      "passed": true,
+      "project_hash": "3c9c9ddd9b8127374f5a88a1a1d893c3a675a070d209e789e46f033ef51a9740",
+      "pcm_hash": "18f36d9c800d15aa7ab3077983a79c49d1f4da5f8a383cff141a2eb2420ad2e1",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0030-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "34bfd889078a25144441c80ade1e04922909a1492a82a21f4af8ebe2a73c47c3",
+      "pcm_hash": "5650ba6ec10e72249dda3b72e7f5248b666f35eb56e1de6a7c0474ce40499c9c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0030-04-mix",
+      "passed": true,
+      "project_hash": "b337c3f95d147d20e9d4e2a1b18dec563d385686d4dcdc351c44c2ed1754ee94",
+      "pcm_hash": "e3fc2ea69c3e6c292b001665ea9afa3ddf754e001be46cbf9aefe13cdbbed3f6",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0030-05-feedback",
+      "passed": true,
+      "project_hash": "7ee540d41741eb26d0c7aa54e77f6ec51f990be699d847546819b608901f2ee1",
+      "pcm_hash": "f62c18c5b7fc8352a5ceffc9300cf96a7d8ecfd31e4fbc7b031357a9a2c9fc91",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0031-00-create",
+      "passed": true,
+      "project_hash": "7120ba949caf2e11edef12832d79e0d4f394fbf4052813d9c1dc50abc3cd96e9",
+      "pcm_hash": "e652228e74ba4d4529430409f14fb9ef570fa76446c65651a487827a6123f7a7",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0031-01-transpose",
+      "passed": true,
+      "project_hash": "abdae55bea29317a4802896eb7047250867831f59e9921cd2ce1b15ca4c96cd1",
+      "pcm_hash": "a66a0662f6d7b3ce89ca71213152eb16d5b31d138518ea45f32af95d212f23c3",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0031-02-trim-fades",
+      "passed": true,
+      "project_hash": "796b4fa5e938c9802998d7150153248f5d5bac6b04dc90407193888e0216937a",
+      "pcm_hash": "46147abb83d16067bfa03d9678dcc0acfcd1580bb0eeddf23d2af4fffd3dc487",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0031-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "bd362b631a32255d43058a4a77d5a5c612d616eb6ce368a32495d8c2e629302b",
+      "pcm_hash": "34d858da4adf31e7f04392423219b8d5195773faa2a0bc40d40d474026da9cb1",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0031-04-mix",
+      "passed": true,
+      "project_hash": "f705b3f67370280744bf6a5493061f8fd37a5a158521815d1d5125295be7cc0b",
+      "pcm_hash": "4229d9f8ec3eb703f12f68fe4f26ae3995db3b8576aad4ebcb1ae8a97ae73bbf",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0031-05-feedback",
+      "passed": true,
+      "project_hash": "331327180cdf4f8dafaa32459eb168806823d306120f2da0fd21d98c08c1717f",
+      "pcm_hash": "a1bbcdc92f99d4c3fbf5ef9ff24659492b9c5747ac450cbb58c58ebe28f36eff",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0032-00-create",
+      "passed": true,
+      "project_hash": "875eadc32b6b54d84ee940a5129905593197d683956c1791846c378ee78ec461",
+      "pcm_hash": "750c1522448f1beb1151882e2592c0e5362f4ebbfe8f47d5af03e6ae4f14025f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0032-01-transpose",
+      "passed": true,
+      "project_hash": "10025fe843b0ad2c2f3661f70b34a94716b9dcd868f5311744a3575c0e122f1c",
+      "pcm_hash": "9d5b4da68d118ac2c7e1b064d210fc1d8596203823ae8b7d9b234e8ea21b8955",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0032-02-trim-fades",
+      "passed": true,
+      "project_hash": "17c3df35457d810e627af89248993e534a497c7a9a888fdf99855c1a1c83b8cf",
+      "pcm_hash": "612e9dd93ae169a37fb83fe15658b06beb1fcd73257274103274ccde130d67ac",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0032-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "349abf4fe2f1dfdc83fa8940d5d241c218b0903bbe0cfe55dd6a3701b7d275d7",
+      "pcm_hash": "c8e0874318093cb9b89ea03674d702efff8473e9fe27dab86a6d7fc6621b1d10",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0032-04-mix",
+      "passed": true,
+      "project_hash": "9a624851d61f75b5145944e8899a3d3b729b8505df3cda454a4c382eab8a0a97",
+      "pcm_hash": "9f306db0375b1e7062b2373104f40618ddf91433e3def7da4d5db574f7f4dcb8",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0032-05-feedback",
+      "passed": true,
+      "project_hash": "1bda229b9986f373d85eb56ad355b89115984b323b9b582a6cddff6458154c9f",
+      "pcm_hash": "3b1e576a5d4c6d7eadc516de8bd58dfa340b6d174947fcc1acc63db284abe078",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0033-00-create",
+      "passed": true,
+      "project_hash": "d5a47821cef6c5ec3dd902a8768cae5486ef66f6eeb4e5084a7f8a19a180fa2b",
+      "pcm_hash": "49718b75664aa877cb9d83c2231231920cf30ddf6095ed53a6705d6119933681",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0033-01-transpose",
+      "passed": true,
+      "project_hash": "624c39295fc62ac03512a4fe59359653828e0e5853950d4938d11a6287907efb",
+      "pcm_hash": "4b1c25f86bd87e4231f2a164160323f7403975941c5fb0a20a5eefa49138c38b",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0033-02-trim-fades",
+      "passed": true,
+      "project_hash": "6dcf0794bbc9ee57cf32944a487a62b690de187ba0dad5faad78a8905bd45e7e",
+      "pcm_hash": "3c3c57d152ceba626303f9489eb920fe59bff974686d67a3a663ac90f24a8bad",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0033-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "66851fe7ae95dd949b84ce8d1d639130a62e09d3244cdf39a4c71a237131c437",
+      "pcm_hash": "a0abfd003fd7e9db1aa03077e017d497f5b79c0a06aa70a7a52a4c64845e6b48",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0033-04-mix",
+      "passed": true,
+      "project_hash": "51744ff9fb036878c615ebbffd1d2e883c59a5e2c4e1744c5e86e18da0e3ccc6",
+      "pcm_hash": "f6263072eb616bee0dc4fb299c027d5c359745d2eac4015db5e124f1c7916a48",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0033-05-feedback",
+      "passed": true,
+      "project_hash": "a1eb52e1edc7f068db75940026f85b0ea71d7bf42ce0129d2046cd5ba006f053",
+      "pcm_hash": "9eaa81dad7d350285a66541c1ceea812046d2fc8ae90fe93ef7fceb0d946a5f0",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0034-00-create",
+      "passed": true,
+      "project_hash": "6bbae38603683f4c26762830191beccae87288fa2bceee276adea7a06688607c",
+      "pcm_hash": "520208a2fd4137fd001a0b6c3810efb68bd5a6a9ec2a8d956cc71b60147064e4",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0034-01-transpose",
+      "passed": true,
+      "project_hash": "c60eb142611bcec635998bc6f603e79d98cdbb80084ee3a68f9b1fe845f7e68d",
+      "pcm_hash": "8f30bc7becff6fd090f8491d5218185017fa586f1dc83303854e377f4fb235af",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0034-02-trim-fades",
+      "passed": true,
+      "project_hash": "d2faa0bf29e664312e4fc6a914f028b45c4392e6364da24dac9049aa8238e3f3",
+      "pcm_hash": "ad8c37714b9a63614af056e54ddf381b4333e1d3c43ac80ff45e27d533a81c17",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0034-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "ba25569b9296523e161dc6fd0674442ba92ed61b4179b6023b855c8bb0370cc8",
+      "pcm_hash": "c9a3012447cc02e3d6d813c993ebcbca5a1ff8cc055424830b0b805262bdbc79",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0034-04-mix",
+      "passed": true,
+      "project_hash": "a108b31e1921eafbaa161ea03cec4cf89611c50d8591042bbfa38ad3892a5976",
+      "pcm_hash": "1acf0678fe1587625f9c90d94603b66c00dd092c0571ac7d9a326f2583b5edf8",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0034-05-feedback",
+      "passed": true,
+      "project_hash": "de4c5aeaeaca3cfa44b801796dd19d0bc7c2e1d4214148e88a085dcaa9badbf4",
+      "pcm_hash": "66e78b1ceff3d824d91f251b20d9f50e8aaf2ff2533ca6942d2bad9bc510b808",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0035-00-create",
+      "passed": true,
+      "project_hash": "c7fe29de5f95c60656e2519c8ed9f7e4b0ca5976810c5f5bf0df315ca33c5907",
+      "pcm_hash": "54b33234b655bb3824cf8b6f466f661e77029dd6d1cba6558bc1c73a2cc0144d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0035-01-transpose",
+      "passed": true,
+      "project_hash": "2140d69956377d31c95677abc0cefcb7c4af2fc886c624df45179010bd6998d8",
+      "pcm_hash": "60137eaf76e98c4e942f6419d12c90ec6eda1f3a8ae5f6a034e2308c5a50ab74",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0035-02-trim-fades",
+      "passed": true,
+      "project_hash": "ca14ae5f635df8b8432cd50b9b6c4b3f14a0ac5dfc5053445e81ed30f0eb809e",
+      "pcm_hash": "218fd71e61296d1f2f5172c033e04d18540df7032f347f032429c19cdeed5054",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0035-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "e3a4d5985e67d4edd58edb43dee8df70ef87deaeb9da10f5e6551b0f2234649c",
+      "pcm_hash": "f56b2cd093aae816a277250ff20313ff1decea7dc74c31cc8e279d3d43c06d96",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0035-04-mix",
+      "passed": true,
+      "project_hash": "9ba2347f7e90172f7bd902e159f0d52a9cfd0b6305fb904e721411ecc980984f",
+      "pcm_hash": "a56a3c89dbc113c059040dc1527fbb0d35fb47de54dfa56d1812e772f09b873d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0035-05-feedback",
+      "passed": true,
+      "project_hash": "e64d3f3c1033fc1aa75864de41548a803a21c1f0ac4a9d564797585b4957259c",
+      "pcm_hash": "8e2877d1ef26b6d071dadbc330384eded621125ccd5750129781936ec4d90dcc",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0036-00-create",
+      "passed": true,
+      "project_hash": "13df22fa960a5e345b9f0541ad201617ef77e600153b6c07d1c04071f1f7e6b0",
+      "pcm_hash": "7fe443a999cbedcf1ece3dc8f7edb3e4a700a2ba850315416c4685e2482e609c",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0036-01-transpose",
+      "passed": true,
+      "project_hash": "207039336930554589cc69cb6ac64773c81b7ab94d2872d29217d565946c7d7c",
+      "pcm_hash": "79ba484d6f6b475508dc3bcdb190bea24f6e1739714911db66e5614adf7e7bc8",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0036-02-trim-fades",
+      "passed": true,
+      "project_hash": "1704465f5f1ecfa28060de5aaf1eadc9fc6cb29662bda6c14338a5c9e4bc4c7c",
+      "pcm_hash": "f2ce6543f1cdc19406c02a0bb555300cb6896a8387db7492042935c7607d299e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0036-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "9ab386b7376be07c5650f487df840370cc657737df28230906253777d181abaa",
+      "pcm_hash": "5f009a5b9efe59f4cf48e04966ee11d4a57e872c751b64e2dea20307c9639a17",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0036-04-mix",
+      "passed": true,
+      "project_hash": "173851203afc8ceb7448206c8034c932ce0b0390c08ae8e9bef9b640fde77c4d",
+      "pcm_hash": "090a84e83d6c3fac7adb11d2d6ee9ca92ecc1344159f2a5494bb70bc93f7acb1",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0036-05-feedback",
+      "passed": true,
+      "project_hash": "bb99ccae842a8200caea6297f8b46ab75d6c49f8f77c9c55dd3e292fc612a5f2",
+      "pcm_hash": "98e2adeacb251299b85d8ff94283b93c39c6058ac32ce9b82627a588fc83c74f",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0037-00-create",
+      "passed": true,
+      "project_hash": "39b05a7ca1877c71aa231314bb2f72c221a76124983f39c94e9c462cb5d869d8",
+      "pcm_hash": "4354321ba16b920df0efd9ac030a59f80498a9f010bc608b7f1468d4989e3c82",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0037-01-transpose",
+      "passed": true,
+      "project_hash": "141eca01cbe8933523a504d19b77c148929a6c68bce5fbb5cace4c7ec3d5eef2",
+      "pcm_hash": "8ea52b6ee6babfa27203ecbd80f0438d58e7787fa49a1fd0416a39e586e3df71",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0037-02-trim-fades",
+      "passed": true,
+      "project_hash": "39d497f6d1a016c24a622eef8e09d7c771c0c02b96da71f71d18d32f9225c53a",
+      "pcm_hash": "99e5815c565cf5c99befcdbb41e7c8b2868ecdac857051ecfc9a8ad62cea0098",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0037-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "fb1fb2a279d07c9bc52f28dbcc785249ff76ad9ced81ecb39cdcbabc9843d22a",
+      "pcm_hash": "e3bf7bb9f65aa15f464c72b2e994b0a2c6cab7b5fb27e656bec0d97b49ef9146",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0037-04-mix",
+      "passed": true,
+      "project_hash": "7c61e4abf8dd227b34326494abdf0ca06237387da99f4fb30074e8d18ed92fbf",
+      "pcm_hash": "a02d22cd39a53394843f17ce96e40274964dd767cd0af532fd91270c5a250fe1",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0037-05-feedback",
+      "passed": true,
+      "project_hash": "66215a100b0ae9b8a28e577b1939725a78909dfdc994a5417375f40ea472fb11",
+      "pcm_hash": "297c20b19e068feed71db8b09a26a7f7609b76cd689ea7adc6ee55b69ea72943",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0038-00-create",
+      "passed": true,
+      "project_hash": "941ee06766cf0240b74faf1dfcedf298495595f730bcad781f1c092ac02b0c04",
+      "pcm_hash": "df2a4c5944f4c750c520e938101a49b2322d863f2122c98c0fabc00f678b3f91",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0038-01-transpose",
+      "passed": true,
+      "project_hash": "1b05fcb5a3a063caa493521ef60ed79001af8416c91eb9b597ea1d37ac5492c8",
+      "pcm_hash": "ae61eee3ad3abdb364cba68cb893c8ece489705aecb28cae89b5d84f4daa17d1",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0038-02-trim-fades",
+      "passed": true,
+      "project_hash": "2351322c948fd55e04a0c23dde396933238b5166b3ecae6e8808aa996c568014",
+      "pcm_hash": "d34464196e933fc966a61fc9ccd9eaad963095fa85cb540c1f29736b67acf05d",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0038-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "09bce8598165d1677144ac8529910430808de2635817fe98f7ce68c8b1fef6cb",
+      "pcm_hash": "1a20963a8d64936b60720573ab810e26a462fb6e208f338f3bed0f707d700e10",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0038-04-mix",
+      "passed": true,
+      "project_hash": "16327905643825b887c8b1d32df11df2c1e59f8707086466d8fed1f902f27c10",
+      "pcm_hash": "a04c89d5519fbaf71bdaf4529fffdf76e02096ffd2b2710a3e09aea853dfd73a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0038-05-feedback",
+      "passed": true,
+      "project_hash": "57fa97ccfd04fc8a69350ec9a1d6e6045dd1d049ac0e3e8d133f01cb4c773315",
+      "pcm_hash": "4f15c6dbbaaeb4369e21cf09b638d37cf402f06d10f49644061ac21e178c2177",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    },
+    {
+      "id": "chain-0039-00-create",
+      "passed": true,
+      "project_hash": "6af08d2aada3b6f459717e503eb01b32da3d300caec21ebf5d6a71c14e8902bf",
+      "pcm_hash": "f5c7130d4ad3e5e5e4de55154679782cdad49a5a3b0047ed6a2080183c06384e",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0039-01-transpose",
+      "passed": true,
+      "project_hash": "a386a31aceb2e5d87f9b8d8bd39dd43bf52cd8dc4cfec3a0c5209f5a99873dac",
+      "pcm_hash": "7f610b138187ca48385acdbcbbfb997e7bf57288d7ef02c2131b530f4d5a80be",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0039-02-trim-fades",
+      "passed": true,
+      "project_hash": "7ec8994c2ec1f921d2a1061e05a24c1a94544cca63c5fd61d1d00d432ad6063c",
+      "pcm_hash": "0c6825a6d85eb688dfd7aa61b5d9683320ef5532bc0056c80cfd316bea23c2c3",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0039-03-pitch-stretch",
+      "passed": true,
+      "project_hash": "77f1d4505e3dbc274d7384b317156dd8a209553e19fbd59f9d6d132894d5bf50",
+      "pcm_hash": "ffbc804a4c530062c3a5c9877d9ccce2f154863aa05ba2b91187d397d1c88494",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0039-04-mix",
+      "passed": true,
+      "project_hash": "c792958ebb4e6feda0c53e49aeb8f5d1c3929f66a3a7617bededf90f09b30ce8",
+      "pcm_hash": "a2892cef3b0e1c87b1fb9c5f4e6604cc6328b970c6fdf273ed8c926e71ea8652",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true
+    },
+    {
+      "id": "chain-0039-05-feedback",
+      "passed": true,
+      "project_hash": "74197e937f669ea66797b9e9f72ba442a274f220265936d388bca8a2c37f1038",
+      "pcm_hash": "1aabbfd46262343f3078a98ca3aac2f895a8dd29e3da949830179147b85a843a",
+      "native_ids_preserved": true,
+      "negative_controls_rejected": true,
+      "relocated_restart": {
+        "readback": true,
+        "native_ids": true,
+        "pcm_equal": true
+      }
+    }
+  ],
+  "archive": {
+    "file": "reaper-chains-v1.zip",
+    "sha256": "ba29c3dff221982dc91e763ade31dcc6d8fe46124b8739df3aa0cb793a4b3ba6",
+    "bytes": 124696891
+  },
+  "native_states": 280,
+  "rendered_states": 240,
+  "archive_file_checksums_verified": 1894,
+  "native_eval_controls": [
+    {
+      "task": "chain-0000-00-create",
+      "control": "reference",
+      "passed": true,
+      "expected": true,
+      "ok": true
+    },
+    {
+      "task": "chain-0000-01-transpose",
+      "control": "reference",
+      "passed": true,
+      "expected": true,
+      "ok": true
+    },
+    {
+      "task": "chain-0000-02-trim-fades",
+      "control": "reference",
+      "passed": true,
+      "expected": true,
+      "ok": true
+    },
+    {
+      "task": "chain-0000-05-feedback",
+      "control": "reference",
+      "passed": true,
+      "expected": true,
+      "ok": true
+    },
+    {
+      "task": "chain-0000-01-transpose",
+      "control": "noop",
+      "passed": false,
+      "expected": false,
+      "ok": true
+    },
+    {
+      "task": "chain-0000-02-trim-fades",
+      "control": "wrong",
+      "passed": false,
+      "expected": false,
+      "ok": true
+    }
+  ],
+  "unit_tests": {
+    "tests": 111,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 22
+  },
+  "native_fade_test": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "catalog_links_verified": 1640,
+  "stages": {
+    "create": 40,
+    "transpose": 40,
+    "trim-fades": 40,
+    "pitch-stretch": 40,
+    "mix": 40,
+    "feedback": 40
+  },
+  "artifact_directory": "artifacts/reaper-corpus-v1-full"
+}

@@ -336,7 +336,7 @@ class ReaperBackend:
                         if note["start"] < 0 or note["duration"] <= 0 or note["start"] + note["duration"] > clip["length"]:
                             raise BackendError("note must fit inside its clip")
                 else:
-                    keys(clip, "id kind asset_id timeline_start_beats source_start source_end pitch_semitones stretch_ratio reversed")
+                    keys(clip, "id kind asset_id timeline_start_beats source_start source_end pitch_semitones stretch_ratio reversed fade_in_seconds fade_out_seconds")
                     if clip.get("reversed"):
                         raise BackendError("native sample reversal is not yet supported")
                     asset = next((a for a in project.assets if a["id"] == clip.get("asset_id")), None)
@@ -346,6 +346,10 @@ class ReaperBackend:
                         raise BackendError("unsupported audio stretch ratio")
                     if not -48 <= clip.get("pitch_semitones", 0) <= 48 or clip.get("timeline_start_beats", 0) < 0:
                         raise BackendError("invalid sample pitch or timeline start")
+                    duration = (clip["source_end"] - clip["source_start"]) * clip.get("stretch_ratio", 1)
+                    if any(not math.isfinite(clip.get(k, 0)) or not 0 <= clip.get(k, 0) <= duration
+                           for k in ("fade_in_seconds", "fade_out_seconds")):
+                        raise BackendError("fade lengths must fit inside the audio item")
         graph = {t["id"]: [s["destination_id"] for s in t.get("sends", [])] for t in project.tracks}
         def visit(node, stack):
             if node in stack:

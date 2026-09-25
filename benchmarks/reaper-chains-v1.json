@@ -1,0 +1,1927 @@
+{
+  "corpus": "reaper-chains-v1",
+  "seed": 20260923,
+  "chains": 40,
+  "samples": [
+    {
+      "id": "chain-0000-00-create",
+      "chain_id": "chain-0000",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 90 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 59, \"start\": 0, \"duration\": 0.375, \"velocity\": 88}, {\"id\": \"n1\", \"pitch\": 62, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 80}, {\"id\": \"n2\", \"pitch\": 66, \"start\": 2, \"duration\": 0.375, \"velocity\": 91}, {\"id\": \"n3\", \"pitch\": 69, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 96}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c0447e3d32460ff0704fb0e07a84b35689785ed555d1bc6726fdd3c01fdde626"
+    },
+    {
+      "id": "chain-0000-01-transpose",
+      "chain_id": "chain-0000",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "9e768cf8d7d8a0f0ecb695e244f40f243bd8657a223d16e0e29aea6180671370"
+    },
+    {
+      "id": "chain-0000-02-trim-fades",
+      "chain_id": "chain-0000",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.6. Set linear item fades: 0.05 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "0e7bba0509812b6b6d5c16b88291a14b82dd9a28e1eaacfaf55affd4539d9cd4"
+    },
+    {
+      "id": "chain-0000-03-pitch-stretch",
+      "chain_id": "chain-0000",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "5e75347cf539cb00f3ef8821d58ef328a5d5307818be8aca77a9cd639a8aa209"
+    },
+    {
+      "id": "chain-0000-04-mix",
+      "chain_id": "chain-0000",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a8b56de4bc27a34b1f56fde31817f68a66304c1cc8603760fa95593ccf413566"
+    },
+    {
+      "id": "chain-0000-05-feedback",
+      "chain_id": "chain-0000",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "33d5ec9e70455a65b95414c127585b92769727942d6833c0b097052b76d99f5e"
+    },
+    {
+      "id": "chain-0001-00-create",
+      "chain_id": "chain-0001",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 91 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 48, \"start\": 0, \"duration\": 0.375, \"velocity\": 101}, {\"id\": \"n1\", \"pitch\": 51, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 68}, {\"id\": \"n2\", \"pitch\": 55, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 92}, {\"id\": \"n3\", \"pitch\": 58, \"start\": 3, \"duration\": 0.375, \"velocity\": 82}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "554e231a521851e88aac409dab026d4d9dc7568ce4109633b39b2be0a220aee2"
+    },
+    {
+      "id": "chain-0001-01-transpose",
+      "chain_id": "chain-0001",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 3 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "fe9c50aad44a70391dc5dd439c0d480b1c9559c63d9797f0eef7b9e672efc5d7"
+    },
+    {
+      "id": "chain-0001-02-trim-fades",
+      "chain_id": "chain-0001",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.15 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8aeca2a217d3637d13ad9c685b468c0f3bcc4661c3e8c1cae7553bc72cde0285"
+    },
+    {
+      "id": "chain-0001-03-pitch-stretch",
+      "chain_id": "chain-0001",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "b2e59cb6ed93b5ab5dcc6b18a405d50415c05047683f6b77fd9130384a9006ca"
+    },
+    {
+      "id": "chain-0001-04-mix",
+      "chain_id": "chain-0001",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a75fc0bad82beeaf0b411a4560231a46d05b8d8f1ccc4ff8a391a452e0e6e72b"
+    },
+    {
+      "id": "chain-0001-05-feedback",
+      "chain_id": "chain-0001",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "55b178b3fa5d6bc62dd15df7b5aa908c496a943b6bfcc0e7b23f15e8e720a5c5"
+    },
+    {
+      "id": "chain-0002-00-create",
+      "chain_id": "chain-0002",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 92 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 58, \"start\": 0, \"duration\": 0.375, \"velocity\": 72}, {\"id\": \"n1\", \"pitch\": 61, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 92}, {\"id\": \"n2\", \"pitch\": 65, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 101}, {\"id\": \"n3\", \"pitch\": 68, \"start\": 3, \"duration\": 0.375, \"velocity\": 104}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "ff1450c39908030d00d1ab16c68d2c8c8243b57297987ceca06c164c1841de11"
+    },
+    {
+      "id": "chain-0002-01-transpose",
+      "chain_id": "chain-0002",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "806fcd23369219c176cc5400a44d71d15b71fa0a453aef8c3360be7f26cac025"
+    },
+    {
+      "id": "chain-0002-02-trim-fades",
+      "chain_id": "chain-0002",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.1 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "bc3343e6e6ea0e9a604fdd723a0a5b58be286d386cae5c8e85cfb07c270916c1"
+    },
+    {
+      "id": "chain-0002-03-pitch-stretch",
+      "chain_id": "chain-0002",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "92ab4b5d8562359fb2a86498c399082bfcddd199d65fe050cd7d79e3ee217930"
+    },
+    {
+      "id": "chain-0002-04-mix",
+      "chain_id": "chain-0002",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "40c1968a69123d119e981d8149eed1ff59d5d4cc87c2a455effc379ccdf834aa"
+    },
+    {
+      "id": "chain-0002-05-feedback",
+      "chain_id": "chain-0002",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "73597d54d30425f975d6e4699e86fa0c08a6d25bd3915833267eb4eaa1a7192f"
+    },
+    {
+      "id": "chain-0003-00-create",
+      "chain_id": "chain-0003",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 93 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 50, \"start\": 0, \"duration\": 0.375, \"velocity\": 102}, {\"id\": \"n1\", \"pitch\": 54, \"start\": 1, \"duration\": 0.375, \"velocity\": 79}, {\"id\": \"n2\", \"pitch\": 57, \"start\": 2, \"duration\": 0.375, \"velocity\": 97}, {\"id\": \"n3\", \"pitch\": 62, \"start\": 3, \"duration\": 0.375, \"velocity\": 76}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "db084c51d7b06c3f5cce2aafad0a35576f0c9181cd80b22454fe5b61355a6794"
+    },
+    {
+      "id": "chain-0003-01-transpose",
+      "chain_id": "chain-0003",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 12 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "13251d04b8a8f4f140ba0a18862314f6a66b21323b449b79ef4f672a3d3c75e8"
+    },
+    {
+      "id": "chain-0003-02-trim-fades",
+      "chain_id": "chain-0003",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.2. Set linear item fades: 0.1 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c86637d7e41f049f934f410e441888f436fd8a3c5768df4858a5892be7facc0e"
+    },
+    {
+      "id": "chain-0003-03-pitch-stretch",
+      "chain_id": "chain-0003",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "12beaedae39f62413519b59aaa89af63a324b7a8df0aa9b1d8f39c4d611bd37d"
+    },
+    {
+      "id": "chain-0003-04-mix",
+      "chain_id": "chain-0003",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8cf67796dce4633375158d21fa4d87b6e5f2bec1eb01eeb0a5ecf7975c33efe8"
+    },
+    {
+      "id": "chain-0003-05-feedback",
+      "chain_id": "chain-0003",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "481f18cd24784df28243a3c028ff2f4040013426bb1ffbef3c109089179f8547"
+    },
+    {
+      "id": "chain-0004-00-create",
+      "chain_id": "chain-0004",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 94 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 55, \"start\": 0, \"duration\": 0.375, \"velocity\": 72}, {\"id\": \"n1\", \"pitch\": 57, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 69}, {\"id\": \"n2\", \"pitch\": 62, \"start\": 2, \"duration\": 0.375, \"velocity\": 69}, {\"id\": \"n3\", \"pitch\": 64, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 96}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "3ab7b0945caf3e75d7e1f7e060cde094b0584e74d98d35a70ea503375ad1da8c"
+    },
+    {
+      "id": "chain-0004-01-transpose",
+      "chain_id": "chain-0004",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "59ec8ed0dd15eea31ff9c63859a63274dfa0caa8de23280a226da977270bc9df"
+    },
+    {
+      "id": "chain-0004-02-trim-fades",
+      "chain_id": "chain-0004",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.6. Set linear item fades: 0.05 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f2fbb6468a14cac4891beaa464c7c417856dd22fcdfd56c1c030d9ff1fc1f5ad"
+    },
+    {
+      "id": "chain-0004-03-pitch-stretch",
+      "chain_id": "chain-0004",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "268dd151aa3104f74bd6110fd4145991ca4ebaabe9c1c0ec1fd57cce2eef3f0a"
+    },
+    {
+      "id": "chain-0004-04-mix",
+      "chain_id": "chain-0004",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "3c7ff626ccd58c7d5d38e89d125d49512f4640adda4bdb067a47573f009a7f60"
+    },
+    {
+      "id": "chain-0004-05-feedback",
+      "chain_id": "chain-0004",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "cdb14d7973e075e1ed771a2c2a0e7b046cf754d69015e327f99d4bcad02c80df"
+    },
+    {
+      "id": "chain-0005-00-create",
+      "chain_id": "chain-0005",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 95 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 56, \"start\": 0, \"duration\": 0.375, \"velocity\": 71}, {\"id\": \"n1\", \"pitch\": 60, \"start\": 1, \"duration\": 0.375, \"velocity\": 93}, {\"id\": \"n2\", \"pitch\": 63, \"start\": 2, \"duration\": 0.375, \"velocity\": 87}, {\"id\": \"n3\", \"pitch\": 68, \"start\": 3, \"duration\": 0.375, \"velocity\": 104}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "13ba59be4409b6727ae715ef0f9d7b29d3979d682de7255de798f70feaccba3e"
+    },
+    {
+      "id": "chain-0005-01-transpose",
+      "chain_id": "chain-0005",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "33bee5cd6baaec30daf5e95ccad99f89a270f77b1c089976687f01142fbcc781"
+    },
+    {
+      "id": "chain-0005-02-trim-fades",
+      "chain_id": "chain-0005",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.15 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "1d60b1416833fc438c80b9dc2cd6855133583635ac86e6b284f1da451cf944f7"
+    },
+    {
+      "id": "chain-0005-03-pitch-stretch",
+      "chain_id": "chain-0005",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "de324e2a64fe50f30f9e7aa42cc6472a9921575a4825b3afbd5460ac16afca40"
+    },
+    {
+      "id": "chain-0005-04-mix",
+      "chain_id": "chain-0005",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "5927724702d39c03455c66b23cc773b03f5f1ff8d76d8b3bf4142806dd90ab08"
+    },
+    {
+      "id": "chain-0005-05-feedback",
+      "chain_id": "chain-0005",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7b0daeba7a0047eb9d24e831e3b2f249fc02f6441ce0f8a2cb3b7908fdc3711e"
+    },
+    {
+      "id": "chain-0006-00-create",
+      "chain_id": "chain-0006",
+      "split": "dev",
+      "stage": "create",
+      "prompt": "Build a project at 96 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 60, \"start\": 0, \"duration\": 0.375, \"velocity\": 94}, {\"id\": \"n1\", \"pitch\": 67, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 74}, {\"id\": \"n2\", \"pitch\": 65, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 92}, {\"id\": \"n3\", \"pitch\": 72, \"start\": 3, \"duration\": 0.375, \"velocity\": 80}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "46c96762bf8f713506a202762258b52ab842d1f375d0c5600bf858eb39e2ac25"
+    },
+    {
+      "id": "chain-0006-01-transpose",
+      "chain_id": "chain-0006",
+      "split": "dev",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "b0beafe0c8c45cbd092e2b7ceaa2307df10f8262efbf2868ec18faadf159b4a3"
+    },
+    {
+      "id": "chain-0006-02-trim-fades",
+      "chain_id": "chain-0006",
+      "split": "dev",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.4. Set linear item fades: 0.05 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "965503cf087542a862dd43daad30f811b6c29b48fb2d23ce7ce73868dfe19eaf"
+    },
+    {
+      "id": "chain-0006-03-pitch-stretch",
+      "chain_id": "chain-0006",
+      "split": "dev",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "b05ca0f025aadd41c2b8e985c81aaa49b1b69ebdbdb62721cf5c7469e3008935"
+    },
+    {
+      "id": "chain-0006-04-mix",
+      "chain_id": "chain-0006",
+      "split": "dev",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "ffcb0a49cfc9a14b08e5d3cb2020cf2681e0b99021c3f9136fc0dab3287149ad"
+    },
+    {
+      "id": "chain-0006-05-feedback",
+      "chain_id": "chain-0006",
+      "split": "dev",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8975b226ed4dc89641a31a8d3519207f206d7a8027e2f31488f6e84db5778001"
+    },
+    {
+      "id": "chain-0007-00-create",
+      "chain_id": "chain-0007",
+      "split": "dev",
+      "stage": "create",
+      "prompt": "Build a project at 97 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 62, \"start\": 0, \"duration\": 0.375, \"velocity\": 79}, {\"id\": \"n1\", \"pitch\": 64, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 84}, {\"id\": \"n2\", \"pitch\": 69, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 105}, {\"id\": \"n3\", \"pitch\": 71, \"start\": 3, \"duration\": 0.375, \"velocity\": 97}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "1b20f78c8b477d73c4b11a8f2a21a9ad302acd93749123471e4abf678e0b4803"
+    },
+    {
+      "id": "chain-0007-01-transpose",
+      "chain_id": "chain-0007",
+      "split": "dev",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 12 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4b3b02b478bede1c018704f13467766bcd5008a2448ea6520616f0af29aecb03"
+    },
+    {
+      "id": "chain-0007-02-trim-fades",
+      "chain_id": "chain-0007",
+      "split": "dev",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.6. Set linear item fades: 0.1 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "44f16c5f7b48916ce295e48fd7a4f04efac5b3e2cc3af3636133f8d9b4a3fc21"
+    },
+    {
+      "id": "chain-0007-03-pitch-stretch",
+      "chain_id": "chain-0007",
+      "split": "dev",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c3ca3770bc3f4ead2db7b57183753128b4cb1d3a8726778b824966f582775de5"
+    },
+    {
+      "id": "chain-0007-04-mix",
+      "chain_id": "chain-0007",
+      "split": "dev",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7ab1b33e3e093b2e68e454d96e0b5fc085e69d5d48619e900e505b9b0e949e7b"
+    },
+    {
+      "id": "chain-0007-05-feedback",
+      "chain_id": "chain-0007",
+      "split": "dev",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "cd2aa3f53ae0279de10cd6d6e2c788ea3d264b10c7f851f0cbbe07bd3c49fd0b"
+    },
+    {
+      "id": "chain-0008-00-create",
+      "chain_id": "chain-0008",
+      "split": "test",
+      "stage": "create",
+      "prompt": "Build a project at 98 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 52, \"start\": 0, \"duration\": 0.375, \"velocity\": 70}, {\"id\": \"n1\", \"pitch\": 55, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 72}, {\"id\": \"n2\", \"pitch\": 59, \"start\": 2, \"duration\": 0.375, \"velocity\": 74}, {\"id\": \"n3\", \"pitch\": 62, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 96}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "cd00baf84ad7b77b8ce4690657a85d0e52dfde38b24adfe2955e025a3661c41c"
+    },
+    {
+      "id": "chain-0008-01-transpose",
+      "chain_id": "chain-0008",
+      "split": "test",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 12 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "d96a583e66bbc2ad1e13629230d6cd3ee66c4365753bc1dd0a481b468eacdfa0"
+    },
+    {
+      "id": "chain-0008-02-trim-fades",
+      "chain_id": "chain-0008",
+      "split": "test",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.2. Set linear item fades: 0.15 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "091f7c728da8d299ddb83e6fb99c172602018479eeb359eef5c98fdd71a3ad37"
+    },
+    {
+      "id": "chain-0008-03-pitch-stretch",
+      "chain_id": "chain-0008",
+      "split": "test",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7f42cc6998d2d176bb971eb341f83270ba4c1e68c703419a4822e3dd4110458a"
+    },
+    {
+      "id": "chain-0008-04-mix",
+      "chain_id": "chain-0008",
+      "split": "test",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7bf9fdf01d983dd46028a13fe0286ba330afab16dd4d0dde122426d496fe4d09"
+    },
+    {
+      "id": "chain-0008-05-feedback",
+      "chain_id": "chain-0008",
+      "split": "test",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "2eb55fe7ae08fa8c9e1fcf3f97d160ce75898548373b6a75e435409592145bdb"
+    },
+    {
+      "id": "chain-0009-00-create",
+      "chain_id": "chain-0009",
+      "split": "test",
+      "stage": "create",
+      "prompt": "Build a project at 99 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 57, \"start\": 0, \"duration\": 0.375, \"velocity\": 81}, {\"id\": \"n1\", \"pitch\": 59, \"start\": 1, \"duration\": 0.375, \"velocity\": 92}, {\"id\": \"n2\", \"pitch\": 64, \"start\": 2, \"duration\": 0.375, \"velocity\": 103}, {\"id\": \"n3\", \"pitch\": 66, \"start\": 3, \"duration\": 0.375, \"velocity\": 99}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e9e3347b17f56b6fe1ac94d0aecf79b4b1c6f0162615e2a0760d205a35742534"
+    },
+    {
+      "id": "chain-0009-01-transpose",
+      "chain_id": "chain-0009",
+      "split": "test",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "6be7b27e8d69f1a26157ed447702218e79c3c6d3f577f40c25fe43a19052a62a"
+    },
+    {
+      "id": "chain-0009-02-trim-fades",
+      "chain_id": "chain-0009",
+      "split": "test",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.6. Set linear item fades: 0.15 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4c758d3ddabd001a0d6a36885915adba6191c5607bb42214270698c7501b0ccd"
+    },
+    {
+      "id": "chain-0009-03-pitch-stretch",
+      "chain_id": "chain-0009",
+      "split": "test",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "27cef5404afd6de7dbce04f8b5dac49c054a9c0fcf0c5fcfbe4d95722f4521a3"
+    },
+    {
+      "id": "chain-0009-04-mix",
+      "chain_id": "chain-0009",
+      "split": "test",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "6f6303b65920a46b67ee3e185990359697c84dd5576ac8bfba170140e2d7b240"
+    },
+    {
+      "id": "chain-0009-05-feedback",
+      "chain_id": "chain-0009",
+      "split": "test",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "65b09b77a359388bfce9e6960fa84c42de24d22ff01262adef4cd9e859c1ab4a"
+    },
+    {
+      "id": "chain-0010-00-create",
+      "chain_id": "chain-0010",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 100 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 50, \"start\": 0, \"duration\": 0.375, \"velocity\": 104}, {\"id\": \"n1\", \"pitch\": 57, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 87}, {\"id\": \"n2\", \"pitch\": 55, \"start\": 2, \"duration\": 0.375, \"velocity\": 71}, {\"id\": \"n3\", \"pitch\": 62, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 97}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "ddd864d261349964c4bab80dc3a98d17d747882101113ba7146412447882a7e1"
+    },
+    {
+      "id": "chain-0010-01-transpose",
+      "chain_id": "chain-0010",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7ccc735f6167ed588cd4dd7dfeccd165ed96b71e3c42a0b4d13ce6fae86bf45a"
+    },
+    {
+      "id": "chain-0010-02-trim-fades",
+      "chain_id": "chain-0010",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.2. Set linear item fades: 0.1 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8188383b5d657a2cac06c4187336662ab5491b4fdf12031d816e28931bc3e980"
+    },
+    {
+      "id": "chain-0010-03-pitch-stretch",
+      "chain_id": "chain-0010",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "88a9790516ef314f4f8ec2616cd8f032fd957bbec2e9a90a114f5ca72b3ab1c6"
+    },
+    {
+      "id": "chain-0010-04-mix",
+      "chain_id": "chain-0010",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "20b8c9bce2818e31ca0f12154352ef9ced95a681515ffc3c5059c2aa3e9529ee"
+    },
+    {
+      "id": "chain-0010-05-feedback",
+      "chain_id": "chain-0010",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "2c8c1925884755814d5383b9656385842807fdc5be21ad9fcf63ed93371ac34e"
+    },
+    {
+      "id": "chain-0011-00-create",
+      "chain_id": "chain-0011",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 101 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 50, \"start\": 0, \"duration\": 0.375, \"velocity\": 105}, {\"id\": \"n1\", \"pitch\": 53, \"start\": 1, \"duration\": 0.375, \"velocity\": 88}, {\"id\": \"n2\", \"pitch\": 57, \"start\": 2, \"duration\": 0.375, \"velocity\": 71}, {\"id\": \"n3\", \"pitch\": 60, \"start\": 3, \"duration\": 0.375, \"velocity\": 70}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e62bd7fb81e1b03d094d5987bd291dbd95a489c947691b1075d3378ebf906ab9"
+    },
+    {
+      "id": "chain-0011-01-transpose",
+      "chain_id": "chain-0011",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "3119d8a983e005b1403ec3ff854cdc1fb9c7fbfbbaa83a2fefa234c874cb970b"
+    },
+    {
+      "id": "chain-0011-02-trim-fades",
+      "chain_id": "chain-0011",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.1 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e6a08630fdb2aee8515ccd629a07ca639fdfbf4de5df1123e5977695d22655a6"
+    },
+    {
+      "id": "chain-0011-03-pitch-stretch",
+      "chain_id": "chain-0011",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "b65faa83a1cd8ed0c4c662222d0c94d5e09607111ae9f79d9741ee824d2d5e5c"
+    },
+    {
+      "id": "chain-0011-04-mix",
+      "chain_id": "chain-0011",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f8e2b988cec7af189b6d80e46d81c824655eae4e2351112f59dfa74f69a16bdf"
+    },
+    {
+      "id": "chain-0011-05-feedback",
+      "chain_id": "chain-0011",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "331c6369ae9ceb3b9502f3a7c1f1df14d0442696f751018f0bf82e330ee6bfa5"
+    },
+    {
+      "id": "chain-0012-00-create",
+      "chain_id": "chain-0012",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 102 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 62, \"start\": 0, \"duration\": 0.375, \"velocity\": 84}, {\"id\": \"n1\", \"pitch\": 66, \"start\": 1, \"duration\": 0.375, \"velocity\": 100}, {\"id\": \"n2\", \"pitch\": 69, \"start\": 2, \"duration\": 0.375, \"velocity\": 80}, {\"id\": \"n3\", \"pitch\": 74, \"start\": 3, \"duration\": 0.375, \"velocity\": 91}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "fe94820a5c52c6130a6767d3a6638982066493adab6cb51acedb17b11d1db31c"
+    },
+    {
+      "id": "chain-0012-01-transpose",
+      "chain_id": "chain-0012",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "0b6c608a7a60fb0773c9eb20434df5ef5485373de559ac4c999e8f782c326f5e"
+    },
+    {
+      "id": "chain-0012-02-trim-fades",
+      "chain_id": "chain-0012",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.6. Set linear item fades: 0.15 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "6c6885fb4aaf6430e99405596e2adf82296bcb592de94f5f334028e68d294994"
+    },
+    {
+      "id": "chain-0012-03-pitch-stretch",
+      "chain_id": "chain-0012",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8ee555a7aee85cbf5bec97e2d185eb2bd563c9db194250708ea75949e557ed61"
+    },
+    {
+      "id": "chain-0012-04-mix",
+      "chain_id": "chain-0012",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "0c7de7a903769ad6ed0997dd8b896c4dff8ddfe1306b6f74a9d6414cca6ee939"
+    },
+    {
+      "id": "chain-0012-05-feedback",
+      "chain_id": "chain-0012",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "1cf27d36fab48fc8c024c29e25edc91dd7dd56cf934a1e413f82df04d7bcedc3"
+    },
+    {
+      "id": "chain-0013-00-create",
+      "chain_id": "chain-0013",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 103 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 52, \"start\": 0, \"duration\": 0.375, \"velocity\": 73}, {\"id\": \"n1\", \"pitch\": 55, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 101}, {\"id\": \"n2\", \"pitch\": 59, \"start\": 2, \"duration\": 0.375, \"velocity\": 104}, {\"id\": \"n3\", \"pitch\": 62, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 66}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "893e143fd427f94f3d5ac46e51f4ec2b13e9a544a08bb720484982615e84bd06"
+    },
+    {
+      "id": "chain-0013-01-transpose",
+      "chain_id": "chain-0013",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 3 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "9db208cc8155785a75741fbd0278727fa77636281d3f9411638b0492a4dd3512"
+    },
+    {
+      "id": "chain-0013-02-trim-fades",
+      "chain_id": "chain-0013",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.1 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "52d0ce9906c0a017155447b10dbb13eb68c274d887a4408dccc7dc282133db08"
+    },
+    {
+      "id": "chain-0013-03-pitch-stretch",
+      "chain_id": "chain-0013",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7b1605c0490d4ccb2fd2a30baf5a5ef19a9b559b0b8b417f451fdb1f33e57681"
+    },
+    {
+      "id": "chain-0013-04-mix",
+      "chain_id": "chain-0013",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "99e92e2722bfa540e92732af2dbad8e7c90064bf26ffabd571d080c8519f00cc"
+    },
+    {
+      "id": "chain-0013-05-feedback",
+      "chain_id": "chain-0013",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "ccbeb53fd9c1d77bd6b2fe88d2d0ee43e4b6b5c032f70801006abebca40085df"
+    },
+    {
+      "id": "chain-0014-00-create",
+      "chain_id": "chain-0014",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 104 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 59, \"start\": 0, \"duration\": 0.375, \"velocity\": 65}, {\"id\": \"n1\", \"pitch\": 63, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 103}, {\"id\": \"n2\", \"pitch\": 66, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 79}, {\"id\": \"n3\", \"pitch\": 71, \"start\": 3, \"duration\": 0.375, \"velocity\": 103}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "34730c00799c76dd7dcff31f3069e5a03f57775cd78e06dcf53c84d43864865b"
+    },
+    {
+      "id": "chain-0014-01-transpose",
+      "chain_id": "chain-0014",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "74088cd60f344fbe177302773af2e26e0c1753285b69275ffbeccd63dfcb4d3c"
+    },
+    {
+      "id": "chain-0014-02-trim-fades",
+      "chain_id": "chain-0014",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.2. Set linear item fades: 0.15 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "132b806be7b3a37a70bbcdd0f7575fd8e4349cacbcbc26d866cda5bdd312e3b9"
+    },
+    {
+      "id": "chain-0014-03-pitch-stretch",
+      "chain_id": "chain-0014",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a689a199b2c3dc6ecca0b1d119abdd28f53035c79919a4cad52ac15757e6c786"
+    },
+    {
+      "id": "chain-0014-04-mix",
+      "chain_id": "chain-0014",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a9f7326601d762c4a84eea1290617d1fcd81deb5a47dee2e64a47ba93d026578"
+    },
+    {
+      "id": "chain-0014-05-feedback",
+      "chain_id": "chain-0014",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "53b3873c5124f893b5f2972747d73d5ca5e95b44553030d81fda64ee902e745b"
+    },
+    {
+      "id": "chain-0015-00-create",
+      "chain_id": "chain-0015",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 105 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 62, \"start\": 0, \"duration\": 0.375, \"velocity\": 92}, {\"id\": \"n1\", \"pitch\": 66, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 83}, {\"id\": \"n2\", \"pitch\": 69, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 71}, {\"id\": \"n3\", \"pitch\": 74, \"start\": 3, \"duration\": 0.375, \"velocity\": 102}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "b24af8a0e4d85cef992bb894e8da9dc789177f7b504ded2d914d2362b08a6158"
+    },
+    {
+      "id": "chain-0015-01-transpose",
+      "chain_id": "chain-0015",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 3 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "1ef93a1b9c73116f898cf829b7935fafc1dca8daf08a7de8ba0f39a16245c283"
+    },
+    {
+      "id": "chain-0015-02-trim-fades",
+      "chain_id": "chain-0015",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.1 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8771632de3c4aa44f815e9cf566a64a1256eef120d84632a93fce14a91b7bb91"
+    },
+    {
+      "id": "chain-0015-03-pitch-stretch",
+      "chain_id": "chain-0015",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e5a6eb0559a570e2232188640091b669ddba6bd7df3aec9df111aa3a77a07ab7"
+    },
+    {
+      "id": "chain-0015-04-mix",
+      "chain_id": "chain-0015",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f66361e7cf29f80bb40243738dd6bb0dc53a42f3ce078335279b8a6db1b3e933"
+    },
+    {
+      "id": "chain-0015-05-feedback",
+      "chain_id": "chain-0015",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "83410cfbf7533f846597a373a70a4b96d1966418de0b8fc558ee7bbfd0bdbb28"
+    },
+    {
+      "id": "chain-0016-00-create",
+      "chain_id": "chain-0016",
+      "split": "dev",
+      "stage": "create",
+      "prompt": "Build a project at 106 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 61, \"start\": 0, \"duration\": 0.375, \"velocity\": 71}, {\"id\": \"n1\", \"pitch\": 65, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 102}, {\"id\": \"n2\", \"pitch\": 68, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 84}, {\"id\": \"n3\", \"pitch\": 73, \"start\": 3, \"duration\": 0.375, \"velocity\": 68}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4a8351e2b125af235c21a130fdd29dc09031e5d6743f6e7c3cbbe1d1508c3655"
+    },
+    {
+      "id": "chain-0016-01-transpose",
+      "chain_id": "chain-0016",
+      "split": "dev",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "0c7586077e3e18a59ca5b92d916b9df153f175e07a406c337164528c0a9a73bd"
+    },
+    {
+      "id": "chain-0016-02-trim-fades",
+      "chain_id": "chain-0016",
+      "split": "dev",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.4. Set linear item fades: 0.15 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "9a4793ca55a25f5e9eb569ec0e06970b5d54199fbb85fdc0eac951bb7b718664"
+    },
+    {
+      "id": "chain-0016-03-pitch-stretch",
+      "chain_id": "chain-0016",
+      "split": "dev",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "415615d84dba962ffe319b9fda913b9b0372da102b8fdb33a08a65a384596915"
+    },
+    {
+      "id": "chain-0016-04-mix",
+      "chain_id": "chain-0016",
+      "split": "dev",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "67eb1c85f704faeb3d93b0e069850150abdba9a434d541fb7e2ad0562a3e69e9"
+    },
+    {
+      "id": "chain-0016-05-feedback",
+      "chain_id": "chain-0016",
+      "split": "dev",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "d36df25089c51c8c9de0a439c69030fc24d18fb6c0b0d0915089ffca3d0c11d8"
+    },
+    {
+      "id": "chain-0017-00-create",
+      "chain_id": "chain-0017",
+      "split": "dev",
+      "stage": "create",
+      "prompt": "Build a project at 107 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 64, \"start\": 0, \"duration\": 0.375, \"velocity\": 75}, {\"id\": \"n1\", \"pitch\": 66, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 92}, {\"id\": \"n2\", \"pitch\": 71, \"start\": 2, \"duration\": 0.375, \"velocity\": 88}, {\"id\": \"n3\", \"pitch\": 73, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 98}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7cd686de557407651ed769930d1012a4ee6f1473b8ddc6c25d7fc38b315393a7"
+    },
+    {
+      "id": "chain-0017-01-transpose",
+      "chain_id": "chain-0017",
+      "split": "dev",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "44fa23ffb94a358d1e49d01f5246b6b549b3bfc3deae6fcbd59646196ca95daa"
+    },
+    {
+      "id": "chain-0017-02-trim-fades",
+      "chain_id": "chain-0017",
+      "split": "dev",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.05 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "6b828a7983d1d5c680953662a425b753a1da903f51d0a06198b92d0928ba135b"
+    },
+    {
+      "id": "chain-0017-03-pitch-stretch",
+      "chain_id": "chain-0017",
+      "split": "dev",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a64bd0b0862fca53562bad41a4f0638a4d98c5df756cb7f6507f64b7115ba4d9"
+    },
+    {
+      "id": "chain-0017-04-mix",
+      "chain_id": "chain-0017",
+      "split": "dev",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8f5060973bef62d0de17c4537ed036bb1b9ac62792aad40dd984e8722f1f5986"
+    },
+    {
+      "id": "chain-0017-05-feedback",
+      "chain_id": "chain-0017",
+      "split": "dev",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "5f5f872467d9ec5629422fd76b1bc294da73168a9202981f6c1df7d846b02980"
+    },
+    {
+      "id": "chain-0018-00-create",
+      "chain_id": "chain-0018",
+      "split": "test",
+      "stage": "create",
+      "prompt": "Build a project at 108 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 61, \"start\": 0, \"duration\": 0.375, \"velocity\": 75}, {\"id\": \"n1\", \"pitch\": 64, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 75}, {\"id\": \"n2\", \"pitch\": 68, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 93}, {\"id\": \"n3\", \"pitch\": 71, \"start\": 3, \"duration\": 0.375, \"velocity\": 75}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "37ce75ede4d37685fa6dfaecf14880d407e06aacd3eb1a84a6572c58ddb78f1f"
+    },
+    {
+      "id": "chain-0018-01-transpose",
+      "chain_id": "chain-0018",
+      "split": "test",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a69edcf06c6636c39328087c37ee65df452c2b798cb8414bd551361f1d38f94d"
+    },
+    {
+      "id": "chain-0018-02-trim-fades",
+      "chain_id": "chain-0018",
+      "split": "test",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.4. Set linear item fades: 0.1 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7061aef536429c9ab09e71201879b1fa11ae967745ae9f6671026c9df3dada3a"
+    },
+    {
+      "id": "chain-0018-03-pitch-stretch",
+      "chain_id": "chain-0018",
+      "split": "test",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "9ff4d333878c61104ebd5f5aa76666122394fd0170e276cebc282bce4f58a90f"
+    },
+    {
+      "id": "chain-0018-04-mix",
+      "chain_id": "chain-0018",
+      "split": "test",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "650d2be8780483ecfa653a2264ab55839c6683b753b95e6fde48d7e4fbdb0267"
+    },
+    {
+      "id": "chain-0018-05-feedback",
+      "chain_id": "chain-0018",
+      "split": "test",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "397a840458493d71d3fd5da38717b5f4fcda3edd8686eb8c46599b1aa39dc524"
+    },
+    {
+      "id": "chain-0019-00-create",
+      "chain_id": "chain-0019",
+      "split": "test",
+      "stage": "create",
+      "prompt": "Build a project at 109 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 49, \"start\": 0, \"duration\": 0.375, \"velocity\": 96}, {\"id\": \"n1\", \"pitch\": 52, \"start\": 1, \"duration\": 0.375, \"velocity\": 94}, {\"id\": \"n2\", \"pitch\": 56, \"start\": 2, \"duration\": 0.375, \"velocity\": 95}, {\"id\": \"n3\", \"pitch\": 59, \"start\": 3, \"duration\": 0.375, \"velocity\": 101}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "38a9809fed9624734e4799fde21069e2299b590062a19f768b865c268dee1ec4"
+    },
+    {
+      "id": "chain-0019-01-transpose",
+      "chain_id": "chain-0019",
+      "split": "test",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e5789d93afa742a2334d96bb93fbd208448082ed96aeb22bcf622a5206cf1329"
+    },
+    {
+      "id": "chain-0019-02-trim-fades",
+      "chain_id": "chain-0019",
+      "split": "test",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.1 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c21b7a0fc31cc8e458fa224fd4be86a18e5ed68951b95f1f1e89c8c69f4dca05"
+    },
+    {
+      "id": "chain-0019-03-pitch-stretch",
+      "chain_id": "chain-0019",
+      "split": "test",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "366b339a1360e7cf607f17d30959eeed154e22bdf47dd7b7695bad36db1abf73"
+    },
+    {
+      "id": "chain-0019-04-mix",
+      "chain_id": "chain-0019",
+      "split": "test",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4a410b3490cefaf676f73dac0444bca36cc37d673ab45f1dd6f0186d2a28ede2"
+    },
+    {
+      "id": "chain-0019-05-feedback",
+      "chain_id": "chain-0019",
+      "split": "test",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "5550fe9e3990599f34750a7420603ed124b6d7f0dd552b3bf8deb6d7df7e87b2"
+    },
+    {
+      "id": "chain-0020-00-create",
+      "chain_id": "chain-0020",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 110 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 58, \"start\": 0, \"duration\": 0.375, \"velocity\": 68}, {\"id\": \"n1\", \"pitch\": 62, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 91}, {\"id\": \"n2\", \"pitch\": 65, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 79}, {\"id\": \"n3\", \"pitch\": 70, \"start\": 3, \"duration\": 0.375, \"velocity\": 71}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "6128e4b69b6526e38753d26bb635d174432cdf777e7030e3fbf960c2bba1a9aa"
+    },
+    {
+      "id": "chain-0020-01-transpose",
+      "chain_id": "chain-0020",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "609445e5ab8c9ba6d4414642c9a6addfdc89f8a8a0eb85654e7f2a1ffc525f19"
+    },
+    {
+      "id": "chain-0020-02-trim-fades",
+      "chain_id": "chain-0020",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.4. Set linear item fades: 0.15 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "9b78fa5baf4422844e2c82e912e1e08ae9e550384920849bc56d527894c49a6c"
+    },
+    {
+      "id": "chain-0020-03-pitch-stretch",
+      "chain_id": "chain-0020",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "da16723c0659e27c9982b2ed80ce7981bd2f869ee841a259003599b7f3367bc2"
+    },
+    {
+      "id": "chain-0020-04-mix",
+      "chain_id": "chain-0020",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "361c867568ce3039fe2f352dc98b3cc2da0717c18a722f4564382583d2c78993"
+    },
+    {
+      "id": "chain-0020-05-feedback",
+      "chain_id": "chain-0020",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "b083532248e2004d18e35f28d793ef3b394a82a3c32fdceb836edc2c81891dd5"
+    },
+    {
+      "id": "chain-0021-00-create",
+      "chain_id": "chain-0021",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 111 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 53, \"start\": 0, \"duration\": 0.375, \"velocity\": 104}, {\"id\": \"n1\", \"pitch\": 56, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 81}, {\"id\": \"n2\", \"pitch\": 60, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 66}, {\"id\": \"n3\", \"pitch\": 63, \"start\": 3, \"duration\": 0.375, \"velocity\": 79}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "0cb99a8e24fee1c1b68272bab0698e1a33636c4077c01145cc1565d382736a71"
+    },
+    {
+      "id": "chain-0021-01-transpose",
+      "chain_id": "chain-0021",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7ad20a45a98ccc5b29b9ed82c5fb11527a4f2dafe067ef381bf6aad3ca2532ce"
+    },
+    {
+      "id": "chain-0021-02-trim-fades",
+      "chain_id": "chain-0021",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.2. Set linear item fades: 0.15 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "631c3ada5d4164f999d4f19b004defeb28ad94b7cdc5132029e4b1b0c874fdc2"
+    },
+    {
+      "id": "chain-0021-03-pitch-stretch",
+      "chain_id": "chain-0021",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "03a58ba566ef6cb865583d9d8b2cf5e419384579ab39152dd002f18139628a7d"
+    },
+    {
+      "id": "chain-0021-04-mix",
+      "chain_id": "chain-0021",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e774814edc7ac072336cef6e9012f347cb42231b80ecedb9716beb7bbe1a7d9a"
+    },
+    {
+      "id": "chain-0021-05-feedback",
+      "chain_id": "chain-0021",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "249d202c5eb4c3ece5479bd1662edf2985f4e5231358de88777d3785c4e4a57e"
+    },
+    {
+      "id": "chain-0022-00-create",
+      "chain_id": "chain-0022",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 112 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 59, \"start\": 0, \"duration\": 0.375, \"velocity\": 105}, {\"id\": \"n1\", \"pitch\": 62, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 91}, {\"id\": \"n2\", \"pitch\": 66, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 66}, {\"id\": \"n3\", \"pitch\": 69, \"start\": 3, \"duration\": 0.375, \"velocity\": 105}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "5992d3ab89327d51d4228f8b894f594ba1a2f485507d30d34ae31f2714939e64"
+    },
+    {
+      "id": "chain-0022-01-transpose",
+      "chain_id": "chain-0022",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 3 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8b2bd79fb49b6e04de52fb8a94121cf82d7cf74483171db78dfdc5da99307188"
+    },
+    {
+      "id": "chain-0022-02-trim-fades",
+      "chain_id": "chain-0022",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.2. Set linear item fades: 0.05 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "417d232a542d169f89a5af7e78d42d2ba3e6a4941780216ed1e2ee29a56a55c1"
+    },
+    {
+      "id": "chain-0022-03-pitch-stretch",
+      "chain_id": "chain-0022",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f868796ef51e5875f0e4dab68a9733aa9f89ac677a34479511f7fdc423be7834"
+    },
+    {
+      "id": "chain-0022-04-mix",
+      "chain_id": "chain-0022",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "3149ced001d6c84d9fafd958b0349dad297e2618279162b4b0d912137f9b7e67"
+    },
+    {
+      "id": "chain-0022-05-feedback",
+      "chain_id": "chain-0022",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e3ce25d981bfe956b1929edb27a7f88171e6a1d04d6846978c4ab4bbfcdc6d80"
+    },
+    {
+      "id": "chain-0023-00-create",
+      "chain_id": "chain-0023",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 113 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 61, \"start\": 0, \"duration\": 0.375, \"velocity\": 89}, {\"id\": \"n1\", \"pitch\": 65, \"start\": 1, \"duration\": 0.375, \"velocity\": 96}, {\"id\": \"n2\", \"pitch\": 68, \"start\": 2, \"duration\": 0.375, \"velocity\": 65}, {\"id\": \"n3\", \"pitch\": 73, \"start\": 3, \"duration\": 0.375, \"velocity\": 84}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "d5d4fa9aebfa2098ef14b0b12fcc7f0a1e9ae819d6b10a96bb8a9cad690af87d"
+    },
+    {
+      "id": "chain-0023-01-transpose",
+      "chain_id": "chain-0023",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "3ae932ca55b2fa03d24c6a45fb3a24dcee968c6986f62c8b9447dc918acf660b"
+    },
+    {
+      "id": "chain-0023-02-trim-fades",
+      "chain_id": "chain-0023",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.6. Set linear item fades: 0.05 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "422106fc7c7f2ad9978199f738333b3584a19f1186590515ca80df92f55b420f"
+    },
+    {
+      "id": "chain-0023-03-pitch-stretch",
+      "chain_id": "chain-0023",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "66ec53ee2a3b89c91ea867d539e1ece5f431c8aa955e4b0f1a0887919f918c1c"
+    },
+    {
+      "id": "chain-0023-04-mix",
+      "chain_id": "chain-0023",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "786f387c23a8be73b27a24776a688291738f154130fc3727069f6982f26ee7c1"
+    },
+    {
+      "id": "chain-0023-05-feedback",
+      "chain_id": "chain-0023",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "2d2a9ad502c02c94e03e253c20f6a4b595a721825c8197bdfe3267ba9557bf57"
+    },
+    {
+      "id": "chain-0024-00-create",
+      "chain_id": "chain-0024",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 114 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 52, \"start\": 0, \"duration\": 0.375, \"velocity\": 89}, {\"id\": \"n1\", \"pitch\": 59, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 105}, {\"id\": \"n2\", \"pitch\": 57, \"start\": 2, \"duration\": 0.375, \"velocity\": 75}, {\"id\": \"n3\", \"pitch\": 64, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 91}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "3a2831ee3db7850a5fd1cf59088d9261d6ed297fac55d7591223fe73b4a55fb6"
+    },
+    {
+      "id": "chain-0024-01-transpose",
+      "chain_id": "chain-0024",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c3a741b0b65eb224ca3a45f9b25ea6385ce95f174139aa9f223bf8016a8daee6"
+    },
+    {
+      "id": "chain-0024-02-trim-fades",
+      "chain_id": "chain-0024",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.4. Set linear item fades: 0.1 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e2c839ce7d6111bd4fac33578a9d1b6d38eef941fa11c304c85a045764e9bba2"
+    },
+    {
+      "id": "chain-0024-03-pitch-stretch",
+      "chain_id": "chain-0024",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "0e7b94d617d7bbf131a1e9f8ed4fa38f1a45a1990edbf468cced91fe9dd418be"
+    },
+    {
+      "id": "chain-0024-04-mix",
+      "chain_id": "chain-0024",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "9823f59a6836eb6d0c5f76c51c006bd20fbd64ca540c542d8f12b98e29ec1aff"
+    },
+    {
+      "id": "chain-0024-05-feedback",
+      "chain_id": "chain-0024",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "411e0f0dda39e0e38dfb8b68eb22942659a870ffdea00601769407cd7ee928a4"
+    },
+    {
+      "id": "chain-0025-00-create",
+      "chain_id": "chain-0025",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 115 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 50, \"start\": 0, \"duration\": 0.375, \"velocity\": 73}, {\"id\": \"n1\", \"pitch\": 57, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 77}, {\"id\": \"n2\", \"pitch\": 55, \"start\": 2, \"duration\": 0.375, \"velocity\": 94}, {\"id\": \"n3\", \"pitch\": 62, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 95}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "88ed473720fcbe09c26ee18fc7fe7d610fd61f063610f1e4a50d9d218c776061"
+    },
+    {
+      "id": "chain-0025-01-transpose",
+      "chain_id": "chain-0025",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 12 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "09cf6c968b74b52de75247ef8c0ae4410d3eff25f890a7aec5b44f301df4b03f"
+    },
+    {
+      "id": "chain-0025-02-trim-fades",
+      "chain_id": "chain-0025",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.2. Set linear item fades: 0.05 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "1d6bf01822ab41986d04934a87ef838eeec4dd5f053bd6cb4ca90d24dc727790"
+    },
+    {
+      "id": "chain-0025-03-pitch-stretch",
+      "chain_id": "chain-0025",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "861ed55c52317f8fb0031921bc57a44c2befd8bc525e30d46ef2d3cef3ec7ac1"
+    },
+    {
+      "id": "chain-0025-04-mix",
+      "chain_id": "chain-0025",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "626556e1d2f4c5e17826e7345f9f9a0cd9437bb9f2fc565f3c539f804d046132"
+    },
+    {
+      "id": "chain-0025-05-feedback",
+      "chain_id": "chain-0025",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "36c9ae99c8b82be3d32baef2da6ac7f54b97cf89f15d3545cb9fd80f0a9bb007"
+    },
+    {
+      "id": "chain-0026-00-create",
+      "chain_id": "chain-0026",
+      "split": "dev",
+      "stage": "create",
+      "prompt": "Build a project at 116 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 58, \"start\": 0, \"duration\": 0.375, \"velocity\": 76}, {\"id\": \"n1\", \"pitch\": 65, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 96}, {\"id\": \"n2\", \"pitch\": 63, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 101}, {\"id\": \"n3\", \"pitch\": 70, \"start\": 3, \"duration\": 0.375, \"velocity\": 104}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f21f5eed1006f83d5babcddf368e1bffd1510354e0641672b92cb7058801a530"
+    },
+    {
+      "id": "chain-0026-01-transpose",
+      "chain_id": "chain-0026",
+      "split": "dev",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "3206551a1ea87ba622a681679ed590dc6f80a4b3dc8d30ee07ea0a18115490ee"
+    },
+    {
+      "id": "chain-0026-02-trim-fades",
+      "chain_id": "chain-0026",
+      "split": "dev",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.6. Set linear item fades: 0.1 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f8c3eed27d3ec4d0b6a9c756a7b0ec3f8112c5cc6827ac9e0bcd555e16c502ed"
+    },
+    {
+      "id": "chain-0026-03-pitch-stretch",
+      "chain_id": "chain-0026",
+      "split": "dev",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a86ebbf5140557955087e4535aae02b12cfc23ce2245281183c61d0d37abec42"
+    },
+    {
+      "id": "chain-0026-04-mix",
+      "chain_id": "chain-0026",
+      "split": "dev",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "534f349c87b5c8363da2b6f22b42512a0615658b6fefcf3ca83c1704efc19df6"
+    },
+    {
+      "id": "chain-0026-05-feedback",
+      "chain_id": "chain-0026",
+      "split": "dev",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "d6e926c28b4322bbca378d5add52fdd680ffae5d3e61daf56cf02e50084748de"
+    },
+    {
+      "id": "chain-0027-00-create",
+      "chain_id": "chain-0027",
+      "split": "dev",
+      "stage": "create",
+      "prompt": "Build a project at 117 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 61, \"start\": 0, \"duration\": 0.375, \"velocity\": 103}, {\"id\": \"n1\", \"pitch\": 65, \"start\": 1, \"duration\": 0.375, \"velocity\": 76}, {\"id\": \"n2\", \"pitch\": 68, \"start\": 2, \"duration\": 0.375, \"velocity\": 66}, {\"id\": \"n3\", \"pitch\": 73, \"start\": 3, \"duration\": 0.375, \"velocity\": 78}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "d3dc03cf9b3363c13094f13c1788a1f88d4933c13e53e2e3720b3034ce4846ed"
+    },
+    {
+      "id": "chain-0027-01-transpose",
+      "chain_id": "chain-0027",
+      "split": "dev",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7be70796eac52fb5190654a5b0276059ad89a806a2754d3ceba73fd6020f4de6"
+    },
+    {
+      "id": "chain-0027-02-trim-fades",
+      "chain_id": "chain-0027",
+      "split": "dev",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.2. Set linear item fades: 0.05 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4948f563ca1d0570ab6a7bbad2cf1efa7a4697adf1d33b06ed37bbb1ff2dcda0"
+    },
+    {
+      "id": "chain-0027-03-pitch-stretch",
+      "chain_id": "chain-0027",
+      "split": "dev",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "3b3464b281d9a3dcbe473b46fb2f4659fa7f8d8b975560409c8be6b31f0b6794"
+    },
+    {
+      "id": "chain-0027-04-mix",
+      "chain_id": "chain-0027",
+      "split": "dev",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "aff664b731e080421b6db392dd96963af973693a5e85443b1f8125edb214b756"
+    },
+    {
+      "id": "chain-0027-05-feedback",
+      "chain_id": "chain-0027",
+      "split": "dev",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c0dba17808c9fe90cbc7d0cd595c172f14c5449c13a5c24a1f2817fae91529a2"
+    },
+    {
+      "id": "chain-0028-00-create",
+      "chain_id": "chain-0028",
+      "split": "test",
+      "stage": "create",
+      "prompt": "Build a project at 118 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 64, \"start\": 0, \"duration\": 0.375, \"velocity\": 81}, {\"id\": \"n1\", \"pitch\": 67, \"start\": 1, \"duration\": 0.375, \"velocity\": 103}, {\"id\": \"n2\", \"pitch\": 71, \"start\": 2, \"duration\": 0.375, \"velocity\": 71}, {\"id\": \"n3\", \"pitch\": 74, \"start\": 3, \"duration\": 0.375, \"velocity\": 94}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f548442e37409d2a0afa4f142fbcba7be902db23ab25b4aeb3eb042fbb28d7dc"
+    },
+    {
+      "id": "chain-0028-01-transpose",
+      "chain_id": "chain-0028",
+      "split": "test",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f0779653e14b13f6a7016d560e1b7b8b4033d2a97e53f999c279df8852e899e2"
+    },
+    {
+      "id": "chain-0028-02-trim-fades",
+      "chain_id": "chain-0028",
+      "split": "test",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.6. Set linear item fades: 0.05 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c4656265d9bcf1643566881a33a152bc5ecb520a5110b9c75231846abdf7f2cd"
+    },
+    {
+      "id": "chain-0028-03-pitch-stretch",
+      "chain_id": "chain-0028",
+      "split": "test",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "67e252e4075256e5c8d19447b642c78c6861a068404748a1b78a9af34f5de751"
+    },
+    {
+      "id": "chain-0028-04-mix",
+      "chain_id": "chain-0028",
+      "split": "test",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "76c2921e2954d9e32fd16be9ed0b35ef323262e7dc42c669d06f313afce41292"
+    },
+    {
+      "id": "chain-0028-05-feedback",
+      "chain_id": "chain-0028",
+      "split": "test",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "206b25615c609ec5578fcb108c2ac8ad5d978bfda85133612c27407c4c7e50f3"
+    },
+    {
+      "id": "chain-0029-00-create",
+      "chain_id": "chain-0029",
+      "split": "test",
+      "stage": "create",
+      "prompt": "Build a project at 119 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 53, \"start\": 0, \"duration\": 0.375, \"velocity\": 104}, {\"id\": \"n1\", \"pitch\": 60, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 94}, {\"id\": \"n2\", \"pitch\": 58, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 74}, {\"id\": \"n3\", \"pitch\": 65, \"start\": 3, \"duration\": 0.375, \"velocity\": 68}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "2cdc51b7f7646d57425026c50978a28946557623c24c94aeb87dacdbe71de25d"
+    },
+    {
+      "id": "chain-0029-01-transpose",
+      "chain_id": "chain-0029",
+      "split": "test",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "dc7e93ec63ac41a9fe6bc854478896f04db075dad3945eef8b1ce88101d460bc"
+    },
+    {
+      "id": "chain-0029-02-trim-fades",
+      "chain_id": "chain-0029",
+      "split": "test",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.6. Set linear item fades: 0.15 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "414129b616f2b9f4eb2d5cb57bbdac149fcfe9f7d9f25ceac4fce347dcc9ee6f"
+    },
+    {
+      "id": "chain-0029-03-pitch-stretch",
+      "chain_id": "chain-0029",
+      "split": "test",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -12 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "d1cb79d7fc70e7f9b2463d07e6aae341e1f66ebbbaab24b6beff4d16e6a734bd"
+    },
+    {
+      "id": "chain-0029-04-mix",
+      "chain_id": "chain-0029",
+      "split": "test",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "6c8757ab0277ca0136ed428663ebce23e55c143738e92d4c847e6ffed09984c9"
+    },
+    {
+      "id": "chain-0029-05-feedback",
+      "chain_id": "chain-0029",
+      "split": "test",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "10aa38de177c2e83c279ab363d1da159cc817bad0f16d7df310ddfc76c2e5e96"
+    },
+    {
+      "id": "chain-0030-00-create",
+      "chain_id": "chain-0030",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 120 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 62, \"start\": 0, \"duration\": 0.375, \"velocity\": 93}, {\"id\": \"n1\", \"pitch\": 64, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 97}, {\"id\": \"n2\", \"pitch\": 69, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 79}, {\"id\": \"n3\", \"pitch\": 71, \"start\": 3, \"duration\": 0.375, \"velocity\": 80}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "49c15b40866cf1d4992463ed53528a6bd9b99332ada860b9c6881fa2473715c8"
+    },
+    {
+      "id": "chain-0030-01-transpose",
+      "chain_id": "chain-0030",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 12 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "bc1d5d6a4a139b1af1f82d30c1e6acc424fddef1b85797e0eee6f5f87f068be8"
+    },
+    {
+      "id": "chain-0030-02-trim-fades",
+      "chain_id": "chain-0030",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.2. Set linear item fades: 0.1 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "dba2ca17e0caaad1b57f8cd831e42ef9c2806e4cc6069b4d15146c7be50a215f"
+    },
+    {
+      "id": "chain-0030-03-pitch-stretch",
+      "chain_id": "chain-0030",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4f3bdc3a34a0b9aa027258c45ec2078ebb019bcf15bfadf6d66f3438a2f8b811"
+    },
+    {
+      "id": "chain-0030-04-mix",
+      "chain_id": "chain-0030",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.75. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "597cf58cc26bbf15b2431f90363ca4588cc222eeff56ed1a3e61e8f16a3a90cc"
+    },
+    {
+      "id": "chain-0030-05-feedback",
+      "chain_id": "chain-0030",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "0fa5cb3f3e04d6a54dcbae8636f8aa85b80e0537b1f620c4799c363968e64432"
+    },
+    {
+      "id": "chain-0031-00-create",
+      "chain_id": "chain-0031",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 121 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 49, \"start\": 0, \"duration\": 0.375, \"velocity\": 79}, {\"id\": \"n1\", \"pitch\": 56, \"start\": 1, \"duration\": 0.375, \"velocity\": 103}, {\"id\": \"n2\", \"pitch\": 54, \"start\": 2, \"duration\": 0.375, \"velocity\": 83}, {\"id\": \"n3\", \"pitch\": 61, \"start\": 3, \"duration\": 0.375, \"velocity\": 105}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "ae433260c8943dcc527bca0ad08119e6e4df1c9f683f92d0cc4ff27439e70c6d"
+    },
+    {
+      "id": "chain-0031-01-transpose",
+      "chain_id": "chain-0031",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 12 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "6c02e4f04d55e6c89a51141c7145258e7101e2496c6c740114a3c00c29c72c6d"
+    },
+    {
+      "id": "chain-0031-02-trim-fades",
+      "chain_id": "chain-0031",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.6. Set linear item fades: 0.1 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "254c1e1f562832411e5910bd81afc26ca3561e9c28b9b21f42470d99f6079adc"
+    },
+    {
+      "id": "chain-0031-03-pitch-stretch",
+      "chain_id": "chain-0031",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c4ffb4e1856467ecfe764285c1bbaafe50481131a4d80c9506ba179d5b745038"
+    },
+    {
+      "id": "chain-0031-04-mix",
+      "chain_id": "chain-0031",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.75. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "e1e512d09619f1cf418e1616eeb0e745135d0f2c05891f83d48a6cd1e47d65f1"
+    },
+    {
+      "id": "chain-0031-05-feedback",
+      "chain_id": "chain-0031",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f37069086ea1451a0b9cf1faf8c3fad0d6242caf0d3fe402c299db141dc4eb46"
+    },
+    {
+      "id": "chain-0032-00-create",
+      "chain_id": "chain-0032",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 122 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 54, \"start\": 0, \"duration\": 0.375, \"velocity\": 98}, {\"id\": \"n1\", \"pitch\": 61, \"start\": 1, \"duration\": 0.375, \"velocity\": 101}, {\"id\": \"n2\", \"pitch\": 59, \"start\": 2, \"duration\": 0.375, \"velocity\": 82}, {\"id\": \"n3\", \"pitch\": 66, \"start\": 3, \"duration\": 0.375, \"velocity\": 105}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "918b867c738094601a8f1beefa467d5f4f06b82bea48b7e930a33eabd1c92e3c"
+    },
+    {
+      "id": "chain-0032-01-transpose",
+      "chain_id": "chain-0032",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "5263a977b0e0ead8688508ce277ca9ca44888a7da30e5b45e92f5d77ad8c01d2"
+    },
+    {
+      "id": "chain-0032-02-trim-fades",
+      "chain_id": "chain-0032",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.6. Set linear item fades: 0.05 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4b480b51744479354817c791255c0e26cc27aa7e9bf8cb0068a88b0ab79cedef"
+    },
+    {
+      "id": "chain-0032-03-pitch-stretch",
+      "chain_id": "chain-0032",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "953332745e08fbc01c13f2d1b2a55b1e9e8b72124d7af2637a27848066bc0b7a"
+    },
+    {
+      "id": "chain-0032-04-mix",
+      "chain_id": "chain-0032",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "72aee49af341eadaed9d87aa4dd6e5005b39edbbdf6ac163a2a5ac09278c09ef"
+    },
+    {
+      "id": "chain-0032-05-feedback",
+      "chain_id": "chain-0032",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "8b06c8249448c2988744e6a9d5ebb8c99642d0e947ba506f7037a78012dac2f6"
+    },
+    {
+      "id": "chain-0033-00-create",
+      "chain_id": "chain-0033",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 123 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 64, \"start\": 0, \"duration\": 0.375, \"velocity\": 105}, {\"id\": \"n1\", \"pitch\": 66, \"start\": 1, \"duration\": 0.375, \"velocity\": 65}, {\"id\": \"n2\", \"pitch\": 71, \"start\": 2, \"duration\": 0.375, \"velocity\": 75}, {\"id\": \"n3\", \"pitch\": 73, \"start\": 3, \"duration\": 0.375, \"velocity\": 79}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "97ceb38e95976bcf3e13f1656ba54ad988902e0fee1b325ec51e9d415a7096b4"
+    },
+    {
+      "id": "chain-0033-01-transpose",
+      "chain_id": "chain-0033",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 3 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "28d0a2cd4beedee6bd92b85733bd67fcf76e64b0c2cadf3ea09d488246bb7636"
+    },
+    {
+      "id": "chain-0033-02-trim-fades",
+      "chain_id": "chain-0033",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.2. Set linear item fades: 0.15 seconds in and 0.15 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "91bd6e96b3973e2ebd2eb898e56c81d50d154797725179dcd6f15c2415dd8e29"
+    },
+    {
+      "id": "chain-0033-03-pitch-stretch",
+      "chain_id": "chain-0033",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c20efa8fcced0be352c82ba3424548cb98ffd8caacff17900ca1e8df577f59e9"
+    },
+    {
+      "id": "chain-0033-04-mix",
+      "chain_id": "chain-0033",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "b3ec3a3100afca9ca543a8ecf2806a03e350b9d782f205ecfb1c5c3c5394341b"
+    },
+    {
+      "id": "chain-0033-05-feedback",
+      "chain_id": "chain-0033",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "bd5e740a8aa375c2482c70526dab2420d5b039402cc85650339632a46ee6173f"
+    },
+    {
+      "id": "chain-0034-00-create",
+      "chain_id": "chain-0034",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 124 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 50, \"start\": 0, \"duration\": 0.375, \"velocity\": 67}, {\"id\": \"n1\", \"pitch\": 53, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 90}, {\"id\": \"n2\", \"pitch\": 57, \"start\": 2, \"duration\": 0.375, \"velocity\": 98}, {\"id\": \"n3\", \"pitch\": 60, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 95}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "31eaac47b9872a66c21938d9853fa21cb76a61ad0de2ae910fee036bcd1fc98f"
+    },
+    {
+      "id": "chain-0034-01-transpose",
+      "chain_id": "chain-0034",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a7223d9166f5e59c1ad03ab6fc5da5d5bec61070d6cf1d2c16e583aaf34f0426"
+    },
+    {
+      "id": "chain-0034-02-trim-fades",
+      "chain_id": "chain-0034",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.1 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "0d8a53b980091526cbfb6fb7434d6fce153816f3c94f58885bb221578a2e2c41"
+    },
+    {
+      "id": "chain-0034-03-pitch-stretch",
+      "chain_id": "chain-0034",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "6b8580dc6d0075c3666983ae94bcd1944c7b03e8061343279849fa05c014f74d"
+    },
+    {
+      "id": "chain-0034-04-mix",
+      "chain_id": "chain-0034",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "9541e87305615de49b0510ac233d9cbfcdc0fd887a553aac3d744bd00b91788a"
+    },
+    {
+      "id": "chain-0034-05-feedback",
+      "chain_id": "chain-0034",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "1a4ad0133ce70c2e79a5bf1bba02d6770a11bf1ba3e887dc0f96e91e97c5a14b"
+    },
+    {
+      "id": "chain-0035-00-create",
+      "chain_id": "chain-0035",
+      "split": "train",
+      "stage": "create",
+      "prompt": "Build a project at 125 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 50, \"start\": 0, \"duration\": 0.375, \"velocity\": 90}, {\"id\": \"n1\", \"pitch\": 54, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 86}, {\"id\": \"n2\", \"pitch\": 57, \"start\": 2, \"duration\": 0.375, \"velocity\": 68}, {\"id\": \"n3\", \"pitch\": 62, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 80}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c2b3d5f761718fc65db8f4b0db4bce515abd3f0cde34c52fc72fa2a5e2279e6d"
+    },
+    {
+      "id": "chain-0035-01-transpose",
+      "chain_id": "chain-0035",
+      "split": "train",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c3dca981c3f580f76e4d66bf47cd8ff519c7acaa5507c3317c3ec01b41348048"
+    },
+    {
+      "id": "chain-0035-02-trim-fades",
+      "chain_id": "chain-0035",
+      "split": "train",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.15 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "125ea88b0437e8d0b85660a055a4d69a2a9322e94c5b82857eb95c952991b5b0"
+    },
+    {
+      "id": "chain-0035-03-pitch-stretch",
+      "chain_id": "chain-0035",
+      "split": "train",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 1.25 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4923fda420d2db4d734c0fd1468579b8fa1c902b73f571f4c14182c731f05f67"
+    },
+    {
+      "id": "chain-0035-04-mix",
+      "chain_id": "chain-0035",
+      "split": "train",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "62ef7b14786d9ea6dfda0509c8009731fc3b5075bf623dcbba07e49f943f9078"
+    },
+    {
+      "id": "chain-0035-05-feedback",
+      "chain_id": "chain-0035",
+      "split": "train",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "82075a4daaff10d392abd37a7d8140c3dc7fe62a094795a3b218e2c631a6639f"
+    },
+    {
+      "id": "chain-0036-00-create",
+      "chain_id": "chain-0036",
+      "split": "dev",
+      "stage": "create",
+      "prompt": "Build a project at 126 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 64, \"start\": 0, \"duration\": 0.375, \"velocity\": 105}, {\"id\": \"n1\", \"pitch\": 66, \"start\": 1, \"duration\": 0.375, \"velocity\": 84}, {\"id\": \"n2\", \"pitch\": 71, \"start\": 2, \"duration\": 0.375, \"velocity\": 91}, {\"id\": \"n3\", \"pitch\": 73, \"start\": 3, \"duration\": 0.375, \"velocity\": 72}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "53f3ba4f2344b38a6c211f09d74da44fca41e98c4bb5749b4aeb4c4ba85a6515"
+    },
+    {
+      "id": "chain-0036-01-transpose",
+      "chain_id": "chain-0036",
+      "split": "dev",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -5 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "68e033d3adeba14dc3e231356e38ba1450f97b7c386bdeda1d4bffc14985babf"
+    },
+    {
+      "id": "chain-0036-02-trim-fades",
+      "chain_id": "chain-0036",
+      "split": "dev",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.2. Set linear item fades: 0.05 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c6df2e639028585171aaf05b3be59aa64e91e14e93a0cde333368d681bddbd9c"
+    },
+    {
+      "id": "chain-0036-03-pitch-stretch",
+      "chain_id": "chain-0036",
+      "split": "dev",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "89c07df9c859d3ea38feb291c551f5ad4b887d11c505d06471da6c4d95013247"
+    },
+    {
+      "id": "chain-0036-04-mix",
+      "chain_id": "chain-0036",
+      "split": "dev",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -9 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7342e26f46e489f23d5837890080700fcd408931171540a214f8e6b64860724f"
+    },
+    {
+      "id": "chain-0036-05-feedback",
+      "chain_id": "chain-0036",
+      "split": "dev",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "441b051eb7d0e02c5ca14133be2d5fbb9ad9067054b1b82c65022ce91df1506f"
+    },
+    {
+      "id": "chain-0037-00-create",
+      "chain_id": "chain-0037",
+      "split": "dev",
+      "stage": "create",
+      "prompt": "Build a project at 127 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 56, \"start\": 0, \"duration\": 0.375, \"velocity\": 69}, {\"id\": \"n1\", \"pitch\": 60, \"start\": 1, \"duration\": 0.375, \"velocity\": 91}, {\"id\": \"n2\", \"pitch\": 63, \"start\": 2, \"duration\": 0.375, \"velocity\": 66}, {\"id\": \"n3\", \"pitch\": 68, \"start\": 3, \"duration\": 0.375, \"velocity\": 75}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "b050abc99cbad67b24f8975085c7a898c2d0aa970add1e2e69337e053bbddae9"
+    },
+    {
+      "id": "chain-0037-01-transpose",
+      "chain_id": "chain-0037",
+      "split": "dev",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by -7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "95c05575fd7cb93aae358c7fa784ee728f06041fbce5f809d726142007e8744c"
+    },
+    {
+      "id": "chain-0037-02-trim-fades",
+      "chain_id": "chain-0037",
+      "split": "dev",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.2 through 1.6. Set linear item fades: 0.05 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f83b139d4e5a53bd18864d525c88b1d5d1a1b012b89e28576ec6a99d17389100"
+    },
+    {
+      "id": "chain-0037-03-pitch-stretch",
+      "chain_id": "chain-0037",
+      "split": "dev",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 12 semitones relative to its original source and stretch ratio 1.5 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "013caf40931c1939a08590f8a4f43603999eec543262487e084d8338167005d4"
+    },
+    {
+      "id": "chain-0037-04-mix",
+      "chain_id": "chain-0037",
+      "split": "dev",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -9 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "bab3091cdede4c42bc8c850577033697062d6ee854ed852e37bc696df7e9b839"
+    },
+    {
+      "id": "chain-0037-05-feedback",
+      "chain_id": "chain-0037",
+      "split": "dev",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -27 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7937c1d3bca54359b9bcc8572cc9caab41b0c86edd7961d54b1bd22599610b49"
+    },
+    {
+      "id": "chain-0038-00-create",
+      "chain_id": "chain-0038",
+      "split": "test",
+      "stage": "create",
+      "prompt": "Build a project at 128 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 52, \"start\": 0, \"duration\": 0.375, \"velocity\": 72}, {\"id\": \"n1\", \"pitch\": 55, \"start\": 0.5, \"duration\": 0.375, \"velocity\": 83}, {\"id\": \"n2\", \"pitch\": 59, \"start\": 2, \"duration\": 0.375, \"velocity\": 100}, {\"id\": \"n3\", \"pitch\": 62, \"start\": 3.5, \"duration\": 0.375, \"velocity\": 72}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "834b42b3846bbb944cb1f69b281c3b3ae1a32740bdf7bf2053d0d482be8a4e73"
+    },
+    {
+      "id": "chain-0038-01-transpose",
+      "chain_id": "chain-0038",
+      "split": "test",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 12 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "2e680e986ae5745bfbf2984bddc57ba4c46550dd004b9cc1d749aba6d6db757b"
+    },
+    {
+      "id": "chain-0038-02-trim-fades",
+      "chain_id": "chain-0038",
+      "split": "test",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.3 through 1.4. Set linear item fades: 0.05 seconds in and 0.25 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "d79306fb5048ebb45643d8003bb2eaa1cf01c76167b4acafb303964cde4bd8c9"
+    },
+    {
+      "id": "chain-0038-03-pitch-stretch",
+      "chain_id": "chain-0038",
+      "split": "test",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to 7 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "473cbb835020d5ba56d2c8ecd19e5a736e52af5d54c9ca91f83956a7726dbcde"
+    },
+    {
+      "id": "chain-0038-04-mix",
+      "chain_id": "chain-0038",
+      "split": "test",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to -0.5. Add audio send keys → bus at -6 dB and gain effect 'trim' on 'samples' at -6 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "7f4f6f548c3917c5357d5716aac2ded18469bed0159d7ecfc09c80e4a816a442"
+    },
+    {
+      "id": "chain-0038-05-feedback",
+      "chain_id": "chain-0038",
+      "split": "test",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -24 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "1c331e65e0e7e9240cc29a52da8b506dcfa8e25d2c7cc07a842339384309b49b"
+    },
+    {
+      "id": "chain-0039-00-create",
+      "chain_id": "chain-0039",
+      "split": "test",
+      "stage": "create",
+      "prompt": "Build a project at 129 BPM, keeping 4/4 meter. Add MIDI track 'keys' named 'Keys' at -6 dB, audio track 'samples' named 'Samples' at -9 dB, and empty audio track 'bus' named 'Bus' at -6 dB, in that order. On keys add MIDI clip 'phrase' at beat 0 with length 4 beats and these notes (pitch is MIDI number; times are beats): [{\"id\": \"n0\", \"pitch\": 50, \"start\": 0, \"duration\": 0.375, \"velocity\": 68}, {\"id\": \"n1\", \"pitch\": 57, \"start\": 1.5, \"duration\": 0.375, \"velocity\": 103}, {\"id\": \"n2\", \"pitch\": 55, \"start\": 2.5, \"duration\": 0.375, \"velocity\": 71}, {\"id\": \"n3\", \"pitch\": 62, \"start\": 3, \"duration\": 0.375, \"velocity\": 78}]. On samples add audio clip 'hit' from provided asset 'tone', at beat 0 using source seconds 0 through 2, original pitch and duration, forward playback. Leave bus empty and keep default routing. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "82a530058a4020f5a8722c638dc299919e4f0cba9980249bda40775f17a9ba46"
+    },
+    {
+      "id": "chain-0039-01-transpose",
+      "chain_id": "chain-0039",
+      "split": "test",
+      "stage": "transpose",
+      "prompt": "Transpose all notes in 'phrase' on 'keys' by 7 semitones, keeping note identities, timing and velocities. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c4f2d33c5fc21e0ab1635241b915f5bc7fd650a055484b48b8a37fd2343e44e4"
+    },
+    {
+      "id": "chain-0039-02-trim-fades",
+      "chain_id": "chain-0039",
+      "split": "test",
+      "stage": "trim-fades",
+      "prompt": "Trim 'hit' on 'samples' to source seconds 0.1 through 1.4. Set linear item fades: 0.05 seconds in and 0.2 seconds out. Keep its timeline position. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "a11f8253aa33442cb25938f3216280543f98b7aeddc17364f073427b6f4a7f97"
+    },
+    {
+      "id": "chain-0039-03-pitch-stretch",
+      "chain_id": "chain-0039",
+      "split": "test",
+      "stage": "pitch-stretch",
+      "prompt": "Set 'hit' on 'samples' to -5 semitones relative to its original source and stretch ratio 0.75 relative to its source selection. Preserve its fades in seconds and use pitch-preserving time stretch. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "4b0f1cb7fa3a9c5b6b366fbec1a697af8599528103893fd6e99426bef53f629b"
+    },
+    {
+      "id": "chain-0039-04-mix",
+      "chain_id": "chain-0039",
+      "split": "test",
+      "stage": "mix",
+      "prompt": "Pan 'keys' to 0.5. Add audio send keys → bus at -12 dB and gain effect 'trim' on 'samples' at -3 dB. Keep both source tracks' direct master output enabled. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "f75bb739835922bc8f918262e2b2b3d2cfd12fbb865a589a2e892eec45d37ec6"
+    },
+    {
+      "id": "chain-0039-05-feedback",
+      "chain_id": "chain-0039",
+      "split": "test",
+      "stage": "feedback",
+      "prompt": "Render and analyze this mix, then adjust only 'keys' and 'samples' track gains to achieve RMS -30 dBFS within 0.5 dB. Render again and verify that the RMS error improved. Preserve everything else. Render the completed project to a non-silent WAV.",
+      "task_sha256": "c9042c26aace7aa4a31e723f0e69f3a539cf67b066947154140d617da058334a"
+    }
+  ]
+}

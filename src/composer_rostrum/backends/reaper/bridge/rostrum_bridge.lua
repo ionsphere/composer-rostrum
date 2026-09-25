@@ -1,7 +1,9 @@
 -- Protocol v1 worker. Run only inside the isolated Rostrum REAPER process.
 local source = debug.getinfo(1,'S').source:sub(2)
 local json = dofile(source:match('^(.*[/\\])') .. 'json.lua')
-local workspace = assert(ROSTRUM_WORKSPACE, 'ROSTRUM_WORKSPACE is required')
+-- Windows can resolve a busy directory with the extended-length //?/ prefix.
+-- REAPER's render dialog does not accept that spelling as a destination.
+local workspace = assert(ROSTRUM_WORKSPACE, 'ROSTRUM_WORKSPACE is required'):gsub('^//%?/','')
 local project_path = workspace..'/project.rpp'
 local function copy(v) return json.decode(json.encode(v)) end
 local function load(path) local f=assert(io.open(path,'rb')); local s=f:read('*a'); f:close(); return json.decode(s) end
@@ -104,6 +106,16 @@ handlers.materialize=function(a)
         reaper.SetMediaItemTakeInfo_Value(take,'D_PLAYRATE',1/(c.stretch_ratio or 1))
         reaper.SetMediaItemTakeInfo_Value(take,'D_PITCH',c.pitch_semitones or 0)
         reaper.SetMediaItemTakeInfo_Value(take,'B_PPITCH',1)
+        if c.fade_in_seconds~=nil or c.fade_out_seconds~=nil then
+          reaper.SetMediaItemInfo_Value(item,'D_FADEINLEN',c.fade_in_seconds or 0)
+          reaper.SetMediaItemInfo_Value(item,'D_FADEOUTLEN',c.fade_out_seconds or 0)
+          reaper.SetMediaItemInfo_Value(item,'D_FADEINLEN_AUTO',0)
+          reaper.SetMediaItemInfo_Value(item,'D_FADEOUTLEN_AUTO',0)
+          reaper.SetMediaItemInfo_Value(item,'C_FADEINSHAPE',0)
+          reaper.SetMediaItemInfo_Value(item,'C_FADEOUTSHAPE',0)
+          reaper.SetMediaItemInfo_Value(item,'D_FADEINDIR',0)
+          reaper.SetMediaItemInfo_Value(item,'D_FADEOUTDIR',0)
+        end
       end
       setext(item,'rostrum_id',c.id,false)
       ::next_clip::
@@ -193,6 +205,8 @@ handlers.readback=function()
         c.stretch_ratio=rounded(1/rate)
         c.source_end=rounded(c.source_start+reaper.GetMediaItemInfo_Value(item,'D_LENGTH')*rate)
         c.pitch_semitones=rounded(reaper.GetMediaItemTakeInfo_Value(take,'D_PITCH'))
+        if c.fade_in_seconds~=nil then c.fade_in_seconds=rounded(reaper.GetMediaItemInfo_Value(item,'D_FADEINLEN')) end
+        if c.fade_out_seconds~=nil then c.fade_out_seconds=rounded(reaper.GetMediaItemInfo_Value(item,'D_FADEOUTLEN')) end
       end
       clips[#clips+1]=c
     end
