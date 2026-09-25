@@ -11,6 +11,9 @@ from pathlib import Path
 import re
 import shutil
 import uuid
+import wave
+import time
+import traceback
 
 from .backends.base import RenderRequest
 from .backends.reaper import ReaperBackend
@@ -61,7 +64,96 @@ def snapshot(backend, session, destination: Path, render=None):
     return record
 
 
-def verify_snapshot(snapshot_path: Path, workspace: Path, executable: str):
+def pcm_equivalent(left: Path, right: Path, max_lsb: int = 0) -> bool:
+    """Bound 24-bit REAPER reopen rounding without masking an audible edit."""
+    with wave.open(str(left), "rb") as a, wave.open(str(right), "rb") as b:
+        if a.getparams() != b.getparams():
+            return False
+        first = a.readframes(a.getnframes())
+        second = b.readframes(b.getnframes())
+        if first == second:
+            return True
+        if max_lsb == 0 or a.getsampwidth() != 3:
+            return False
+        mismatched = 0
+        samples = len(first) // 3
+        for offset in range(0, len(first), 3):
+            x = int.from_bytes(first[offset:offset+3], "little", signed=True)
+            y = int.from_bytes(second[offset:offset+3], "little", signed=True)
+            if abs(x-y) > max_lsb:
+                return False
+            mismatched += x != y
+        return mismatched / samples <= 0.0001
+
+
+def moved_item_pcm_matches(before: Path, after: Path, tempo: float, item_start_beats: float,
+                           cut_seconds: float, moved_start_beats: float) -> bool:
+    """Check that a moved right half is heard at its new position, with left intact."""
+    with wave.open(str(before), "rb") as source, wave.open(str(after), "rb") as actual:
+        if (source.getnchannels(), source.getsampwidth(), source.getframerate()) != \
+           (actual.getnchannels(), actual.getsampwidth(), actual.getframerate()):
+            return False
+        rate = source.getframerate()
+        frame_bytes = source.getnchannels() * source.getsampwidth()
+        original = source.readframes(source.getnframes())
+        rendered = actual.readframes(actual.getnframes())
+        expected = bytearray(len(rendered))
+        initial_frame = round(item_start_beats * 60 / tempo * rate)
+        cut_frames = round(cut_seconds * rate)
+        moved_frame = round(moved_start_beats * 60 / tempo * rate)
+        source_end = initial_frame + round(2.0 * rate)
+        if source_end * frame_bytes > len(original) or moved_frame + source_end - initial_frame - cut_frames > actual.getnframes():
+            return False
+        left = original[initial_frame*frame_bytes:(initial_frame+cut_frames)*frame_bytes]
+        right = original[(initial_frame+cut_frames)*frame_bytes:source_end*frame_bytes]
+        expected[initial_frame*frame_bytes:(initial_frame+cut_frames)*frame_bytes] = left
+        expected[moved_frame*frame_bytes:(moved_frame*frame_bytes)+len(right)] = right
+        if bytes(expected) == rendered:
+            return True
+        if source.getsampwidth() != 3:
+            return False
+        mismatched = 0
+        for offset in range(0, len(rendered), 3):
+            x = int.from_bytes(expected[offset:offset+3], "little", signed=True)
+            y = int.from_bytes(rendered[offset:offset+3], "little", signed=True)
+            if abs(x-y) > 1:
+                return False
+            mismatched += x != y
+        return mismatched / (len(rendered) // 3) <= 0.0001
+
+
+def fixture_pcm_matches(source_wav: Path, render_wav: Path, tempo: float,
+                        item_start_beats: float) -> bool:
+    """Require the owned 16-bit mono fixture to appear completely in the render."""
+    with wave.open(str(source_wav), "rb") as source, wave.open(str(render_wav), "rb") as output:
+        if (source.getnchannels(), source.getsampwidth(), output.getnchannels(), output.getsampwidth()) != (1, 2, 2, 3):
+            return False
+        if source.getframerate() != output.getframerate():
+            return False
+        source_bytes = source.readframes(source.getnframes())
+        actual = output.readframes(output.getnframes())
+        start = round(item_start_beats * 60 / tempo * output.getframerate())
+        if (start + source.getnframes()) * 6 > len(actual):
+            return False
+        expected = bytearray(len(actual))
+        for frame in range(source.getnframes()):
+            value = int.from_bytes(source_bytes[2*frame:2*frame+2], "little", signed=True) * 256
+            encoded = value.to_bytes(3, "little", signed=True)
+            offset = (start + frame) * 6
+            expected[offset:offset+6] = encoded + encoded
+        if expected == actual:
+            return True
+        mismatched = 0
+        for offset in range(0, len(actual), 3):
+            x = int.from_bytes(expected[offset:offset+3], "little", signed=True)
+            y = int.from_bytes(actual[offset:offset+3], "little", signed=True)
+            if abs(x-y) > 1:
+                return False
+            mismatched += x != y
+        return mismatched / (len(actual) // 3) <= 0.0001
+
+
+def verify_snapshot(snapshot_path: Path, workspace: Path, executable: str, pcm_tolerance_lsb: int = 0):
     """Reopen a moved .rpp, without rematerializing its target, and compare PCM."""
     record = json.loads((snapshot_path / "state.json").read_text(encoding="utf-8"))
     for relative, digest in record["files"].items():
@@ -82,9 +174,20 @@ def verify_snapshot(snapshot_path: Path, workspace: Path, executable: str):
             raise ValueError("relocation changed native GUIDs")
         result = {"readback": True, "native_ids": True, "pcm_equal": None}
         if "render" in record:
-            actual = backend.render(session, RenderRequest(**record["render"]["request"]))
+            request = RenderRequest(**record["render"]["request"])
+            for retry_index in range(3):
+                actual = backend.render(session, request)
+                if not actual.metrics["silent"]:
+                    break
+                time.sleep(0.25)
+            result["render_attempts"] = retry_index + 1
             result["pcm_equal"] = actual.metrics["pcm_hash"] == record["render"]["metrics"]["pcm_hash"]
-            if not result["pcm_equal"]:
+            if not result["pcm_equal"] and pcm_tolerance_lsb:
+                result["pcm_equivalent_24bit"] = pcm_equivalent(
+                    actual.path, snapshot_path / "render.wav", pcm_tolerance_lsb)
+            else:
+                result["pcm_equivalent_24bit"] = result["pcm_equal"]
+            if not result["pcm_equivalent_24bit"]:
                 raise ValueError("relocated snapshot PCM differs")
         return result
     finally:
@@ -102,7 +205,11 @@ def _reference(step, environment):
     if step.expected is not None:
         for op in step.operations:
             environment.call(op["tool"], **op["arguments"])
-        environment.call("render")
+        for attempt in range(3):
+            result = environment.call("render")
+            if not result["metrics"]["silent"]:
+                break
+            time.sleep(0.25)
         return
     target = float(re.search(r"RMS (-?[\d.]+) dBFS", step.task.prompt)[1])
     for attempt in range(4):
@@ -160,17 +267,39 @@ def _cached_chain(dataset, chain):
                          "pcm_hash": record["render"]["metrics"]["pcm_hash"], "native_ids_preserved": private["native_ids_preserved"],
                          "negative_controls_rejected": all(private["negative_controls"].values())})
         source_path = private["target_state"]
+    if chain.steps[0].task.tags[0] == "reaper-item-edits-v1":
+        initial = dataset / json.loads((dataset / rows[0]["input"]).read_text(encoding="utf-8"))["input_state"]
+        split = dataset / json.loads((dataset / rows[0]["private_target"]).read_text(encoding="utf-8"))["target_state"]
+        moved = dataset / source_path
+        start_project = chain.steps[0].task.initial_project
+        final_project = chain.steps[-1].expected
+        start = start_project.tracks[0]["clips"][0]["timeline_start_beats"]
+        cut = final_project.tracks[0]["clips"][0]["source_end"]
+        destination = final_project.tracks[0]["clips"][1]["timeline_start_beats"]
+        if not (fixture_pcm_matches(initial / "assets/tone.wav", initial / "render.wav", start_project.tempo, start)
+                and pcm_equivalent(initial / "render.wav", split / "render.wav", 1)
+                and moved_item_pcm_matches(initial / "render.wav", moved / "render.wav",
+                                           start_project.tempo, start, cut, destination)):
+            return None
     return rows, evidence, Path(source_path)
 
 
-def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, resume=False):
+def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, resume=False,
+            suite="chains"):
     if not 1 <= workers <= 4:
         raise ValueError("workers must be between 1 and 4")
     output = output.resolve()
     output.mkdir(parents=True, exist_ok=resume)
     dataset = output / "dataset"
     dataset.mkdir(exist_ok=resume)
-    chains = generate_chains(count, seed)
+    if suite == "chains":
+        chains = generate_chains(count, seed)
+        corpus_version = CORPUS_VERSION
+    elif suite == "item-edits":
+        from .item_edit_corpus import CORPUS_VERSION as corpus_version, generate_item_edit_chains
+        chains = generate_item_edit_chains(count, seed)
+    else:
+        raise ValueError("unknown corpus suite")
     rows, evidence = [], []
     bridge = Path(__file__).parent / "backends/reaper/bridge"
     for effect in bridge.glob("*.jsfx"):
@@ -182,7 +311,8 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         cached = _cached_chain(dataset, chain) if resume else None
         if cached:
             rows, evidence, source_path = cached
-            evidence[-1]["relocated_restart"] = verify_snapshot(dataset / source_path, output / "relocated" / attempt, executable)
+            evidence[-1]["relocated_restart"] = verify_snapshot(dataset / source_path, output / "relocated" / attempt, executable,
+                pcm_tolerance_lsb=1 if suite == "item-edits" else 0)
             print(f"{chain.id}: cached chain reverified after relocation", flush=True)
             return rows, evidence
         rows, evidence = [], []
@@ -191,8 +321,19 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         session = backend.open(native)
         try:
             source_path = Path("states") / attempt / "00"
-            source_record = snapshot(backend, session, dataset / source_path)
-            previous_pcm = None
+            baseline_render = None
+            if suite == "item-edits":
+                for retry_index in range(3):
+                    baseline_render = backend.render(session, RenderRequest())
+                    initial_clip = chain.steps[0].task.initial_project.tracks[0]["clips"][0]
+                    if fixture_pcm_matches(native.workspace / "assets/tone.wav", baseline_render.path,
+                                           chain.steps[0].task.initial_project.tempo, initial_clip["timeline_start_beats"]):
+                        break
+                    time.sleep(0.25)
+                else:
+                    raise ValueError("input render did not reproduce the full source fixture after retries")
+            source_record = snapshot(backend, session, dataset / source_path, baseline_render)
+            previous_pcm = baseline_render.metrics["pcm_hash"] if baseline_render else None
             for index, step in enumerate(chain.steps):
                 before = backend.readback(session)
                 if project_hash(before) != project_hash(step.task.initial_project):
@@ -203,6 +344,23 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
                 backend.commit_environment(session, environment)
                 after = backend.readback(session)
                 renders = session.state["renders"]
+                if suite == "item-edits":
+                    start = chain.steps[0].task.initial_project.tracks[0]["clips"][0]["timeline_start_beats"]
+                    cut = step.expected.tracks[0]["clips"][0]["source_end"]
+                    destination = step.expected.tracks[0]["clips"][1]["timeline_start_beats"]
+                    def audio_relation():
+                        if step.task.tags[1] == "split":
+                            return pcm_equivalent(baseline_render.path, renders[-1].path, 1)
+                        return moved_item_pcm_matches(baseline_render.path, renders[-1].path,
+                            chain.steps[0].task.initial_project.tempo, start, cut, destination)
+                    for retry_index in range(3):
+                        if audio_relation():
+                            break
+                        time.sleep(0.25)
+                        environment.call("render")
+                    else:
+                        if not audio_relation():
+                            raise ValueError("render did not match the intended item waveform arrangement")
                 checks = evaluate(step.task, before, after) + evaluate_renders(step.task, renders, environment.trajectory, after)
                 if not checks or not all(c.passed for c in checks):
                     raise ValueError(f"{step.task.id}: {[asdict(c) for c in checks if not c.passed]}")
@@ -211,7 +369,10 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
                 if not _stable_ids(source_record["native_ids"], target_record["native_ids"]):
                     raise ValueError("an edit changed a protected native GUID")
                 pcm = renders[-1].metrics["pcm_hash"]
-                if pcm == previous_pcm:
+                if suite == "item-edits" and step.task.tags[1] == "split":
+                    if not pcm_equivalent(renders[-1].path, baseline_render.path, 1):
+                        raise ValueError("lossless split changed rendered PCM")
+                elif pcm == previous_pcm:
                     raise ValueError("edit did not change rendered audio")
                 previous_pcm = pcm
                 # Negative controls: unchanged input, and correct target with damaged protected meter.
@@ -248,7 +409,8 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         finally:
             backend.close(session)
         # The last state must work at a new path in a fresh process without source workspace assets.
-        result = verify_snapshot(dataset / source_path, output / "relocated" / attempt, executable)
+        result = verify_snapshot(dataset / source_path, output / "relocated" / attempt, executable,
+            pcm_tolerance_lsb=1 if suite == "item-edits" else 0)
         evidence[-1]["relocated_restart"] = result
         print(f"{chain.id}: relocated restart PCM verified", flush=True)
         return rows, evidence
@@ -257,7 +419,8 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         try:
             return capture_chain(chain)
         except Exception as exc:
-            write_json(output / "failures" / f"{chain.id}.json", {"chain": chain.id, "error": f"{type(exc).__name__}: {exc}"})
+            write_json(output / "failures" / f"{chain.id}.json", {"chain": chain.id, "error": f"{type(exc).__name__}: {exc}",
+                "traceback": traceback.format_exc()})
             print(f"{chain.id}: FAILED: {type(exc).__name__}: {exc}", flush=True)
             return None
 
@@ -273,8 +436,9 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
     if failures:
         raise RuntimeError(f"{failures} chains failed; evidence retained. Retry with --resume in fresh worker workspaces.")
     (dataset / "samples.jsonl").write_text("".join(json.dumps(row) + "\n" for row in rows), encoding="utf-8", newline="\n")
-    report = {"corpus": CORPUS_VERSION, "seed": seed, "chains": count, "samples": len(rows),
-              "creation_samples": count, "revision_samples": len(rows)-count,
+    creation_count = count if suite == "chains" else 0
+    report = {"corpus": corpus_version, "seed": seed, "chains": count, "samples": len(rows),
+              "creation_samples": creation_count, "revision_samples": len(rows)-creation_count,
               "splits": {s: sum(r["split"] == s for r in rows) for s in ("train", "dev", "test")},
               "passed": len(evidence), "relocated_restart_checks": count,
               "reference_kind": "procedural-control", "model_runs": "not_run", "evidence": evidence}
@@ -286,7 +450,7 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         "Expose only that row's inputs JSON and input state directory to an agent.\n"
         "Do not expose private/, other states, samples.jsonl, validation.json or the generator.\n"
         "Keep entire chains in their assigned split; splits measure parameter generalization, not unseen workflows.\n"
-        "Each state contains a native project, Music IR, source WAVs, hashes and (except the empty state) reference audio.\n"
+        "Each state contains a native project, Music IR, source WAVs and hashes; rendered states contain reference audio.\n"
         "To open manually, copy Effects/Rostrum into the REAPER resource directory's Effects folder, then open project.rpp.\n"
         "The Python verifier stages the effects automatically in its isolated profile.\n"
         "Projects use relative source paths. Keep each state directory intact when moving it.\n"
@@ -305,8 +469,9 @@ def main():
     parser.add_argument("--seed", type=int, default=20260923)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--resume", action="store_true", help="Reuse complete chains after checksum and native relocation checks")
+    parser.add_argument("--suite", choices=["chains", "item-edits"], default="chains")
     args = parser.parse_args()
-    report = capture(args.output, args.reaper, args.chains, args.seed, args.workers, args.resume)
+    report = capture(args.output, args.reaper, args.chains, args.seed, args.workers, args.resume, args.suite)
     print(json.dumps({k: v for k, v in report.items() if k != "evidence"}, indent=2))
 
 

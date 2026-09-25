@@ -11,10 +11,10 @@ import time
 
 from .backends.base import BackendError
 from .backends.reaper import ReaperBackend
-from .corpus_capture import sha256, write_json
+from .corpus_capture import moved_item_pcm_matches, pcm_equivalent, sha256, write_json
 from .environment import project_hash
 from .evaluator import evaluate
-from .models import MusicProject, RostrumTask
+from .models import EvaluationResult, MusicProject, RostrumTask
 from .render_evaluator import evaluate_renders
 
 
@@ -58,6 +58,27 @@ def load_sample(dataset: Path, sample_id: str):
     return task, public, dataset_path(dataset, state)
 
 
+def evaluate_item_audio(task, before, after, input_render: Path, renders):
+    """Score the audible relationship, independent of native property readback."""
+    if "reaper-item-edits-v1" not in task.tags:
+        return []
+    valid = False
+    if input_render.is_file() and renders and not renders[-1].metrics["silent"]:
+        try:
+            output_render = renders[-1].path
+            if "split" in task.tags:
+                valid = pcm_equivalent(input_render, output_render, 1)
+            elif "move" in task.tags:
+                source = before.tracks[0]["clips"][0]
+                left, right = after.tracks[0]["clips"]
+                valid = moved_item_pcm_matches(input_render, output_render, before.tempo,
+                    source["timeline_start_beats"], left["source_end"], right["timeline_start_beats"])
+        except (IndexError, KeyError, OSError, ValueError):
+            valid = False
+    return [EvaluationResult("item_audio_relation", valid, float(valid),
+        "audio matches item edit" if valid else "rendered waveform does not match item edit")]
+
+
 def run_sample(dataset: Path, sample_id: str, agent, executable: str, output: Path):
     task, public, state = load_sample(dataset, sample_id)
     output.mkdir(parents=True, exist_ok=False)
@@ -85,7 +106,9 @@ def run_sample(dataset: Path, sample_id: str, agent, executable: str, output: Pa
         backend.commit_environment(session, environment)
         backend.save(session)
         after = backend.readback(session)
-        checks = evaluate(task, before, after) + evaluate_renders(task, session.state["renders"], environment.trajectory, after)
+        checks = (evaluate(task, before, after) +
+                  evaluate_renders(task, session.state["renders"], environment.trajectory, after) +
+                  evaluate_item_audio(task, before, after, state / "render.wav", session.state["renders"]))
         result.update(passed=bool(checks) and all(c.passed for c in checks), results=[asdict(c) for c in checks],
                       project=after.to_dict(), project_hash=project_hash(after))
         if not result["passed"]:

@@ -129,6 +129,41 @@ python scripts/record_corpus_validation.py artifacts/reaper-corpus-v1-full --con
 
 ## Remaining coverage
 
+The [versioned REAPER feature ledger](../benchmarks/reaper-feature-coverage-v1.json)
+turns the broad UI goal into musician intents across project setup, tracks,
+recording, MIDI, audio editing, routing, effects, automation, rendering, media,
+and customization. `native_verified` requires prompt, actual `.rpp` before/after,
+semantic and preservation checks, render evidence, and a relocated reopen. `partial`
+and `open` cannot be counted as coverage. Hardware and arbitrary third-party
+plug-ins have an explicit `external` status until a reproducible fixture exists.
+The ledger is a growing task ontology, not a claim that every REAPER action or
+extension is already represented. Each new feature needs positive and wrong-edit
+controls, native property readback, output evidence suited to the intent, and a
+restart check. Some intents preserve PCM by design, such as a lossless split;
+their output oracle should check equality rather than demand a changed waveform.
+
+`reaper-item-edits-v1` adds linked split and move revisions to a separate corpus
+without changing frozen `reaper-chains-v1` samples. Its split step checks two
+adjacent native items and exact source ranges; its move step checks a beat-position
+change and a different render. The relocated final state verifies project state,
+stable GUIDs, and PCM. Explicit zero fades prevent REAPER's default 10 ms edge
+fades from changing a lossless split. On relocation, a 24-bit render may differ
+by one least-significant bit in at most 0.01% of samples; the verifier records
+exact equality separately and rejects anything beyond that narrow threshold.
+Capture with:
+
+```powershell
+.venv\Scripts\python.exe -m composer_rostrum.corpus_capture --suite item-edits --reaper "C:\Program Files\REAPER (x64)\reaper.exe" --output artifacts/reaper-item-edits-v1-captured --chains 20 --seed 20260924 --workers 2
+.venv\Scripts\python.exe scripts/record_item_edit_validation.py artifacts/reaper-item-edits-v1-captured
+```
+
+The checked-in [item-edit prompt index](../benchmarks/reaper-item-edits-v1.json)
+and [native validation record](validation/reaper-item-edits-v1.json) freeze the
+40 prompts, 60 rendered native states, split waveform checks, moved-segment
+checks, and 20 relocation checks. The full WAV/RPP archive stays in the ignored
+`artifacts/` folder. Exported-input reference, no-op, and wrong-move controls
+can be rerun with `scripts/verify_item_edit_controls.py`.
+
 Next capture families should cover owned imported PCM audio, chopping/reversal,
 sampler maps, effect parameter changes, automation and tempo maps, then stem and
 region renders. Each family needs positive, wrong-edit, preservation, readback,

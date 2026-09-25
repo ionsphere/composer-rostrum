@@ -1,0 +1,327 @@
+{
+  "corpus": "reaper-item-edits-v1",
+  "seed": 20260924,
+  "chains": 20,
+  "samples": [
+    {
+      "id": "item-0000-00-split",
+      "chain_id": "item-0000",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 1.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "7df73f6f7db5597d257a74a3cdbb84957dd59b97b356b82ddcef5cdcff958ede"
+    },
+    {
+      "id": "item-0000-01-move",
+      "chain_id": "item-0000",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 7.25. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "4c2fbf782fa6fa1f4a4c02f7efcbe49aba5de8b874d7f7ff9316099aeab17e93"
+    },
+    {
+      "id": "item-0001-00-split",
+      "chain_id": "item-0001",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 1.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "57b82833a74d5e5f63caf4622242fad930da0eec32854be3ab6ab92c1a74dbb6"
+    },
+    {
+      "id": "item-0001-01-move",
+      "chain_id": "item-0001",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 3.5. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "228f2d405480b26502fe36b1e0e7eae0ff3a46fde49592ee67eb300ca0dceb10"
+    },
+    {
+      "id": "item-0002-00-split",
+      "chain_id": "item-0002",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 0.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "5bc0e3510e3102c8d2d18ae9dd38c8bb7235ebbd800353f2100e79496c5efafa"
+    },
+    {
+      "id": "item-0002-01-move",
+      "chain_id": "item-0002",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 1.75. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "a68750ed91ddf57a04cf7c1adfe1be61382f6808227af6bd192f7a6159599279"
+    },
+    {
+      "id": "item-0003-00-split",
+      "chain_id": "item-0003",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 1.0 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "a95599a91dd1a547d8dc79e117edf154f65073ee6cea151fd3e4481c73246a3c"
+    },
+    {
+      "id": "item-0003-01-move",
+      "chain_id": "item-0003",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 4.166666667. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "e4737b16dbd39c00cfbd1c4c075f5bdce1cdd381191c0ada45c20555c5e82ed9"
+    },
+    {
+      "id": "item-0004-00-split",
+      "chain_id": "item-0004",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 0.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "a18fe40767ec6d05b86c760bed929fdb4495cdca32a449544830ee00d3a9815c"
+    },
+    {
+      "id": "item-0004-01-move",
+      "chain_id": "item-0004",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 6.0. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "591e4dcc8ed74dacedcbc848ac9b7ad5270abfeff6f7e27f864f2a6fff828fc8"
+    },
+    {
+      "id": "item-0005-00-split",
+      "chain_id": "item-0005",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 1.0 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "802a3a2a57b1ca5df8598756a2a7e0564a048b6a9c1f442bc2c909a80b5cb283"
+    },
+    {
+      "id": "item-0005-01-move",
+      "chain_id": "item-0005",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 8.5. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "9fe187a52d91199ee450b5bb94206247bfb0c2d483aa574594de84456dff9881"
+    },
+    {
+      "id": "item-0006-00-split",
+      "chain_id": "item-0006",
+      "split": "dev",
+      "stage": "split",
+      "prompt": "At source time 0.75 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "754284e8f144eab2532e8dd423495de82f788a58badce1d28868dbe57144be16"
+    },
+    {
+      "id": "item-0006-01-move",
+      "chain_id": "item-0006",
+      "split": "dev",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 5.375. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "df78908d6b592c7b09aa6e2e646089e76c05f32bada4cb8bdcc393390321937c"
+    },
+    {
+      "id": "item-0007-00-split",
+      "chain_id": "item-0007",
+      "split": "dev",
+      "stage": "split",
+      "prompt": "At source time 1.0 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "afee115c35fb7377bcf52ddafdd3c52a9bb1b0f71047f74446465559f338c0a1"
+    },
+    {
+      "id": "item-0007-01-move",
+      "chain_id": "item-0007",
+      "split": "dev",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 2.166666667. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "6a16a3129e59072688a4f47c645fcf486df11804971c683b28cae0102dde9932"
+    },
+    {
+      "id": "item-0008-00-split",
+      "chain_id": "item-0008",
+      "split": "test",
+      "stage": "split",
+      "prompt": "At source time 0.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "33237e785c7b2b557d5b735b3a43e37ed12198ade95d402925d6a955bea640ee"
+    },
+    {
+      "id": "item-0008-01-move",
+      "chain_id": "item-0008",
+      "split": "test",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 4.5. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "e84cb069e811baaffdc4417ce73a98347bb6914d92efe989f65761e42426a738"
+    },
+    {
+      "id": "item-0009-00-split",
+      "chain_id": "item-0009",
+      "split": "test",
+      "stage": "split",
+      "prompt": "At source time 1.0 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "75fd884927a4f8c44f87b83e2119c138d6e3b9babb150028742c3e630ed8947e"
+    },
+    {
+      "id": "item-0009-01-move",
+      "chain_id": "item-0009",
+      "split": "test",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 5.0. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "0e86b943a0e06eba9945e88d80632c9d95d21ced577d88ef976d9afacf1ff90a"
+    },
+    {
+      "id": "item-0010-00-split",
+      "chain_id": "item-0010",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 0.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "d473267139da5b7ddbd6b57917a598227ac7a48b0eee10ce93b677bd06470955"
+    },
+    {
+      "id": "item-0010-01-move",
+      "chain_id": "item-0010",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 2.25. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "897099290826f530f9a28f566fc33cce73db6fce2b2a51bfcf3f0674207a332c"
+    },
+    {
+      "id": "item-0011-00-split",
+      "chain_id": "item-0011",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 0.75 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "9ca55bde64602e72e1afdf957088fa4ce10487fb5cc37295bccf90fe10166299"
+    },
+    {
+      "id": "item-0011-01-move",
+      "chain_id": "item-0011",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 3.375. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "810f5cce47712b9791fea99fc27985800f968884a1c212c99fb148e7b1cf1fdb"
+    },
+    {
+      "id": "item-0012-00-split",
+      "chain_id": "item-0012",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 1.0 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "b9a23fbaeeb525b69d00ba207f3788f3e4e89e4e5b637083e07cc84c81177620"
+    },
+    {
+      "id": "item-0012-01-move",
+      "chain_id": "item-0012",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 2.666666667. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "d9d65f569d199a4125cac9e3dc6469493549b02b00068f91359739b7aa78e2dd"
+    },
+    {
+      "id": "item-0013-00-split",
+      "chain_id": "item-0013",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 0.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "532e5467e3d40990b7a01ef38ce0e61d760376e9b15fc16f24ed8b8c44f1d19b"
+    },
+    {
+      "id": "item-0013-01-move",
+      "chain_id": "item-0013",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 5.5. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "7bce633044bee1e875489985eee2096e53530424bcca3ed0fb59746f288027e2"
+    },
+    {
+      "id": "item-0014-00-split",
+      "chain_id": "item-0014",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 1.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "0d4cbbc3de68256888578e8d98d01a531fe6c31cb2c453eeae2604b6dbdbc32e"
+    },
+    {
+      "id": "item-0014-01-move",
+      "chain_id": "item-0014",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 5.75. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "459595a7f4589f907063ac80bd0f3dd7e81d3429200c5b914eff4819bc2a7169"
+    },
+    {
+      "id": "item-0015-00-split",
+      "chain_id": "item-0015",
+      "split": "train",
+      "stage": "split",
+      "prompt": "At source time 0.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "4da978547db74b506deeda27bebedfa7975f218805d98c344150586e719bde71"
+    },
+    {
+      "id": "item-0015-01-move",
+      "chain_id": "item-0015",
+      "split": "train",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 5.75. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "27e15d1d8834ef68434e0363f3a72da78aabd6f28e4c6ae7017caef045eb5cb3"
+    },
+    {
+      "id": "item-0016-00-split",
+      "chain_id": "item-0016",
+      "split": "dev",
+      "stage": "split",
+      "prompt": "At source time 0.75 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "60a5e91c2fe12f6caaa0080ba577e1fa0129de5db4c7643445fa0a56d5091396"
+    },
+    {
+      "id": "item-0016-01-move",
+      "chain_id": "item-0016",
+      "split": "dev",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 5.875. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "3749c9e93d2e02116ea529d6873bff3f2e8fe299bbd4b57f8c36e9647a0c003c"
+    },
+    {
+      "id": "item-0017-00-split",
+      "chain_id": "item-0017",
+      "split": "dev",
+      "stage": "split",
+      "prompt": "At source time 1.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "279e5ef72ca0c2ecbf770a36881d5a8197a4b01ed26db162f4d71fb515559b22"
+    },
+    {
+      "id": "item-0017-01-move",
+      "chain_id": "item-0017",
+      "split": "dev",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 4.75. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "cdc00349a71e5c56d683af7cf4fc18b41a7c9fb2dfd39441b915d4c8132e770e"
+    },
+    {
+      "id": "item-0018-00-split",
+      "chain_id": "item-0018",
+      "split": "test",
+      "stage": "split",
+      "prompt": "At source time 0.75 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "46baacec14aaaa4208e2e8e5ffc830d56bff6c197194106d39bfde572e6f9736"
+    },
+    {
+      "id": "item-0018-01-move",
+      "chain_id": "item-0018",
+      "split": "test",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 6.125. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "34003346858fdca7d421bcaef228bb2ecdeadcea162cc410521bd1aca16012cc"
+    },
+    {
+      "id": "item-0019-00-split",
+      "chain_id": "item-0019",
+      "split": "test",
+      "stage": "split",
+      "prompt": "At source time 1.5 seconds, split audio item 'hit' on 'samples'. Keep the left item's ID 'hit'; give the right item ID 'tail'. Keep the two pieces adjacent and preserve their source ranges, playback rate, pitch, gain and all other project state. Save the native project and render a non-silent WAV.",
+      "task_sha256": "0dd46aea4883e924d3c39d8f293a0dd57460619664ff664c2ce4a72c56a413ee"
+    },
+    {
+      "id": "item-0019-01-move",
+      "chain_id": "item-0019",
+      "split": "test",
+      "stage": "move",
+      "prompt": "Move only audio item 'tail' on 'samples' to beat 3.5. Leave the left item, both source selections and every other setting unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "8b7fa785736dbdd259a211e2f70fd07ad687ac2daf4e9885a606f7985eb6c143"
+    }
+  ]
+}

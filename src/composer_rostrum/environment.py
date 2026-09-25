@@ -249,6 +249,45 @@ class MusicEnvironment:
         clip["source_start"] = float(source_start); clip["source_end"] = float(source_end)
         return {"track_id": track_id, "clip_id": clip_id, "source_start": float(source_start), "source_end": float(source_end)}
 
+    def _tool_split_audio_clip(self, track_id: str, clip_id: str, new_clip_id: str,
+                               source_seconds: float) -> dict[str, Any]:
+        track = self._find_track(track_id)
+        clip = self._find_clip(track_id, clip_id)
+        if clip.get("kind") != "audio" and "asset_id" not in clip:
+            raise ToolError("split requires an audio clip")
+        if any(c["id"] == new_clip_id for c in track.get("clips", [])):
+            raise ToolError("clip id already exists")
+        cut = float(source_seconds)
+        if not math.isfinite(cut) or not clip["source_start"] < cut < clip["source_end"]:
+            raise ToolError("split point must lie inside the source range")
+        ratio = float(clip.get("stretch_ratio", 1))
+        left_duration = (cut - clip["source_start"]) * ratio
+        right_duration = (clip["source_end"] - cut) * ratio
+        fade_in = float(clip.get("fade_in_seconds", 0))
+        fade_out = float(clip.get("fade_out_seconds", 0))
+        if fade_in > left_duration or fade_out > right_duration:
+            raise ToolError("split would cut through an outer fade")
+        right = deepcopy(clip)
+        right["id"] = new_clip_id
+        right["source_start"] = cut
+        right["timeline_start_beats"] = round(clip["timeline_start_beats"] + left_duration * self._project.tempo / 60, 9)
+        clip["source_end"] = cut
+        if "fade_out_seconds" in clip:
+            clip["fade_out_seconds"] = 0.0
+        if "fade_in_seconds" in right:
+            right["fade_in_seconds"] = 0.0
+        track.setdefault("clips", []).append(right)
+        return {"track_id": track_id, "left_clip_id": clip_id, "right_clip_id": new_clip_id,
+                "source_seconds": cut}
+
+    def _tool_move_audio_clip(self, track_id: str, clip_id: str, timeline_start_beats: float) -> dict[str, Any]:
+        clip = self._find_clip(track_id, clip_id)
+        start = float(timeline_start_beats)
+        if "asset_id" not in clip or not math.isfinite(start) or start < 0:
+            raise ToolError("move requires an audio clip and non-negative beat position")
+        clip["timeline_start_beats"] = start
+        return {"track_id": track_id, "clip_id": clip_id, "timeline_start_beats": start}
+
     def _tool_set_clip_pitch(self, track_id: str, clip_id: str, semitones: float) -> dict[str, Any]:
         self._find_clip(track_id, clip_id)["pitch_semitones"] = float(semitones)
         return {"track_id": track_id, "clip_id": clip_id, "pitch_semitones": float(semitones)}
