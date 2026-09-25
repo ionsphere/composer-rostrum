@@ -1,0 +1,136 @@
+{
+  "validation": "deterministic-ear-v1",
+  "native_control_runs": 12,
+  "ear_source_lf_sha256": "3e5f483909da22dffb9cb67b3ad31be584b87949d87f50527b6adfcda7115e89",
+  "fixed_target_rule": {
+    "kind": "same",
+    "min_snr_db": 70,
+    "duration_tolerance_ms": 1
+  },
+  "all_expected_outcomes": true,
+  "fixed_target_audio_checks": 11,
+  "item_audio_relation_checks": 4,
+  "model_runs": "not_run",
+  "controls": [
+    {
+      "suite": "creation",
+      "task": "chain-0000-00-create",
+      "control": "reference",
+      "expected_pass": true,
+      "actual_pass": true,
+      "reference_audio_match": true,
+      "item_audio_relation": null,
+      "waveform_snr_db": 200.0
+    },
+    {
+      "suite": "creation",
+      "task": "chain-0000-01-transpose",
+      "control": "reference",
+      "expected_pass": true,
+      "actual_pass": true,
+      "reference_audio_match": true,
+      "item_audio_relation": null,
+      "waveform_snr_db": 200.0
+    },
+    {
+      "suite": "creation",
+      "task": "chain-0000-02-trim-fades",
+      "control": "reference",
+      "expected_pass": true,
+      "actual_pass": true,
+      "reference_audio_match": true,
+      "item_audio_relation": null,
+      "waveform_snr_db": 200.0
+    },
+    {
+      "suite": "creation",
+      "task": "chain-0000-05-feedback",
+      "control": "reference",
+      "expected_pass": true,
+      "actual_pass": true,
+      "reference_audio_match": null,
+      "item_audio_relation": null,
+      "waveform_snr_db": null
+    },
+    {
+      "suite": "creation",
+      "task": "chain-0000-01-transpose",
+      "control": "noop",
+      "expected_pass": false,
+      "actual_pass": false,
+      "reference_audio_match": false,
+      "item_audio_relation": null,
+      "waveform_snr_db": 7.2835
+    },
+    {
+      "suite": "creation",
+      "task": "chain-0000-02-trim-fades",
+      "control": "wrong",
+      "expected_pass": false,
+      "actual_pass": false,
+      "reference_audio_match": false,
+      "item_audio_relation": null,
+      "waveform_snr_db": 9.7401
+    },
+    {
+      "suite": "item_edits",
+      "task": "item-0000-00-split",
+      "control": "reference",
+      "expected_pass": true,
+      "actual_pass": true,
+      "reference_audio_match": true,
+      "item_audio_relation": true,
+      "waveform_snr_db": 200.0
+    },
+    {
+      "suite": "item_edits",
+      "task": "item-0000-01-move",
+      "control": "reference",
+      "expected_pass": true,
+      "actual_pass": true,
+      "reference_audio_match": true,
+      "item_audio_relation": true,
+      "waveform_snr_db": 200.0
+    },
+    {
+      "suite": "item_edits",
+      "task": "item-0000-00-split",
+      "control": "noop",
+      "expected_pass": false,
+      "actual_pass": false,
+      "reference_audio_match": true,
+      "item_audio_relation": true,
+      "waveform_snr_db": 200.0
+    },
+    {
+      "suite": "item_edits",
+      "task": "item-0000-01-move",
+      "control": "wrong",
+      "expected_pass": false,
+      "actual_pass": false,
+      "reference_audio_match": false,
+      "item_audio_relation": true,
+      "waveform_snr_db": 11.9006
+    },
+    {
+      "suite": "creation",
+      "task": "chain-0000-03-pitch-stretch",
+      "control": "reference",
+      "expected_pass": true,
+      "actual_pass": true,
+      "reference_audio_match": true,
+      "item_audio_relation": null,
+      "waveform_snr_db": 200.0
+    },
+    {
+      "suite": "creation",
+      "task": "chain-0000-04-mix",
+      "control": "reference",
+      "expected_pass": true,
+      "actual_pass": true,
+      "reference_audio_match": true,
+      "item_audio_relation": null,
+      "waveform_snr_db": 200.0
+    }
+  ]
+}

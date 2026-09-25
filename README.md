@@ -112,10 +112,13 @@ with train/dev/test splits, content hashes, private reference oracles and negati
 controls. **Rostrum-DAW-20** exercises a real REAPER 7.80 worker with MIDI edits,
 sample transformations, mixing and render–analyze–revise tasks.
 
-The [REAPER linked corpus](docs/reaper-corpus.md) adds 40 creation prompts and
-200 iterative revisions, with native projects, source/render audio, Music IR,
-private targets, tool traces and whole-chain train/dev/test splits. It includes
-linear audio fades and evaluates agents from exported native input projects.
+The [REAPER linked corpora](docs/reaper-corpus.md) contain 40 creation prompts
+and 240 iterative revisions, with native projects, source/render audio, Music IR,
+private targets, tool traces and whole-chain train/dev/test splits. They cover
+linear audio fades, splits and moves, and evaluate agents from exported native
+input projects. The [deterministic ear](docs/deterministic-ear.md) reports
+measured signal differences and checks fixed-target renders against private WAV
+references.
 
 ```bash
 python -m pip install -e '.[test]'

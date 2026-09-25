@@ -117,6 +117,13 @@ not materialize the reference target. The output includes evaluation results,
 trajectory, usage, native project, and renders. Model runs remain unperformed
 until provider credentials and models are configured.
 
+Fixed-target samples also receive a private
+[deterministic-ear comparison](deterministic-ear.md) against their reference WAV.
+The scorer writes `audio-comparison.json` and requires the expected PCM to be
+present, so a correct project graph with a partial or silent render cannot pass.
+Feedback samples retain goal-based loudness scoring because more than one mix
+can meet the requested RMS target.
+
 Reference and negative evaluation-runner checks:
 
 ```powershell

@@ -25,6 +25,7 @@ rostrum-benchmark = "composer_rostrum.benchmark:main"
 rostrum-compare = "composer_rostrum.compare:main"
 rostrum-corpus-capture = "composer_rostrum.corpus_capture:main"
 rostrum-corpus-eval = "composer_rostrum.corpus_eval:main"
+rostrum-ear = "composer_rostrum.ear:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
