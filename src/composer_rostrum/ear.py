@@ -252,6 +252,175 @@ def judge(report: dict, expectation: dict) -> dict:
     return {"expectation": expectation, "checks": checks, "passed": all(checks.values())}
 
 
+PRODUCTION_KINDS = {"comp", "timing", "noise_cleanup", "clip_gain"}
+PRODUCTION_DEFAULTS = {
+    "comp": {"join_margin_ms": 10, "join_probe_ms": 5, "min_source_snr_db": 30,
+             "min_source_gain": 0.5, "max_join_jump_db": -12},
+    "timing": {"window_ms": 2, "min_peak_dbfs": -35, "min_rise_db": 8,
+               "tolerance_ms": 5, "exact_event_count": True, "min_protected_snr_db": 45},
+    "noise_cleanup": {"min_reduction_db": 12, "max_signal_loss_db": 1,
+                      "min_signal_snr_db": 25},
+    "clip_gain": {"tolerance_db": 0.5, "min_shape_snr_db": 35,
+                  "max_peak_dbfs": -0.1},
+}
+
+
+def _region(pcm: dict, start_ms: float, end_ms: float) -> list[float]:
+    if not 0 <= start_ms < end_ms <= 1000 * pcm["frames"] / pcm["sample_rate"]:
+        raise ValueError("region must be nonempty and within the WAV")
+    scale = pcm["sample_rate"] * pcm["channels"] / 1000
+    return pcm["samples"][round(start_ms * scale):round(end_ms * scale)]
+
+
+def _fitted_shape(reference: list[float], candidate: list[float]) -> tuple[float | None, float | None]:
+    if len(reference) != len(candidate) or not reference or not any(reference):
+        return None, None
+    gain = sum(a*b for a, b in zip(reference, candidate)) / sum(a*a for a in reference)
+    return gain, _waveform_snr(reference, candidate, gain=gain) if gain > 0 else None
+
+
+def _check(value: float | None, minimum: float | None = None,
+           maximum: float | None = None) -> bool:
+    return value is not None and (minimum is None or value >= minimum) and (maximum is None or value <= maximum)
+
+
+def _transients(pcm: dict, *, window_ms: float = 2, min_peak_dbfs: float = -35,
+                min_rise_db: float = 8) -> list[float]:
+    """Detect attacks by short-window energy rise; merge adjacent attack windows."""
+    width = max(1, round(pcm["sample_rate"] * window_ms / 1000))
+    samples = pcm["samples"]
+    channels = pcm["channels"]
+    energy = [_rms(samples[i*channels:(i+width)*channels])
+              for i in range(0, pcm["frames"], width)]
+    floor = 10 ** (min_peak_dbfs / 20)
+    attacks = []
+    last_index = -10**9
+    for index in range(1, len(energy)):
+        previous = max(energy[max(0, index-3):index], default=0)
+        if (energy[index] >= floor and energy[index] >= previous * 10 ** (min_rise_db / 20)
+                and index - last_index >= max(1, round(20 / window_ms))):
+            attacks.append(round(index * width * 1000 / pcm["sample_rate"], 3))
+            last_index = index
+    return attacks
+
+
+def evaluate_production(reference: str | Path, candidate: str | Path,
+                        expectation: dict) -> dict:
+    """Region-level evidence for production edits; native project state is a separate oracle."""
+    kind = expectation["kind"]
+    if kind not in PRODUCTION_KINDS:
+        raise ValueError(f"unknown production expectation: {kind}")
+    expectation = {**PRODUCTION_DEFAULTS[kind], **expectation}
+    a, b = read_pcm(reference), read_pcm(candidate)
+    if (a["sample_rate"], a["channels"], a["frames"]) != (b["sample_rate"], b["channels"], b["frames"]):
+        raise ValueError("production comparisons require matching sample rate, channels, and duration")
+    checks: dict[str, bool] = {}
+    measurements: dict[str, object] = {}
+    if kind == "comp":
+        segments = expectation["segments"]
+        if not segments:
+            raise ValueError("comp requires segments")
+        duration_ms = 1000 * b["frames"] / b["sample_rate"]
+        if segments[0]["start_ms"] != 0 or abs(segments[-1]["end_ms"] - duration_ms) > 0.001:
+            raise ValueError("comp segments must cover the candidate duration")
+        for index, segment in enumerate(segments):
+            source = read_pcm(segment["source"])
+            if (source["sample_rate"], source["channels"]) != (b["sample_rate"], b["channels"]):
+                raise ValueError("comp source format must match candidate")
+            start, end = segment["start_ms"], segment["end_ms"]
+            source_start = segment.get("source_start_ms", start)
+            # Crossfades are judged separately; source identity uses the segment interior.
+            margin = expectation.get("join_margin_ms", 10)
+            first = start + (margin if index else 0)
+            last = end - (margin if index < len(segments)-1 else 0)
+            expected = _region(source, source_start + first-start, source_start + last-start)
+            actual = _region(b, first, last)
+            gain, snr = _fitted_shape(expected, actual)
+            label = f"segment_{index}"
+            measurements[label] = {"fitted_gain_db": _db(gain) if gain else None,
+                                   "shape_snr_db": snr}
+            checks[label] = _check(snr, expectation.get("min_source_snr_db", 30)) and \
+                _check(gain, expectation.get("min_source_gain", 0.5))
+        # A splice discontinuity is measured against the local signal scale.
+        joins = []
+        radius = max(1, round(expectation.get("join_probe_ms", 5) * b["sample_rate"] / 1000))
+        for left, right in zip(segments, segments[1:]):
+            if left["end_ms"] != right["start_ms"]:
+                raise ValueError("comp segments must meet at each join")
+            frame = round(left["end_ms"] * b["sample_rate"] / 1000)
+            if not radius <= frame < b["frames"] - radius:
+                raise ValueError("join probe exceeds candidate")
+            jumps = [abs(b["samples"][frame*b["channels"]+ch] -
+                         b["samples"][(frame-1)*b["channels"]+ch])
+                     for ch in range(b["channels"])]
+            local = b["samples"][(frame-radius)*b["channels"]:(frame+radius)*b["channels"]]
+            jump_db = _db(max(jumps) / max(_rms(local), 1e-12))
+            joins.append(jump_db)
+        measurements["join_jump_db_relative_to_local_rms"] = joins
+        checks["joins_smooth"] = all(_check(value, maximum=expectation.get("max_join_jump_db", -12))
+                                      for value in joins)
+    elif kind == "timing":
+        expected = expectation["expected_ms"]
+        if not expected:
+            raise ValueError("timing requires expected_ms")
+        found = _transients(b, window_ms=expectation.get("window_ms", 2),
+                            min_peak_dbfs=expectation.get("min_peak_dbfs", -35),
+                            min_rise_db=expectation.get("min_rise_db", 8))
+        tolerance = expectation.get("tolerance_ms", 5)
+        # One observed attack may satisfy only one expected event.
+        remaining = found.copy()
+        errors = []
+        for target in expected:
+            nearest = min(remaining, key=lambda value: abs(value-target)) if remaining else None
+            if nearest is not None:
+                remaining.remove(nearest)
+            errors.append(round(nearest-target, 3) if nearest is not None else None)
+        measurements.update({"detected_ms": found, "error_ms": errors})
+        checks["transients_on_grid"] = all(value is not None and abs(value) <= tolerance for value in errors)
+        checks["event_count"] = len(found) == len(expected) if expectation.get("exact_event_count", True) else len(found) >= len(expected)
+        for index, region in enumerate(expectation.get("protected_regions", [])):
+            original = _region(a, region[0], region[1])
+            changed = _region(b, region[0], region[1])
+            snr = _waveform_snr(original, changed)
+            measurements[f"protected_{index}_snr_db"] = snr
+            checks[f"protected_{index}"] = _check(snr, expectation.get("min_protected_snr_db", 45))
+    elif kind == "noise_cleanup":
+        noise_windows = expectation["noise_windows"]
+        signal_windows = expectation["signal_windows"]
+        if not noise_windows or not signal_windows:
+            raise ValueError("noise cleanup requires noise and signal windows")
+        for index, (start, end) in enumerate(noise_windows):
+            before, after = _rms(_region(a, start, end)), _rms(_region(b, start, end))
+            reduction = _db(before / after) if after else (200.0 if before else None)
+            measurements[f"noise_{index}_reduction_db"] = reduction
+            checks[f"noise_{index}"] = _check(reduction, expectation.get("min_reduction_db", 12))
+        for index, (start, end) in enumerate(signal_windows):
+            before, after = _region(a, start, end), _region(b, start, end)
+            gain, snr = _fitted_shape(before, after)
+            loss = -_db(gain) if gain and gain > 0 else None
+            measurements[f"signal_{index}"] = {"loss_db": loss, "shape_snr_db": snr}
+            checks[f"signal_{index}"] = (_check(loss, maximum=expectation.get("max_signal_loss_db", 1))
+                                            and _check(snr, expectation.get("min_signal_snr_db", 25)))
+    else:  # clip_gain
+        clips = expectation["clips"]
+        if not clips:
+            raise ValueError("clip gain requires clips")
+        for index, clip in enumerate(clips):
+            before = _region(a, clip["start_ms"], clip["end_ms"])
+            after = _region(b, clip["start_ms"], clip["end_ms"])
+            level = _db(_rms(after))
+            gain, snr = _fitted_shape(before, after)
+            measurements[f"clip_{index}"] = {"rms_dbfs": level, "fitted_gain_db": _db(gain) if gain else None,
+                                              "shape_snr_db": snr}
+            checks[f"clip_{index}_level"] = level is not None and abs(level - clip["target_rms_dbfs"]) <= expectation.get("tolerance_db", 0.5)
+            checks[f"clip_{index}_shape"] = _check(snr, expectation.get("min_shape_snr_db", 35))
+        peak = _db(max(abs(value) for value in b["samples"]))
+        measurements["peak_dbfs"] = peak
+        checks["no_clipping"] = _check(peak, maximum=expectation.get("max_peak_dbfs", -0.1))
+    return {"expectation": expectation, "measurements": measurements,
+            "checks": checks, "passed": all(checks.values())}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("reference", type=Path)
@@ -261,7 +430,9 @@ def main():
     args = parser.parse_args()
     report = compare(args.reference, args.candidate)
     if args.expect:
-        report["verdict"] = judge(report, json.loads(args.expect))
+        expectation = json.loads(args.expect)
+        report["verdict"] = (evaluate_production(args.reference, args.candidate, expectation)
+                             if expectation["kind"] in PRODUCTION_KINDS else judge(report, expectation))
     serialized = json.dumps(report, indent=2, allow_nan=False) + "\n"
     if args.output:
         args.output.write_text(serialized, encoding="utf-8")

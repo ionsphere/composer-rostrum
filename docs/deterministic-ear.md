@@ -18,6 +18,40 @@ checks fails; it never chooses a vague overall similarity score. For example,
 gain-adjusted waveform SNR of at least 45 dB. `same` requires duration within
 1 ms and waveform SNR at least 70 dB. The CLI exits nonzero on a failed rule.
 
+Four region-level rules are available for production stages. They require equal
+sample rate, channel count, and duration for the before/after renders. Time
+ranges are milliseconds; each rule returns measurements and named checks.
+
+| Rule | Intent and evidence | Required fields |
+| --- | --- | --- |
+| `comp` | Each segment matches its declared source recording in its interior; joins have a small sample discontinuity relative to nearby level. | `segments`: `{start_ms,end_ms,source,source_start_ms?}` |
+| `timing` | A one-to-one set of detected attacks lands on expected times; optional protected regions retain their waveform. | `expected_ms`, optional `protected_regions`: `[[start_ms,end_ms], ...]` |
+| `noise_cleanup` | Noise-only windows lose level while signal windows retain level and waveform shape. | `noise_windows`, `signal_windows` |
+| `clip_gain` | Each clip window reaches its RMS target, preserves its waveform shape, and the output does not clip. | `clips`: `{start_ms,end_ms,target_rms_dbfs}` |
+
+For example, a noise cleanup rule can be run as:
+
+```powershell
+python -m composer_rostrum.ear before.wav after.wav --expect '{"kind":"noise_cleanup","noise_windows":[[0,200],[800,1000]],"signal_windows":[[300,700]],"min_reduction_db":12}'
+```
+
+The default comp identity threshold is 30 dB fitted waveform SNR, with at
+least 0.5 positive fitted gain. Its join limit is -12 dB relative to local RMS.
+Timing uses 2 ms energy windows, an attack floor of -35 dBFS, an 8 dB rise,
+and a default ±5 ms target tolerance. Noise cleanup requires at least 12 dB
+noise reduction, at most 1 dB signal loss, and 25 dB signal-window fitted SNR.
+Clip gain uses ±0.5 dB RMS target tolerance, 35 dB fitted shape SNR, and a
+-0.1 dBFS output peak ceiling. These are explicit, overridable rule parameters;
+calibrate them against each corpus item and render chain rather than treating
+them as perceptual constants.
+
+Audio cannot prove which REAPER take was selected, whether gain was applied
+before effects, or whether source items were preserved. Those require project
+state checks alongside these signal checks. A join jump is a cheap click proxy,
+not a perceptual click detector; a transient grid is only meaningful for known
+percussive source material. The tests include positive controls and wrong-take,
+click, missing-transient, muted-cleanup, and global-gain negative controls.
+
 The reference target is private to the evaluator. For fixed-target REAPER corpus
 tasks, the exported-input runner checks its checksum, lets the agent edit only
 the input project, and then compares the final render to the target WAV. It
