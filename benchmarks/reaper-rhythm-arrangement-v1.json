@@ -1,0 +1,327 @@
+{
+  "corpus": "reaper-rhythm-arrangement-v1",
+  "seed": 20260926,
+  "chains": 20,
+  "samples": [
+    {
+      "id": "rhythm-0000-00-kick-rhythm",
+      "chain_id": "rhythm-0000",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 90 BPM: beats [0.0, 1.0, 2.0, 3.0]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "800aaf8fb83029480e53eb2d05000452708442520f87b97efb280a7a4b80b9f4"
+    },
+    {
+      "id": "rhythm-0000-01-guitar-alignment",
+      "chain_id": "rhythm-0000",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "1057bf1f1b7e4bddf6ada23479bcdb85e6995a343972e4ca614323b861b17b1d"
+    },
+    {
+      "id": "rhythm-0001-00-kick-rhythm",
+      "chain_id": "rhythm-0001",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 100 BPM: beats [0.0, 1.0, 2.5, 3.25]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "4e91bd76afa3d4b7b1c72be6fb92ece452b5da2fae4cecf0baa382fd50fda72a"
+    },
+    {
+      "id": "rhythm-0001-01-guitar-alignment",
+      "chain_id": "rhythm-0001",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "811da467b742b9b2ec74323087c41eff734941fa2609fd795c316d131ded93a6"
+    },
+    {
+      "id": "rhythm-0002-00-kick-rhythm",
+      "chain_id": "rhythm-0002",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 120 BPM: beats [0.0, 1.0, 2.0, 3.0]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "97bd2d7b9318dd17e7c976268b4bc0b0ce8e52a6dc455eaabd28c153cbfaa8be"
+    },
+    {
+      "id": "rhythm-0002-01-guitar-alignment",
+      "chain_id": "rhythm-0002",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "812892af7b501ed3c77eef681a05d93adc1583b253c2b3cd27b3eb2aca37e633"
+    },
+    {
+      "id": "rhythm-0003-00-kick-rhythm",
+      "chain_id": "rhythm-0003",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 150 BPM: beats [0.0, 0.75, 2.0, 2.75]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "a4203e0c998b9c4a295425cb12b2bacfbfadb2f2cc794dce443ad1a51b7a8ebe"
+    },
+    {
+      "id": "rhythm-0003-01-guitar-alignment",
+      "chain_id": "rhythm-0003",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "f1ab54f7058ab818df8a0fb0e256f7c0344ef26b66c4eddd25a15a10357e6223"
+    },
+    {
+      "id": "rhythm-0004-00-kick-rhythm",
+      "chain_id": "rhythm-0004",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 150 BPM: beats [0.0, 1.0, 2.5, 3.25]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "f9fb6ee35f9e4cc1fc5f10fd7b643a73e4d5764116dc0b593a06421bcfe9c595"
+    },
+    {
+      "id": "rhythm-0004-01-guitar-alignment",
+      "chain_id": "rhythm-0004",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "110381ea85305137e351a952195b9421c00ab53ea474b3dbc4c35e3a3adf6a1d"
+    },
+    {
+      "id": "rhythm-0005-00-kick-rhythm",
+      "chain_id": "rhythm-0005",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 100 BPM: beats [0.0, 1.5, 2.0, 3.5]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "9b02dba3da15212ba4b14359ae089733d4498e9c87443f8ee9a35295792e8efc"
+    },
+    {
+      "id": "rhythm-0005-01-guitar-alignment",
+      "chain_id": "rhythm-0005",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "721c4221f5f331c121040172ae85a4060e92da9f6b8cc2765b8548b4bc2ca15e"
+    },
+    {
+      "id": "rhythm-0006-00-kick-rhythm",
+      "chain_id": "rhythm-0006",
+      "split": "dev",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 120 BPM: beats [0.0, 1.0, 2.5, 3.25]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "d3ade0404abc70cc5b8c9f3ded4ffa291540a9b09363e0013bd35164ffcd6a3b"
+    },
+    {
+      "id": "rhythm-0006-01-guitar-alignment",
+      "chain_id": "rhythm-0006",
+      "split": "dev",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "4b8dd5c1d0b0696010cfd4a15579095df508465825bd599b9361271f26c11a2b"
+    },
+    {
+      "id": "rhythm-0007-00-kick-rhythm",
+      "chain_id": "rhythm-0007",
+      "split": "dev",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 90 BPM: beats [0.0, 0.75, 2.0, 2.75]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "227f7451b43f15e519719aea41dc08ee95a60b88ae081aff4cbe3c96094701ab"
+    },
+    {
+      "id": "rhythm-0007-01-guitar-alignment",
+      "chain_id": "rhythm-0007",
+      "split": "dev",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "bf2be9638bc54cc80ae67dc03a6ea9ed7962c6e55af05c7a8dc2628914d8af32"
+    },
+    {
+      "id": "rhythm-0008-00-kick-rhythm",
+      "chain_id": "rhythm-0008",
+      "split": "test",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 90 BPM: beats [0.0, 1.5, 2.0, 3.5]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "7d9a5ae8fce6e87bb0c93b5c28ca60be84e81538f4844c712830ac27caaeba68"
+    },
+    {
+      "id": "rhythm-0008-01-guitar-alignment",
+      "chain_id": "rhythm-0008",
+      "split": "test",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "2a1adf2e0a80777cc5a171406599d73ed672fbef9fe806ba7d697948202611a3"
+    },
+    {
+      "id": "rhythm-0009-00-kick-rhythm",
+      "chain_id": "rhythm-0009",
+      "split": "test",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 150 BPM: beats [0.0, 1.0, 2.0, 3.0]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "cc6b79c55865f35832a0a45d2cf7affaefc090c2b3892725b6424db0eb147886"
+    },
+    {
+      "id": "rhythm-0009-01-guitar-alignment",
+      "chain_id": "rhythm-0009",
+      "split": "test",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "09ffda90d79464ac6368a93b69ed4b793a9d088a77b0741f014159d266262eec"
+    },
+    {
+      "id": "rhythm-0010-00-kick-rhythm",
+      "chain_id": "rhythm-0010",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 100 BPM: beats [0.0, 1.5, 2.0, 3.5]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "1f80cabb8f544fec12a863e89d16b5e88cb12ff2d6833f77e3a151630f7ea876"
+    },
+    {
+      "id": "rhythm-0010-01-guitar-alignment",
+      "chain_id": "rhythm-0010",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "058c46857f4054748492ca2ece31d1ba0b4abde9496fe53828450bbcde160e10"
+    },
+    {
+      "id": "rhythm-0011-00-kick-rhythm",
+      "chain_id": "rhythm-0011",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 120 BPM: beats [0.0, 1.0, 2.0, 3.0]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "f9cb79386cb5664fda9a0014fe6a28a58f471fe537121af72a81984321de7388"
+    },
+    {
+      "id": "rhythm-0011-01-guitar-alignment",
+      "chain_id": "rhythm-0011",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "4a69d785957b005446fee1da0058c9f0a1cc966e2ea442701845893d43538cc0"
+    },
+    {
+      "id": "rhythm-0012-00-kick-rhythm",
+      "chain_id": "rhythm-0012",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 150 BPM: beats [0.0, 1.0, 2.0, 3.0]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "d68b58a7d0ba6daa5c4dfe69c08d1f4f7fcad0b9bb903725f35ab931c83511bd"
+    },
+    {
+      "id": "rhythm-0012-01-guitar-alignment",
+      "chain_id": "rhythm-0012",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "d87d9cd75c28a709b0374a22e53e04b5628434927d64b5b6f1c93f977d7e38d5"
+    },
+    {
+      "id": "rhythm-0013-00-kick-rhythm",
+      "chain_id": "rhythm-0013",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 150 BPM: beats [0.0, 1.0, 2.0, 3.0]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "7469beb0d8de36b6fd9afd396bcf7bcfa4e43c5e73e9b568d042936c50c98549"
+    },
+    {
+      "id": "rhythm-0013-01-guitar-alignment",
+      "chain_id": "rhythm-0013",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "2b1f9defe7cf47464abac163fbcbad5b1efdbf12b5d9a0893dd6b64215f5e85d"
+    },
+    {
+      "id": "rhythm-0014-00-kick-rhythm",
+      "chain_id": "rhythm-0014",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 150 BPM: beats [0.0, 1.0, 2.5, 3.25]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "f5a9c331a8e46b17571296df90e2a0dcda427a591637d905ea9e890e374eb10f"
+    },
+    {
+      "id": "rhythm-0014-01-guitar-alignment",
+      "chain_id": "rhythm-0014",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "4e6e054ece619981ffbbb446af4b97dd863b564e5913d70e347378c3ccc1c545"
+    },
+    {
+      "id": "rhythm-0015-00-kick-rhythm",
+      "chain_id": "rhythm-0015",
+      "split": "train",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 150 BPM: beats [0.0, 1.5, 2.0, 3.5]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "4ee48aa7482ea54a96512a40e7505dd6fce793388361e544e8d01cb582098a94"
+    },
+    {
+      "id": "rhythm-0015-01-guitar-alignment",
+      "chain_id": "rhythm-0015",
+      "split": "train",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "19888d69802079a19bf525dbd41593fc08b589c0f07849f54298ca5ae35c774d"
+    },
+    {
+      "id": "rhythm-0016-00-kick-rhythm",
+      "chain_id": "rhythm-0016",
+      "split": "dev",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 90 BPM: beats [0.0, 1.5, 2.0, 3.5]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "fdf9c7b9a18cb07cacb459670f71b212b4cd8a3a233416327e06f848f4cbd958"
+    },
+    {
+      "id": "rhythm-0016-01-guitar-alignment",
+      "chain_id": "rhythm-0016",
+      "split": "dev",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "c510e456c7e7071a71cf73a57710b65b91eb197eaf50b9cc55d36dc7dd42b382"
+    },
+    {
+      "id": "rhythm-0017-00-kick-rhythm",
+      "chain_id": "rhythm-0017",
+      "split": "dev",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 120 BPM: beats [0.0, 1.0, 2.0, 3.0]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "8f06a076cee7c94e8111e4a3f896c0eb08d5daa95e0c98dec39d92f7ee3ff37e"
+    },
+    {
+      "id": "rhythm-0017-01-guitar-alignment",
+      "chain_id": "rhythm-0017",
+      "split": "dev",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "2b976c8930bed09784b36db8b3b9c6524e1044586d9b4158f19c00a7094feb86"
+    },
+    {
+      "id": "rhythm-0018-00-kick-rhythm",
+      "chain_id": "rhythm-0018",
+      "split": "test",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 100 BPM: beats [0.0, 1.5, 2.0, 3.5]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "3842193bbd685a02fe2a1fe4e281cfb96b00ffcbd32f36cc59f144d95eade69e"
+    },
+    {
+      "id": "rhythm-0018-01-guitar-alignment",
+      "chain_id": "rhythm-0018",
+      "split": "test",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "ac0d0bbf328d1d827a684a7c63802cc844181467b580172ddc255758d7bfb688"
+    },
+    {
+      "id": "rhythm-0019-00-kick-rhythm",
+      "chain_id": "rhythm-0019",
+      "split": "test",
+      "stage": "kick-rhythm",
+      "prompt": "Set the kick drum hits to this one-bar rhythm at 120 BPM: beats [0.0, 1.5, 2.0, 3.5]. Move only the kick items; keep their source audio and the guitar track unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "888fcb71873a0056bf61a06c2c40c1b48bee77c91ca4992bb771de357698590c"
+    },
+    {
+      "id": "rhythm-0019-01-guitar-alignment",
+      "chain_id": "rhythm-0019",
+      "split": "test",
+      "stage": "guitar-alignment",
+      "prompt": "Align each guitar accent exactly with the corresponding kick hit. Move only the guitar items; keep the kick rhythm and both sources unchanged. Save the native project and render a non-silent WAV.",
+      "task_sha256": "71fbe340baf72d0deb12d6d04aabbf78876f3fa4d432bf0d8aba632baf51fb9f"
+    }
+  ]
+}

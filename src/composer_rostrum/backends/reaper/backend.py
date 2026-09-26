@@ -253,7 +253,8 @@ class ReaperBackend:
         for asset in data["assets"]:
             path = session.native_project.workspace / "assets" / f"{asset['id']}.wav"
             if not path.exists():
-                write_fixture(path, float(asset["duration_seconds"]))
+                write_fixture(path, float(asset["duration_seconds"]),
+                              kind=asset.get("fixture", "tone"))
             actual_hash = hashlib.sha256(path.read_bytes()).hexdigest()
             if asset.get("content_hash") and asset["content_hash"] != actual_hash:
                 raise BackendError("fixture content hash does not match the declared asset")
@@ -285,7 +286,9 @@ class ReaperBackend:
         ids(project.tracks)
         ids(project.assets)
         for asset in project.assets:
-            keys(asset, "id kind name duration_seconds provenance content_hash")
+            keys(asset, "id kind name duration_seconds provenance content_hash fixture")
+            if asset.get("fixture", "tone") not in ("tone", "kick", "guitar"):
+                raise BackendError("unsupported procedural audio fixture")
             if asset.get("provenance", {}).get("source") != "procedural_fixture":
                 raise BackendError("only benchmark-owned procedural audio fixtures are currently supported")
             duration = asset.get("duration_seconds", 0)

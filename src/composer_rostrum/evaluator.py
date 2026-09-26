@@ -40,6 +40,30 @@ def _evaluate_specs(task: RostrumTask, before: MusicProject, after: MusicProject
         if t == "project_property":
             actual = _read_path(after, spec["path"]); expected = spec["equals"]; passed = actual == expected
             results.append(EvaluationResult(f"project_property:{spec['path']}", passed, float(passed), f"expected {expected!r}, got {actual!r}")); continue
+        if t == "rhythm_pattern":
+            track = next(track for track in after.tracks if track["id"] == spec["track_id"])
+            ids = spec["clip_ids"]
+            clips = track.get("clips", [])
+            selected = [next(clip for clip in clips if clip["id"] == identity) for identity in ids]
+            actual = [float(clip["timeline_start_beats"]) for clip in selected]
+            expected = [float(value) for value in spec["onsets_beats"]]
+            tolerance = float(spec.get("tolerance_beats", 1/960))
+            passed = (len(ids) == len(expected) and len(clips) == len(ids) and
+                      len(set(ids)) == len(ids) and
+                      all(abs(x-y) <= tolerance for x, y in zip(actual, expected)))
+            results.append(EvaluationResult(t, passed, float(passed),
+                f"{spec['track_id']} onsets expected={expected}, actual={actual}, tolerance={tolerance}")); continue
+        if t == "track_alignment":
+            left = [_clip(after, spec["left_track_id"], identity) for identity in spec["left_clip_ids"]]
+            right = [_clip(after, spec["right_track_id"], identity) for identity in spec["right_clip_ids"]]
+            offset = float(spec.get("offset_beats", 0))
+            tolerance = float(spec.get("tolerance_beats", 1/960))
+            differences = [float(b["timeline_start_beats"])-float(a["timeline_start_beats"])
+                           for a, b in zip(left, right)]
+            passed = (len(left) == len(right) and len(left) > 0 and
+                      all(abs(delta-offset) <= tolerance for delta in differences))
+            results.append(EvaluationResult(t, passed, float(passed),
+                f"pairwise offsets expected={offset}, actual={differences}, tolerance={tolerance}")); continue
         if t == "preserve_paths":
             changed = [p for p in spec["paths"] if _read_path(before, p) != _read_path(after, p)]; passed = not changed
             results.append(EvaluationResult("preserve_paths", passed, float(passed), "preserved" if passed else f"unexpected changes: {', '.join(changed)}")); continue

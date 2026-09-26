@@ -46,7 +46,7 @@ file. Authenticated model comparisons are explicitly marked as not run.
 | Global state | Constant tempo (20–300 BPM), meter; key retained as project metadata |
 | Tracks | Stable IDs/GUIDs, name, mute, gain, pan |
 | MIDI | Stable note IDs, pitch, velocity, position, duration; transpose, quantize, repair, duplicate |
-| Audio | Benchmark-owned procedural fixtures; source trim, lossless split, beat-position move, pitch shift, pitch-preserving stretch, linear item fades, item gain on a 0.01 dB grid |
+| Audio | Benchmark-owned tone, kick, and plucked-string proxy fixtures; source trim, lossless split, beat-position move, pitch shift, pitch-preserving stretch, linear item fades, item gain on a 0.01 dB grid |
 | Instruments | Bundled phase-reset polyphonic sine JSFX, MIDI channel 0 |
 | Mix | Audio sends without feedback, deterministic gain JSFX |
 | Lifecycle | Independent process/profile, bridge timeout, save/reopen, explicit resume, cleanup |
@@ -71,6 +71,9 @@ hardware/third-party-dependent workflows. The linked
 Item gain uses REAPER's native item-volume field with readback, leaving the
 track fader and effects untouched. Its [linked clip-gain corpus](reaper-corpus.md)
 checks each item's level and waveform before and after the edit.
+The [rhythm and arrangement corpus](reaper-corpus.md) adds per-hit kick timing
+and pairwise guitar-to-kick alignment; its guitar sound is a deterministic
+plucked-string proxy, not a sampled commercial guitar library.
 
 ## Isolation and artifacts
 

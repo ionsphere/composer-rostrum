@@ -199,5 +199,25 @@ alignment, and noise cleanup still need native operations and matching corpora.
 The item-volume field is documented in REAPER's
 [ReaScript API](https://www.reaper.fm/sdk/reascript/reascripthelp.html#GetMediaItemInfo_Value).
 
+`reaper-rhythm-arrangement-v1` adds two linked musician intents. First, move
+kick hits to a requested one-bar onset pattern while preserving the guitar
+track. Second, align each guitar accent with its corresponding kick while
+preserving both source selections and the established kick rhythm. Separate
+owned kick and plucked-string proxy WAVs make the two tracks audibly distinct.
+The private scorer checks native item positions, exact per-track onset patterns,
+pairwise alignment, protected project state, and the final render against a
+checksum-verified reference WAV. A correct edit, no-op, and one misplaced hit
+are exercised from exported inputs for both stages.
+
+```powershell
+.venv\Scripts\python.exe -m composer_rostrum.corpus_capture --suite rhythm-arrangement --reaper "C:\Program Files\REAPER (x64)\reaper.exe" --output artifacts/reaper-rhythm-arrangement-v1-full --chains 20 --seed 20260926 --workers 4
+.venv\Scripts\python.exe scripts/verify_rhythm_arrangement_controls.py artifacts/reaper-rhythm-arrangement-v1-full/dataset --reaper "C:\Program Files\REAPER (x64)\reaper.exe" --output artifacts/rhythm-arrangement-controls --seed 20260926
+.venv\Scripts\python.exe scripts/record_rhythm_arrangement_validation.py artifacts/reaper-rhythm-arrangement-v1-full --controls artifacts/rhythm-arrangement-controls/summary.json
+```
+
+This verifies one-bar kick patterns and paired accents. It does not yet score
+groove feel, timing microvariation, chord voicings, guitar strumming, longer
+song-form arrangement, or mix masking between instruments.
+
 Native fade fields are documented in the official
 [ReaScript API](https://www.reaper.fm/sdk/reascript/reascripthelp.html#SetMediaItemInfo_Value).
