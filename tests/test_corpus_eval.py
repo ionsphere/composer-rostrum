@@ -4,7 +4,7 @@ import pytest
 
 from composer_rostrum.corpus import generate_chains
 from composer_rostrum.corpus_capture import sha256, write_json
-from composer_rostrum.corpus_eval import dataset_path, load_sample
+from composer_rostrum.corpus_eval import dataset_path, load_sample, reference_audio_path
 from composer_rostrum.environment import project_hash
 
 
@@ -56,3 +56,22 @@ def test_unknown_sample_is_an_error(tmp_path):
     fixture_dataset(tmp_path)
     with pytest.raises(ValueError, match="exactly one"):
         load_sample(tmp_path, "missing")
+
+
+def test_reference_audio_stays_private_and_checksum_checked(tmp_path):
+    identity = fixture_dataset(tmp_path)
+    private_file = tmp_path / "private/sample.json"
+    private = json.loads(private_file.read_text())
+    private["target_state"] = "states/target"
+    write_json(private_file, private)
+    target = tmp_path / "states/target/render.wav"
+    target.parent.mkdir(parents=True)
+    target.write_bytes(b"reference audio")
+    inventory = json.loads((tmp_path / "checksums.json").read_text())
+    inventory["private/sample.json"] = sha256(private_file)
+    inventory["states/target/render.wav"] = sha256(target)
+    write_json(tmp_path / "checksums.json", inventory)
+    assert reference_audio_path(tmp_path, identity) == target
+    target.write_bytes(b"tampered audio")
+    with pytest.raises(ValueError, match="target audio checksum mismatch"):
+        reference_audio_path(tmp_path, identity)

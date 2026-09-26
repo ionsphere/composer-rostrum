@@ -12,6 +12,7 @@ import time
 from .backends.base import BackendError
 from .backends.reaper import ReaperBackend
 from .corpus_capture import moved_item_pcm_matches, pcm_equivalent, sha256, write_json
+from .ear import compare as compare_audio, judge as judge_audio
 from .environment import project_hash
 from .evaluator import evaluate
 from .models import EvaluationResult, MusicProject, RostrumTask
@@ -79,8 +80,33 @@ def evaluate_item_audio(task, before, after, input_render: Path, renders):
         "audio matches item edit" if valid else "rendered waveform does not match item edit")]
 
 
+def reference_audio_path(dataset: Path, sample_id: str) -> Path:
+    """Keep target audio on the evaluator side and verify its frozen checksum."""
+    dataset = dataset.resolve()
+    inventory = json.loads((dataset / "checksums.json").read_text(encoding="utf-8"))
+    index = dataset / "samples.jsonl"
+    if inventory.get("samples.jsonl") != sha256(index):
+        raise ValueError("corpus index checksum mismatch")
+    matches = [row for row in (json.loads(line) for line in index.read_text(encoding="utf-8").splitlines())
+               if row["id"] == sample_id]
+    if len(matches) != 1:
+        raise ValueError("expected exactly one reference sample")
+    private_relative = matches[0]["private_target"]
+    private_file = dataset_path(dataset, private_relative)
+    if inventory.get(private_relative) != sha256(private_file):
+        raise ValueError("private scoring specification checksum mismatch")
+    private = json.loads(private_file.read_text(encoding="utf-8"))
+    relative = private["target_state"] + "/render.wav"
+    target = dataset_path(dataset, relative)
+    if inventory.get(relative) != sha256(target):
+        raise ValueError("target audio checksum mismatch")
+    return target
+
+
 def run_sample(dataset: Path, sample_id: str, agent, executable: str, output: Path):
     task, public, state = load_sample(dataset, sample_id)
+    target_audio = (reference_audio_path(dataset, sample_id) if task.execution_level == "E2" and
+                    any(tag in task.tags for tag in ("reaper-chains-v1", "reaper-item-edits-v1")) else None)
     output.mkdir(parents=True, exist_ok=False)
     backend = ReaperBackend(executable, timeout=60)
     native = backend.materialize(task.initial_project, output)
@@ -109,6 +135,21 @@ def run_sample(dataset: Path, sample_id: str, agent, executable: str, output: Pa
         checks = (evaluate(task, before, after) +
                   evaluate_renders(task, session.state["renders"], environment.trajectory, after) +
                   evaluate_item_audio(task, before, after, state / "render.wav", session.state["renders"]))
+        if target_audio is not None:
+            matching = False
+            if session.state["renders"]:
+                try:
+                    audio_report = compare_audio(target_audio, session.state["renders"][-1].path)
+                    verdict = judge_audio(audio_report, {"kind": "same", "min_snr_db": 70})
+                    write_json(output / "audio-comparison.json", {**audio_report, "verdict": verdict})
+                    matching = verdict["passed"]
+                    message = (f"reference waveform SNR {audio_report['difference']['waveform_snr_db']} dB; "
+                               f"duration difference {audio_report['difference']['duration_ms']} ms")
+                except (OSError, ValueError) as exc:
+                    message = f"reference audio comparison failed: {exc}"
+            else:
+                message = "no candidate render"
+            checks.append(EvaluationResult("reference_audio_match", matching, float(matching), message))
         result.update(passed=bool(checks) and all(c.passed for c in checks), results=[asdict(c) for c in checks],
                       project=after.to_dict(), project_hash=project_hash(after))
         if not result["passed"]:
