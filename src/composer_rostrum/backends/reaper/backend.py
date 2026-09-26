@@ -336,7 +336,11 @@ class ReaperBackend:
                         if note["start"] < 0 or note["duration"] <= 0 or note["start"] + note["duration"] > clip["length"]:
                             raise BackendError("note must fit inside its clip")
                 else:
-                    keys(clip, "id kind asset_id timeline_start_beats source_start source_end pitch_semitones stretch_ratio reversed fade_in_seconds fade_out_seconds")
+                    keys(clip, "id kind asset_id timeline_start_beats source_start source_end pitch_semitones stretch_ratio reversed fade_in_seconds fade_out_seconds gain_db")
+                    clip_gain = clip.get("gain_db", 0)
+                    if (not math.isfinite(clip_gain) or not -120 <= clip_gain <= 24 or
+                            abs(clip_gain * 100 - round(clip_gain * 100)) > 1e-6):
+                        raise BackendError("audio item gain must be -120 to 24 dB on a 0.01 dB grid")
                     if clip.get("reversed"):
                         raise BackendError("native sample reversal is not yet supported")
                     asset = next((a for a in project.assets if a["id"] == clip.get("asset_id")), None)

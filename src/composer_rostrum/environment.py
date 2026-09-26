@@ -172,6 +172,15 @@ class MusicEnvironment:
         clip.update(fade_in_seconds=float(fade_in_seconds), fade_out_seconds=float(fade_out_seconds))
         return deepcopy(clip)
 
+    def _tool_set_clip_gain(self, track_id: str, clip_id: str, gain_db: float) -> dict:
+        clip = self._find_clip(track_id, clip_id)
+        gain_db = float(gain_db)
+        if "asset_id" not in clip or not math.isfinite(gain_db) or not -120 <= gain_db <= 24:
+            raise ToolError("clip gain requires an audio item and a finite gain between -120 and 24 dB")
+        gain_db = round(gain_db, 2)
+        clip["gain_db"] = gain_db
+        return {"track_id": track_id, "clip_id": clip_id, "gain_db": gain_db}
+
     def _tool_set_key(self, key: str | None) -> dict[str, str | None]: self._project.key = key; return {"key": key}
     def _tool_set_meter(self, meter: str) -> dict[str, str]:
         if "/" not in meter: raise ToolError("meter must look like '4/4'")

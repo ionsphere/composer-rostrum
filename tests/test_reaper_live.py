@@ -75,3 +75,32 @@ def test_linear_fades_attenuate_edges_and_preserve_middle_pcm(tmp_path):
         assert window(b.path, 0.5, 1)[0] == window(a.path, 0.5, 1)[0]
     finally:
         backend.close(session)
+
+
+def test_item_gain_is_native_and_survives_restart(tmp_path):
+    from composer_rostrum.sample_tasks import sample_project
+    from composer_rostrum.ear import compare, judge
+
+    project = sample_project()
+    project.tracks = project.tracks[:1]
+    project.tracks[0]["clips"][0].update(fade_in_seconds=0.0, fade_out_seconds=0.0)
+    backend = ReaperBackend(timeout=60)
+    native = backend.materialize(project, tmp_path)
+    session = backend.open(native)
+    try:
+        before = backend.render(session, RenderRequest())
+        original_ids = backend._request(session, "native_ids")
+        backend.execute(session, DawOperation("set_clip_gain", {
+            "track_id": "samples", "clip_id": "hit-1", "gain_db": -6.0}))
+        state = backend.readback(session)
+        assert state.tracks[0]["clips"][0]["gain_db"] == -6.0
+        assert state.tracks[0].get("gain_db", 0) == project.tracks[0].get("gain_db", 0)
+        assert backend._request(session, "native_ids") == original_ids
+        after = backend.render(session, RenderRequest())
+        assert judge(compare(before.path, after.path), {"kind": "gain_db", "value": -6})["passed"]
+        backend.close(session)
+        session = backend.open(native, resume=True)
+        assert backend.readback(session).to_dict() == state.to_dict()
+        assert backend._request(session, "native_ids") == original_ids
+    finally:
+        backend.close(session)

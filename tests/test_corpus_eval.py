@@ -4,7 +4,8 @@ import pytest
 
 from composer_rostrum.corpus import generate_chains
 from composer_rostrum.corpus_capture import sha256, write_json
-from composer_rostrum.corpus_eval import dataset_path, load_sample, reference_audio_path
+from composer_rostrum.corpus_eval import (dataset_path, load_sample, reference_audio_path,
+                                         production_audio_expectation)
 from composer_rostrum.environment import project_hash
 
 
@@ -75,3 +76,19 @@ def test_reference_audio_stays_private_and_checksum_checked(tmp_path):
     target.write_bytes(b"tampered audio")
     with pytest.raises(ValueError, match="target audio checksum mismatch"):
         reference_audio_path(tmp_path, identity)
+
+
+def test_production_rule_is_private_and_checksum_checked(tmp_path):
+    identity = fixture_dataset(tmp_path)
+    private_file = tmp_path / "private/sample.json"
+    private = json.loads(private_file.read_text())
+    private["audio_expectation"] = {"kind": "clip_gain", "clips": []}
+    write_json(private_file, private)
+    inventory = json.loads((tmp_path / "checksums.json").read_text())
+    inventory["private/sample.json"] = sha256(private_file)
+    write_json(tmp_path / "checksums.json", inventory)
+    assert production_audio_expectation(tmp_path, identity) == private["audio_expectation"]
+    private["audio_expectation"]["kind"] = "same"
+    write_json(private_file, private)
+    with pytest.raises(ValueError, match="private scoring specification checksum mismatch"):
+        production_audio_expectation(tmp_path, identity)

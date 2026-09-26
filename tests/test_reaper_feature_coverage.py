@@ -15,4 +15,4 @@ def test_coverage_ledger_has_unique_features_and_evidence():
         assert ("evidence" in feature) == (feature["status"] == "native_verified")
         if "evidence" in feature:
             corpus = feature["evidence"].split(":", 1)[0]
-            assert corpus in {"reaper-chains-v1", "reaper-item-edits-v1"}
+            assert corpus in {"reaper-chains-v1", "reaper-item-edits-v1", "reaper-clip-gain-v1"}

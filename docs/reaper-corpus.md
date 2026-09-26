@@ -178,5 +178,26 @@ render and reopen cases before being marked covered. This corpus closes the
 linked prompt/state dataset gap and adds linear audio fades; it does not close
 the remaining REAPER roadmap.
 
+`reaper-clip-gain-v1` adds two linked item-volume revisions per chain. The first
+raises a quiet item to 0 dB item gain while leaving the loud item alone; the
+second lowers the loud item to 0 dB to balance them. The generated fixture uses
+the same source selection in both adjacent items, so their intended RMS target
+is computed from the owned source WAV. Native readback checks item `D_VOL` and
+protects the track fader, effects, source ranges, and IDs. The deterministic ear
+checks both clip windows for RMS target, fitted waveform shape, and clipping.
+The evaluator also compares the final render with a private checksum-verified
+target. Correct, no-op, and wrong-item controls run from exported inputs.
+
+```powershell
+.venv\Scripts\python.exe -m composer_rostrum.corpus_capture --suite clip-gain --reaper "C:\Program Files\REAPER (x64)\reaper.exe" --output artifacts/reaper-clip-gain-v1-full --chains 20 --seed 20260925 --workers 2
+.venv\Scripts\python.exe scripts/verify_clip_gain_controls.py artifacts/reaper-clip-gain-v1-full/dataset --reaper "C:\Program Files\REAPER (x64)\reaper.exe" --output artifacts/clip-gain-controls --seed 20260925
+.venv\Scripts\python.exe scripts/record_clip_gain_validation.py artifacts/reaper-clip-gain-v1-full --controls artifacts/clip-gain-controls/summary.json
+```
+
+This covers clip gain balancing at the item level. Comping, transient time
+alignment, and noise cleanup still need native operations and matching corpora.
+The item-volume field is documented in REAPER's
+[ReaScript API](https://www.reaper.fm/sdk/reascript/reascripthelp.html#GetMediaItemInfo_Value).
+
 Native fade fields are documented in the official
 [ReaScript API](https://www.reaper.fm/sdk/reascript/reascripthelp.html#SetMediaItemInfo_Value).

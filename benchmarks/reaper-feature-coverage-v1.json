@@ -54,6 +54,7 @@
     {"id":"audio.item.loop","area":"Audio items and editing","intent":"Loop source audio inside an item","status":"open"},
     {"id":"audio.item.reverse","area":"Audio items and editing","intent":"Reverse playback of a source selection","status":"open"},
     {"id":"audio.item.fade","area":"Audio items and editing","intent":"Set linear fade-in and fade-out lengths","status":"native_verified","evidence":"reaper-chains-v1:trim-fades"},
+    {"id":"audio.item.gain","area":"Audio items and editing","intent":"Balance clip levels with native item gain while preserving track gain","status":"native_verified","evidence":"reaper-clip-gain-v1:quiet,loud"},
     {"id":"audio.item.crossfade","area":"Audio items and editing","intent":"Crossfade overlapping items","status":"open"},
     {"id":"audio.item.pitch","area":"Audio items and editing","intent":"Pitch-shift an item","status":"native_verified","evidence":"reaper-chains-v1:pitch-stretch"},
     {"id":"audio.item.stretch","area":"Audio items and editing","intent":"Time-stretch while preserving pitch","status":"native_verified","evidence":"reaper-chains-v1:pitch-stretch"},
