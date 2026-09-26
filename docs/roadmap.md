@@ -61,6 +61,7 @@ Target REAPER first. See [daw-execution-plan.md](daw-execution-plan.md).
 - [x] add linked creation/revision corpus capture with portable native snapshots;
 - [x] add native-input evaluation, whole-chain splits and reference/negative controls.
 - [x] add native item-gain balancing with region-level audio scoring and linked revisions.
+- [x] add kick-rhythm and cross-track guitar-alignment tasks with native and audio oracles.
 
 The implemented subset and remaining trial-period coverage work are tracked in
 [reaper-studio.md](reaper-studio.md). Full sampler, automation, routing/effect and

@@ -1,0 +1,97 @@
+{
+  "corpus": "reaper-rhythm-arrangement-v1",
+  "seed": 20260926,
+  "chains": 20,
+  "samples": 40,
+  "splits": {
+    "train": 24,
+    "dev": 8,
+    "test": 8
+  },
+  "stages": {
+    "kick-rhythm": 20,
+    "guitar-alignment": 20
+  },
+  "native_states": 60,
+  "rendered_states": 60,
+  "semantic_and_render_checks_passed": 40,
+  "negative_controls_rejected": 40,
+  "relocated_restart_checks": 20,
+  "archive_sha256": "92007f9c38589e668c3daa79b45bba815578c4b6ccaeda0e4aecd127c8945a64",
+  "archive_bytes": 14358903,
+  "archive_file_checksums_verified": 450,
+  "reference_kind": "procedural-control",
+  "model_runs": "not_run",
+  "artifact_directory": "C:/Users/ionsphere/Documents/composer-rostrum/artifacts/reaper-rhythm-arrangement-v1-full",
+  "exported_input_controls": [
+    {
+      "task": "rhythm-0000-00-kick-rhythm",
+      "control": "reference",
+      "expected": true,
+      "passed": true,
+      "reference_audio_match": true,
+      "rhythm_relations": {
+        "rhythm_pattern": true
+      },
+      "ok": true
+    },
+    {
+      "task": "rhythm-0000-00-kick-rhythm",
+      "control": "noop",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "rhythm_relations": {
+        "rhythm_pattern": false
+      },
+      "ok": true
+    },
+    {
+      "task": "rhythm-0000-00-kick-rhythm",
+      "control": "wrong",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "rhythm_relations": {
+        "rhythm_pattern": false
+      },
+      "ok": true
+    },
+    {
+      "task": "rhythm-0000-01-guitar-alignment",
+      "control": "reference",
+      "expected": true,
+      "passed": true,
+      "reference_audio_match": true,
+      "rhythm_relations": {
+        "rhythm_pattern": true,
+        "track_alignment": true
+      },
+      "ok": true
+    },
+    {
+      "task": "rhythm-0000-01-guitar-alignment",
+      "control": "noop",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "rhythm_relations": {
+        "rhythm_pattern": false,
+        "track_alignment": false
+      },
+      "ok": true
+    },
+    {
+      "task": "rhythm-0000-01-guitar-alignment",
+      "control": "wrong",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "rhythm_relations": {
+        "rhythm_pattern": false,
+        "track_alignment": false
+      },
+      "ok": true
+    }
+  ]
+}

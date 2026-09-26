@@ -302,6 +302,9 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
     elif suite == "clip-gain":
         from .clip_gain_corpus import CORPUS_VERSION as corpus_version, generate_clip_gain_chains
         chains = generate_clip_gain_chains(count, seed)
+    elif suite == "rhythm-arrangement":
+        from .rhythm_arrangement_corpus import CORPUS_VERSION as corpus_version, generate_rhythm_arrangement_chains
+        chains = generate_rhythm_arrangement_chains(count, seed)
     else:
         raise ValueError("unknown corpus suite")
     rows, evidence = [], []
@@ -316,7 +319,7 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         if cached:
             rows, evidence, source_path = cached
             evidence[-1]["relocated_restart"] = verify_snapshot(dataset / source_path, output / "relocated" / attempt, executable,
-                pcm_tolerance_lsb=1 if suite in ("item-edits", "clip-gain") else 0)
+                pcm_tolerance_lsb=1 if suite in ("item-edits", "clip-gain", "rhythm-arrangement") else 0)
             print(f"{chain.id}: cached chain reverified after relocation", flush=True)
             return rows, evidence
         rows, evidence = [], []
@@ -326,10 +329,10 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         try:
             source_path = Path("states") / attempt / "00"
             baseline_render = None
-            if suite in ("item-edits", "clip-gain"):
+            if suite in ("item-edits", "clip-gain", "rhythm-arrangement"):
                 for retry_index in range(3):
                     baseline_render = backend.render(session, RenderRequest())
-                    if suite == "clip-gain" and not baseline_render.metrics["silent"]:
+                    if suite in ("clip-gain", "rhythm-arrangement") and not baseline_render.metrics["silent"]:
                         break
                     initial_clip = chain.steps[0].task.initial_project.tracks[0]["clips"][0]
                     if suite == "item-edits" and fixture_pcm_matches(native.workspace / "assets/tone.wav", baseline_render.path,
@@ -437,7 +440,7 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
             backend.close(session)
         # The last state must work at a new path in a fresh process without source workspace assets.
         result = verify_snapshot(dataset / source_path, output / "relocated" / attempt, executable,
-            pcm_tolerance_lsb=1 if suite in ("item-edits", "clip-gain") else 0)
+            pcm_tolerance_lsb=1 if suite in ("item-edits", "clip-gain", "rhythm-arrangement") else 0)
         evidence[-1]["relocated_restart"] = result
         print(f"{chain.id}: relocated restart PCM verified", flush=True)
         return rows, evidence
@@ -496,7 +499,7 @@ def main():
     parser.add_argument("--seed", type=int, default=20260923)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--resume", action="store_true", help="Reuse complete chains after checksum and native relocation checks")
-    parser.add_argument("--suite", choices=["chains", "item-edits", "clip-gain"], default="chains")
+    parser.add_argument("--suite", choices=["chains", "item-edits", "clip-gain", "rhythm-arrangement"], default="chains")
     args = parser.parse_args()
     report = capture(args.output, args.reaper, args.chains, args.seed, args.workers, args.resume, args.suite)
     print(json.dumps({k: v for k, v in report.items() if k != "evidence"}, indent=2))

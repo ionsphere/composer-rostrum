@@ -38,6 +38,8 @@
     {"id":"midi.cc","area":"MIDI and instruments","intent":"Edit controller lanes, sustain and expression","status":"open"},
     {"id":"midi.program.channel","area":"MIDI and instruments","intent":"Edit channels and program changes","status":"open"},
     {"id":"midi.humanize","area":"MIDI and instruments","intent":"Humanize timing and velocity","status":"open"},
+    {"id":"rhythm.instrument.kick","area":"Tracks and arrangement","intent":"Set a requested kick rhythm with exact per-hit onsets","status":"native_verified","evidence":"reaper-rhythm-arrangement-v1:kick-rhythm"},
+    {"id":"arrangement.kick.guitar.align","area":"Tracks and arrangement","intent":"Align guitar accents to corresponding kick hits while preserving both sources","status":"native_verified","evidence":"reaper-rhythm-arrangement-v1:guitar-alignment"},
     {"id":"midi.instrument","area":"MIDI and instruments","intent":"Insert and configure native instrument","status":"partial"},
     {"id":"midi.sampler.mapping","area":"MIDI and instruments","intent":"Map samples to notes and velocity zones","status":"open"},
     {"id":"audio.import","area":"Audio items and editing","intent":"Import owned PCM files into a project","status":"open"},
