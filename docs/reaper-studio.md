@@ -46,7 +46,7 @@ file. Authenticated model comparisons are explicitly marked as not run.
 | Global state | Constant tempo (20–300 BPM), meter; key retained as project metadata |
 | Tracks | Stable IDs/GUIDs, name, mute, gain, pan |
 | MIDI | Stable note IDs, pitch, velocity, position, duration; transpose, quantize, repair, duplicate |
-| Audio | Benchmark-owned procedural fixtures; source trim, lossless split, beat-position move, pitch shift, pitch-preserving stretch, linear item fades |
+| Audio | Benchmark-owned procedural fixtures; source trim, lossless split, beat-position move, pitch shift, pitch-preserving stretch, linear item fades, item gain on a 0.01 dB grid |
 | Instruments | Bundled phase-reset polyphonic sine JSFX, MIDI channel 0 |
 | Mix | Audio sends without feedback, deterministic gain JSFX |
 | Lifecycle | Independent process/profile, bridge timeout, save/reopen, explicit resume, cleanup |
@@ -68,6 +68,9 @@ The [feature coverage ledger](../benchmarks/reaper-feature-coverage-v1.json)
 distinguishes native-verified musician intents from partial, open, and
 hardware/third-party-dependent workflows. The linked
 [item-edit corpus](reaper-corpus.md) adds split and move evaluation samples.
+Item gain uses REAPER's native item-volume field with readback, leaving the
+track fader and effects untouched. Its [linked clip-gain corpus](reaper-corpus.md)
+checks each item's level and waveform before and after the edit.
 
 ## Isolation and artifacts
 

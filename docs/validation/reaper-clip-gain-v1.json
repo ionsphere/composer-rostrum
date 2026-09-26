@@ -1,0 +1,76 @@
+{
+  "corpus": "reaper-clip-gain-v1",
+  "seed": 20260925,
+  "chains": 20,
+  "samples": 40,
+  "splits": {
+    "train": 24,
+    "dev": 8,
+    "test": 8
+  },
+  "stages": {
+    "quiet": 20,
+    "loud": 20
+  },
+  "native_states": 60,
+  "rendered_states": 60,
+  "semantic_render_and_clip_audio_checks_passed": 40,
+  "negative_controls_rejected": 40,
+  "relocated_restart_checks": 20,
+  "archive_sha256": "7b6828dcdb62023f26b28bd595f52479de90ae7ceef40da0f55036fbf4ea6afa",
+  "archive_bytes": 18804035,
+  "archive_file_checksums_verified": 390,
+  "reference_kind": "procedural-control",
+  "model_runs": "not_run",
+  "artifact_directory": "C:/Users/ionsphere/Documents/composer-rostrum/artifacts/reaper-clip-gain-v1-full",
+  "exported_input_controls": [
+    {
+      "task": "gain-0000-00-quiet",
+      "control": "reference",
+      "expected": true,
+      "passed": true,
+      "production_audio_relation": true,
+      "ok": true
+    },
+    {
+      "task": "gain-0000-00-quiet",
+      "control": "noop",
+      "expected": false,
+      "passed": false,
+      "production_audio_relation": false,
+      "ok": true
+    },
+    {
+      "task": "gain-0000-00-quiet",
+      "control": "wrong",
+      "expected": false,
+      "passed": false,
+      "production_audio_relation": false,
+      "ok": true
+    },
+    {
+      "task": "gain-0000-01-loud",
+      "control": "reference",
+      "expected": true,
+      "passed": true,
+      "production_audio_relation": true,
+      "ok": true
+    },
+    {
+      "task": "gain-0000-01-loud",
+      "control": "noop",
+      "expected": false,
+      "passed": false,
+      "production_audio_relation": false,
+      "ok": true
+    },
+    {
+      "task": "gain-0000-01-loud",
+      "control": "wrong",
+      "expected": false,
+      "passed": false,
+      "production_audio_relation": false,
+      "ok": true
+    }
+  ]
+}

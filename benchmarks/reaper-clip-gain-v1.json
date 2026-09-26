@@ -1,0 +1,327 @@
+{
+  "corpus": "reaper-clip-gain-v1",
+  "seed": 20260925,
+  "chains": 20,
+  "samples": [
+    {
+      "id": "gain-0000-00-quiet",
+      "chain_id": "gain-0000",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "d1530ba5c201ff6de61f03064bf2a74803aaedc42e2e1e4a2b7697d63cc07fe4"
+    },
+    {
+      "id": "gain-0000-01-loud",
+      "chain_id": "gain-0000",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "c6c7528e4f8f8486da45ac31a4449992e129ac346b31799a4b363226e6b98296"
+    },
+    {
+      "id": "gain-0001-00-quiet",
+      "chain_id": "gain-0001",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "a1312826dee79e3d0f646dfdd1f035909c3249a6618ff889e16fd2cf1829ace3"
+    },
+    {
+      "id": "gain-0001-01-loud",
+      "chain_id": "gain-0001",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "bffebb5f818a022986073d0e654125727bc621b36e24ef98491e45d75fd61d0d"
+    },
+    {
+      "id": "gain-0002-00-quiet",
+      "chain_id": "gain-0002",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "64d7b749f9beb924c073af4c9730ce748af9cffa66d691e77a628fdac7dcd2fd"
+    },
+    {
+      "id": "gain-0002-01-loud",
+      "chain_id": "gain-0002",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "10d134c4e4f47167f3540a1eb8a652322e8c879c0772f0c0bcaeebe7c49e9fe0"
+    },
+    {
+      "id": "gain-0003-00-quiet",
+      "chain_id": "gain-0003",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "a6082acd502cdae4d7ad9c90a2480186255cea82d04b849f6b39d6681c1fdf30"
+    },
+    {
+      "id": "gain-0003-01-loud",
+      "chain_id": "gain-0003",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "b88bbe5c12468aee08cc18f57e764d0d062e6049e8b54c9b5fde56a33e8c10e4"
+    },
+    {
+      "id": "gain-0004-00-quiet",
+      "chain_id": "gain-0004",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "3c08e6fc19b850c4b2a2f1353e4f8af8ed926bd1d0efdb2ae0042c07222370eb"
+    },
+    {
+      "id": "gain-0004-01-loud",
+      "chain_id": "gain-0004",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "b4e7422aa08d243260521067a46951ced4030198c3cc26cf1635afdd00fe0954"
+    },
+    {
+      "id": "gain-0005-00-quiet",
+      "chain_id": "gain-0005",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "4393f9ecc51217215b58e5ed27597a6b8a8d89774fb327c0e5a2dc1641f4ff00"
+    },
+    {
+      "id": "gain-0005-01-loud",
+      "chain_id": "gain-0005",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "191364d5e6752d09cfe8732f34700d94fe12d156a6da59ac349e1c2c00900aeb"
+    },
+    {
+      "id": "gain-0006-00-quiet",
+      "chain_id": "gain-0006",
+      "split": "dev",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "579c5bc342a29f8148e7468315c464848c7ad6902aff87d89f2a635412c954d2"
+    },
+    {
+      "id": "gain-0006-01-loud",
+      "chain_id": "gain-0006",
+      "split": "dev",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "219599281e488a99d47952d462afca63d9c59257c9613ef5a62f3cbd557535dd"
+    },
+    {
+      "id": "gain-0007-00-quiet",
+      "chain_id": "gain-0007",
+      "split": "dev",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "858d352bc9bd723bc43c5fac53c6d5d1ade5ba5069555c05bee717a531905840"
+    },
+    {
+      "id": "gain-0007-01-loud",
+      "chain_id": "gain-0007",
+      "split": "dev",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "ce03313607bf2f741fa383693a48494b2b289ca819d255f9a2d5a600f817f466"
+    },
+    {
+      "id": "gain-0008-00-quiet",
+      "chain_id": "gain-0008",
+      "split": "test",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "48a5259057ff182db3d505d1a83406d8ed6605bd9832e7c2a0464852d77b3b68"
+    },
+    {
+      "id": "gain-0008-01-loud",
+      "chain_id": "gain-0008",
+      "split": "test",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "9f51d2ccb5a6cb6dcb50a9bc24ac2e87ac3d808dcb8a0f7bd6a79d46da72473c"
+    },
+    {
+      "id": "gain-0009-00-quiet",
+      "chain_id": "gain-0009",
+      "split": "test",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "64d070da100a4c9d8d06d1fc12b24e9591bc483e3f7b3e60525c402d554d155d"
+    },
+    {
+      "id": "gain-0009-01-loud",
+      "chain_id": "gain-0009",
+      "split": "test",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "2ddabe689d3f93552babe7c1ed73f5448b16dc95e0448a726828402b21bda47a"
+    },
+    {
+      "id": "gain-0010-00-quiet",
+      "chain_id": "gain-0010",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "4f273f347d985f6599efaafe3b4dc129142769c3415f92dfac44e9acf172cb0b"
+    },
+    {
+      "id": "gain-0010-01-loud",
+      "chain_id": "gain-0010",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "76aba1b28eb23b6c48f7d4c1baa5fc13481d8150ae3eb1fcee6d794cccd194f9"
+    },
+    {
+      "id": "gain-0011-00-quiet",
+      "chain_id": "gain-0011",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "8c199712a9bf94c64ac7230482375153f3b45b38348a91286caff0e22043d844"
+    },
+    {
+      "id": "gain-0011-01-loud",
+      "chain_id": "gain-0011",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "e32b60aae517f5e02f68b65a4e38363a1a4ab2a35e21ae8120fad7f2fa9237e4"
+    },
+    {
+      "id": "gain-0012-00-quiet",
+      "chain_id": "gain-0012",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "cc0b03b4b8fba7f89346f20657fb823c0739343835b19a5b9b236ecee7ea274f"
+    },
+    {
+      "id": "gain-0012-01-loud",
+      "chain_id": "gain-0012",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "cb1941efefb3d2ec2b0df8aeb942618c709bb9c79d14ae0d291ab4d992e4d84c"
+    },
+    {
+      "id": "gain-0013-00-quiet",
+      "chain_id": "gain-0013",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "bff986b87d13a4b8ca3efa8018c4d66321b66114ea74d07d2daaf15ff02538be"
+    },
+    {
+      "id": "gain-0013-01-loud",
+      "chain_id": "gain-0013",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "6e6c28739c997c038a35b64017c849726b001ae17a8b5d7b45d2cf886c0fbf7e"
+    },
+    {
+      "id": "gain-0014-00-quiet",
+      "chain_id": "gain-0014",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "043a7f27480e6439017c0ec887642bd31a52fcfd4d7e0c7e84e8414520c46c06"
+    },
+    {
+      "id": "gain-0014-01-loud",
+      "chain_id": "gain-0014",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "1696ea713baddd7d6d878332794660a12330016036b237822ddb03e1cb23f976"
+    },
+    {
+      "id": "gain-0015-00-quiet",
+      "chain_id": "gain-0015",
+      "split": "train",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "ab4b1368e84977067f05e6e2109e6e6089b7cc3c0ad01a6ac37213ee7865a3d4"
+    },
+    {
+      "id": "gain-0015-01-loud",
+      "chain_id": "gain-0015",
+      "split": "train",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "1c81ac4d041453d1544af5f42de753a152191e7d78e0f9597a20847ca883329e"
+    },
+    {
+      "id": "gain-0016-00-quiet",
+      "chain_id": "gain-0016",
+      "split": "dev",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "889f96c579c12e94b9927ccf0d16e99caa9958caa6dbbac9abb8fe4f00656d82"
+    },
+    {
+      "id": "gain-0016-01-loud",
+      "chain_id": "gain-0016",
+      "split": "dev",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "59cf417f4327eb755c5c62959adb2c72e59eb3081ad365208f9f08589bfa7603"
+    },
+    {
+      "id": "gain-0017-00-quiet",
+      "chain_id": "gain-0017",
+      "split": "dev",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "c03f34e6b33278cd7d449f68136f1aa5f660b5f15025becc525e1c8ee950acc5"
+    },
+    {
+      "id": "gain-0017-01-loud",
+      "chain_id": "gain-0017",
+      "split": "dev",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "9c37243aa9b0dc6f6bf6f87fb62eee7357aea70ffd58a4042b324f62bcec1bd1"
+    },
+    {
+      "id": "gain-0018-00-quiet",
+      "chain_id": "gain-0018",
+      "split": "test",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "0ee400f9fffade60bb07fc05c9f4f93ba126a38eb4585f6d06f875620fd2921a"
+    },
+    {
+      "id": "gain-0018-01-loud",
+      "chain_id": "gain-0018",
+      "split": "test",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "61ad6dbe4d1188d32e6aa7494d1d80f183bd40025a5559c1a47575c9399f25d0"
+    },
+    {
+      "id": "gain-0019-00-quiet",
+      "chain_id": "gain-0019",
+      "split": "test",
+      "stage": "quiet",
+      "prompt": "Set the quiet audio item's own gain to 0 dB. Leave the loud item and the track fader unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "a49674dbe5b6cbce4c6b7e821191de0500c2f2e95659b554a7de072c4b4cecc2"
+    },
+    {
+      "id": "gain-0019-01-loud",
+      "chain_id": "gain-0019",
+      "split": "test",
+      "stage": "loud",
+      "prompt": "Now set the loud item's own gain to 0 dB so the two items have equal level. Leave the quiet item, track fader, and effects unchanged. Save the REAPER project and render a non-silent WAV.",
+      "task_sha256": "d07fe3cabb46e9c6905465d32b12d31d2783ed035bf46344450cb3fe65507c21"
+    }
+  ]
+}

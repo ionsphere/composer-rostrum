@@ -22,6 +22,7 @@ from .environment import project_hash
 from .evaluator import evaluate
 from .models import MusicProject
 from .render_evaluator import evaluate_renders
+from .ear import evaluate_production, read_pcm, _rms, _db
 
 
 def write_json(path: Path, value):
@@ -298,6 +299,9 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
     elif suite == "item-edits":
         from .item_edit_corpus import CORPUS_VERSION as corpus_version, generate_item_edit_chains
         chains = generate_item_edit_chains(count, seed)
+    elif suite == "clip-gain":
+        from .clip_gain_corpus import CORPUS_VERSION as corpus_version, generate_clip_gain_chains
+        chains = generate_clip_gain_chains(count, seed)
     else:
         raise ValueError("unknown corpus suite")
     rows, evidence = [], []
@@ -312,7 +316,7 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         if cached:
             rows, evidence, source_path = cached
             evidence[-1]["relocated_restart"] = verify_snapshot(dataset / source_path, output / "relocated" / attempt, executable,
-                pcm_tolerance_lsb=1 if suite == "item-edits" else 0)
+                pcm_tolerance_lsb=1 if suite in ("item-edits", "clip-gain") else 0)
             print(f"{chain.id}: cached chain reverified after relocation", flush=True)
             return rows, evidence
         rows, evidence = [], []
@@ -322,11 +326,13 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
         try:
             source_path = Path("states") / attempt / "00"
             baseline_render = None
-            if suite == "item-edits":
+            if suite in ("item-edits", "clip-gain"):
                 for retry_index in range(3):
                     baseline_render = backend.render(session, RenderRequest())
+                    if suite == "clip-gain" and not baseline_render.metrics["silent"]:
+                        break
                     initial_clip = chain.steps[0].task.initial_project.tracks[0]["clips"][0]
-                    if fixture_pcm_matches(native.workspace / "assets/tone.wav", baseline_render.path,
+                    if suite == "item-edits" and fixture_pcm_matches(native.workspace / "assets/tone.wav", baseline_render.path,
                                            chain.steps[0].task.initial_project.tempo, initial_clip["timeline_start_beats"]):
                         break
                     time.sleep(0.25)
@@ -344,6 +350,23 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
                 backend.commit_environment(session, environment)
                 after = backend.readback(session)
                 renders = session.state["renders"]
+                audio_expectation = None
+                if suite == "clip-gain":
+                    source = read_pcm(native.workspace / "assets/tone.wav")
+                    windows = []
+                    for clip in step.expected.tracks[0]["clips"]:
+                        start = 1000 * clip["timeline_start_beats"] * 60 / step.expected.tempo
+                        end = start + 1000 * (clip["source_end"] - clip["source_start"])
+                        first = round(clip["source_start"] * source["sample_rate"])
+                        last = round(clip["source_end"] * source["sample_rate"])
+                        target = _db(_rms(source["mono"][first:last])) + clip["gain_db"]
+                        windows.append({"start_ms": round(start, 3), "end_ms": round(end, 3),
+                                        "target_rms_dbfs": target})
+                    audio_expectation = {"kind": "clip_gain", "clips": windows,
+                                         "tolerance_db": 0.5, "min_shape_snr_db": 35}
+                    verdict = evaluate_production(baseline_render.path, renders[-1].path, audio_expectation)
+                    if not verdict["passed"]:
+                        raise ValueError(f"{step.task.id}: clip gain audio failed: {verdict['checks']}")
                 if suite == "item-edits":
                     start = chain.steps[0].task.initial_project.tracks[0]["clips"][0]["timeline_start_beats"]
                     cut = step.expected.tracks[0]["clips"][0]["source_end"]
@@ -399,18 +422,22 @@ def capture(output: Path, executable: str, count=40, seed=20260923, workers=4, r
                            "reference_kind": "procedural-control", "negative_controls": {"no_op_rejected": True, "damaged_meter_rejected": True},
                            "native_ids_preserved": True, "audio_changed": index > 0,
                            "studio": session.state["handshake"]}
+                if audio_expectation is not None:
+                    private["audio_expectation"] = audio_expectation
                 write_json(dataset / private_path, private)
                 rows.append({"id": step.task.id, "chain_id": chain.id, "split": chain.split, "stage": step.task.tags[1],
                              "input": public_path.as_posix(), "private_target": private_path.as_posix()})
                 evidence.append({"id": step.task.id, "passed": True, "project_hash": target_record["project_hash"],
                                  "pcm_hash": pcm, "native_ids_preserved": True, "negative_controls_rejected": True})
                 source_path, source_record = target_path, target_record
+                if suite == "clip-gain":
+                    baseline_render = renders[-1]
                 print(f"{step.task.id}: verified", flush=True)
         finally:
             backend.close(session)
         # The last state must work at a new path in a fresh process without source workspace assets.
         result = verify_snapshot(dataset / source_path, output / "relocated" / attempt, executable,
-            pcm_tolerance_lsb=1 if suite == "item-edits" else 0)
+            pcm_tolerance_lsb=1 if suite in ("item-edits", "clip-gain") else 0)
         evidence[-1]["relocated_restart"] = result
         print(f"{chain.id}: relocated restart PCM verified", flush=True)
         return rows, evidence
@@ -469,7 +496,7 @@ def main():
     parser.add_argument("--seed", type=int, default=20260923)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--resume", action="store_true", help="Reuse complete chains after checksum and native relocation checks")
-    parser.add_argument("--suite", choices=["chains", "item-edits"], default="chains")
+    parser.add_argument("--suite", choices=["chains", "item-edits", "clip-gain"], default="chains")
     args = parser.parse_args()
     report = capture(args.output, args.reaper, args.chains, args.seed, args.workers, args.resume, args.suite)
     print(json.dumps({k: v for k, v in report.items() if k != "evidence"}, indent=2))

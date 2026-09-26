@@ -12,7 +12,7 @@ import time
 from .backends.base import BackendError
 from .backends.reaper import ReaperBackend
 from .corpus_capture import moved_item_pcm_matches, pcm_equivalent, sha256, write_json
-from .ear import compare as compare_audio, judge as judge_audio
+from .ear import compare as compare_audio, judge as judge_audio, evaluate_production
 from .environment import project_hash
 from .evaluator import evaluate
 from .models import EvaluationResult, MusicProject, RostrumTask
@@ -103,10 +103,31 @@ def reference_audio_path(dataset: Path, sample_id: str) -> Path:
     return target
 
 
+def production_audio_expectation(dataset: Path, sample_id: str) -> dict:
+    """Read the checksum-verified private region oracle for a production sample."""
+    dataset = dataset.resolve()
+    inventory = json.loads((dataset / "checksums.json").read_text(encoding="utf-8"))
+    index = dataset / "samples.jsonl"
+    if inventory.get("samples.jsonl") != sha256(index):
+        raise ValueError("corpus index checksum mismatch")
+    matches = [row for row in (json.loads(line) for line in index.read_text(encoding="utf-8").splitlines())
+               if row["id"] == sample_id]
+    if len(matches) != 1:
+        raise ValueError("expected exactly one production sample")
+    private_relative = matches[0]["private_target"]
+    private_file = dataset_path(dataset, private_relative)
+    if inventory.get(private_relative) != sha256(private_file):
+        raise ValueError("private scoring specification checksum mismatch")
+    return json.loads(private_file.read_text(encoding="utf-8"))["audio_expectation"]
+
+
 def run_sample(dataset: Path, sample_id: str, agent, executable: str, output: Path):
     task, public, state = load_sample(dataset, sample_id)
     target_audio = (reference_audio_path(dataset, sample_id) if task.execution_level == "E2" and
-                    any(tag in task.tags for tag in ("reaper-chains-v1", "reaper-item-edits-v1")) else None)
+                    any(tag in task.tags for tag in ("reaper-chains-v1", "reaper-item-edits-v1",
+                                                       "reaper-clip-gain-v1")) else None)
+    production_expectation = (production_audio_expectation(dataset, sample_id)
+                              if "reaper-clip-gain-v1" in task.tags else None)
     output.mkdir(parents=True, exist_ok=False)
     backend = ReaperBackend(executable, timeout=60)
     native = backend.materialize(task.initial_project, output)
@@ -135,6 +156,21 @@ def run_sample(dataset: Path, sample_id: str, agent, executable: str, output: Pa
         checks = (evaluate(task, before, after) +
                   evaluate_renders(task, session.state["renders"], environment.trajectory, after) +
                   evaluate_item_audio(task, before, after, state / "render.wav", session.state["renders"]))
+        if production_expectation is not None:
+            production_passed = False
+            if session.state["renders"]:
+                try:
+                    production = evaluate_production(state / "render.wav", session.state["renders"][-1].path,
+                                                     production_expectation)
+                    write_json(output / "production-audio-comparison.json", production)
+                    production_passed = production["passed"]
+                    production_message = f"clip gain checks: {production['checks']}"
+                except (OSError, ValueError) as exc:
+                    production_message = f"clip gain comparison failed: {exc}"
+            else:
+                production_message = "no candidate render"
+            checks.append(EvaluationResult("production_audio_relation", production_passed,
+                                           float(production_passed), production_message))
         if target_audio is not None:
             matching = False
             if session.state["renders"]:

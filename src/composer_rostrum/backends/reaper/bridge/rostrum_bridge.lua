@@ -106,6 +106,7 @@ handlers.materialize=function(a)
         reaper.SetMediaItemTakeInfo_Value(take,'D_PLAYRATE',1/(c.stretch_ratio or 1))
         reaper.SetMediaItemTakeInfo_Value(take,'D_PITCH',c.pitch_semitones or 0)
         reaper.SetMediaItemTakeInfo_Value(take,'B_PPITCH',1)
+        reaper.SetMediaItemInfo_Value(item,'D_VOL',10^((c.gain_db or 0)/20))
         if c.fade_in_seconds~=nil or c.fade_out_seconds~=nil then
           reaper.SetMediaItemInfo_Value(item,'D_FADEINLEN',c.fade_in_seconds or 0)
           reaper.SetMediaItemInfo_Value(item,'D_FADEOUTLEN',c.fade_out_seconds or 0)
@@ -205,6 +206,9 @@ handlers.readback=function()
         c.stretch_ratio=rounded(1/rate)
         c.source_end=rounded(c.source_start+reaper.GetMediaItemInfo_Value(item,'D_LENGTH')*rate)
         c.pitch_semitones=rounded(reaper.GetMediaItemTakeInfo_Value(take,'D_PITCH'))
+        local itemvol=reaper.GetMediaItemInfo_Value(item,'D_VOL'); assert(itemvol>0,'zero-volume item cannot map to finite dB')
+        local itemgain=math.floor(20*math.log(itemvol,10)*100+0.5)/100
+        if c.gain_db~=nil or itemgain~=0 then c.gain_db=itemgain end
         if c.fade_in_seconds~=nil then c.fade_in_seconds=rounded(reaper.GetMediaItemInfo_Value(item,'D_FADEINLEN')) end
         if c.fade_out_seconds~=nil then c.fade_out_seconds=rounded(reaper.GetMediaItemInfo_Value(item,'D_FADEOUTLEN')) end
       end
