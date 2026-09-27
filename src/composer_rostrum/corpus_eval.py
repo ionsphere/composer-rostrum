@@ -126,7 +126,8 @@ def run_sample(dataset: Path, sample_id: str, agent, executable: str, output: Pa
     target_audio = (reference_audio_path(dataset, sample_id) if task.execution_level == "E2" and
                     any(tag in task.tags for tag in ("reaper-chains-v1", "reaper-item-edits-v1",
                                                        "reaper-clip-gain-v1",
-                                                       "reaper-rhythm-arrangement-v1")) else None)
+                                                       "reaper-rhythm-arrangement-v1",
+                                                       "reaper-instrument-riff-v1")) else None)
     production_expectation = (production_audio_expectation(dataset, sample_id)
                               if "reaper-clip-gain-v1" in task.tags else None)
     output.mkdir(parents=True, exist_ok=False)

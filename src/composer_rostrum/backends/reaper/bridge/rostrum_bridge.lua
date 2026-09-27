@@ -23,6 +23,8 @@ end
 local function rounded(v) return math.floor(v*1e9+0.5)/1e9 end
 local function qn(t) return rounded(reaper.TimeMap2_timeToQN(0,t)) end
 local function seconds(b) return reaper.TimeMap2_QNToTime(0,b) end
+local patches={sine=0,bass=1,guitar=2,organ=3}
+local patch_names={'sine','bass','guitar','organ'}
 local handlers={}
 handlers.ping=function() return {protocol=1,pong=true,bridge_version='1.0'} end
 handlers.capabilities=function()
@@ -53,8 +55,19 @@ handlers.materialize=function(a)
     reaper.SetMediaTrackInfo_Value(tr,'B_MUTE',t.muted and 1 or 0)
     reaper.SetMediaTrackInfo_Value(tr,'D_VOL',10^((t.gain_db or 0)/20))
     reaper.SetMediaTrackInfo_Value(tr,'D_PAN',t.pan or 0)
-    if t.kind=='midi' and fresh then
-      assert(reaper.TrackFX_AddByName(tr,'Rostrum/rostrum_sine',false,1)>=0,'Rostrum instrument missing')
+    if t.kind=='midi' then
+      local inst=(t.instruments or {})[1]
+      local old_inst
+      for _,pt in ipairs(previous.tracks) do if pt.id==t.id then old_inst=(pt.instruments or {})[1] end end
+      if fresh or (inst and not old_inst) then
+        if not fresh then
+          assert(reaper.TrackFX_GetCount(tr)==1,'instrument replacement requires no downstream effects')
+          reaper.TrackFX_Delete(tr,0)
+        end
+        local fx=inst and 'Rostrum/rostrum_voice' or 'Rostrum/rostrum_sine'
+        assert(reaper.TrackFX_AddByName(tr,fx,false,1)>=0,'Rostrum instrument missing')
+      end
+      if inst then reaper.TrackFX_SetParam(tr,0,0,patches[inst.patch]) end
     end
     local fxstart=t.kind=='midi' and 1 or 0
     for fi,effect in ipairs(t.effects or {}) do
@@ -157,6 +170,17 @@ handlers.readback=function()
     local pan=rounded(reaper.GetMediaTrackInfo_Value(tr,'D_PAN')); if t.pan~=nil or pan~=0 then t.pan=pan end
     local fxstart=t.kind=='midi' and 1 or 0
     assert(reaper.TrackFX_GetCount(tr)==fxstart+#(t.effects or {}),'unexpected native effect count')
+    if t.kind=='midi' then
+      local _,fxname=reaper.TrackFX_GetFXName(tr,0,'')
+      if #(t.instruments or {})>0 then
+        assert(fxname:find('Rostrum deterministic voice',1,true),'native voice instrument missing')
+        local patch=math.floor(reaper.TrackFX_GetParam(tr,0,0)+0.5)
+        assert(patch_names[patch+1],'unknown native voice patch')
+        t.instruments[1].patch=patch_names[patch+1]
+      else
+        assert(fxname:find('Rostrum deterministic sine',1,true),'native sine instrument missing')
+      end
+    end
     for fi,effect in ipairs(t.effects or {}) do
       effect.gain_db=rounded(reaper.TrackFX_GetParam(tr,fxstart+fi-1,0))
     end

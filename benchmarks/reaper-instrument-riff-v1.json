@@ -1,0 +1,647 @@
+{
+  "corpus": "reaper-instrument-riff-v1",
+  "seed": 20260926,
+  "chains": 20,
+  "samples": [
+    {
+      "id": "instrument-0000-00-add-a",
+      "chain_id": "instrument-0000",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "6d66c35341f317da813acef43c8770f66912a39d9594fa681bfedd4bf1e7f956"
+    },
+    {
+      "id": "instrument-0000-01-add-b",
+      "chain_id": "instrument-0000",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put D3 at beat 0 and A3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "d097235683afff345e99475500a3b9a6fbd8b1e991d1a485d0a9c6b4916546f0"
+    },
+    {
+      "id": "instrument-0000-02-swap-b",
+      "chain_id": "instrument-0000",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "8eb6f01620db8c78b4a8cd3adf0528bbbcf0796b435d47d97afe89fa39bf4599"
+    },
+    {
+      "id": "instrument-0000-03-original-riff",
+      "chain_id": "instrument-0000",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 96 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are D2, F2, A#2, C3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "90f6e686c43d34fc8b0b1d59f6491e8100c41429ecd45c4459232c553147e3de"
+    },
+    {
+      "id": "instrument-0001-00-add-a",
+      "chain_id": "instrument-0001",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "0ee76379e207c8abc9f088490c3c9f47b3048ba3c62edc7ee9e3b901078a94fc"
+    },
+    {
+      "id": "instrument-0001-01-add-b",
+      "chain_id": "instrument-0001",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put G3 at beat 0 and D4 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "d1075b57b66a66daef7762bc488bc3970862be2345bd91ebe7c6711ce4771b98"
+    },
+    {
+      "id": "instrument-0001-02-swap-b",
+      "chain_id": "instrument-0001",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "c64b47b3eb99fb965fff810ce0764f636d03f625be51c5ad04dd004788aa8981"
+    },
+    {
+      "id": "instrument-0001-03-original-riff",
+      "chain_id": "instrument-0001",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 108 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are G2, A#2, D#3, F3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "7f3ebf8fd18f501ef4eb4f02660e630c35b98ec7bf434648eb04a226230b35fd"
+    },
+    {
+      "id": "instrument-0002-00-add-a",
+      "chain_id": "instrument-0002",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "8be4c330306d53079ce7bdb97fa358f55f9459dd5d9f399098f44e8dc52b6ecb"
+    },
+    {
+      "id": "instrument-0002-01-add-b",
+      "chain_id": "instrument-0002",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put D3 at beat 0 and A3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "c1803403349ef0d370f6835a2475c22127eb18b7dad7e3517a53cf75fe4e79de"
+    },
+    {
+      "id": "instrument-0002-02-swap-b",
+      "chain_id": "instrument-0002",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "e619b22c0247ded1a8f954a2db880950ed8c260fcf496eb89b38d1dcb2f437c8"
+    },
+    {
+      "id": "instrument-0002-03-original-riff",
+      "chain_id": "instrument-0002",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 120 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are D2, F2, A#2, C3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "ade7fecef4e76aec126215b16e01a32a416ad16e3fdaf8eaaa30567bcc14f9cf"
+    },
+    {
+      "id": "instrument-0003-00-add-a",
+      "chain_id": "instrument-0003",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "f2c943256c2d68e315e46f8ab2806123383022af7bc08c4ca1eb60009a64d586"
+    },
+    {
+      "id": "instrument-0003-01-add-b",
+      "chain_id": "instrument-0003",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put F#3 at beat 0 and C#4 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "eebc39f062c399994b551b562dc26fc768b5dcd994886ce13d678fb23a6a5c83"
+    },
+    {
+      "id": "instrument-0003-02-swap-b",
+      "chain_id": "instrument-0003",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "93bbb99a2e2afefa233c7e4188582c44fa5cc1c1ff2b10c91980abf99044a020"
+    },
+    {
+      "id": "instrument-0003-03-original-riff",
+      "chain_id": "instrument-0003",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 132 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are F#2, A2, D3, E3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "e7c86ccb622000155ba94b9da519f1347c40be8ee72735245b388df09a44c869"
+    },
+    {
+      "id": "instrument-0004-00-add-a",
+      "chain_id": "instrument-0004",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "cca95e77a5abe244e6f1ff7d0eec00c773b25edb0df744d1e734b29cb3df38da"
+    },
+    {
+      "id": "instrument-0004-01-add-b",
+      "chain_id": "instrument-0004",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put G3 at beat 0 and D4 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "8238e9000ece65fdd30df31d1487639b6b91f0ee0c4f8fa4a191e17ab2cdcb8e"
+    },
+    {
+      "id": "instrument-0004-02-swap-b",
+      "chain_id": "instrument-0004",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "5cc6570bd3499f1ed9ed05bcf15c09c49269bef99eca5c7e32c9718fd843e601"
+    },
+    {
+      "id": "instrument-0004-03-original-riff",
+      "chain_id": "instrument-0004",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 132 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are G2, A#2, D#3, F3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "6d6007e43fd73981bd787ff9c9b7b4dd5a507139f3ed58733e413632f45828c9"
+    },
+    {
+      "id": "instrument-0005-00-add-a",
+      "chain_id": "instrument-0005",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "dd59559326d137396af29a9145292a8774c78145cee361d43456b2bb9dd64e16"
+    },
+    {
+      "id": "instrument-0005-01-add-b",
+      "chain_id": "instrument-0005",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put E3 at beat 0 and B3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "0fa2865e16f8cb6d0ce93199ed4bc56524b2b0902395b790355ff0d69f4af233"
+    },
+    {
+      "id": "instrument-0005-02-swap-b",
+      "chain_id": "instrument-0005",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "bf809c112eab03404f7a0fa5852b2f02523b700015c30dbbfeb00c8448ab8792"
+    },
+    {
+      "id": "instrument-0005-03-original-riff",
+      "chain_id": "instrument-0005",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 108 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are E2, G2, C3, D3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "847b2bbef4a6000b64de05ae9e66e53b7b5c38623f9719b544e34364193b7eb3"
+    },
+    {
+      "id": "instrument-0006-00-add-a",
+      "chain_id": "instrument-0006",
+      "split": "dev",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "d607d067396e8c0bd0ce40d282fd2e980ab677b9883ad9adaba9c64398a21c04"
+    },
+    {
+      "id": "instrument-0006-01-add-b",
+      "chain_id": "instrument-0006",
+      "split": "dev",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put G3 at beat 0 and D4 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "121e767fb229aa95c44fbef9339435aaafd78cdc0cd4ccba09f7f4308a81772e"
+    },
+    {
+      "id": "instrument-0006-02-swap-b",
+      "chain_id": "instrument-0006",
+      "split": "dev",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "f6ced3ccf9900e8e55c0fed8e36713d9c0b9d8360c8e02390e5b2fc1887327de"
+    },
+    {
+      "id": "instrument-0006-03-original-riff",
+      "chain_id": "instrument-0006",
+      "split": "dev",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 120 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are G2, A#2, D#3, F3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "494d6987b801d394618dbfa346fa74c71dfc8b9b6f73ac36302edc5213bdc4d4"
+    },
+    {
+      "id": "instrument-0007-00-add-a",
+      "chain_id": "instrument-0007",
+      "split": "dev",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "843800dbbecaa09be8da16f469611c943bcdede3d5da78add31e20d7f4eadc2b"
+    },
+    {
+      "id": "instrument-0007-01-add-b",
+      "chain_id": "instrument-0007",
+      "split": "dev",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put F#3 at beat 0 and C#4 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "b6352ff51c07a60dc0e4d608ceae2dc54f3a66901e718d00567bc785878e09d1"
+    },
+    {
+      "id": "instrument-0007-02-swap-b",
+      "chain_id": "instrument-0007",
+      "split": "dev",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "46532731ffd99a9788e120b4063976a8f505b352f2210607f26c62a63b407a23"
+    },
+    {
+      "id": "instrument-0007-03-original-riff",
+      "chain_id": "instrument-0007",
+      "split": "dev",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 96 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are F#2, A2, D3, E3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "95aef58302fa68f733868e0b5993ace1988af8e8b398d88304fb5a49fff07be4"
+    },
+    {
+      "id": "instrument-0008-00-add-a",
+      "chain_id": "instrument-0008",
+      "split": "test",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "e1f9bec882903cf72b5a3bc90243e1020eb656a11247fee2a4f45459ee53a446"
+    },
+    {
+      "id": "instrument-0008-01-add-b",
+      "chain_id": "instrument-0008",
+      "split": "test",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put E3 at beat 0 and B3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "a167cfdbc8ee15ad2546fcb8f7120fcaf655d7e78da207dd181e350426cae93e"
+    },
+    {
+      "id": "instrument-0008-02-swap-b",
+      "chain_id": "instrument-0008",
+      "split": "test",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "59bc4a19264c773df3d2437eb029c2ca96f799ebb2c3472cc07f593add2acfed"
+    },
+    {
+      "id": "instrument-0008-03-original-riff",
+      "chain_id": "instrument-0008",
+      "split": "test",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 96 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are E2, G2, C3, D3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "1b8f96624bbcb87c1612278a02e19c03e9873f8a4f6e0ab605d4df8a68ca0229"
+    },
+    {
+      "id": "instrument-0009-00-add-a",
+      "chain_id": "instrument-0009",
+      "split": "test",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "d92c66f7822a48352c1aa0e5aa6c2d9eb0f96a0a507ea9094d7eceaf4bf7b402"
+    },
+    {
+      "id": "instrument-0009-01-add-b",
+      "chain_id": "instrument-0009",
+      "split": "test",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put D3 at beat 0 and A3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "f22d5a5d1e657c80fd7ae66e8398c84f9ef3e84839d170b9de3637192a90a25e"
+    },
+    {
+      "id": "instrument-0009-02-swap-b",
+      "chain_id": "instrument-0009",
+      "split": "test",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "954cdb4e21ea9dd43ec1bd4f651007fcc6b95c26699dccdffd40cd4b864b47f3"
+    },
+    {
+      "id": "instrument-0009-03-original-riff",
+      "chain_id": "instrument-0009",
+      "split": "test",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 132 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are D2, F2, A#2, C3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "de309dec9b3d383558f6adb514353e462a1ffac4179001094c86a9d4ae31fcfb"
+    },
+    {
+      "id": "instrument-0010-00-add-a",
+      "chain_id": "instrument-0010",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "1d4db180932d899d4fe4e39da4c44b4bdfcb3215f39cbc3cdfaba062f46712d2"
+    },
+    {
+      "id": "instrument-0010-01-add-b",
+      "chain_id": "instrument-0010",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put E3 at beat 0 and B3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "73b8c8e44de679d2919aeee8f1458238937dcb9c8d05312247a547e7feb1a424"
+    },
+    {
+      "id": "instrument-0010-02-swap-b",
+      "chain_id": "instrument-0010",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "91f48352c59019aec6279b1038088e049a5edbcb0857be1d598b38a9a95c5aa3"
+    },
+    {
+      "id": "instrument-0010-03-original-riff",
+      "chain_id": "instrument-0010",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 108 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are E2, G2, C3, D3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "41c2c800e7a7e30b0e7dd03a87f573c94688d9b6e62c0bee6df0356d5cce5925"
+    },
+    {
+      "id": "instrument-0011-00-add-a",
+      "chain_id": "instrument-0011",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "62a09ad0019d3d3ad8102b5bbb7207653811fa96251b887cf3d5b21831fd7da6"
+    },
+    {
+      "id": "instrument-0011-01-add-b",
+      "chain_id": "instrument-0011",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put D3 at beat 0 and A3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "099b807f0c0485d97f8e73c909c3b717653ac75a7554491943487acd67b03f25"
+    },
+    {
+      "id": "instrument-0011-02-swap-b",
+      "chain_id": "instrument-0011",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "a09f5e154ac4c5c2119dc504257f2d5a7e7dc90cdc900e3133d5eb82996217f8"
+    },
+    {
+      "id": "instrument-0011-03-original-riff",
+      "chain_id": "instrument-0011",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 120 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are D2, F2, A#2, C3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "4a4e27eb7e2f7aca2ab459bb20d8e3c9ddf5ffb50bd8628232af7ee9365c2f14"
+    },
+    {
+      "id": "instrument-0012-00-add-a",
+      "chain_id": "instrument-0012",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "72238d3a61af09ee41c7fa52aa56b9b6bf0223fbbdfba96b6e6c30c7c8e962ba"
+    },
+    {
+      "id": "instrument-0012-01-add-b",
+      "chain_id": "instrument-0012",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put D3 at beat 0 and A3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "685ff2a7cdbe09063af984acf778c765ec5c123da1a0a8f233f02447402e78b6"
+    },
+    {
+      "id": "instrument-0012-02-swap-b",
+      "chain_id": "instrument-0012",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "d42f7445b9b503c6c1aae207654e52c8f99eb1a832d1820ae29c0e32c44bacfc"
+    },
+    {
+      "id": "instrument-0012-03-original-riff",
+      "chain_id": "instrument-0012",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 132 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are D2, F2, A#2, C3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "8497d0b7e241bef285d74f225cae682c96a9beffb2a0443a2edf826ba360b53e"
+    },
+    {
+      "id": "instrument-0013-00-add-a",
+      "chain_id": "instrument-0013",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "6c7609b9cf545f5b8209075aa899703b08d560823294940f0e715b42e5c416f8"
+    },
+    {
+      "id": "instrument-0013-01-add-b",
+      "chain_id": "instrument-0013",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put D3 at beat 0 and A3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "d86a3ab9671f5519ba5d1a6946df9aca55caa530c58bc39cd2783e1e1e5c19e1"
+    },
+    {
+      "id": "instrument-0013-02-swap-b",
+      "chain_id": "instrument-0013",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "845fada406176fd7176ef8ae4ebfc1b9f78178fb1fd57ff68161b8c947bb263d"
+    },
+    {
+      "id": "instrument-0013-03-original-riff",
+      "chain_id": "instrument-0013",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 132 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are D2, F2, A#2, C3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "648275b207f4f83319bf60d2a03dfcdc66095955b8120a58cab5ef6e5881b34f"
+    },
+    {
+      "id": "instrument-0014-00-add-a",
+      "chain_id": "instrument-0014",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "975871f86eb485513a9ed1a733595c43906cd88c55d6979b7366cff61365702e"
+    },
+    {
+      "id": "instrument-0014-01-add-b",
+      "chain_id": "instrument-0014",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put G3 at beat 0 and D4 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "215ff019351992e31909f14915d638941d2a87878a1c0502cbc3dd2b000aecef"
+    },
+    {
+      "id": "instrument-0014-02-swap-b",
+      "chain_id": "instrument-0014",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "a68bd4f5aacdbae0a6fbc0788e281027f8f0fd4a35d95c686e042172d688291d"
+    },
+    {
+      "id": "instrument-0014-03-original-riff",
+      "chain_id": "instrument-0014",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 132 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are G2, A#2, D#3, F3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "ffb023bc6e2357ce6c5eabe7614ddc49d1a84a71a733e4538005824158794530"
+    },
+    {
+      "id": "instrument-0015-00-add-a",
+      "chain_id": "instrument-0015",
+      "split": "train",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "44d529a10077432484dcbe06b58ae7cb76a638e73ffd599ccb0b025311b0f9fb"
+    },
+    {
+      "id": "instrument-0015-01-add-b",
+      "chain_id": "instrument-0015",
+      "split": "train",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put E3 at beat 0 and B3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "2ef8a945ee2d82b89c080ef3d4deec9dcb1898e258e238754686196b9f9ef5dd"
+    },
+    {
+      "id": "instrument-0015-02-swap-b",
+      "chain_id": "instrument-0015",
+      "split": "train",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "81844fd8b6aa7c1b8d945a8e82337942eebd54f0da8d70019880b6309342dd2a"
+    },
+    {
+      "id": "instrument-0015-03-original-riff",
+      "chain_id": "instrument-0015",
+      "split": "train",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 132 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are E2, G2, C3, D3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "60b6da4af172601f87ffbd7d932adeaa9df0bdaebf8f8b94675025201480aac1"
+    },
+    {
+      "id": "instrument-0016-00-add-a",
+      "chain_id": "instrument-0016",
+      "split": "dev",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "7ed7b215d471e953caaeeacb461c6d06fd08bb8a8610968aff82c28411cc1a3a"
+    },
+    {
+      "id": "instrument-0016-01-add-b",
+      "chain_id": "instrument-0016",
+      "split": "dev",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put E3 at beat 0 and B3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "3de21d11a11a79d8247bc13a0bd84917e30035158264aba8331752cf5faef098"
+    },
+    {
+      "id": "instrument-0016-02-swap-b",
+      "chain_id": "instrument-0016",
+      "split": "dev",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "3ec3027b540be163e84a501c500d675123c204e072e12d91ce3560ad9f2557ca"
+    },
+    {
+      "id": "instrument-0016-03-original-riff",
+      "chain_id": "instrument-0016",
+      "split": "dev",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 96 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are E2, G2, C3, D3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "a0cbdd4e87164202106412854beaee350eb51938ab6683503f504af75f37d0e1"
+    },
+    {
+      "id": "instrument-0017-00-add-a",
+      "chain_id": "instrument-0017",
+      "split": "dev",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "fe354346525f9dc49efa49290906e0c3fb508d211e7607e59c75d774d0b950fa"
+    },
+    {
+      "id": "instrument-0017-01-add-b",
+      "chain_id": "instrument-0017",
+      "split": "dev",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put D3 at beat 0 and A3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "23953f2396dd40b38807240de9bca32c77acee8db1d34f58c2eb706da337f613"
+    },
+    {
+      "id": "instrument-0017-02-swap-b",
+      "chain_id": "instrument-0017",
+      "split": "dev",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "e0acbfd3bb95ea1c7eb820a2f60141cf3a4220d498345f3c4e4ac680f452f389"
+    },
+    {
+      "id": "instrument-0017-03-original-riff",
+      "chain_id": "instrument-0017",
+      "split": "dev",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 120 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are D2, F2, A#2, C3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "90e3600964b7165555638cd23f8d2eb5bf121a6ec0b105760fdbfbe702dfde65"
+    },
+    {
+      "id": "instrument-0018-00-add-a",
+      "chain_id": "instrument-0018",
+      "split": "test",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "b64c40686e89f3026b0579ffa7d53d03b5358d08d13aa64f7129721de650a3ee"
+    },
+    {
+      "id": "instrument-0018-01-add-b",
+      "chain_id": "instrument-0018",
+      "split": "test",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put E3 at beat 0 and B3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "432e5b30e46cb6b22a92e4e6f1aa5273a3065ae6b0cae9277d3a0d375125ca9b"
+    },
+    {
+      "id": "instrument-0018-02-swap-b",
+      "chain_id": "instrument-0018",
+      "split": "test",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "703445ad51a263897ae68de2035c47c90b1c7467e1312a000addbc75228299b9"
+    },
+    {
+      "id": "instrument-0018-03-original-riff",
+      "chain_id": "instrument-0018",
+      "split": "test",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 108 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are E2, G2, C3, D3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "b3cbdb532c4657cb493520fd835a3b56e4be1cbf1a0c3d41e65ed4ad7f61f4cf"
+    },
+    {
+      "id": "instrument-0019-00-add-a",
+      "chain_id": "instrument-0019",
+      "split": "test",
+      "stage": "add-a",
+      "prompt": "Give the existing Bass MIDI track a bass instrument with ID voice-a. Keep its two intro notes and everything else unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "073b3dfca828f55ffdecac555b5d8fb97e0508d9e0f95277c123723ee7b0584b"
+    },
+    {
+      "id": "instrument-0019-01-add-b",
+      "chain_id": "instrument-0019",
+      "split": "test",
+      "stage": "add-b",
+      "prompt": "Add a second MIDI instrument track named Lead (ID lead, gain -9 dB), with an organ voice (ID voice-b). In a two-beat MIDI clip with ID intro, put E3 at beat 0 and B3 at beat 1; each note lasts half a beat with velocity 85. Keep the Bass track and its bass instrument unchanged. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "dc37cf005d3b95c5a52e549716b3f031d4c2189d1b47cc3147c18ebbe75092df"
+    },
+    {
+      "id": "instrument-0019-02-swap-b",
+      "chain_id": "instrument-0019",
+      "split": "test",
+      "stage": "swap-b",
+      "prompt": "Change only the Lead instrument from organ to guitar. Preserve its MIDI notes, clip timing, track level, and the Bass track. The sound should change without re-recording or sampling. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "06815df00a748a0fa71065bfc0f6aa115202f813b9309ce146ece4208e4213e4"
+    },
+    {
+      "id": "instrument-0019-03-original-riff",
+      "chain_id": "instrument-0019",
+      "split": "test",
+      "stage": "original-riff",
+      "prompt": "Compose this original two-bar syncopated riff using MIDI notes only; do not import or sample audio. At 120 BPM, begin at project beat 4. In each bar strike at local beats 0, 1.5, 2, and 3.5; repeat the bar once. The bass roots are E2, G2, C3, D3, repeated in bar two. On Lead, place a power fifth above each bass root: the root one octave higher plus its perfect fifth. Each note lasts half a beat; use velocity 100 on Bass and 88 on Lead. Put each part in an eight-beat MIDI clip with ID riff. Keep the existing intro and instruments. Save the native REAPER project and render a non-silent WAV.",
+      "task_sha256": "95446c1f73fe49f5c7b85bba617c3023ba97d7016b4a76e7a426cae908fa59a0"
+    }
+  ]
+}

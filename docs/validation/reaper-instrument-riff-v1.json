@@ -1,0 +1,165 @@
+{
+  "corpus": "reaper-instrument-riff-v1",
+  "seed": 20260926,
+  "chains": 20,
+  "samples": 80,
+  "splits": {
+    "train": 48,
+    "dev": 16,
+    "test": 16
+  },
+  "stages": {
+    "add-a": 20,
+    "add-b": 20,
+    "swap-b": 20,
+    "original-riff": 20
+  },
+  "native_states": 100,
+  "rendered_states": 100,
+  "semantic_and_render_checks_passed": 80,
+  "negative_controls_rejected": 80,
+  "relocated_restart_checks": 20,
+  "archive_sha256": "a39537a309bcc67e9ae5f03871c731f11caa9e7006faa8a84e06ea9293a5b70e",
+  "archive_bytes": 12454460,
+  "archive_file_checksums_verified": 572,
+  "reference_kind": "procedural-control",
+  "model_runs": "not_run",
+  "artifact_directory": "C:/Users/ionsphere/Documents/composer-rostrum/artifacts/instrument-riff-v1-final",
+  "exported_input_controls": [
+    {
+      "task": "instrument-0000-00-add-a",
+      "control": "reference",
+      "expected": true,
+      "passed": true,
+      "reference_audio_match": true,
+      "musical_relations": {
+        "instrument_patch": true
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-00-add-a",
+      "control": "noop",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "musical_relations": {
+        "instrument_patch": false
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-00-add-a",
+      "control": "wrong",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "musical_relations": {
+        "instrument_patch": false
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-01-add-b",
+      "control": "reference",
+      "expected": true,
+      "passed": true,
+      "reference_audio_match": true,
+      "musical_relations": {
+        "midi_note_pattern": true,
+        "instrument_patch": true
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-01-add-b",
+      "control": "noop",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "musical_relations": {
+        "midi_note_pattern": false,
+        "instrument_patch": false
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-01-add-b",
+      "control": "wrong",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "musical_relations": {
+        "midi_note_pattern": true,
+        "instrument_patch": false
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-02-swap-b",
+      "control": "reference",
+      "expected": true,
+      "passed": true,
+      "reference_audio_match": true,
+      "musical_relations": {
+        "instrument_patch": true
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-02-swap-b",
+      "control": "noop",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "musical_relations": {
+        "instrument_patch": false
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-02-swap-b",
+      "control": "wrong",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "musical_relations": {
+        "instrument_patch": false
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-03-original-riff",
+      "control": "reference",
+      "expected": true,
+      "passed": true,
+      "reference_audio_match": true,
+      "musical_relations": {
+        "midi_note_pattern": true
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-03-original-riff",
+      "control": "noop",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "musical_relations": {
+        "midi_note_pattern": false
+      },
+      "ok": true
+    },
+    {
+      "task": "instrument-0000-03-original-riff",
+      "control": "wrong",
+      "expected": false,
+      "passed": false,
+      "reference_audio_match": false,
+      "musical_relations": {
+        "midi_note_pattern": false
+      },
+      "ok": true
+    }
+  ]
+}
