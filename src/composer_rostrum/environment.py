@@ -215,6 +215,26 @@ class MusicEnvironment:
         track.setdefault("effects", []).append(effect)
         return effect
 
+    def _tool_add_instrument(self, track_id: str, instrument_id: str, patch: str) -> dict[str, Any]:
+        track = self._find_track(track_id)
+        if track.get("kind") != "midi" or track.get("instruments"):
+            raise ToolError("one instrument is supported on a MIDI track")
+        if patch not in ("sine", "bass", "guitar", "organ"):
+            raise ToolError("unsupported benchmark instrument patch")
+        instrument = {"id": instrument_id, "type": "rostrum_voice", "patch": patch}
+        track["instruments"] = [instrument]
+        return deepcopy(instrument)
+
+    def _tool_set_instrument_patch(self, track_id: str, instrument_id: str, patch: str) -> dict[str, Any]:
+        track = self._find_track(track_id)
+        instruments = track.get("instruments", [])
+        if (track.get("kind") != "midi" or len(instruments) != 1 or
+                instruments[0]["id"] != instrument_id or
+                patch not in ("sine", "bass", "guitar", "organ")):
+            raise ToolError("unknown instrument or unsupported patch")
+        instruments[0]["patch"] = patch
+        return deepcopy(instruments[0])
+
     def _tool_transpose_notes(self, track_id: str, clip_id: str, semitones: int) -> dict[str, Any]:
         clip = self._find_clip(track_id, clip_id); notes = clip.get("notes", []); delta = int(semitones)
         for note in notes:

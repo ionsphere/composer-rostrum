@@ -133,8 +133,8 @@ class ReaperBackend:
                     self._write_project(session, project)
                 manifest = json.loads(native.manifest_path.read_text(encoding="utf-8"))
                 manifest.update(status="connected", handshake=session.state["handshake"],
-                    instrument={"name": "Rostrum deterministic sine v1", "sha256": hashlib.sha256(
-                        (Path(__file__).parent / "bridge" / "rostrum_sine.jsfx").read_bytes()).hexdigest()})
+                    instruments={name: hashlib.sha256((Path(__file__).parent / "bridge" / name).read_bytes()).hexdigest()
+                                 for name in ("rostrum_sine.jsfx", "rostrum_voice.jsfx")})
                 manifest["studio_files"] = {p.relative_to(native.workspace).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
                     for folder in (native.workspace / "bridge", native.workspace / "assets")
                     for p in folder.glob("*") if p.is_file()}
@@ -298,8 +298,17 @@ class ReaperBackend:
             keys(track, "id name kind muted gain_db pan clips instruments effects sends automation")
             if track.get("kind") not in ("midi", "audio"):
                 raise BackendError("unsupported track kind")
-            if any(track.get(key) for key in ("instruments", "automation")):
-                raise BackendError("custom instruments and automation are not yet supported")
+            if track.get("automation"):
+                raise BackendError("automation is not yet supported")
+            instruments = track.get("instruments", [])
+            if instruments and (track["kind"] != "midi" or len(instruments) != 1):
+                raise BackendError("one voice instrument is supported per MIDI track")
+            ids(instruments)
+            for instrument in instruments:
+                keys(instrument, "id type patch")
+                if (instrument.get("type") != "rostrum_voice" or
+                        instrument.get("patch") not in ("sine", "bass", "guitar", "organ")):
+                    raise BackendError("unsupported native voice instrument or patch")
             ids(track.get("effects", []))
             for effect in track.get("effects", []):
                 keys(effect, "id type gain_db")

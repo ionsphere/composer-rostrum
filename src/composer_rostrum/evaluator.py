@@ -40,6 +40,17 @@ def _evaluate_specs(task: RostrumTask, before: MusicProject, after: MusicProject
         if t == "project_property":
             actual = _read_path(after, spec["path"]); expected = spec["equals"]; passed = actual == expected
             results.append(EvaluationResult(f"project_property:{spec['path']}", passed, float(passed), f"expected {expected!r}, got {actual!r}")); continue
+        if t == "instrument_patch":
+            track = next(track for track in after.tracks if track["id"] == spec["track_id"])
+            actual = next(inst["patch"] for inst in track.get("instruments", []) if inst["id"] == spec["instrument_id"])
+            passed = actual == spec["patch"]
+            results.append(EvaluationResult(t, passed, float(passed), f"expected {spec['patch']}, got {actual}")); continue
+        if t == "midi_note_pattern":
+            notes = _notes(after, spec["track_id"], spec["clip_id"])
+            actual = sorted((n["pitch"], n["start"], n["duration"], n["velocity"]) for n in notes)
+            expected = sorted(tuple(row) for row in spec["notes"])
+            passed = actual == expected
+            results.append(EvaluationResult(t, passed, float(passed), f"expected {expected}, got {actual}")); continue
         if t == "rhythm_pattern":
             track = next(track for track in after.tracks if track["id"] == spec["track_id"])
             ids = spec["clip_ids"]

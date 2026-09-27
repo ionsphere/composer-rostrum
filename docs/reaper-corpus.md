@@ -219,5 +219,26 @@ This verifies one-bar kick patterns and paired accents. It does not yet score
 groove feel, timing microvariation, chord voicings, guitar strumming, longer
 song-form arrangement, or mix masking between instruments.
 
+`reaper-instrument-riff-v1` contains 20 linked projects and 80 edits. It exercises
+an instrument workflow: assign a
+bass voice to an existing MIDI track, add a second track with an organ voice,
+change only that voice to guitar, and write an original two-bar syncopated riff
+as MIDI on both tracks. The voice is a benchmark-owned JSFX with a native patch
+parameter; the REAPER bridge reads the installed FX and patch value back from
+the project. The scorer checks instrument identity, patch, exact note pitches,
+onsets, lengths and velocities, preservation of earlier clips and native GUIDs,
+and a rendered WAV against a private reference. No audio samples are used.
+New MIDI note IDs and the insertion order of simultaneous notes do not affect
+the musical score.
+The patches are deterministic timbre proxies rather than a claim to reproduce
+commercial bass, guitar or organ instruments. Correct, no-op, wrong-patch and
+wrong-note controls run from exported inputs.
+
+```powershell
+.venv\Scripts\python.exe -m composer_rostrum.corpus_capture --suite instrument-riff --reaper "C:\Program Files\REAPER (x64)\reaper.exe" --output artifacts/instrument-riff-v1-final --chains 20 --seed 20260926 --workers 4
+.venv\Scripts\python.exe scripts/verify_instrument_riff_controls.py artifacts/instrument-riff-v1-final/dataset --reaper "C:\Program Files\REAPER (x64)\reaper.exe" --output artifacts/instrument-riff-controls-final --seed 20260926
+.venv\Scripts\python.exe scripts/record_instrument_riff_validation.py artifacts/instrument-riff-v1-final --controls artifacts/instrument-riff-controls-final/summary.json
+```
+
 Native fade fields are documented in the official
 [ReaScript API](https://www.reaper.fm/sdk/reascript/reascripthelp.html#SetMediaItemInfo_Value).

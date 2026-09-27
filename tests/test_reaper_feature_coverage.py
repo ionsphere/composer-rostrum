@@ -16,4 +16,4 @@ def test_coverage_ledger_has_unique_features_and_evidence():
         if "evidence" in feature:
             corpus = feature["evidence"].split(":", 1)[0]
             assert corpus in {"reaper-chains-v1", "reaper-item-edits-v1", "reaper-clip-gain-v1",
-                              "reaper-rhythm-arrangement-v1"}
+                              "reaper-rhythm-arrangement-v1", "reaper-instrument-riff-v1"}

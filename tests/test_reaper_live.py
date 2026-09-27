@@ -35,6 +35,34 @@ def test_real_audio_edit_identity_restart_and_determinism(tmp_path):
         backend.close(session)
 
 
+def test_native_instrument_add_swap_preserves_midi_and_changes_render(tmp_path):
+    backend = ReaperBackend(timeout=60)
+    native = backend.materialize(phrase_project(), tmp_path)
+    session = backend.open(native)
+    try:
+        before_ids = backend._request(session, "native_ids")
+        backend.execute(session, DawOperation("add_instrument", {
+            "track_id": "keys", "instrument_id": "voice", "patch": "guitar"}))
+        guitar = backend.readback(session).to_dict()
+        assert guitar["tracks"][0]["instruments"] == [{"id": "voice", "type": "rostrum_voice", "patch": "guitar"}]
+        guitar_audio = backend.render(session, RenderRequest())
+        backend.execute(session, DawOperation("set_instrument_patch", {
+            "track_id": "keys", "instrument_id": "voice", "patch": "organ"}))
+        organ = backend.readback(session).to_dict()
+        organ_audio = backend.render(session, RenderRequest())
+        assert organ["tracks"][0]["instruments"][0]["patch"] == "organ"
+        assert organ["tracks"][0]["clips"] == guitar["tracks"][0]["clips"]
+        assert backend._request(session, "native_ids") == before_ids
+        assert guitar_audio.metrics["pcm_hash"] != organ_audio.metrics["pcm_hash"]
+        assert not guitar_audio.metrics["silent"] and not organ_audio.metrics["silent"]
+        backend.close(session)
+        session = backend.open(native, resume=True)
+        assert backend.readback(session).to_dict() == organ
+        assert backend.render(session, RenderRequest()).metrics["pcm_hash"] == organ_audio.metrics["pcm_hash"]
+    finally:
+        backend.close(session)
+
+
 @pytest.mark.parametrize("index", range(20))
 def test_real_daw_acceptance_suite(tmp_path, index):
     outcome = run_task(generate_daw_suite()[index], DawReferenceAgent(), ReaperBackend(timeout=60), tmp_path / "run")
