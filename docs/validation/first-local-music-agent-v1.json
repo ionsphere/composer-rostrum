@@ -1,0 +1,137 @@
+{
+  "experiment": "first-local-music-agent-v1",
+  "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "base_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "adapter_kind": "LoRA r8 alpha16",
+  "adapter_sha256": "35d5c2aa1073e0f92c29c5e08353c917845970602c7bc7797c26635c66731dee",
+  "adapter_bytes": 17640136,
+  "data_format": "rostrum-next-action-v2",
+  "source_corpora": [
+    {
+      "corpus": "reaper-chains-v1",
+      "index_sha256": "a1917afc7aa8a7ed589c1f2d4e53cf1e94e273cc95b930a2469e7aeb3b4750e8",
+      "samples": 240
+    },
+    {
+      "corpus": "reaper-item-edits-v1",
+      "index_sha256": "ff843f8dde9f0f9f25a4c043238b0df945dd8ad523e15260251346db028452b4",
+      "samples": 40
+    },
+    {
+      "corpus": "reaper-clip-gain-v1",
+      "index_sha256": "f22f5e09ef3376f6eddd8a84cd66dd56b119c919413ec0d0793d86be29ed84a7",
+      "samples": 40
+    },
+    {
+      "corpus": "reaper-rhythm-arrangement-v1",
+      "index_sha256": "9331b5f44ed1ae23be68539e7eec305e489884c9985e52deeb3c87f9e6a4ffbb",
+      "samples": 40
+    },
+    {
+      "corpus": "reaper-instrument-riff-v1",
+      "index_sha256": "9f3f4d10098c70131414709a79bd1d89243fedc1eae160775e29b5a39eb73651",
+      "samples": 80
+    }
+  ],
+  "exported_actions": {
+    "train": 1506,
+    "dev": 501
+  },
+  "train_sha256": "be578ed156bce172d1e70b7759f86e551755b4f042e00183e80f6f4766a52c8d",
+  "dev_sha256": "4fb70b0f072c1b8d464188bbe40d6b0e8bb9e191e75f7b5f9aa16f11a24a054a",
+  "test_split_exported": false,
+  "max_length": 2048,
+  "max_steps": 180,
+  "generation_tokens": 256,
+  "usable_train_actions": 1470,
+  "overlength_train_actions": 36,
+  "teacher_forced_dev": {
+    "sampled": 49,
+    "base": {
+      "parsed": 42,
+      "tool_correct": 10,
+      "action_exact": 1
+    },
+    "adapted": {
+      "parsed": 49,
+      "tool_correct": 36,
+      "action_exact": 34
+    }
+  },
+  "native_dev_cases": [
+    {
+      "case": "gain-initial",
+      "sample_id": "gain-0006-00-quiet",
+      "base": {
+        "passed": false,
+        "failure_class": "agent_error",
+        "decisions": 6,
+        "outcome_sha256": "cfc3272c248bc82d7611ea637be9757b1882b7ca4f37a38cd6ec3f747174a990"
+      },
+      "adapted": {
+        "passed": true,
+        "failure_class": null,
+        "decisions": 4,
+        "outcome_sha256": "0f49bd6f16268ebcd130fb98ed6677b2c2d9237df47c40da03bf36183d5d535e"
+      }
+    },
+    {
+      "case": "gain-revision",
+      "sample_id": "gain-0006-01-loud",
+      "base": {
+        "passed": false,
+        "failure_class": "agent_error",
+        "decisions": 8,
+        "outcome_sha256": "8c50febed5fe4f31cd4b1817d596a010b9a6dc363909c216d773ee5001ea8154"
+      },
+      "adapted": {
+        "passed": true,
+        "failure_class": null,
+        "decisions": 4,
+        "outcome_sha256": "c02251539851e07d5bf6a9e7d7378d9808c3337438c966a25ae7fe3baa94cd74"
+      }
+    },
+    {
+      "case": "item-split",
+      "sample_id": "item-0006-00-split",
+      "base": {
+        "passed": false,
+        "failure_class": "agent_error",
+        "decisions": 8,
+        "outcome_sha256": "76176d0cfeeb718b92340e5a725a25c996cf2152bc338edc126a7c2c1e9f5e4d"
+      },
+      "adapted": {
+        "passed": true,
+        "failure_class": null,
+        "decisions": 4,
+        "outcome_sha256": "f1f63c3b96b5974857dd1f57a5ecc347675549fbdaf015492b8b8a8d115be3e6"
+      }
+    },
+    {
+      "case": "kick-rhythm",
+      "sample_id": "rhythm-0006-00-kick-rhythm",
+      "adapted": {
+        "passed": false,
+        "failure_class": "evaluation",
+        "decisions": 11,
+        "outcome_sha256": "4d094a04a36e2ef9fc5fc7d969d9a1c07ce7b4c7c1b6a12d411c9a5413640ec8"
+      }
+    },
+    {
+      "case": "instrument-add",
+      "sample_id": "instrument-0006-00-add-a",
+      "adapted": {
+        "passed": false,
+        "failure_class": "agent_error",
+        "decisions": 12,
+        "outcome_sha256": "d6c73c9736d7070b113cf47c7751f420372b93befa0bddf550ca14af5de3a281"
+      }
+    }
+  ],
+  "paired_native_passes": {
+    "base": 0,
+    "adapted": 3,
+    "cases": 3
+  },
+  "model_status": "experimental; not a full REAPER pass-rate estimate"
+}
