@@ -3,11 +3,26 @@ from __future__ import annotations
 
 import json
 
+from .environment import MusicEnvironment
+
 
 SYSTEM = ("You are a REAPER music-production agent. Inspect the project, make only the "
           "requested edits, render when asked, and stop when done. Reply with exactly one "
           "JSON object: {\"tool\":\"tool_name\",\"arguments\":{...}}. Use tool \"finish\" "
           "with empty arguments to stop. Never invent tools or parameters.")
+
+
+class SchemaEnvironment(MusicEnvironment):
+    """Expose native render tool signatures without opening a REAPER session."""
+
+    def _tool_render(self, **arguments):
+        raise NotImplementedError
+
+    def _tool_inspect_render(self, render_id: str):
+        raise NotImplementedError
+
+    def _tool_analyze_render(self, render_id: str):
+        raise NotImplementedError
 
 
 def compact(value) -> str:

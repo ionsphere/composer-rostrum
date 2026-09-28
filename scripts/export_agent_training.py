@@ -9,22 +9,8 @@ from pathlib import Path
 
 from composer_rostrum.corpus_capture import sha256, write_json
 from composer_rostrum.model_agent import tool_schemas
-from composer_rostrum.environment import MusicEnvironment
 from composer_rostrum.models import RostrumTask
-from composer_rostrum.training_protocol import SYSTEM, action, compact, observation, prompt
-
-
-class SchemaEnvironment(MusicEnvironment):
-    """Expose native render tool signatures without opening a REAPER session."""
-
-    def _tool_render(self, **arguments):
-        raise NotImplementedError
-
-    def _tool_inspect_render(self, render_id: str):
-        raise NotImplementedError
-
-    def _tool_analyze_render(self, render_id: str):
-        raise NotImplementedError
+from composer_rostrum.training_protocol import SYSTEM, SchemaEnvironment, action, compact, observation, prompt
 
 
 def export(datasets: list[Path], output: Path):

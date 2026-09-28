@@ -2,10 +2,9 @@ import json
 
 import pytest
 
-from composer_rostrum.training_protocol import action, observation, parse_action, prompt
+from composer_rostrum.training_protocol import SchemaEnvironment, action, observation, parse_action, prompt
 from composer_rostrum.model_agent import tool_schemas
 from composer_rostrum.corpus import generate_chains
-from scripts.export_agent_training import SchemaEnvironment
 
 
 def test_action_protocol_keeps_tool_history_and_rejects_unavailable_tools():
