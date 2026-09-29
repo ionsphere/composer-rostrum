@@ -36,7 +36,8 @@ The benchmark is deliberately **not tied to generated waveforms or to one DAW**.
 | L3 | perceptual editing | "Make these drums less robotic without changing the groove" | structural + perceptual metrics |
 | L4 | composition | "Write an 8-bar bass line that builds tension into the chorus" | multi-evaluator / human preference |
 
-The first milestone intentionally emphasizes L0-L2. We should learn how far general reasoning models get **before training a specialized music model**.
+The first milestone emphasizes L0-L2. A first small specialized tool-agent pilot
+now complements the benchmark; broad general-model comparisons remain open.
 
 ## Design principles
 
@@ -121,6 +122,9 @@ then compose an original two-track MIDI riff with exact pitch and rhythm checks.
 The [deterministic ear](docs/deterministic-ear.md) reports
 measured signal differences and checks fixed-target renders against private WAV
 references.
+The [first local training run](docs/first-agent-training.md) exports native tool
+traces and fine-tunes a 0.5B instruction model, with held-out action and native
+REAPER checks recorded separately.
 
 ```bash
 python -m pip install -e '.[test]'
