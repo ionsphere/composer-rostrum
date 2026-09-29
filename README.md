@@ -125,6 +125,9 @@ references.
 The [first local training run](docs/first-agent-training.md) exports native tool
 traces and fine-tunes a 0.5B instruction model, with held-out action and native
 REAPER checks recorded separately.
+The [music-program routing stage](docs/music-program-routing.md) discovers
+available editors, checks their supported operations, and records an explicit
+unavailable result when none can perform the request.
 
 ```bash
 python -m pip install -e '.[test]'

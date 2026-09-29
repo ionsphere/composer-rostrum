@@ -18,6 +18,8 @@ def main():
     parser.add_argument("--data", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--model", default="Qwen/Qwen2.5-0.5B-Instruct")
+    parser.add_argument("--resume-adapter", type=Path,
+                        help="Continue a previous LoRA adapter instead of starting a new one")
     parser.add_argument("--revision", default="7ae557604adf67be50417f59c2c2f167def9a775")
     parser.add_argument("--max-length", type=int, default=2048)
     parser.add_argument("--max-steps", type=int, default=180)
@@ -29,7 +31,7 @@ def main():
     args.output.mkdir(parents=True, exist_ok=False)
 
     import torch
-    from peft import LoraConfig, get_peft_model
+    from peft import LoraConfig, PeftModel, get_peft_model
     from transformers import AutoModelForCausalLM, AutoTokenizer
     from composer_rostrum.training_protocol import parse_action
 
@@ -63,9 +65,12 @@ def main():
     model = AutoModelForCausalLM.from_pretrained(args.model, revision=args.revision,
                                                  dtype=torch.bfloat16).to("cuda")
     model.config.use_cache = False
-    model = get_peft_model(model, LoraConfig(r=8, lora_alpha=16, lora_dropout=0.05,
-        bias="none", task_type="CAUSAL_LM",
-        target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]))
+    if args.resume_adapter:
+        model = PeftModel.from_pretrained(model, args.resume_adapter, is_trainable=True)
+    else:
+        model = get_peft_model(model, LoraConfig(r=8, lora_alpha=16, lora_dropout=0.05,
+            bias="none", task_type="CAUSAL_LM",
+            target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]))
     model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
     optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad),
@@ -73,7 +78,9 @@ def main():
 
     # Fixed, chain-held-out examples for an honest before/after comparison.
     rng = random.Random(args.seed)
-    selected = rng.sample(dev_rows, min(args.eval_samples, len(dev_rows)))
+    routing_dev = [row for row in dev_rows if row["corpus"] == "music-program-routing-v1"]
+    other_dev = [row for row in dev_rows if row["corpus"] != "music-program-routing-v1"]
+    selected = rng.sample(other_dev, min(args.eval_samples, len(other_dev))) + routing_dev
     def evaluate():
         model.eval()
         exact = tool = parsed = 0
@@ -139,6 +146,7 @@ def main():
     model.save_pretrained(args.output / "adapter", safe_serialization=True)
     tokenizer.save_pretrained(args.output / "adapter")
     report = {"base_model": args.model, "base_revision": args.revision,
+              "resume_adapter": str(args.resume_adapter) if args.resume_adapter else None,
               "adapter": "LoRA r8 alpha16", "seed": args.seed,
               "max_length": args.max_length, "max_steps": args.max_steps,
               "generation_tokens": args.generation_tokens,
