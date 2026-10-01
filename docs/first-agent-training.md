@@ -70,6 +70,6 @@ To move this checkpoint to another machine, run
 training and validation. The local archive at
 `artifacts/first-agent-training/first-agent-adapter-v1.zip` contains the adapter,
 tokenizer, run report, data manifest, and validation record. This run's archive
-is 20,290,896 bytes, SHA-256
-`d1a010940b5161bf0226388b3b245257fcd0eb3f14520537b86fd45435495a54`.
+is 20,290,862 bytes, SHA-256
+`1a80b7d655d45295433d0bb29368601f836f915233e67d94b855037e6d49a34b`.
 The base Qwen model is downloaded separately at the pinned revision.
