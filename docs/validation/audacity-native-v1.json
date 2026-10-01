@@ -1,0 +1,36 @@
+{
+  "schema": "audacity-native-validation-v1",
+  "audacity_version": "3.7.4",
+  "captured_cases": 12,
+  "native_projects": 24,
+  "wav_outputs": 24,
+  "offline_validation_passed": true,
+  "checks": {
+    "checksums": "12/12",
+    "sqlite_integrity": "24/24",
+    "input_audio": "12/12",
+    "target_audio": "12/12",
+    "semantic_actions": "12/12",
+    "track_preservation": "12/12"
+  },
+  "case_ids": [
+    "mute-guitar",
+    "unmute-guitar",
+    "solo-kick",
+    "lower-guitar",
+    "pan-guitar-left",
+    "rename-kick",
+    "split-guitar",
+    "fade-in-guitar",
+    "fade-out-guitar",
+    "normalize-guitar",
+    "split-then-mute",
+    "revise-mix"
+  ],
+  "native_reopen": {
+    "status": "partial",
+    "result": "Audacity terminated while processing scripted Close after OpenProject2 on the first target project.",
+    "claim": "Native reopen is not counted as verified."
+  },
+  "artifact_directory": "artifacts/audacity-corpus-v1"
+}
