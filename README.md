@@ -128,6 +128,10 @@ REAPER checks recorded separately.
 The [music-program routing stage](docs/music-program-routing.md) discovers
 available editors, checks their supported operations, and records an explicit
 unavailable result when none can perform the request.
+The [Audacity native corpus](docs/audacity-corpus.md) adds 12 prompt-to-AUP3 and
+iterative AUP3-to-AUP3 cases with track/clip readback and deterministic WAV
+oracles. Its feature ledger records verified, open, and external Audacity work,
+including the current scripted native-reopen limitation.
 
 ```bash
 python -m pip install -e '.[test]'

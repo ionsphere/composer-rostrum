@@ -10,10 +10,19 @@ from composer_rostrum.local_action_agent import LocalActionAgent
 
 def test_discovery_separates_installation_from_control_connection(monkeypatch):
     monkeypatch.setattr(programs, "_executable", lambda key, command, paths: f"/{command}" )
+    monkeypatch.setattr(programs, "_audacity_connected", lambda: False)
     discovered = programs.discover_music_programs()
     assert [(p.name, p.installed, p.usable) for p in discovered] == [
         ("reaper", True, True), ("audacity", True, False)]
-    assert "not verified" in discovered[1].reason
+    assert "unavailable" in discovered[1].reason
+
+
+def test_discovery_marks_live_audacity_pipe_usable(monkeypatch):
+    monkeypatch.setattr(programs, "_executable", lambda key, command, paths: f"/{command}")
+    monkeypatch.setattr(programs, "_audacity_connected", lambda: True)
+    audacity = programs.discover_music_programs()[1]
+    assert audacity.usable
+    assert {"mute_track", "split_audio_clip", "normalize_audio", "render"}.issubset(audacity.operations)
 
 
 def test_route_requires_real_capability_and_reports_no_tool():

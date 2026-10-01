@@ -59,20 +59,31 @@ def _executable(env_name: str, command: str, windows_paths: tuple[str, ...]) -> 
     return None
 
 
+def _audacity_connected() -> bool:
+    try:
+        from .backends.audacity import available
+        return available()
+    except (OSError, ImportError):
+        return False
+
+
 def discover_music_programs() -> list[MusicProgram]:
     """Executable presence is separate from a verified automation connection."""
     reaper = _executable("REAPER_EXECUTABLE", "reaper",
         (r"C:\Program Files\REAPER (x64)\reaper.exe", r"C:\Program Files\REAPER\reaper.exe"))
     audacity = _executable("AUDACITY_EXECUTABLE", "audacity",
         (r"C:\Program Files\Audacity\Audacity.exe",))
+    audacity_connected = bool(audacity) and _audacity_connected()
     return [
         MusicProgram("reaper", reaper, bool(reaper), bool(reaper),
                      ("mute_track", "set_track_gain", "set_tempo", "set_clip_gain",
                       "split_audio_clip", "add_notes", "render"), "Rostrum REAPER bridge",
                      None if reaper else "REAPER executable not found"),
-        MusicProgram("audacity", audacity, bool(audacity), False,
-                     ("mute_track",), "Audacity scripting commands",
-                     "Audacity scripting connection not verified" if audacity else
+        MusicProgram("audacity", audacity, bool(audacity), audacity_connected,
+                     ("import_audio", "mute_track", "solo_track", "set_track_gain",
+                      "set_track_pan", "rename_track", "split_audio_clip", "fade_audio",
+                      "normalize_audio", "render"), "Audacity mod-script-pipe",
+                     None if audacity_connected else "Audacity scripting connection unavailable" if audacity else
                      "Audacity executable not found"),
     ]
 
